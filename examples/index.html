@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel=stylesheet href="style.css">
+</head>
+<body ng-app="myApp">
+	
+	<section class="examples-ui-deni-grid" ng-controller="MainCtrl">
+		
+		<div class='menu'>
+			
+			<!-- Menu Level 1 -->
+			<div ng-repeat="example in examples">
+				<div class="{{getItemClass(1, example)}}" ng-click="itemClick(example)">{{example.text}}</div>			
+
+				<!-- Menu Level 2 -->
+				<div ng-repeat="child in example.children">
+					<div class="{{getItemClass(2, child)}}" ng-click="itemClick(child)" ng-show="example.collapsed !== true">{{child.text}}</div>
+
+					<!-- Menu Level 3 -->
+					<div ng-repeat="child2 in child.children">
+						<div class="{{getItemClass(3, child2)}}" ng-click="itemClick(child2)" ng-show="child.collapsed !== true">{{child2.text}}</div>
+
+						<!-- Menu Level 4 -->
+						<div ng-repeat="child3 in child2.children" class="{{getItemClass(4, child3)}}" ng-click="itemClick(child3)" ng-show="child2.collapsed !== true">{{child3.text}}</div>
+
+					</div>
+				</div>			
+			</div>
+			
+		</div>
+
+		<div class='main'>
+		</div>
+
+	</section>	
+
+	<script src="../../../jquery/dist/jquery.min.js"></script>
+	<script src="../../../angular/angular.min.js"></script>
+	<script src="app.js"></script>	
+</body>
+
+</html>
+	
