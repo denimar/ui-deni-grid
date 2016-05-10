@@ -8,7 +8,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Basic Array Grid',
-					path: 'basic/array-grid/index.html',
+					path: 'basic/array-grid',
 				}
 			],
 		},
@@ -220,7 +220,6 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		}
 		//
 		$scope.setSelected(itemToSelect, true);
-		alert(itemToSelect.path);
 		$('.main').load(itemToSelect.path || '');
 	}
 
