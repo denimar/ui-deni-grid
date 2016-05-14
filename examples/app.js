@@ -8,7 +8,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Basic Array Grid',
-					path: 'basic/array-grid',
+					path: '3nfdckrg/29/embed/',
 				}
 			],
 		},
@@ -220,6 +220,11 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		}
 		//
 		$scope.setSelected(itemToSelect, true);
+		var path = itemToSelect.path || '';
+		if (path != '') {
+			path = 'https://jsfiddle.net/denimar/' + path;
+		}
+		
 		$('.main').load(itemToSelect.path || '');
 	}
 
