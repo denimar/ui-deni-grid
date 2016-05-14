@@ -8,7 +8,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Basic Array Grid',
-					path: '3nfdckrg/29/embed/',
+					path: '3nfdckrg/29',
 				}
 			],
 		},
@@ -17,6 +17,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Binding to Array',
+					path: 'jg3wmhw9/8'
 				},
 				{
 					text: 'Binding to XML',
@@ -222,10 +223,13 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		$scope.setSelected(itemToSelect, true);
 		var path = itemToSelect.path || '';
 		if (path != '') {
-			path = 'https://jsfiddle.net/denimar/' + path;
+			path = '//jsfiddle.net/denimar/' + path + '/embedded/result,html,js,css,resources/';
 		}
 		
-		$('.main').load(itemToSelect.path || '');
+		console.info(path);
+		var iFrame = $('.main').find('iframe');
+		iFrame.attr('src', path);
+		//$('.main').load(itemToSelect.path || '');
 	}
 
 	$scope.setSelected = function(itemToSelect, selected, recursive) {
