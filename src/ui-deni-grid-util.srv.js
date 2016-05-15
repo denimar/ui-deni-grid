@@ -337,6 +337,17 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 */
 		opt.columnGroupingFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
 
+		/**
+		 * @opt {Boolean} [enableGrouping=true]
+		 *
+		 */
+		opt.enableGrouping = true;
+
+		/**
+		 * @opt {Boolean} [enableColumnResize=true]
+		 *
+		 */
+		opt.enableColumnResize = true;
 
 		/**
 		 * @opt {Boolean} [hideHeader=false]
@@ -349,6 +360,18 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 *
 		 */
 		opt.rowHeight = uiDeniGridConstants.DEFAULT_ROW_HEIGHT;
+
+		/**
+		 * @opt {Boolean} [multiSelect=false]
+		 *
+		 */
+		opt.multiSelect = false;
+
+		/**
+		 * @opt {Boolean} [sortableColumns=true]
+		 *
+		 */
+		opt.sortableColumns = true;
 
 
 	    /**
@@ -385,13 +408,15 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 */
 		opt.sorters = [];
 
-
 		/**
-		 * @opt {Boolean} [enableGrouping=false]
+		 * @opt {Boolean} [stropRows=true]
+		 *
 		 *
 		 */
-		opt.enableGrouping = true;
+		opt.stripRows = true;
 
+
+		//
 		angular.extend(opt, controller.options);
 
 		controller.options = opt;

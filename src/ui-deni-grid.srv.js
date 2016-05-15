@@ -2129,13 +2129,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 				// common row	
 				} else {
-					// odd line
-					if (itemToRender.rowIndex % 2 == 1) {
-						rowElement.addClass('odd-row');						
-						if (controller.options.fixedCols) {
-							fixedRowElement.addClass('odd-row');
-						}	
-					}
+					// stripRows (odd line?)
+					if (controller.options.stripRows) {
+						if (itemToRender.rowIndex % 2 == 1) {
+							rowElement.addClass('odd-row');						
+							if (controller.options.fixedCols) {
+								fixedRowElement.addClass('odd-row');
+							}	
+						}
+					}	
 				}
 			}
 		}

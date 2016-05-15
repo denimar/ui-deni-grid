@@ -8,7 +8,7 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
         //idField: 'id',
         //rowHeight: '22px', //22px is default
         //hideHeaders: false, //false is default  
-        stripRows: false, //true is default       
+        stripRows: true, //true is default       
         //enableColumnResize: true, //true is default
         //sortableColumns: true, //true is default
         //multiSelect: true, //default is false 
