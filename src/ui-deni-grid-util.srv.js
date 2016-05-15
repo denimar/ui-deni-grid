@@ -338,6 +338,11 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		opt.columnGroupingFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
 
 
+		/**
+		 * @opt {Boolean} [hideHeader=false]
+		 *
+		 */
+		opt.hideHeaders = false;
 
 		/**
 		 * @opt {String} [rowHeight='22px']

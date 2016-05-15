@@ -14,9 +14,25 @@ body {
 	font-size: 12px;
 }
 
+.examples-ui-deni-grid .examplesTitle {
+	font-weight: bold;
+	margin-bottom: 4px;
+	color: #1b677e;
+	font-family: tahoma,arial;
+    font-size: 16px;	
+
+    background: #34AFD4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, #c0e6f2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, yellow); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, #c0e6f2); /* Standard syntax (must be last) */    
+    padding: 6px;
+    /*border: solid 1px #c0e6f2;*/
+    border-bottom: solid 1px #6cc5e0;
+    /*border: solid 1px chartreuse;*/
+}
+
 .examples-ui-deni-grid .menu {
-	border: solid 1px #d9d9d9;
-	padding: 5px;
 	width: 350px;
 	height: 100%;
 	box-sizing: border-box;
@@ -100,4 +116,27 @@ body {
 .menu-item.selected {
 	background-color: #3973ac;
 	color: white;
+}
+
+.example-img {
+	width: 350px;
+	height: 180px;	
+	border: solid 1px #ccc;
+	float: left;
+	padding: 2px;
+}
+
+.desctiption-img {
+	width: calc(100% - 365px);
+	height: 150px;	
+	float: left;	
+	margin-left: 8px;
+}
+
+.desctiption-img .desctiption-img-title {
+	font-weight: bold;
+}
+
+.desctiption-img .desctiption-img-text {
+	margin-top: 4px;
 }
