@@ -8,7 +8,7 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
         //idField: 'id',
         //rowHeight: '22px', //22px is default
         //hideHeaders: false, //false is default  
-        //stripRows: true, //true is default       
+        stripRows: true, //true is default       
         //enableColumnResize: true, //true is default
         //sortableColumns: true, //true is default
         //multiSelect: true, //default is false 
@@ -54,7 +54,7 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
         }
     };
 
-    $http.get('../../../data/employees/employees-10000.json')
+    $http.get('../data/employees/employees-10000.json')
         .then(function(serverResponse) {
             $scope.gridOptions.api.loadData(serverResponse.data);
         });

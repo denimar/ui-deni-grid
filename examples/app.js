@@ -8,16 +8,21 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Basic Array Grid',
+					img: 'basic-array-grid.gif',
 					path: '3nfdckrg/29',
+					description: 'This is a simple example'
 				}
 			],
 		},
 		{
 			text: 'Data Binding',
+			collapsed: true,
 			children: [
 				{
 					text: 'Binding to Array',
-					path: 'jg3wmhw9/8'
+					img: 'basic-array-grid.jpg',					
+					path: 'jg3wmhw9/8',
+					description: 'A more complex example'
 				},
 				{
 					text: 'Binding to XML',
@@ -39,6 +44,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Grouping',
+			collapsed: true,
 			children: [
 				{
 					text: 'Grouping',
@@ -54,6 +60,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Selection',
+			collapsed: true,
 			children: [
 				{
 					text: 'Row Selection',
@@ -68,6 +75,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Sorting',
+			collapsed: true,
 			children: [
 				{
 					text: 'Sorting',
@@ -85,9 +93,11 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Filtering',
+			collapsed: true,
 			children: [
 				{
 					text: 'Row Filter',
+					collapsed: true,
 					children: [
 						{
 							text: 'Local Row Filter'
@@ -104,6 +114,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Templates',
+			collapsed: true,
 			children: [
 				{
 					text: 'Row Template'
@@ -118,6 +129,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},		
 		{	
 			text: 'Footer',
+			collapsed: true,
 			children: [
 				{
 					text: 'Custom Functions',
@@ -147,6 +159,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Other Features',
+			collapsed: true,
 			children: [
 				{
 					text: 'Grouped Column Header'
@@ -214,7 +227,14 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		}	
 	}
 
+	$scope.exampleImg = '';
+	$scope.exampleTitle = '';
+	$scope.exampleDescription = '';
 	$scope.selectItem = function(itemToSelect) {
+		$scope.exampleImg = itemToSelect.img;
+		$scope.exampleTitle = itemToSelect.text;
+		$scope.exampleDescription = itemToSelect.description;
+
 		//remove all selections
 		for (var index = 0 ; index < $scope.examples.length ; index++) {
 			$scope.setSelected($scope.examples[index], false, true);
