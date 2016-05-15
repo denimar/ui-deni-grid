@@ -10,7 +10,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					text: 'Basic Array Grid',
 					img: 'basic-array-grid.gif',
 					path: '3nfdckrg/29',
-					description: 'This is a simple example using a array local data Ultimo Commit'
+					description: 'This is a simple example using a array local data Mais um Commit'
 				}
 			],
 		},
