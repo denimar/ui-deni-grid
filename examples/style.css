@@ -121,9 +121,13 @@ body {
 .example-img {
 	width: 350px;
 	height: 180px;	
-	border: solid 1px #ccc;
 	float: left;
 	padding: 2px;
+}
+
+.description-main {
+	height: 195px;		
+	border-bottom: solid 1px silver; 
 }
 
 .desctiption-img {
@@ -140,3 +144,8 @@ body {
 .desctiption-img .desctiption-img-text {
 	margin-top: 4px;
 }
+
+.iframe-jsfiddle {
+	width: 100%;
+	height: calc(100% - 200px);
+}	

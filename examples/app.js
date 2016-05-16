@@ -9,8 +9,8 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				{
 					text: 'Basic Array Grid',
 					img: 'basic-array-grid.gif',
-					path: '3nfdckrg/30',
-					description: 'A simplest way to show data using the angular ui-deni-grid'
+					path: '3nfdckrg',
+					description: 'A simplest way to show data using the ui-deni-grid'
 				}
 			],
 		},
@@ -21,7 +21,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				{
 					text: 'Binding to Array',
 					img: 'basic-array-grid.gif',
-					path: '3nfdckrg/30',
+					path: '3nfdckrg',
 					description: 'Binding to a simple array'
 				},
 				{
@@ -48,9 +48,6 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Grouping',
-				},
-				{
-					text: 'Cell Selection',
 				},
 				{
 					text: 'Grouping with Footer',
@@ -243,7 +240,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		$scope.setSelected(itemToSelect, true);
 		var path = itemToSelect.path || '';
 		if (path != '') {
-			path = '//jsfiddle.net/denimar/' + path + '/embedded/result,html,js,css,resources/';
+			path = '//jsfiddle.net/' + path + '/embedded/result,html,js,css,resources/';
 		}
 		
 		console.info(path);
@@ -261,5 +258,6 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		}
 	}
 
+	$scope.selectItem($scope.examples[0].children[0]);
 
 });
