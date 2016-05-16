@@ -9,7 +9,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				{
 					text: 'Basic Array Grid',
 					img: 'basic-array-grid.gif',
-					path: '3nfdckrg/29',
+					path: '3nfdckrg/30',
 					description: 'A simplest way to show data using the angular ui-deni-grid'
 				}
 			],
@@ -21,7 +21,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				{
 					text: 'Binding to Array',
 					img: 'basic-array-grid.gif',
-					path: 'jg3wmhw9/8',
+					path: '3nfdckrg/30',
 					description: 'Binding to a simple array'
 				},
 				{
