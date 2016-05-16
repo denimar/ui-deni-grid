@@ -10,7 +10,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					text: 'Basic Array Grid',
 					img: 'basic-array-grid.gif',
 					path: '3nfdckrg/29',
-					description: 'This is a simple example using a array local data alteração 8'
+					description: 'A simplest way to show data using the angular ui-deni-grid'
 				}
 			],
 		},
@@ -22,7 +22,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					text: 'Binding to Array',
 					img: 'basic-array-grid.jpg',					
 					path: 'jg3wmhw9/8',
-					description: 'A more complex example'
+					description: 'Binding to a simple array'
 				},
 				{
 					text: 'Binding to XML',
