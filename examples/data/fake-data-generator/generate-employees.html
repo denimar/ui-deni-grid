@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content=""><html>
+     <title>faker.js - generate massive amounts of fake data in node.js and the browser</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+     <script src = "prettyPrint.js" type = "text/javascript"></script>
+     <script src = "faker.js" type = "text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.5/angular.min.js"></script>
+  
+<script>
+
+  function download(strData, strFileName, strMimeType) {
+      var D = document,
+          A = arguments,
+          a = D.createElement("a"),
+          d = A[0],
+          n = A[1],
+          t = A[2] || "text/plain";
+
+      //build download link:
+      a.href = "data:" + strMimeType + "charset=utf-8," + escape(strData);
+
+
+      if (window.MSBlobBuilder) { // IE10
+          var bb = new MSBlobBuilder();
+          bb.append(strData);
+          return navigator.msSaveBlob(bb, strFileName);
+      } /* end if(window.MSBlobBuilder) */
+
+
+
+      if ('download' in a) { //FF20, CH19
+          a.setAttribute("download", n);
+          a.innerHTML = "downloading...";
+          D.body.appendChild(a);
+          setTimeout(function() {
+              var e = D.createEvent("MouseEvents");
+              e.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+              a.dispatchEvent(e);
+              D.body.removeChild(a);
+          }, 66);
+          return true;
+      }; /* end if('download' in a) */
+
+
+
+      //do iframe dataURL download: (older W3)
+      var f = D.createElement("iframe");
+      D.body.appendChild(f);
+      f.src = "data:" + (A[2] ? A[2] : "application/octet-stream") + (window.btoa ? ";base64" : "") + "," + (window.btoa ? window.btoa : escape)(strData);
+      setTimeout(function() {
+          D.body.removeChild(f);
+      }, 333);
+      return true;
+  }  
+
+  $(document).ready(function(e){
+
+    var numberOfRecords = 3000;
+
+    var gender = ['male', 'female'];
+    
+
+    var records = [];    
+
+    for (var index = 0 ; index < numberOfRecords ; index++) {
+        var record = {};
+            var genderIndex = faker.random.number(1);
+
+            // make name contextual to username and email
+            var firstName = faker.name.firstName(),
+                lastName = faker.name.lastName();
+
+            //id    
+            record.id = index+1;
+            //name
+            record.name = faker.name.findName(undefined, undefined, 1);
+            //gender
+            record.gender = gender[genderIndex]; 
+            //company
+            record.company = faker.company.companyName();
+            //age
+            record.age = 13 + faker.random.number(70);
+            //avatar
+            record.avatar = faker.internet.avatar();
+            //email
+            record.email = faker.internet.email();
+            //phone
+            record.phone = faker.phone.phoneNumber();
+
+            record.address = {};
+            //address
+            record.address.street = faker.address.streetName();
+            //address
+            record.address.city = faker.address.city();
+
+
+            records.push(record);
+    }        
+
+    var pad = "00000"
+    var numberOfRecordsStr = pad.substring(0, pad.length - numberOfRecords.toString().length) + numberOfRecords
+
+    download(JSON.stringify(records, null, '    '), 'employees-' + numberOfRecordsStr + '.txt', 'text/plain');
+
+  });
+              
+</script>
+
+<body>
+  teste
+</body>
+</html>
+
+
+<!--
+    "id": 1,
+    "name": "Delia Madden",
+    "gender": "female",
+    "company": "EMTRAK",
+    "age": 23,
+    "email": "deliamadden@emtrak.com",
+    "phone": "+1 (926) 587-3541",
+    "address": "956 Verona Street, Eastmont, Wisconsin, 4445"
+-->    
