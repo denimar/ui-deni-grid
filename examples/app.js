@@ -20,7 +20,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Binding to Array',
-					img: 'basic-array-grid.jpg',					
+					img: 'basic-array-grid.gif',
 					path: 'jg3wmhw9/8',
 					description: 'Binding to a simple array'
 				},
