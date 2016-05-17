@@ -87,6 +87,12 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Editing',
+			collapsed: true,
+			children: [
+				{
+					text: 'Cell Editing',
+				},
+			]
 		},
 		{
 			text: 'Filtering',
