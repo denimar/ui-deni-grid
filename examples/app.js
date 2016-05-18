@@ -99,16 +99,10 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			collapsed: true,
 			children: [
 				{
-					text: 'Row Filter',
-					collapsed: true,
-					children: [
-						{
-							text: 'Local Row Filter'
-						},
-						{
-							text: 'Remote Row Filter'
-						}
-					]
+					text: 'Local Row Filter'
+				},
+				{
+					text: 'Remote Row Filter'
 				}
 			]		
 		},
