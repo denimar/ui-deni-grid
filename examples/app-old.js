@@ -16,6 +16,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Data Binding',
+			collapsed: true,
 			children: [
 				{
 					text: 'Binding to Array',
@@ -43,6 +44,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Grouping',
+			collapsed: true,
 			children: [
 				{
 					text: 'Grouping',
@@ -55,6 +57,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Selection',
+			collapsed: true,
 			children: [
 				{
 					text: 'Row Selection',
@@ -69,6 +72,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Sorting',
+			collapsed: true,
 			children: [
 				{
 					text: 'Sorting',
@@ -83,6 +87,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Editing',
+			collapsed: true,
 			children: [
 				{
 					text: 'Cell Editing',
@@ -91,6 +96,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Filtering',
+			collapsed: true,
 			children: [
 				{
 					text: 'Local Row Filter'
@@ -105,6 +111,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Templates',
+			collapsed: true,
 			children: [
 				{
 					text: 'Row Template'
@@ -119,6 +126,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},		
 		{	
 			text: 'Footer',
+			collapsed: true,
 			children: [
 				{
 					text: 'Custom Functions',
@@ -148,6 +156,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		},
 		{
 			text: 'Other Features',
+			collapsed: true,
 			children: [
 				{
 					text: 'Grouped Column Header'
@@ -162,7 +171,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 		}
 	];
 
-	/*
+
 	$scope.getItemClass = function(menuLevel, item) {
 		var classItems;
 
@@ -250,6 +259,5 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 	}
 
 	$scope.selectItem($scope.examples[0].children[0]);
-	*/
 
 });
