@@ -31,13 +31,15 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			children: [
 				{
 					text: 'Grouping',
-					img: 'grouping-grouping.gif',					
+					img: 'grouping-grouping.gif',
 					path: 's9n0x5b7',
 					description: 'A simplest way to grouping data using the ui-deni-grid'
 				},
 				{
 					text: 'Grouping with Footer',
-					path: 'footer/grouping-footer'
+					img: 'grouping-grouping.gif',
+					path: 'grouping/grouping-with-footer/index.html',
+					description: 'Showing a footer like a sumary at the end of the grouping, plus, as you can see, the footer is showing at the end of the grid too, exactly like was configured. For more details see the "footer" section.'
 				}
 			]
 		},
@@ -166,7 +168,9 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 
 		var path = item.path || '';
 		if (path != '') {
-			path = '//jsfiddle.net/' + path + '/embedded/result,html,js,css,resources/';
+			if (path.length == 8) { //jsfiddle
+				path = '//jsfiddle.net/' + path + '/embedded/result,html,js,css,resources/';
+			}
 		}
 		
 		//var iFrame = $('.main').find('iframe');

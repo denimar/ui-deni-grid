@@ -83,7 +83,7 @@ hr {
 .modal-exemple-title {
     display: flex;
     width: 100%;
-    color: white;
+	color: white;
     background-color: #5BC0DE;
     padding: 5px;
     border-radius: 10px;

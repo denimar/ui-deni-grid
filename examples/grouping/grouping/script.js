@@ -5,22 +5,22 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
   $scope.gridOptions = {
-    url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/employees-10000.json',
+    url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/01000.json',
     grouping: {
-      expr: 'company',
-      template: '<b>{company}</b> ({count})'
+      expr: 'address.city',
+      template: '<b>{address.city} - {address.state}</b> ({count})'
     },
     columns: [{
       header: 'Name',
       name: 'name',
-      width: '40%',
-    }, {
-      header: 'Gender',
-      name: 'gender',
-      width: '20%'
+      width: '30%',
     }, {
       header: 'Company',
       name: 'company',
+      width: '30%',
+    }, {
+      header: 'City',
+      name: 'address.city',
       width: '30%',
     }, {
       header: 'Age',
