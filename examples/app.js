@@ -1,6 +1,6 @@
-angular.module('myApp', []);
+angular.module('myApp', ['app.scripts.deni-modal.mdl']);
 
-angular.module('myApp').controller('MainCtrl', function($scope) {
+angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 
 	$scope.examples = [
 		{
@@ -11,17 +11,6 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					img: 'basic-array-grid.gif',
 					path: '3nfdckrg',
 					description: 'A simplest way to show data using the ui-deni-grid'
-				}
-			],
-		},
-		{
-			text: 'Data Binding',
-			children: [
-				{
-					text: 'Binding to Array',
-					img: 'basic-array-grid.gif',
-					path: '3nfdckrg',
-					description: 'Binding to a simple array'
 				},
 				{
 					text: 'Binding to XML',
@@ -37,8 +26,7 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				},
 				{
 					text: 'Large Dataset',
-				},
-
+				}
 			],
 		},
 		{
@@ -161,6 +149,47 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			]
 		}
 	];
+
+	$scope.showItem = function(itemRepeat) {
+		if (itemRepeat.$last && itemRepeat.$parent.$last) {
+			$('.examples-ui-deni-grid').css('display', 'block');
+		}
+
+		return true;
+	}
+
+	$scope.itemClick = function(item) {
+		//deniModalSrv.ghost('Title test', "Messages Here!");
+
+		var path = item.path || '';
+		if (path != '') {
+			path = '//jsfiddle.net/' + path + '/embedded/result,html,js,css,resources/';
+		}
+		
+		//var iFrame = $('.main').find('iframe');
+		//iFrame.attr('src', path);
+
+
+		var htmlTemplate = '<div class="modal-exemple">\n' +
+		                   '    <div class="modal-exemple-title"	>\n' +
+		                   '        ' + item.description + '\n' +
+		                   '    </div>\n' +		                   
+		                   '    <iframe class="modal-exemple-iframe" src="' + path + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>\n' +
+		                   '</div>';
+
+
+	 	var config = {
+			width: '850px',
+			height: '650px',
+			position: deniModalSrv.POSITION.CENTER,
+			modal: true,
+			htmlTemplate: htmlTemplate,
+			title: item.text
+		};
+
+		var objWindow = deniModalSrv.createWindow(config);		
+		objWindow.show();
+	}
 
 	/*
 	$scope.getItemClass = function(menuLevel, item) {
