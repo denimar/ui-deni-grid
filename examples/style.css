@@ -51,8 +51,8 @@ hr {
 .item {
 	float: left;	
 	display: inline-block;	
-	height: 150px;
-	width: 180px;	
+	height: 160px;
+	width: 240px;	
 	margin-right: 4px;	
 	margin-top: 2px;	
 	padding: 2px 2px 0px 2px;
@@ -60,12 +60,12 @@ hr {
 }
 
 .item-image {
-	height: 115px;
+	height: 130px;
 	width: 100%;	
 }
 
 .item-text {
-	height: 35px;
+	height: 30px;
 	width: 100%;
 	color: gray;
 	font-size: 12px;

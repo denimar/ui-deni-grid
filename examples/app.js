@@ -32,7 +32,8 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Grouping',
 					img: 'grouping-grouping.gif',					
-					path: 's9n0x5b7'
+					path: 's9n0x5b7',
+					description: 'A simplest way to grouping data using the ui-deni-grid'
 				},
 				{
 					text: 'Grouping with Footer',
