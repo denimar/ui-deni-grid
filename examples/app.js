@@ -27,6 +27,35 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			],
 		},
 		{
+			text: 'Fixed Columns',
+			children: [
+				{
+					text: 'Checkbox',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '??'
+				},
+				{
+					text: 'Indicator',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '??'
+				},
+				{
+					text: 'Row Number',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '??'
+				},
+				{
+					text: 'Fixed Columns',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '??'
+				},
+			]
+		},	
+		{
 			text: 'Grouping',
 			children: [
 				{
