@@ -182,8 +182,8 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 
 
 	 	var config = {
-			width: '850px',
-			height: '650px',
+			width: '800px',
+			height: '600px',
 			position: deniModalSrv.POSITION.CENTER,
 			modal: true,
 			htmlTemplate: htmlTemplate,
