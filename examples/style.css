@@ -85,7 +85,8 @@ hr {
     width: 100%;
     color: white;
     background-color: #5BC0DE;
-    padding: 4px;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .modal-exemple-iframe {

@@ -24,9 +24,6 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Binding to remote JSON',
 				},
-				{
-					text: 'Large Dataset',
-				}
 			],
 		},
 		{
@@ -146,6 +143,9 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Property Grid'
 				},
+				{
+					text: 'Large Dataset',
+				}
 			]
 		}
 	];
