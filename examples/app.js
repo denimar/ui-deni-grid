@@ -31,6 +31,8 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			children: [
 				{
 					text: 'Grouping',
+					img: 'grouping-grouping.gif',					
+					path: 's9n0x5b7'
 				},
 				{
 					text: 'Grouping with Footer',
