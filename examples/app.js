@@ -38,7 +38,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Grouping with Footer',
 					img: 'grouping-grouping.gif',
-					path: 'grouping/grouping-with-footer/index.html',
+					path: 'sywnb63x',
 					description: 'Showing a footer like a sumary at the end of the grouping, plus, as you can see, the footer is showing at the end of the grid too, exactly like was configured. For more details see the "footer" section.'
 				}
 			]
