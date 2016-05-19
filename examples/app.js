@@ -182,8 +182,8 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 		                   '        ' + item.description + '\n' +
 		                   '    </div>\n' +		                   
 		                   '    <iframe class="modal-exemple-iframe" src="' + path + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>\n' +
+						   '    <a href="http://jsfiddle.net/denimar/' + item.path + '/embedded/result,html,js,css,resources/">view in a new window</a>\n' +
 		                   '</div>';
-
 
 	 	var config = {
 			width: '800px',
