@@ -14,27 +14,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
     $scope.gridOptions = {
         rowHeight: '72px', //22px is default
         url: '../../../examples/data/movies/movies-01000.json',
-        rowTemplate: customTemplate,
-        columns: [
-            { 
-                header:'Title', 
-                name: 'title', 
-                width: '60%', 
-                align: 'left',
-            },
-            { 
-                header:'Popularity', 
-                name: 'popularity', 
-                width: '20%', 
-                align: 'right'
-            },
-            {
-                header: 'Release',
-                name: 'release_date',
-                width: '20%',
-                align: 'center'
-            }
-        ]
+        rowTemplate: customTemplate
     };
 
 

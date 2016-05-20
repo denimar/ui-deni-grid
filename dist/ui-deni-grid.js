@@ -282,17 +282,6 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		//
 		var containerWidth = controller.colsContainer.width() - scroolBarWidth;	
 
-		var columns = controller.options.columns;
-		for (var index = 0 ; index < columns.length ; index++) {
-			var column = columns[index];
-
-			//TODO: make a function that recognize a fixed column			
-			if (column.name == '+') {  //show number column
-				containerWidth -= parseInt(column.width);
-			}
-
-		}
-
 		return containerWidth;
 	}
 
@@ -632,12 +621,16 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 	 *
 	 */
 	me.hasColumnFooter = function(controller) {
-		var columns = controller.options.columns;
-		for (var index = 0 ; index < columns.length ; index++) {
-			if (columns[index].footer) {
-				return true;
+
+		//this if exists because sometimes there is no need for columns, for example when there is a row template
+		if (controller.options.columns) {
+			var columns = controller.options.columns;
+			for (var index = 0 ; index < columns.length ; index++) {
+				if (columns[index].footer) {
+					return true;
+				}
 			}
-		}
+		}	
 
 		return false;
 	}
@@ -672,15 +665,19 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 		//How many footers?
 		var columnFooterNumber = 0;
-		for (var index = 0 ; index < controller.options.columns.length ; index++) {
-			var column = controller.options.columns[index];
-			//
-			if (column.footer) {
-				var lenght = angular.isArray(column.footer) ? column.footer.length : 1;				
+
+		//this if exists because sometimes there is no need for columns, for example when there is a row template
+		if (controller.options.columns) {
+			for (var index = 0 ; index < controller.options.columns.length ; index++) {
+				var column = controller.options.columns[index];
 				//
-				if (lenght > columnFooterNumber) {
-					columnFooterNumber = lenght;
-				}
+				if (column.footer) {
+					var lenght = angular.isArray(column.footer) ? column.footer.length : 1;				
+					//
+					if (lenght > columnFooterNumber) {
+						columnFooterNumber = lenght;
+					}
+				}	
 			}	
 		}	
 
@@ -696,41 +693,45 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 		//How many footers?
 		var columnFooterRowsNumber = 0;
-		for (var index = 0 ; index < controller.options.columns.length ; index++) {
-			var column = controller.options.columns[index];
-			//
-			if (column.footer) {
-				var lenght = 1;				
+
+		//this if exists because sometimes there is no need for columns, for example when there is a row template
+		if (controller.options.columns) {
+			for (var index = 0 ; index < controller.options.columns.length ; index++) {
+				var column = controller.options.columns[index];
 				//
-				if (angular.isArray(column.footer)) {
-					lenght = 0;
-					for (var colIndex = 0 ; colIndex < column.footer.length ; colIndex++) {
-						var footer = column.footer[colIndex];
-						//
-						if (angular.isObject(footer)) {
+				if (column.footer) {
+					var lenght = 1;				
+					//
+					if (angular.isArray(column.footer)) {
+						lenght = 0;
+						for (var colIndex = 0 ; colIndex < column.footer.length ; colIndex++) {
+							var footer = column.footer[colIndex];
 							//
-							if (groupingFooter) {	
+							if (angular.isObject(footer)) {
 								//
-								if (footer.grouping != false) {
-									lenght++;
+								if (groupingFooter) {	
+									//
+									if (footer.grouping != false) {
+										lenght++;
+									}
+								//	
+								} else {
+									//
+									if (footer.grid != false) {
+										lenght++;
+									}
 								}
 							//	
 							} else {
-								//
-								if (footer.grid != false) {
-									lenght++;
-								}
+								lenght++;
 							}
-						//	
-						} else {
-							lenght++;
 						}
 					}
-				}
-				//
-				if (lenght > columnFooterRowsNumber) {
-					columnFooterRowsNumber = lenght;
-				}
+					//
+					if (lenght > columnFooterRowsNumber) {
+						columnFooterRowsNumber = lenght;
+					}
+				}	
 			}	
 		}	
 
