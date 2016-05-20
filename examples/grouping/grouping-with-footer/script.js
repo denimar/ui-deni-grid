@@ -13,7 +13,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
         columns: [{
             header: 'Name',
             name: 'name',
-            width: '30%',
+            width: '25%',
         }, {
             header: 'Company',
             name: 'company',
@@ -23,9 +23,9 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
             name: 'address.city',
             width: '25%',
         }, {
-            header: 'Age',
-            name: 'age',
-            width: '20%',
+            header: 'Salary',
+            name: 'salary',
+            width: '25%',
             align: 'right',
             format: 'float',
             footer: [

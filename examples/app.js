@@ -32,29 +32,43 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Checkbox',
 					img: 'basic-array-grid.gif',
-					path: '??',
-					description: '??'
-				},
-				{
-					text: 'Indicator',
-					img: 'basic-array-grid.gif',
-					path: '??',
-					description: '??'
-				},
-				{
-					text: 'Row Number',
-					img: 'basic-array-grid.gif',
-					path: '??',
-					description: '??'
+					path: 'gv3sgjpy',
+					description: 'This example show how put a checkbox as a fixed column'
 				},
 				{
 					text: 'Fixed Columns',
 					img: 'basic-array-grid.gif',
-					path: '??',
-					description: '??'
+					path: 'mousxpr5',
+					description: 'A way to scroll the data fixing one or more columns'
+				},
+				{
+					text: 'Indicator',
+					img: 'basic-array-grid.gif',
+					path: 'v5p3s45x',
+					description: 'Showing a indicator at the left side of the grid'
+				},
+				{
+					text: 'Row Number',
+					img: 'basic-array-grid.gif',
+					path: '4s22s15b',
+					description: 'Sometime there is a need to know what line we are'
 				},
 			]
 		},	
+		{
+			text: 'Templates',
+			children: [
+				{
+					text: 'Row Template'
+				},
+				{
+					text: 'Footer Template'
+				},
+				{
+					text: 'Footer Row Template'
+				},
+			]
+		},		
 		{
 			text: 'Grouping',
 			children: [
@@ -122,20 +136,6 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 		{
 			text: 'Drag and Drop',
 		},
-		{
-			text: 'Templates',
-			children: [
-				{
-					text: 'Row Template'
-				},
-				{
-					text: 'Footer Template'
-				},
-				{
-					text: 'Footer Row Template'
-				},
-			]
-		},		
 		{	
 			text: 'Footer',
 			children: [

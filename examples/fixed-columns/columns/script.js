@@ -2,50 +2,37 @@
 angular.module('myApp', ['ui-deni-grid']);
 
 //Controller
-angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
+angular.module('myApp').controller('ExampleCtrl', function($scope) {
 
     $scope.gridOptions = {
-        idField: 'id',
-        rowHeight: '22px', //22px is default
-        hideHeaders: false, //false is default  
-        stripRows: true, //true is default       
-        enableColumnResize: true, //true is default
-        sortableColumns: true, //true is default
-        //selType: 'cell', //'row' is default
-        //multiSelect: true, //default is false 
+        url: 'https://denimar.github.io/ui-deni-grid/examples/data/movies/movies-00500.json',    
         fixedCols: {
             columns: ['id', 'title']
         },
-        url: '../../../data/movies/movies-00500.json',
-        columns: [
-            { 
-                header:'Id', 
-                name: 'id', 
-                width: '10%',
+        columns: [{
+                header: 'Id',
+                name: 'id',
+                width: '100px',
                 align: 'right',
-            },
-            { 
-                header:'Title', 
-                name: 'title', 
-                width: '45%',
+            }, {
+                header: 'Title',
+                name: 'title',
+                width: '250px',
                 align: 'left',
-            },
-            { 
-                header:'Popularity', 
-                name: 'popularity', 
-                width: '15%',
+            }, {
+                header: 'Popularity',
+                name: 'popularity',
+                width: '160px',
                 align: 'right'
-            },
-            {
+            }, {
                 header: 'Release',
                 name: 'release_date',
-                width: '15%',
+                width: '150px',
                 align: 'center'
-            },            
-            {
+            }, {
                 header: 'Votes',
                 name: 'vote_count',
-                width: '15%',
+                width: '100px',
                 align: 'center'
             },
 
@@ -53,4 +40,3 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
     };
 
 });
-
