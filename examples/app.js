@@ -59,7 +59,10 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			text: 'Templates',
 			children: [
 				{
-					text: 'Row Template'
+					text: 'Row Template 1'
+				},
+				{
+					text: 'Row Template 2'
 				},
 				{
 					text: 'Footer Template'
