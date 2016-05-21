@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../../../dist/ui-deni-grid.css">
+	<link rel="stylesheet" type="text/css" href="../../../dist/ui-deni-grid.min.css">
 </head>
 
 <style>
@@ -18,30 +18,45 @@
 		padding: 5px; 
 		background-color: white;
 		padding: 4px;
-		font-family: tahoma;
+		font-family: arial,tahoma;
 		display: inline-block;
 	}
 
 	.custom-footer-row-template img {
-		float: right;
+		float: left;
     	box-sizing: border-box;		
 		width: 205px;
-		height: 85px;		
+		height: 95px;		
+		margin-left: 30px;		
 		margin-right: 10px;
 	}
 	.custom-footer-row-template .data-panel {
-		float: right;		
+		float: left;		
     	box-sizing: border-box;		
-    	margin-right: 180px;
 		border: solid 1px #E6E6E6;
 		width: 230px;
 		height: 100%;	
-		background-color: #FAFAFA;	
-		padding: 10px; 		
-		border-radius: 10px;
-		text-align: center;
-		color: #006699;
+		color: #999999;		
+		padding: 0px;
+		margin-left: 5px;				
 	}
+
+	.custom-footer-row-template .data-panel td {	
+		border-top: solid 1px #E6E6E6;
+	}	
+
+	.custom-footer-row-template .data-panel .title {
+		font-weight: bold; 
+		color: #d88d8d; 
+		background-color: #f2d9d9;
+		border: solid 1px #E6E6E6;
+	}	
+
+	.custom-footer-row-template .data-panel .col-name {	
+		font-weight: bold;
+		text-align: right;
+		width: 110px;
+	}	
 
 </style>
 
@@ -53,8 +68,8 @@
 
 	</section>	
 
-	<script src="../../../../../jquery/dist/jquery.min.js"></script>
-	<script src="../../../../../angular/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.5/angular.min.js"></script>
 
 	<script src="../../../dist/ui-deni-grid.js"></script>			
 

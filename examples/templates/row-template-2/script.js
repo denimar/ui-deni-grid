@@ -4,8 +4,8 @@ angular.module('myApp', ['ui-deni-grid']);
 //Controller
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
-    var customTemplate = '<div style="padding-left:5px;width:100%;">\n' +
-                         '    <img style="float:left;width:76px;height:64px;margin-right:4px;"\n' +
+    var customTemplate = '<div class="row-template">\n' +
+                         '    <img class="imagem"\n' +
                          '        src="{avatar}" \n' +
                          '    />\n' +                                  
                          '    <div>\n' +

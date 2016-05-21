@@ -1497,12 +1497,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 */
 	me.load = function(controller) {
+		controller.bodyViewport.addClass('loading-data');
+		document.title = 'loading-data';
+
 		var deferred = $q.defer();
 		if (controller.options.url) {
 			$http.get(controller.options.url)
 				.then(function(response) {
 					controller.options.api.loadData(response.data);
 					deferred.resolve(response.data);
+
+					controller.bodyViewport.removeClass('loading-data');		
+					document.title = '';		
+					
 				}, 
 				function(response) {
 					deferred.reject(response.statusText);
@@ -1519,9 +1526,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 */
 	me.loadData = function(controller, data) {
-		//TODO: CLEAR THIS AFTER (Just for test)
-		var start = new Date();
-
 		///////////////////////////////////////////////////////////////////////////
 		//BeforeLoad Event
 		///////////////////////////////////////////////////////////////////////////		
@@ -1658,13 +1662,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		me.repaint(controller);
 
 
-		//TODO: CLEAR THIS AFTER (Just for test)
-		var end = new Date();
-		var seconds = (end - start) / 1000;
-		$('.divResponse').html(data.length + ' records, ' + seconds + ' seconds.');
-		////////////////////////////////////////////////////////////////////////////
-
-
 		///////////////////////////////////////////////////////////////////////////
 		//AfterLoad Event
 		///////////////////////////////////////////////////////////////////////////		
@@ -1673,7 +1670,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////		
-
 	};
 
 	/**
