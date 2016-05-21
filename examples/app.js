@@ -184,7 +184,10 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			text: 'Other Features',
 			children: [
 				{
-					text: 'Grouped Column Header'
+					text: 'Grouped Column Header',
+					path: '28ad3uuf',
+					img: 'basic-array-grid.gif',
+					description: '????????'
 				},
 				{
 					text: 'Infinite Scroll'
