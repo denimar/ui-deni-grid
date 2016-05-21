@@ -18,7 +18,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
         rowHeight: '72px', //22px is default
-        url: '../../../examples/data/employees/01000.json',
+        url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/01000.json',
         rowTemplate: customTemplate
     };
 
