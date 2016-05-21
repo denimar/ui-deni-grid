@@ -59,19 +59,19 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			text: 'Templates',
 			children: [
 				{
-					text: 'Row Template 1'
+					text: 'Row Template 1',
 					img: 'basic-array-grid.gif',
 					path: 'z075e6d0',
 					description: '????????'
 				},
 				{
-					text: 'Row Template 2'
+					text: 'Row Template 2',
 					img: 'basic-array-grid.gif',
 					path: '0hhue7rk',
 					description: '????????'
 				},
 				{
-					text: 'Footer Template'
+					text: 'Footer Template',
 					img: 'basic-array-grid.gif',
 					path: 'ysp0vdmh',
 					description: '????????'
