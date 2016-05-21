@@ -77,7 +77,10 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 					description: '????????'
 				},
 				{
-					text: 'Footer Row Template'
+					text: 'Footer Row Template',
+					img: 'basic-array-grid.gif',
+					path: 'dervvL56',
+					description: '????????'
 				},
 			]
 		},		

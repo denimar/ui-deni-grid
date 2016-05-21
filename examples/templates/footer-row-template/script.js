@@ -9,7 +9,7 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
         columnFooterRowHeight: '35px', //default = '22px'        
         footerRowTemplate: '<div class="custom-row-template">\n' +
                            '    <div>\n' + 
-                           '        <img src="../../images/money.png" />\n' +
+                           '        <img src="https://denimar.github.io/ui-deni-grid/examples/images/money.png" />\n' +
                            '        <span><b>{salary.text}</b>{salary.value}</span>\n' +
                            '    </div>\n' +                            
                            '</div>',
