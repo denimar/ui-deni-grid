@@ -41,6 +41,10 @@ hr {
 	background-image: -o-linear-gradient(left, #ccc, #f0f0f0); 	
 }
 
+a:link {text-decoration:none; color:#568e8f;font-size:14px;}
+a:visited {color:#568e8f;}
+a:hover {text-decoration:underline; color:#24478f;}
+
 .items-container {
 	margin-top: 2px;
 	float: left;		

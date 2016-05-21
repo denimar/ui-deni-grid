@@ -5,63 +5,53 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-        idField: 'id',
-        rowHeight: '22px', //22px is default
-        hideHeaders: false, //false is default 
-        stripRows: true, //true is default       
-        enableColumnResize: true, //true is default
-        sortableColumns: true, //true is default
-        //multiSelect: true, //default is false  
-        url: '../../../../data/employees/employees-01000.json',
-        //sorters: 'name',
+        url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/00500.json',
         columnFooterRowHeight: '35px', //default = '22px'        
         footerRowTemplate: '<div class="custom-row-template">\n' +
                            '    <div>\n' + 
-                           '        <img src="cake.png" />\n' +
-                           '        <span><b>{age.text}</b>{age.value}</span>\n' +
+                           '        <img src="../../images/money.png" />\n' +
+                           '        <span><b>{salary.text}</b>{salary.value}</span>\n' +
                            '    </div>\n' +                            
                            '</div>',
         columns: [
             { 
                 header:'Name', 
                 name: 'name', 
-                width: '35%', 
-                align: 'left',
+                width: '35%'
             },
             {
                 header: 'City',
                 name: 'address.city',
-                width: '25%',
-                align: 'left'
-            },
-            { 
-                header:'Gender', 
-                name: 'gender', 
-                width: '15%', 
-                align: 'left'
+                width: '25%'
             },
             { 
                 header:'Age', 
                 name: 'age', 
+                width: '15%', 
+                align: 'right'
+            },
+            { 
+                header:'Salary', 
+                name: 'salary', 
                 width: '25%', 
                 align: 'right',
                 format: 'float',
                 footer: [
                     {
                         fn: 'SUM',
-                        text: 'Sum of the ages : '
+                        text: 'Sum of the salaries : '
                     },    
                     {
                         fn: 'AVG',
-                        text: 'Average of the ages : '
+                        text: 'Average of the salaries : '
                     },    
                     {
                         fn: 'MAX',
-                        text: 'Highest age : '
+                        text: 'Highest salary : '
                     },    
                     {
                         fn: 'MIN',
-                        text: 'Lowest age : '
+                        text: 'Lowest salary : '
                     }
                 ]
             },

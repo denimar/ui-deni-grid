@@ -214,16 +214,12 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			}
 		}
 		
-		//var iFrame = $('.main').find('iframe');
-		//iFrame.attr('src', path);
-
-
 		var htmlTemplate = '<div class="modal-exemple">\n' +
 		                   '    <div class="modal-exemple-title"	>\n' +
 		                   '        ' + item.description + '\n' +
 		                   '    </div>\n' +		                   
 		                   '    <iframe class="modal-exemple-iframe" src="' + path + '" allowfullscreen="allowfullscreen" frameborder="0"></iframe>\n' +
-						   '    <a href="http://jsfiddle.net/denimar/' + item.path + '/embedded/result,html,js,css,resources/">view in a new window</a>\n' +
+						   '    <a href="http://jsfiddle.net/denimar/' + item.path + '/embedded/result,html,js,css,resources/" target="_blank">view in a new window</a>\n' +
 		                   '</div>';
 
 	 	var config = {
