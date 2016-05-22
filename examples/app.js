@@ -10,7 +10,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 					text: 'Basic Array Grid',
 					img: 'basic-array-grid.gif',
 					path: '3nfdckrg',
-					description: 'A simplest way to show data using the ui-deni-grid'
+					description: 'The simplest way to show data using the ui-deni-grid'
 				},
 				{
 					text: 'Binding to XML',
@@ -91,7 +91,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 					text: 'Grouping',
 					img: 'grouping-grouping.gif',
 					path: 's9n0x5b7',
-					description: 'A simplest way to grouping data using the ui-deni-grid'
+					description: 'The simplest way to grouping data using the ui-deni-grid'
 				},
 				{
 					text: 'Grouping with Footer',
