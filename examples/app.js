@@ -109,6 +109,9 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				},
 				{
 					text: 'Cell Selection',
+					img: 'grouping-grouping.gif',
+					path: 'xw5726xv',
+					description: '????'
 				},
 				{
 					text: 'CheckBox Selection',
