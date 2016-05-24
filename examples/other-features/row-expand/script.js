@@ -2,25 +2,16 @@
 angular.module('myApp', ['ui-deni-grid']);
 
 //Controller
-angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
+angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
-    var customTemplate = '<div style="display:flex;padding-left:5px;width:100%;">\n' +
-                         '    <img style="float:left;width:76px;height:64px;"\n' +
+    var customTemplate = '<div class="row-expand">\n' +
+                         '    <img class="imagem"\n' +
                          '        src="http://image.tmdb.org/t/p/w150/{poster_path}" \n' +
                          '    />\n' +                                  
-                         '    <span style="height:64px;margin-left:4px;color:darkolivegreen;overflow-y:auto;">\n' +
-                         '        {overview}\n' +
-                         '    </span>\n' +                      
+                         '    <div class="description">{overview}</div>\n' +
                          '<div>';
 
     $scope.gridOptions = {
-        idField: 'id',
-        rowHeight: '22px', //22px is default
-        hideHeaders: false, //false is default  
-        stripRows: true, //true is default       
-        enableColumnResize: true, //true is default
-        sortableColumns: true, //true is default
-        //multiSelect: true, //default is false 
         url: 'https://denimar.github.io/ui-deni-grid/examples/data/movies/00500.json',
         rowDetails: {
             height: '72px', //50 is default

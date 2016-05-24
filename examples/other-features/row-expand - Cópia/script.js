@@ -2,7 +2,7 @@
 angular.module('myApp', ['ui-deni-grid']);
 
 //Controller
-angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
+angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     var customTemplate = '<div style="display:flex;padding-left:5px;width:100%;">\n' +
                          '    <img style="float:left;width:76px;height:64px;"\n' +
@@ -14,13 +14,6 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
                          '<div>';
 
     $scope.gridOptions = {
-        idField: 'id',
-        rowHeight: '22px', //22px is default
-        hideHeaders: false, //false is default  
-        stripRows: true, //true is default       
-        enableColumnResize: true, //true is default
-        sortableColumns: true, //true is default
-        //multiSelect: true, //default is false 
         url: 'https://denimar.github.io/ui-deni-grid/examples/data/movies/00500.json',
         rowDetails: {
             height: '72px', //50 is default

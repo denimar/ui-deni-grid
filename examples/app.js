@@ -190,6 +190,12 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 					description: '????????'
 				},
 				{
+					text: 'Row Expand',
+					path: '352aacqc',
+					img: 'basic-array-grid.gif',
+					description: '????????'
+				},
+				{
 					text: 'Infinite Scroll'
 				},
 				{
