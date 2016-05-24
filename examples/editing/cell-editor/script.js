@@ -43,7 +43,7 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
                         },
                         {
                             value: 2,
-                            text: 'Male'
+                            text: 'Female'
                         }
                     ]
                 }
