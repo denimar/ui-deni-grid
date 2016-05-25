@@ -2,10 +2,10 @@
 angular.module('myApp', ['ui-deni-grid']);
 
 //Controller
-angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
+angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-        url: '../data/employees/05000.json',
+        url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/00500.json',
         selType: 'cell', //default = row
         columns: [
             { 

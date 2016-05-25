@@ -418,7 +418,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 * when there is rowTemplate it also don't has column headers
 		 *
 		 */
-		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate));
+		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cadView));
 
 
 		/////////////////////////////////////////////////////
@@ -1302,7 +1302,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
         }
         return formatted;        
     }
-
+	
 	/**
 	 * This guy manages which items the grid should render
 	 *
@@ -1357,25 +1357,36 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 						top += rowHeight;
 					}
 				}
+			//	
 			} else {
-				for (var index = 0 ; index < controller.options.data.length ; index++) {
-					mng.items.push({
-						top: top,
-						height: mng.rowHeight,
-						rowIndex: index
-					});
-					top += mng.rowHeight;
-
-					if ((controller.options.rowDetails) && (controller.options.rowDetails.autoExpand)) {
-						var rowHeight = controller.options.rowDetails.height || 50;
-						rowHeight = parseInt(rowHeight.toString().replace('px', ''));
+				//It might have more than one record by row whe is configured "cardView" property 
+				var recordsByRow = angular.isDefined(controller.options.cardView) ? controller.options.cardView.numberOfColumns : 1;
+				
+				//for (var index = 0 ; index < controller.options.data.length ; index++) {
+				var index = 0;	
+				while (index < controller.options.data.length) {	
+				
+					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
 						mng.items.push({
 							top: top,
-							height: rowHeight,
-							rowIndex: index,
-							rowDetails: true
+							height: mng.rowHeight,
+							rowIndex: index
 						});
-						top += rowHeight;
+						top += mng.rowHeight;
+
+						if ((controller.options.rowDetails) && (controller.options.rowDetails.autoExpand)) {
+							var rowHeight = controller.options.rowDetails.height || 50;
+							rowHeight = parseInt(rowHeight.toString().replace('px', ''));
+							mng.items.push({
+								top: top,
+								height: rowHeight,
+								rowIndex: index,
+								rowDetails: true
+							});
+							top += rowHeight;
+						}	
+						
+						index++;
 					}	
 				}
 			}
