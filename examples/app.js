@@ -50,6 +50,29 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			],
 		},
 		{
+			text: 'Large Dataset',
+			children: [
+				{
+					text: 'Traditional Way',
+					img: 'basic-array-grid.gif',
+					path: '????',
+					description: '?????'
+				},
+				{
+					text: 'Pagging',
+					img: 'basic-array-grid.gif',
+					path: '????',
+					description: '?????'
+				},
+				{
+					text: 'Infinite Scroll',
+					img: 'basic-array-grid.gif',
+					path: '????',
+					description: '?????'
+				},
+			],
+		},
+		{
 			text: 'Fixed Columns',
 			children: [
 				{
@@ -228,13 +251,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 					description: '????????'
 				},
 				{
-					text: 'Infinite Scroll'
-				},
-				{
 					text: 'Property Grid'
-				},
-				{
-					text: 'Large Dataset',
 				}
 			]
 		}
@@ -279,94 +296,5 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 		objWindow.show();
 	}
 
-	/*
-	$scope.getItemClass = function(menuLevel, item) {
-		var classItems;
-
-		if (menuLevel == 1) {
-			classItems = 'menu-item level1';
-		} else if (menuLevel == 2) {
-			classItems = 'menu-item level2';
-		} else if (menuLevel == 3) {
-			classItems = 'menu-item level3';
-		} else if (menuLevel == 4) {
-			classItems = 'menu-item level4';
-		}
-
-		if (item.children) {
-			classItems += ' hasParent';
-
-			if (item.collapsed) {
-				classItems += '	collapsed';			
-			} else {
-				classItems += '	expanded';							
-			}
-		} else {
-			if (item.selected) {
-				classItems += '	selected';	
-			}
-		}
-
-		return classItems;
-	}
-
-	$scope.itemClick = function(itemClicked) {
-		if (itemClicked.children) {
-			$scope.setCollapsed(itemClicked, !itemClicked.collapsed);
-		} else {
-			$scope.selectItem(itemClicked);
-		}	
-	}
-
-	$scope.setCollapsed = function(itemToSet, collapsed) {
-		itemToSet.collapsed = collapsed;
-
-		if ((itemToSet.collapsed) && (itemToSet.children)) {
-			for (var index = 0 ; index < itemToSet.children.length ; index++) {
-				var item = itemToSet.children[index];
-				//
-				if (item.children) {
-					$scope.setCollapsed(item, itemToSet.collapsed);
-				}	
-			}
-		}	
-	}
-
-	$scope.exampleImg = '';
-	$scope.exampleTitle = '';
-	$scope.exampleDescription = '';
-	$scope.selectItem = function(itemToSelect) {
-		$scope.exampleImg = itemToSelect.img;
-		$scope.exampleTitle = itemToSelect.text;
-		$scope.exampleDescription = itemToSelect.description;
-
-		//remove all selections
-		for (var index = 0 ; index < $scope.examples.length ; index++) {
-			$scope.setSelected($scope.examples[index], false, true);
-		}
-		//
-		$scope.setSelected(itemToSelect, true);
-		var path = itemToSelect.path || '';
-		if (path != '') {
-			path = '//jsfiddle.net/' + path + '/embedded/result,html,js,css,resources/';
-		}
-		
-		console.info(path);
-		var iFrame = $('.main').find('iframe');
-		iFrame.attr('src', path);
-		//$('.main').load(itemToSelect.path || '');
-	}
-
-	$scope.setSelected = function(itemToSelect, selected, recursive) {
-		itemToSelect.selected = selected;
-		if ((recursive) && (itemToSelect.children)) {
-			for (var index = 0 ; index < itemToSelect.children.length ; index++) {
-				$scope.setSelected(itemToSelect.children[index], selected, recursive);
-			}
-		}
-	}
-
-	$scope.selectItem($scope.examples[0].children[0]);
-	*/
 
 });
