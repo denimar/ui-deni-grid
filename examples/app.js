@@ -32,7 +32,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Simple Card View',
 					img: 'basic-array-grid.gif',
-					path: '??',
+					path: 't9Lzuyvf',
 					description: '?????'
 				},
 				{
