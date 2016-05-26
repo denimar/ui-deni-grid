@@ -399,6 +399,34 @@ ui-deni-grid {
 
 										}
 
+										.ui-table-card-view {
+											width: 100%;
+											height: 100%;											
+											border-spacing: 4px;
+											display: table;
+
+											tr {
+												display: table-row;
+											}
+
+											td {
+												padding: 4px;
+												display: table-cell;
+	  											border: solid 1px #ccc;												
+
+												.checkbox {
+												    top: 7px;												    
+												    position: absolute;
+												    cursor: pointer;
+												}
+
+												&.selected {
+													border: solid 3px orange;
+													/*background-color: orange;*/
+												}
+											}
+										}
+
 										&.row-detail {
 											width: 100%;
 										}	

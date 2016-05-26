@@ -27,6 +27,29 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			],
 		},
 		{
+			text: 'Card View',
+			children: [
+				{
+					text: 'Simple Card View',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '?????'
+				},
+				{
+					text: 'Card View with Checkbox',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '?????'
+				},
+				{
+					text: 'Card View with Endless Paging',
+					img: 'basic-array-grid.gif',
+					path: '??',
+					description: '?????'
+				},
+			],
+		},
+		{
 			text: 'Fixed Columns',
 			children: [
 				{

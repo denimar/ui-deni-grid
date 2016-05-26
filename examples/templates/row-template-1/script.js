@@ -5,9 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     var customRowTemplate = '<div class="row-template">\n' +
-                            '    <img class="imagem"\n' +
-                            '        src="http://image.tmdb.org/t/p/w150/{poster_path}" \n' +
-                            '    />\n' +                                  
+                            '    <img class="imagem" src="http://image.tmdb.org/t/p/w150/{poster_path}" />\n' +                                  
                             '    <div class="description">{overview}</div>\n' +
                             '<div>';
 

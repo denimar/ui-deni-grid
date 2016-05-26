@@ -418,7 +418,13 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 * when there is rowTemplate it also don't has column headers
 		 *
 		 */
-		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cadView));
+		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cardView));
+
+		if (controller.options.cardView) {
+			controller.options.rowHeight = controller.options.cardView.rowHeight || '150px';
+		}	
+		//Avoid a error when is passed a integer value
+		controller.options.rowHeight = controller.options.rowHeight.toString();
 
 
 		/////////////////////////////////////////////////////
