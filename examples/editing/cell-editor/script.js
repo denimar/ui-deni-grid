@@ -39,11 +39,11 @@ angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
                     items: [
                         {
                             value: 1,
-                            text: 'Male'
+                            text: 'male'
                         },
                         {
                             value: 2,
-                            text: 'Female'
+                            text: 'female'
                         }
                     ]
                 }
