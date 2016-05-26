@@ -19,8 +19,8 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
                 '    </div>"\n' +                    
                 '  </div>\n' +                
                 '</div>',
-		  rowHeight: 180, //default=80
-      endlessPaging: true TERMINAR AQUI
+		  rowHeight: 180, //default=150
+      endlessPaging: true
 	  },
     listeners: {
       onselectionchange: function(record) {
