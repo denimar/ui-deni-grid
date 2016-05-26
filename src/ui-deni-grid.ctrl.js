@@ -7,6 +7,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	var me = this;
 	me.scope = $scope;
 	me.element = $element;	
+	me.checkedRecords = [];
 
     //
     me.wrapper = me.element.find('.ui-deni-grid-wrapper');

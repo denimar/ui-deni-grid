@@ -279,6 +279,24 @@ ui-deni-grid {
                         width: 100%;
                         height: 100%;
                         box-sizing: border-box; }
+                    ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-table-card-view {
+                      width: 100%;
+                      height: 100%;
+                      border-spacing: 4px;
+                      display: table; }
+                      ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-table-card-view tr {
+                        display: table-row; }
+                      ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-table-card-view td {
+                        padding: 4px;
+                        display: table-cell;
+                        border: solid 1px #ccc; }
+                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-table-card-view td .checkbox {
+                          top: 7px;
+                          position: absolute;
+                          cursor: pointer; }
+                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-table-card-view td.selected {
+                          border: solid 3px orange;
+                          /*background-color: orange;*/ }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row.row-detail {
                       width: 100%; }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row.row-detail-expanded {

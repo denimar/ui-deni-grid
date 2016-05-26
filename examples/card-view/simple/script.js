@@ -5,12 +5,21 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
   $scope.gridOptions = {
-    url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/01000.json',
+    url: 'https://denimar.github.io/ui-deni-grid/examples/data/movies/00100.json',
     cardView: {
-		numberOfColumns: 3,
-		template: '<div style="border:solid 1px green;">{name}</div>',
-		rowHeight: 80 //default=80
-	}
+		  numberOfColumns: 5,
+		  template: '<div class="card-view-item">\n' +
+                    '    <img class="card-view-image" src="http://image.tmdb.org/t/p/w150/{poster_path} />"\n' +
+                    '</div>',
+		  rowHeight: 180, //default=150
+	  },
+    listeners: {
+      onselectionchange: function(record) {
+        console.clear();
+        console.log(JSON.stringify(record, false, '    '));
+      }
+    }
+
   }
 
 });

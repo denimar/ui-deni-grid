@@ -474,7 +474,13 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 * when there is rowTemplate it also don't has column headers
 		 *
 		 */
-		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cadView));
+		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cardView));
+
+		if (controller.options.cardView) {
+			controller.options.rowHeight = controller.options.cardView.rowHeight || '150px';
+		}	
+		//Avoid a error when is passed a integer value
+		controller.options.rowHeight = controller.options.rowHeight.toString();
 
 
 		/////////////////////////////////////////////////////
@@ -1697,6 +1703,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	var me = this;
 	me.scope = $scope;
 	me.element = $element;	
+	me.checkedRecords = [];
 
     //
     me.wrapper = me.element.find('.ui-deni-grid-wrapper');
@@ -2149,11 +2156,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 */
 	 me.clearSelections = function(controller) {
-	 	controller.bodyViewport.find('.ui-row.selected').removeClass('selected'); 
-	 	controller.fixedColsBodyViewport.find('.ui-row.selected').removeClass('selected'); 
+	 	controller.bodyViewport.find('.ui-row.selected').removeClass('selected');
+	 	controller.fixedColsBodyViewport.find('.ui-row.selected').removeClass('selected');
 
-	 	controller.bodyViewport.find('.ui-cell.selected').removeClass('selected'); 
-	 	controller.fixedColsBodyViewport.find('.ui-cell.selected').removeClass('selected'); 	 	
+	 	controller.bodyViewport.find('.ui-cell.selected').removeClass('selected');
+	 	controller.fixedColsBodyViewport.find('.ui-cell.selected').removeClass('selected');
 	 }
 
 	/**
@@ -2163,8 +2170,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 */
 	 me.selectAll = function(controller) {
 		if (controller.options.multiSelect) {
-			controller.bodyViewport.find('.ui-row.selected').addClass('selected'); 		
-	 		controller.bodyViewport.find('.ui-cell.selected').addClass('selected'); 			
+			controller.bodyViewport.find('.ui-row.selected').addClass('selected');
+	 		controller.bodyViewport.find('.ui-cell.selected').addClass('selected');
 		} else {
 			throw new Error('"selectAll" : to use selectAll method you must set multiSelect property to true!');
 		}
@@ -2189,7 +2196,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 
 		if (controller.options.fixedCols) {
-			angular.copy(columnsToCreate, columns);			
+			angular.copy(columnsToCreate, columns);
 
 			//Row Number?
 			if (controller.options.fixedCols.rowNumber) {
@@ -2197,7 +2204,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					width: uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH,
 					isFixedColumn: true
 				});
-			}	
+			}
 
 			//Indicator?
 			if (controller.options.fixedCols.indicator) {
@@ -2205,7 +2212,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					width: uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH,
 					isFixedColumn: true
 				});
-			}	
+			}
 
 			//CheckBox?
 			if (controller.options.fixedCols.checkbox) {
@@ -2214,7 +2221,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					isFixedColumn: true,
 					isCheckbox: true
 				});
-			}	
+			}
 		} else {
 			columns = columnsToCreate;
 		}
@@ -2239,21 +2246,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			divHeaderContainerColumn.attr('colindex', colIndex);
 			if (angular.isDefined(headerContainerColumnRow)) {
 				if (index == 0) {
-					divHeaderContainerColumn.addClass('first-subcolumn');				
+					divHeaderContainerColumn.addClass('first-subcolumn');
 				} else if (index == columns.length - 1) {
-					divHeaderContainerColumn.addClass('last-subcolumn');				
+					divHeaderContainerColumn.addClass('last-subcolumn');
 				}
 			}
 
 
-			//ui-header-container-column-row				
+			//ui-header-container-column-row
 			var divHeaderContainerColumnRow = divHeaderContainerColumnRow = createDivHeaderContainerColumnRow(divHeaderContainerColumn);
 
 			//ui-header-cell
 			var divHeaderCell = $(document.createElement('div'));
 			divHeaderCell.addClass('ui-header-cell');
 			divHeaderCell.attr('colindex', colIndex);
-			divHeaderCell.attr('name', column.name);			
+			divHeaderCell.attr('name', column.name);
 			divHeaderCell.css('text-align', column.align);
 			divHeaderContainerColumnRow.append(divHeaderCell);
 
@@ -2269,8 +2276,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					cursor: 'pointer',
 				});
 				divHeaderCell.css({
-					'text-align': 'center'					
-				});	
+					'text-align': 'center'
+				});
 				spanHeaderCellInner.append(inputCheck);
 				inputCheck.change(function(event) {
 					var checkboxes = controller.fixedColsBodyContainer.find('.ui-cell-inner.checkbox').find('input[type=checkbox]')
@@ -2288,15 +2295,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//container param comes filled just when we creating sub columns (grouped column headers)
 			if (angular.isDefined(headerContainerColumnRow)) {
 				headerContainerColumnRow.append(divHeaderContainerColumn);
-			} else {	
+			} else {
 
 				//fixed column?
 				if ((column.isFixedColumn) || (uiDeniGridUtilSrv.isFixedColumn(controller, column.name))) {
 					controller.fixedColsHeaderContainer.append(divHeaderContainerColumn);
 				} else {
 					controller.headerContainer.append(divHeaderContainerColumn);
-				}  
-			}	
+				}
+			}
 
 			//
 			if (controller.columnHeaderLevels > 1) {
@@ -2306,7 +2313,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					divHeaderContainerColumn.addClass('has-subcolumns');
 					//
 					divHeaderCell.addClass('has-subcolumns');
-					//ui-header-container-column-row				
+					//ui-header-container-column-row
 					divHeaderContainerColumnRow = createDivHeaderContainerColumnRow(divHeaderContainerColumn);
 					//
 					me.createColumnHeaders(controller, column.columns, divHeaderContainerColumnRow, currentLevel+1, colIndex);
@@ -2326,12 +2333,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							height: calcNewHeight,
 						    //'background-size': '1px ' + calcNewHeight
 						    //'background-size': '1px 100%'
-						});    
+						});
 					}
 				}
 			}
 
-			colIndex++;	
+			colIndex++;
 		}
 
 	}
@@ -2366,15 +2373,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//} else 	{
 			//	$(hrVerticalLineResizing).css('display', 'none');
 			//}
-		}	
+		}
 
 		var setResizing = function() {
-			if (!hrVerticalLineResizing) { 
+			if (!hrVerticalLineResizing) {
 				hrVerticalLineResizing = document.createElement('hr');
 				hrVerticalLineResizing.classList.add('ui-deni-grid-vertical-line-resizing');
 				controller.colsViewport.append(hrVerticalLineResizing);
 			}
-			updResizing();			
+			updResizing();
 		}
 
 		var setResizingOff = function() {
@@ -2382,7 +2389,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//columnHeaderCellResizing = null;
 			headerContainerColumnResizing = null;
 			controller.colsViewport.css('cursor', 'default');
-			if (hrVerticalLineResizing) { 
+			if (hrVerticalLineResizing) {
 				$(hrVerticalLineResizing).css('display', 'none');
 			}
 		}
@@ -2390,16 +2397,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//Mouse Down
 		controller.headerContainer.mousedown(function(event) {
 			headerContainerColumn = $(event.target).closest('.ui-header-container-column');
-			if (headerContainerColumn.length > 0) {				
+			if (headerContainerColumn.length > 0) {
 			//if (event.toElement.parentElement === controller.headerContainer.get(0)) {
 				if (canResize) {
 					controller.resizing = true;
-				}	
+				}
 
-			}	
+			}
 			event.preventDefault();
 			//event.stopImmediatePropagation(); //Prevent the mousedown that happening when we are resizing the columns
-		});	
+		});
 
 		//It is necessary when there are grouped columns
 		var adjustParentColumnsWidths = function(headerContainerColumn, differenceNewWidth) {
@@ -2409,7 +2416,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				var children = headerContainerColumnParent.find('.ui-header-container-column');
 
 				//couning border right width (1px)
-				var borderWidths = children.length; 
+				var borderWidths = children.length;
 				//
 				headerContainerColumnParent.width(headerContainerColumnParent.width() + differenceNewWidth - borderWidths);
 				//
@@ -2438,12 +2445,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 					child.css('width', (newWidth * percentage / 100) + 'px');
 				}
-			}	
+			}
 		}
 
 
 		//Mouse Up
-		$(document).mouseup(function(event){	
+		$(document).mouseup(function(event){
 			if (controller.resizing) {
 				if (headerContainerColumnResizing) {
 					//
@@ -2467,38 +2474,38 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						lastSubcolumn.width(lastSubcolumnWidth + difference + borderWidth);
 						uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, lastSubcolumn, lastSubcolumn.attr('colindex'));
 						//
-						//adjustChildrenColumnsWidths($headerContainerColumnResizing, newWidth);						
+						//adjustChildrenColumnsWidths($headerContainerColumnResizing, newWidth);
 
 						///////////////////////////////////////////////////////////////////////////////////////////
 						// looking for children column headers - It is necessary when there are grouped columns
 						///////////////////////////////////////////////////////////////////////////////////////////
-						//	
+						//
 						//
 						//var headerContainerColumns = $headerContainerColumnResizing.find('.ui-header-container-column');
 						//for (var index = 0 ; index < headerContainerColumns.length ; index++) {
 						//	var headerContainerColumn = $(headerContainerColumns.get(index));
-						//	uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, headerContainerColumn.attr('colindex'));													
-						//}	
+						//	uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, headerContainerColumn.attr('colindex'));
+						//}
 						///////////////////////////////////////////////////////////////////////////////////////////
 						///////////////////////////////////////////////////////////////////////////////////////////
-					} else {	
-						
+					} else {
+
 						//
 						var lastAdjustedParent = adjustParentColumnsWidths($headerContainerColumnResizing, difference);
 						//
 						$headerContainerColumnResizing.width(newWidth);
 						//
-						uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, $headerContainerColumnResizing, $headerContainerColumnResizing.attr('colindex'));						
-					}	
+						uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, $headerContainerColumnResizing, $headerContainerColumnResizing.attr('colindex'));
+					}
 
 				}
 
 				setResizingOff();
-			}	
+			}
 			controller.colsViewport.css('cursor', 'default');
 
-			event.preventDefault();			
-		});	
+			event.preventDefault();
+		});
 
 
 		// Returns a function, that, as long as it continues to be invoked, will not
@@ -2519,21 +2526,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				timeout = setTimeout(later, wait);
 				if (callNow) func.apply(context, args);
 			};
-		};	
+		};
 
 		//Mouse Move
 		$(document).mousemove(function(event) {
 			if (controller.options.enableColumnResize) {
 
 				if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
-					if (controller.resizing) { 
+					if (controller.resizing) {
 						debounce(updResizing(), 100);
-					}	
+					}
 				} else if (event.which === 0) { //event.which: left: 1, middle: 2, right: 3 (pressed)
-					controller.colsViewport.css('cursor', 'default');					
+					controller.colsViewport.css('cursor', 'default');
 
 					headerContainerColumn = $(event.target).closest('.ui-header-container-column');
-					if (headerContainerColumn.length > 0) {				
+					if (headerContainerColumn.length > 0) {
 
 						var columnHeadersCell = controller.headerContainer.find('.ui-header-cell');
 						canResize = false;
@@ -2558,16 +2565,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						} else {
 							//setResizingOff();
 						}
-					}	
+					}
 				}
-			}	
+			}
 
-			event.preventDefault();			
+			event.preventDefault();
 		});
 
 
 		//////////////
-		//////////////		
+		//////////////
 		//////////////
 		var columnHeadersCell = controller.headerContainer.find('.ui-header-cell');
 		for (var index = 0 ; index < columnHeadersCell.length ; index++) {
@@ -2592,39 +2599,39 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					if (controller.colsViewport.css('cursor') == 'default') { //prevent conflict with the resizing columns function
 						if (controller.options.sortableColumns) {
 							var headerCell = $(event.currentTarget);
-							var direction = 'ASC'; //default				
+							var direction = 'ASC'; //default
 							if (headerCell.is('.asc')) {
 								direction = 'DESC';
-							}								
+							}
 
 							var headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
 
 							if (!headerContainerColumn.is('.has-subcolumns')) {
 								controller.options.api.sort({name: headerCell.attr('name'), direction: direction});
-							}	
-						}	
-					}	
-				}	
+							}
+						}
+					}
+				}
 			});
-		}	
+		}
 		//////////////
-		//////////////		
+		//////////////
 
-	}	
+	}
 
 
 	/**
 	 * TODO: It doesn't work when the data is grouped and its children are expanded... IMPROVE THAT!
      *
 	 * @param sorters {Array|Object|String} direction is optional
-	 * Example: 
+	 * Example:
 	 * 		me.sort({name: 'city', direction: 'ASC'}, {name: 'age', direction: 'DESC'}); or
-	 * 		me.sort({name: 'city', direction: 'ASC'}); or 
+	 * 		me.sort({name: 'city', direction: 'ASC'}); or
 	 *		me.sort('city');
 	 *		me.sort(function(rec1, rec2) {
 	 *			if (rec1.age == rec2.age) return 0;
 	 *			return rec1.age < rec2.age ? -1 : 1;
-	 *		});	
+	 *		});
 	 *
 	 */
 	var _sort = function(controller, sorters) {
@@ -2640,7 +2647,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 		} else if (angular.isFunction(sorters)) { //Custom Sort
 			sortersArray = [sorters];
-		} else {	
+		} else {
 			throw new Error('"sort": param "sorters" passed in a wrong way');
 		}
 
@@ -2655,28 +2662,28 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			// Are there fixed sorters?
 			if (controller.options.fixedSorters) {
 				sortFn(controller.options.fixedSorters);
-			}		
+			}
 
 			sortFn(sortersArray);
-		}	
+		}
 
 		return sortersArray;
 	}
 
 	/**
 	 * @param sorters {Array|Object|String} direction is optional
-	 * Example: 
+	 * Example:
 	 * 		me.sort({name: 'city', direction: 'ASC'}, {name: 'age', direction: 'DESC'}); or
-	 * 		me.sort({name: 'city', direction: 'ASC'}); or 
+	 * 		me.sort({name: 'city', direction: 'ASC'}); or
 	 *		me.sort('city');
 	 *
 	 */
-	me.sort = function(controller, sorters, holdSelection) { 
+	me.sort = function(controller, sorters, holdSelection) {
 		//var shouldHoldSelection = holdSelection == false ? false : true;
 		var recordToHold;
 		if (holdSelection != false) {
 			recordToHold = me.getSelectedRow(controller);
-		}	
+		}
 
 		controller.headerContainer.find('div.ui-header-cell').removeClass('sort').removeClass('asc').removeClass('desc'); //remove all sorters icons
 
@@ -2694,16 +2701,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				var record = controller.options.data[rowIndex];
 
 				uiDeniGridUtilSrv.groupCollapse(controller, rowElementGroupExpanded, record, rowIndex);
-				uiDeniGridUtilSrv.groupExpand(controller, rowElementGroupExpanded, record, rowIndex);				
+				uiDeniGridUtilSrv.groupExpand(controller, rowElementGroupExpanded, record, rowIndex);
 			});
 
-		//ROW DETAIL	
+		//ROW DETAIL
 		} else if (controller.options.rowDetails) {
 			var recordsToExpand = [];
 			//get the expanded lines
 			var rowElementsExpanded = controller.bodyContainer.find('.ui-row.row-detail-expanded').filter(function() {
 				var rowIndex = parseInt($(this).attr('rowindex'));
-				var record = controller.options.data[rowIndex];				
+				var record = controller.options.data[rowIndex];
 				recordsToExpand.push(record);
 			});
 
@@ -2722,13 +2729,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 			controller.options.api.repaint();
 
-		//COMMON ROW	
-		} else {	
+		//COMMON ROW
+		} else {
 			sortersArray = _sort(controller, sorters);
 
 			//
 			controller.options.api.loadData(controller.options.data);
-		}	
+		}
 
 
 		for (var index = 0 ; index < sortersArray.length ; index++) {
@@ -2737,8 +2744,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			if (!angular.isFunction(sort)) {
 				var $headerColElement = $(_getHeaderColElementByName(controller, sort.name, true));
 				$headerColElement.addClass('sort');
-				$headerColElement.addClass(sort.direction ? sort.direction.toLowerCase() : 'asc');			
-			}	
+				$headerColElement.addClass(sort.direction ? sort.direction.toLowerCase() : 'asc');
+			}
 		}
 
 		//Call ui-deni-view method sort
@@ -2782,7 +2789,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				return value;
 			} else {
 				var realce = searchInfo.opts.inLine.realce;
-				var newValue = ''; 
+				var newValue = '';
 				var initPos = pos;
 				while (pos != -1) {
 					newValue += value.substring(value, pos);
@@ -2793,8 +2800,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					initPos = pos + parsedValue.length;
 					pos = value.indexOf(valueToFind, initPos);
 				}
-				return newValue;			
-			}		
+				return newValue;
+			}
 		}
 	}
 
@@ -2809,23 +2816,23 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		if (!rowElement.is('.row-detail')) {
 			///////////////////////////////////''
-			//Set the events here 
-			///////////////////////////////////					
+			//Set the events here
+			///////////////////////////////////
 			//mouseenter
 	    	divCell.mouseenter(function(event) {
 
-	    		//selType = 'row'	
+	    		//selType = 'row'
 	    		if (controller.options.selType == 'row') {
 	        		//$(event.currentTarget).parent().find('.ui-cell').addClass('hover');
 					//
-				 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('hover'); 
+				 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('hover');
 				 	//
-				 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('hover'); 
+				 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('hover');
 
-	        	//selType = 'cell'		
+	        	//selType = 'cell'
 	        	} else {
 	        		$(event.currentTarget).addClass('hover');
-	        	}	
+	        	}
 
 	    	});
 
@@ -2833,9 +2840,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	    	divCell.mouseleave(function(event) {
 	    		//$(event.currentTarget).parent().find('.ui-cell').removeClass('hover');
 				//
-			 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']').find('.ui-cell').removeClass('hover'); 
+			 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']').find('.ui-cell').removeClass('hover');
 			 	//
-			 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']').find('.ui-cell').removeClass('hover'); 
+			 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']').find('.ui-cell').removeClass('hover');
 
 	    	});
 
@@ -2843,7 +2850,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	    	divCell.mousedown(function(event) {
 	    		if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 
-	    			//selType = 'row'	
+	    			//selType = 'row'
 	    			if (controller.options.selType == 'row') {
 	    				var divCell = $(event.currentTarget);
 						var rowElement = divCell.closest('.ui-row');
@@ -2851,7 +2858,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 						me.selectRow(controller, rowElement);
 
-					//selType = 'cell'	
+					//selType = 'cell'
 					} else {
 						//$(event.currentTarget).parent().find('.ui-cell').addClass('hover');
 						var divCell = $(event.currentTarget);
@@ -2863,9 +2870,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						//var divCell = rowElement.closest('.ui-cell');
 
 						me.selectCell(controller, rowElement, colIndex);
-					}	
+					}
 
-				}	
+				}
 	    	});
 
 			//doubleclick
@@ -2879,13 +2886,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					var rowIndex = parseInt(rowElement.attr('rowindex'));
 					var record = controller.options.data[rowIndex];
 					uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
-				}	
+				}
 	    	});
 
 			///////////////////////////////////
 			///////////////////////////////////
 		}
-			
+
 		rowElement.append(divCell);
 
 		return divCell;
@@ -2905,9 +2912,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
 	me.createUiDeniViewEvents = function(controller) {
 
 		//
@@ -2924,7 +2931,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
 				divCell.html(valueToRender);
 			*/
-			
+
 			// Row Template
 			if (angular.isDefined(controller.options.rowTemplate)) {
 				//
@@ -2933,7 +2940,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				divCell.css('width', '100%');
 				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowTemplate, record);
 				divCell.html(valueToRender);
-		
+
 			//Row Detail - Grouping or other type of row details
 			} else if (rowElement.is('.row-detail')) {
 				//uiDeniGridUtilSrv.renderCommonRow(controller, rowElement, record, rowIndex);
@@ -2965,11 +2972,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				if (controller.options.grouping.template) {
 					var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
 					valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.grouping.template, record, {count: totalRowsInGroup});
-				}	
+				}
 
 				spanCellInner.html(valueToRender);
 
-			// Grouping Footer	
+			// Grouping Footer
 			} else if (rowElement.is('.ui-grouping-footer-container')) {
 				var columns = controller.options.columns;
 				var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
@@ -3008,17 +3015,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 								});
 								spanCellIndicatorInner.append(inputCheck);
 								colIndex++;
-							}	
+							}
 
 							//if has indicator
 							if (controller.options.fixedCols.indicator) {
 								var divCellIndicator = _createDivCell(controller, fixedRowElement);
-								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH);							
+								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
 								var spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('indicator');
 								colIndex++;
-							}	
+							}
 
 							//if has row number
 							if (controller.options.fixedCols.rowNumber) {
@@ -3029,7 +3036,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 								spanCellRowNumberInner.addClass('rownumber');
 								spanCellRowNumberInner.html(rowIndex + 1);
 								colIndex++;
-							}	
+							}
 						}
 					}
 
@@ -3045,7 +3052,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						divCell = _createDivCell(controller, fixedRowElement);
 					} else {
 						divCell = _createDivCell(controller, rowElement);
-					}	
+					}
 
 					//
 					var spanCellInner = _createDivCellInner(divCell);
@@ -3061,14 +3068,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 								spanCellInner.addClass('collapse');
 							} else {
 								spanCellInner.addClass('expand');
-							}	
+							}
 
 							spanCellInner.click(function(event) {
 							 	if (event.offsetX <= 12) { //:before pseudo element width
 							 		var target = $(event.target);
 
 							 		if (target.is('.collapse')) {
-							 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, rowIndex);							 			
+							 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, rowIndex);
 							 		} else {
 							 			uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
 							 		}
@@ -3083,12 +3090,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					divCell.css(angular.extend(style, {
 						'text-align': column.align || 'left'
 					}));
-					
+
 
 					//Margin First column inside of grouping
 					if ((index == 0) && (controller.options.api.isGrouped())) {
-						divCell.css('padding-left', '20px');					
-					}	
+						divCell.css('padding-left', '20px');
+					}
 
 					var value = eval('record.' + column.name); //Can be passed "adderess.cicy", for example;
 					//var value = record[column.name];
@@ -3118,8 +3125,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					colIndex++;
 				}
 
-			}	
-		}	
+			}
+		}
 
 		//
 		//
@@ -3146,7 +3153,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			if (records.length > 0) {
 				var rowIndex = controller.options.api.resolveRowIndex(records[0]);
 				me.selectRow(controller, rowIndex);
-			}	
+			}
 
 			//Are there footer?
 			if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
@@ -3165,7 +3172,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					footerDivContainer.insertAfter(lastInsertedDivRow);
 
 					uiDeniGridUtilSrv.renderColumnFooters(footerDivContainer, controller.footerContainer, controller.options.columns, records, controller);
-				}	
+				}
 			}
 		}
 
@@ -3192,7 +3199,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
 					colIndex++;
 				}
-			}	
+			}
 
         }
 
@@ -3211,17 +3218,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		        	//
 		        	var top = (controller.bodyViewport.currentScrollTop * -1) + 'px';
 
-		        	//	
-					if (controller.options.fixedCols) {		        	
+		        	//
+					if (controller.options.fixedCols) {
 		        		controller.fixedColsBodyContainer.css('top', top);
-		        	}	
+		        	}
 		        	//
 					//controller.footerDivContainer.find('.ui-deni-grid-footer').css('top', top);
 					//controller.footerDivContainer.css('left', left);
 		        }
 
-		    } 
-		    //Horizontal Scroll		    
+		    }
+		    //Horizontal Scroll
 		    else {
 		    	controller.bodyViewport.currentScrollLeft = currentLeft;
 
@@ -3232,7 +3239,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		        	//
 		        	var left = (controller.bodyViewport.currentScrollLeft * -1) + 'px';
 
-		        	//	
+		        	//
 		        	controller.headerContainer.css('left', left);
 		        	//
 					controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
@@ -3240,7 +3247,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		        }
 		    }
 
-			controller.options.api.repaint();		    
+			controller.options.api.repaint();
 
         });
 
@@ -3255,7 +3262,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {
 			return controller.options.data[controller.rowIndex];
 		}
-	}    
+	}
 
 	/**
 	 *
@@ -3270,7 +3277,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			changedRecords.push(changedRecord);
 		}
 		return changedRecords;
-	}    
+	}
 
 	//
 	//
@@ -3278,7 +3285,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	//
 	//
 	//
-	var _resolveJavaScriptElement = function(element) {				
+	var _resolveJavaScriptElement = function(element) {
 		// If element is already a jQuery object
 		if(angular.isElement(element)) {
 		    return element.get(0);
@@ -3293,7 +3300,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	//
 	//
 	//
-	var _resolveJQueryElement = function(element) {				
+	var _resolveJQueryElement = function(element) {
 		// If element is already a jQuery object
 		if(angular.isElement(element)) {
 		    return element
@@ -3318,21 +3325,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	/**
 	 *	row {Number|Object|Element} Can be passed rowIndex, the object record or even the DOM element which corresponds to the object record
 	 *
-	 */		 
+	 */
 	me.isRowSelected = function(controller, row) {
 		var rowElement = controller.options.api.resolveRowElement(row);
 		return rowElement.is('.selected');
-	}	
+	}
 
 	/**
 	 *
 	 *
-	 */		 
+	 */
 	me.getSelectedRowIndex = function(controller) {
 		var selectedRows = controller.bodyViewport.find('div.ui-row.selected');
 
 		//not found, return -1
-		if (selectedRows.length == 0) return -1; 
+		if (selectedRows.length == 0) return -1;
 
 		//return just one index
 		if (selectedRows.length == 1) {
@@ -3344,15 +3351,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			for (var index = 0 ; index < selectedRows.length ; index++) {
 				indexArray.push(parseInt($(selectedRows[index]).attr('rowindex')));
 			}
-			return indexArray; 
-		}	
-	}	
+			return indexArray;
+		}
+	}
 
 	/**
 	 *	row {Object|Number} Can be passed rowIndex or the object record
 	 *  preventSelectionChange {Boolean} default false
 	 *  scrollIntoView {Boolean} default true
-	*/		 
+	*/
     me.selectRow = function(controller, row, preventSelectionChange, scrollIntoView) {
     	if ((controller.options.data) && (controller.options.data.length > 0)) {
 
@@ -3361,25 +3368,25 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
     		//
     		if (angular.isElement(row)) {
-	    		//	
+	    		//
 	    		rowElement = row;
 	    		//
 				controller.rowIndex	= parseInt(rowElement.attr('rowindex'));
-	    	} else {	
+	    	} else {
 	    		//
 	    		var rowIndex;
 
 	    		//
 	    		if (controller.options.api.isGrouped()) {
 	    			//
-	    			rowIndex = controller.options.api.resolveRowIndex(row);	
-	    		//	
+	    			rowIndex = controller.options.api.resolveRowIndex(row);
+	    		//
 	    		} else {
-	    			rowIndex = controller.options.api.resolveRowIndex(row);    			
+	    			rowIndex = controller.options.api.resolveRowIndex(row);
 	    		}
 
 		    	//
-		    	//var rowElement = controller.options.api.resolveRowElement(row);	    	
+		    	//var rowElement = controller.options.api.resolveRowElement(row);
 
 	    		//
 	    		scrollIntoView = (scrollIntoView == false ? false : true);
@@ -3395,7 +3402,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					if (scrollIntoView) {
 						if (!controller.options.api.isRowVisible(rowElementToScroll)) {
 							rowElementToScroll.get(0).scrollIntoView(false);
-						}	
+						}
 					}
 				};
 				*/
@@ -3404,20 +3411,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				if (me.isRowSelected(controller, rowIndex)) {
 					//
 					scrollIntoViewFn(rowIndex);
-				} else {	
+				} else {
 					controller.rowIndex = rowIndex;
 
 					if (controller.options.api.isGrouped()) {
 						var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 						if (!itemRow) {
-							var groupIndex = controller.options.data[rowIndex].groupIndex;						
+							var groupIndex = controller.options.data[rowIndex].groupIndex;
 							var groupInfo = controller.managerRendererItems.getInfoGroup(groupIndex);
 							controller.colsViewport.scrollTop(groupInfo.top);
 							controller.options.api.repaint();
 							var record = controller.options.data[rowIndex];
 							uiDeniGridUtilSrv.groupExpand(controller, groupInfo.rowElement, record, rowIndex)
 							itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
-						} 
+						}
 
 						controller.colsViewport.scrollTop(itemRow.top);
 						controller.options.api.repaint();
@@ -3430,9 +3437,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		    			controller.options.api.repaint();
 		    			var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		    			rowElement = itemRow.rowElement;
-					}	
-				}	
-			}	
+					}
+				}
+			}
 
 			//
 			if ((controller.rowIndex !== undefined) && (!controller.options.multiSelect)) {
@@ -3441,37 +3448,37 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 
 			//
-		 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('selected'); 
+		 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('selected');
 		 	//
-		 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('selected'); 
+		 	controller.fixedColsBodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('selected');
 
 		 	//
-			if (controller.options.fixedCols) {			
+			if (controller.options.fixedCols) {
 				var fixedRow = controller.fixedColsBodyContainer.find('.ui-fixed-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)');
 				fixedRow.addClass('selected');
 				fixedRow.find('.ui-cell.indicator').addClass('selected');
-			}	
+			}
 			if (controller.options.rowDetails) {
 				rowElement.parent().find('.ui-row.row-detail-container[rowIndex=' + rowElement.attr('rowindex') + ']').addClass('selected');
-			}	
+			}
 
 			//
 			//scrollIntoViewFn(rowElement);
 
 			////////////////////////////////////////////////////
 			//onselectionchange event
-			////////////////////////////////////////////////////			
+			////////////////////////////////////////////////////
 			if (!preventSelectionChange) {
 				if (controller.options.listeners.onselectionchange) {
 					controller.options.listeners.onselectionchange(controller, controller.element, controller.rowIndex, controller.options.data[controller.rowIndex]);
 				}
-			}	
+			}
 			////////////////////////////////////////////////////
-			////////////////////////////////////////////////////			
+			////////////////////////////////////////////////////
 
 		} else {
 			throw new Error('"selectRow": There is not record to select!');
-		}	
+		}
     }
 
 	/**
@@ -3479,8 +3486,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *  preventSelectionChange {Boolean} default false
 	 *  scrollIntoView {Boolean} default true
 	 *  colIndex {Integer} Column Index.
-	*/		 
-    me.selectCell = function(controller, row, colIndex, preventSelectionChange, scrollIntoView) {    
+	*/
+    me.selectCell = function(controller, row, colIndex, preventSelectionChange, scrollIntoView) {
     	if ((controller.options.data) && (controller.options.data.length > 0)) {
 
     		//
@@ -3503,21 +3510,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				//remove all selections
 				controller.options.api.clearSelections();
 			}
-			
+
 			divCell.addClass('selected');
 
     		//
     		var rowIndex = controller.options.api.resolveRowIndex(row);
 			controller.rowIndex = rowIndex;
-			controller.colIndex = colIndex;			
+			controller.colIndex = colIndex;
 		}
-    }	
+    }
 
 
 	/**
 	 *	Usage:  getColumns(controller, controller.options.columns)
 	 *
-	*/		 
+	*/
     me.getColumns = function(controller, sourceColumns) {
 
     	var columns = [];
@@ -3537,9 +3544,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
     me.getColumn = function(controller, fieldName) {
 		for (var index = 0 ; index < controller.options.columns.length ; index++) {
 			if (controller.options.columns[index].name == fieldName) {
@@ -3552,9 +3559,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
 	me.updateSelectedRow = function(controller, json) {
 
 		if (controller.rowIndex === undefined) {
@@ -3568,7 +3575,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//
 			for (var index = 0 ; index < keyFieldsToChange.length ; index++) {
 				var fieldNameToChange = keyFieldsToChange[index];
-				
+
 				//Try to discover the col index
 				var column = controller.options.api.getColumn(fieldNameToChange);
 
@@ -3578,9 +3585,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					//
 					var newValue = eval('json.' + fieldNameToChange);
 					//
-					me.updateCell(controller, controller.rowIndex, colIndex, newValue);					
+					me.updateCell(controller, controller.rowIndex, colIndex, newValue);
 				} else {
-					console.warn('"updateSelectedRow" : field "' + fieldNameToChange + '" not found!');					
+					console.warn('"updateSelectedRow" : field "' + fieldNameToChange + '" not found!');
 				}
 			}
 		}
@@ -3589,7 +3596,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	/**
 	 *	@param colIndex {Integer} this param is passed when we want to update a cell which is not selected
 	 *
-	*/		 
+	*/
 	me.updateSelectedCell = function(controller, value) {
 
 		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
@@ -3598,12 +3605,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
 		}
 
-	}	
+	}
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
 	me.updateCell = function(controller, rowIndex, colIndex, value) {
 		var rowElement = controller.options.api.resolveRowElement(rowIndex);
 		var divCell = rowElement.find('.ui-cell[colIndex=' + colIndex + ']');
@@ -3613,21 +3620,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		divCell.addClass('changed');
 		//When we need the changed records we can get by ".ui-row.changed"
-		divCell.closest('.ui-row').addClass('changed'); 
-	}	
+		divCell.closest('.ui-row').addClass('changed');
+	}
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
 	me.isHideHeaders = function(controller) {
 		return controller.options.hideHeaders;
     }
 
 	/**
-	 *	
 	 *
-	*/		 
+	 *
+	*/
 	me.setHideHeaders = function(controller, hideHeaders) {
 		var display;
 		if (hideHeaders) {
@@ -3640,7 +3647,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	}
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.load = function(controller) {
@@ -3654,42 +3661,42 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					controller.options.api.loadData(response.data);
 					deferred.resolve(response.data);
 
-					controller.bodyViewport.removeClass('loading-data');		
-					document.title = '';		
-					
-				}, 
+					controller.bodyViewport.removeClass('loading-data');
+					document.title = '';
+
+				},
 				function(response) {
 					deferred.reject(response.statusText);
     			});
 		} else {
-			deferred.reject('"load" : To use load function is necessary set the url property.');			
+			deferred.reject('"load" : To use load function is necessary set the url property.');
 		}
 
 		return deferred.promise;
-	}	
+	}
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.loadData = function(controller, data) {
 		///////////////////////////////////////////////////////////////////////////
 		//BeforeLoad Event
-		///////////////////////////////////////////////////////////////////////////		
+		///////////////////////////////////////////////////////////////////////////
 		if (controller.options.listeners.onbeforeload) {
 			controller.options.listeners.onbeforeload(data, controller.options);
 		}
 		//////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////		
+		///////////////////////////////////////////////////////////////////////////
 
 		//
 		controller.renderedIndexes = [];
 
 		//Load the data
-		controller.options.data = data; 
+		controller.options.data = data;
 
 		//Records inside Grouping
-		controller.groupRecords = [];		
+		controller.groupRecords = [];
 		//Data Grouping itself
 		controller.options.dataGroup = [];
 
@@ -3712,7 +3719,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var expressionToGroup = controller.options.grouping.expr;
 
 			var getEvalFieldValue = function(record, fieldName) {
-				return eval('record.' + fieldName);			  
+				return eval('record.' + fieldName);
 			}
 
 			var getEvalExpressionValue = function(record, expression) {
@@ -3722,7 +3729,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							  '		}\n' +
 							  '})()';
 
-				return eval(evalStr);			  
+				return eval(evalStr);
 			}
 
 			var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(controller.options.data[0]);
@@ -3731,9 +3738,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var functionToEvaluate;
 			//When the expression is simply a field, use the simple evaluate (works most quickly)
 			if (fields.indexOf(controller.options.grouping.expr)) {
-				functionToEvaluate = getEvalFieldValue;	
+				functionToEvaluate = getEvalFieldValue;
 			} else {
-				functionToEvaluate = getEvalExpressionValue;				
+				functionToEvaluate = getEvalExpressionValue;
 			}
 
 			//
@@ -3748,16 +3755,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				} else {
 					return val1 > val2 ? -1 : 1
 				}
-			};	
+			};
 			*/
 
 			//controller.options.api.sort(sortGroupingFn);
-			controller.options.data = $filter('orderBy')(controller.options.data, expressionToGroup);			
+			controller.options.data = $filter('orderBy')(controller.options.data, expressionToGroup);
 
 			//Add a fixed sorter to a group
 			controller.options.fixedSorters	= [{
-				name: expressionToGroup, 
-				direction: 'ASC'		
+				name: expressionToGroup,
+				direction: 'ASC'
 			}];
 
 			//
@@ -3765,19 +3772,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var recordGroup;
 			var groupIndex = -1;
 			for (var index = 0 ; index < controller.options.data.length ; index++) {
-				var record = controller.options.data[index];	
-				var value = functionToEvaluate(record, expressionToGroup);			
+				var record = controller.options.data[index];
+				var value = functionToEvaluate(record, expressionToGroup);
 
 				//
 				if (oldValue == value) {
 					//
 					recordGroup.children++;
 
-				//changed value	
-				} else { 
-					oldValue = value;					
-					groupIndex++;					
-					recordGroup = record;					
+				//changed value
+				} else {
+					oldValue = value;
+					groupIndex++;
+					recordGroup = record;
 					recordGroup.children = 1;
 
 					controller.options.dataGroup.push(record);
@@ -3791,14 +3798,22 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//
 			controller.bodyContainer.height((controller.options.dataGroup.length * rowHeight) + 2);
 			if (controller.options.fixedCols) {
-			  controller.fixedColsBodyContainer.height(controller.bodyContainer.height());	
-			}  
+			  controller.fixedColsBodyContainer.height(controller.bodyContainer.height());
+			}
 		} else {
+			var heightBodyContainer;
+			if (controller.options.cardView) {
+				heightBodyContainer = (Math.ceil(controller.options.data.length / controller.options.cardView.numberOfColumns) * rowHeight);
+			} else {
+				heightBodyContainer = (controller.options.data.length * rowHeight);
+			}
+
 			//
-			controller.bodyContainer.height((controller.options.data.length * rowHeight) + 2);		
+			controller.bodyContainer.height(heightBodyContainer + 2);
+
 			if (controller.options.fixedCols) {
-			  controller.fixedColsBodyContainer.height(controller.bodyContainer.height());	
-			}  
+			  controller.fixedColsBodyContainer.height(controller.bodyContainer.height());
+			}
 		}
 
 		//
@@ -3811,30 +3826,30 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		///////////////////////////////////////////////////////////////////////////
 		//AfterLoad Event
-		///////////////////////////////////////////////////////////////////////////		
+		///////////////////////////////////////////////////////////////////////////
 		if (controller.options.listeners.onafterload) {
 			controller.options.listeners.onafterload(data, controller.options);
 		}
 		///////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////		
+		///////////////////////////////////////////////////////////////////////////
 	};
 
 	/**
-	 * 
 	 *
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	 /*
 	me.groupCollapse = function(controller, elementGroupRow) {
 		var indexStart = parseInt(elementGroupRow.attr('indexStart'));
-		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));		
+		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));
 
 		//Add divs which will have data
 		for (var index = indexStart ; index <= indexEnd ; index++) {
 			var divRow = controller.bodyViewport.find('div.ui-row[rowIndex=' + index + ']');
 			if (divRow.length > 0) {
-				divRow.css('display', 'none');				
+				divRow.css('display', 'none');
 			}
 		}
 
@@ -3844,19 +3859,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 
 		me.repaint(controller);
-	}	
+	}
 	*/
 
 	/**
-	 * 
 	 *
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 */
 	 /*
 	me.groupExpand = function(controller, elementGroupRow) {
 		var indexStart = parseInt(elementGroupRow.attr('indexStart'));
-		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));		
+		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));
 		var lastInsertedDivRow;
 
 		var groupRecords = controller.options.data.slice(indexStart, indexEnd + 1);
@@ -3866,56 +3881,56 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		if (divRow.length == 0) {
 			//Add divs which will have data
 			//for (var index = indexStart ; index <= indexEnd ; index++) {
-			for (var rowIndex = 0 ; rowIndex < groupRecords.length ; rowIndex++) {			
+			for (var rowIndex = 0 ; rowIndex < groupRecords.length ; rowIndex++) {
 				divRow = $(document.createElement('div'));
-				divRow.attr('groupindex', groupIndex);				
-				divRow.attr('groupRowIndex', rowIndex);				
+				divRow.attr('groupindex', groupIndex);
+				divRow.attr('groupRowIndex', rowIndex);
 				divRow.attr('rowindex', indexStart + rowIndex);
-				divRow.css('height', controller.options.rowHeight);			
-				//divRow.css('padding-left', '25px');				
+				divRow.css('height', controller.options.rowHeight);
+				//divRow.css('padding-left', '25px');
 				divRow.addClass('ui-row');
 
 				if (controller.options.stripRows) {
 					if (rowIndex % 2 == 1) {
 						divRow.addClass('odd-line');
 					}
-				}	
+				}
 
 				if (lastInsertedDivRow) {
-					divRow.insertAfter(lastInsertedDivRow); 
+					divRow.insertAfter(lastInsertedDivRow);
 				} else {
 					divRow.insertAfter(elementGroupRow);
-				}	
+				}
 				lastInsertedDivRow = divRow;
-			}	
+			}
 
 			//
 			elementGroupRow.attr('displayRows', divRow.css('display'));
-			divRow.addClass('last-group-row');			
+			divRow.addClass('last-group-row');
 		} else {
-			divRow.css('display', elementGroupRow.attr('displayRows')); //restore the display css property saved before.			
+			divRow.css('display', elementGroupRow.attr('displayRows')); //restore the display css property saved before.
 		}
 
 		me.repaint(controller);
 
 		//////////////////////////////////////////////////////////////////
 		//OnAfterExpand Event
-		//////////////////////////////////////////////////////////////////		
+		//////////////////////////////////////////////////////////////////
 		if (controller.options.listeners.onafterexpand) {
 			//var records = controller.options.data.splice(indexStart, indexEnd);
 			controller.options.listeners.onafterexpand(groupRecords, controller.options, elementGroupRow, lastInsertedDivRow);
 		}
 		//////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////		
+		//////////////////////////////////////////////////////////////////
 	}
 	*/
 
 	/**
-	 * 
+	 *
 	 *
 	 * @param valuesToFind {object} json which will contains the keys and values for the search
 	 * @param opts TODO: specify in more details
-	 * 
+	 *
 	 * return {array|record} depends on the value of "all" parameter.
 	 */
 	 me.find = function(controller, valuesToFind, opts) {
@@ -3923,7 +3938,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 	valuesToFind = valuesToFind || {};
 	 	var keys = Object.keys(valuesToFind);
 	 	if (data.length == 0) {
-			throw new Error ('"Find" : There is no data to find!');	 		
+			throw new Error ('"Find" : There is no data to find!');
 	 	} else if (keys.length == 0) {
 			throw new Error ('"Find" : param "valuesToFind" must be informed!');
 	 	}
@@ -3963,14 +3978,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		 			if (valueIsString) {
 				 		valueToFind = valueToFind.toLowerCase();
 				 		value = value.toLowerCase();
-		 			}	
+		 			}
 		 		}
 
 				if ((exactSearch) || (!valueIsString)) {
 					foundRecord = valueToFind == value;
 				} else {
 					foundRecord = value.indexOf(valueToFind) != -1;
-				}	
+				}
 
 				if (!foundRecord) {
 					continue;
@@ -3982,7 +3997,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 				if (all) {
 					recordsFound.push(record);
-				} else {	
+				} else {
 					return record;
 				}
 	 		}
@@ -4005,9 +4020,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var inLine;
 			if (opts.inLine === true) { //opts.inLine: true
 				inLine = inLineDefaultValue;
-			} else if (angular.isObject(opts.inLine)) { //opts.inLine: {...}	
+			} else if (angular.isObject(opts.inLine)) { //opts.inLine: {...}
 				inLine = opts.inLine;
-			} else { 
+			} else {
 				throw new Error('"find": param "inLine" passed in a wrong way');
 			}
 
@@ -4048,17 +4063,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			controller.options.api.clearSelections();
 			if (Array.isArray(recordsFound)) {
 				//multiSelect
-				if (controller.options.multiSelect) { 
+				if (controller.options.multiSelect) {
 					for (var index = 0 ; index < recordsFound.length ; index++) {
-						selectAndRemoveRendered(recordsFound[index], index != 0, index == 0);		
-					}	
-				//singleSelect	
+						selectAndRemoveRendered(recordsFound[index], index != 0, index == 0);
+					}
+				//singleSelect
 				} else {
 					if (recordsFound.length > 1) {
 						console.warn('"find": More than one record was returned, but as the "inLine" property is true and "multiSelect" is false, just the first record will be selected.');
-					}	
+					}
 					selectAndRemoveRendered(recordsFound[0], false, true);
-				}	
+				}
 			} else {
 				if (recordsFound != null) {
 					selectAndRemoveRendered(recordsFound, preventSelecionChange, scrollIntoView);
@@ -4077,17 +4092,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 	/**
-	 * 
 	 *
-	 */		 
+	 *
+	 */
 	me.getRowHeight = function(controller) {
 		return controller.options.rowHeight;
 	}
 
 	/**
-	 * 
 	 *
-	 */		 
+	 *
+	 */
 	me.setRowHeight = function(controller, rowHeight) {
 		var rowElements = controller.bodyViewport.find('div.ui-row:not(.grouping-footer-container)');
 		rowElements.css('height', controller.options.rowHeight);
@@ -4097,25 +4112,25 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	/**
 	 * @param record {Object|Number} Can be passed rowIndex or the object record
 	 *
-	 */		 
+	 */
 	me.getRowElement = function(controller, record) {
 		var rowIndex = _resolveRowIndex(record);
 		return me.bodyViewport.find('div.ui-row[rowIndex=' + rowIndex + ']');
-	}	
+	}
 
 
 	var _recreateAll = function(controller) {
 		if (controller.options.data) {
 			//Remmove all rows before load
-			controller.bodyViewport.find('div.ui-deni-view-group-header').remove();		
+			controller.bodyViewport.find('div.ui-deni-view-group-header').remove();
 			controller.bodyViewport.find('div.ui-row').remove();
 
 			me.loadData(controller, controller.options.data);
-		}	
+		}
 	}
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.toogleGrouping = function(controller) {
@@ -4125,7 +4140,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.isEnableGrouping = function(controller) {
@@ -4133,7 +4148,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	},
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.isGrouped = function(controller) {
@@ -4141,7 +4156,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	},
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.setEnableGrouping = function(controller) {
@@ -4150,7 +4165,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	}
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.setDisableGrouping = function(controller) {
@@ -4165,15 +4180,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	/*
 	var _renderFixedRowEl = function(controller, itemToRender, record) {
 		var fixedRow = $(document.createElement('div'));
-		fixedRow.addClass('ui-fixed-row');		
+		fixedRow.addClass('ui-fixed-row');
 		fixedRow.attr('rowindex', itemToRender.rowIndex.toString());
-		fixedRow.css('left', '0px'); 		
+		fixedRow.css('left', '0px');
 		fixedRow.css('top', itemToRender.top + 'px');
 		fixedRow.css('height', itemToRender.height + 'px');
 		//.html(itemToRender.rowIndex.toString());
 
 		controller.fixedColsBodyContainer.append(fixedRow);
-	}	
+	}
 	*/
 
 	//
@@ -4183,20 +4198,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	var _renderRowEl = function(controller, itemToRender, record) {
 
 		var rowElement = $(document.createElement('div'));
-		rowElement.addClass('ui-row');		
+		rowElement.addClass('ui-row');
 		rowElement.attr('rowindex', itemToRender.rowIndex.toString());
-		rowElement.css('left', '0px'); 		
+		rowElement.css('left', '0px');
 
-		var fixedRowElement;	
+		var fixedRowElement;
 		if (controller.options.fixedCols) {
 			fixedRowElement = $(document.createElement('div'));
-			fixedRowElement.addClass('ui-row');		
+			fixedRowElement.addClass('ui-row');
 			fixedRowElement.attr('rowindex', itemToRender.rowIndex.toString());
-			fixedRowElement.css('left', '0px'); 		
+			fixedRowElement.css('left', '0px');
 			controller.fixedColsBodyContainer.append(fixedRowElement);
-		}	
-		
-		//ROW DETAIL 
+		}
+
+		//ROW DETAIL
 		if (itemToRender.rowDetails) {
 			var rowElementParent = controller.bodyContainer.find('.ui-row[rowIndex=' + itemToRender.rowIndex + ']:not(.row-detail-container)');
 			rowElement.insertAfter(rowElementParent);
@@ -4234,58 +4249,58 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			controller.bodyContainer.append(rowElement);
 
 			rowElement.css('height', itemToRender.height);
-			rowElement.css('top', itemToRender.top + 'px'); 			
+			rowElement.css('top', itemToRender.top + 'px');
 			if (controller.options.fixedCols) {
 				fixedRowElement.css('height', itemToRender.height + 'px');
 				fixedRowElement.css('top', itemToRender.top + 'px');
-			}	
+			}
 
 			// GROUPING	OR GROUPING	FOOTER
 			if (angular.isDefined(itemToRender.children)) {
 
 				//GROUPING FOOTER
 				if (itemToRender.footerContainer) {
-					rowElement.addClass('ui-grouping-footer-container'); 
+					rowElement.addClass('ui-grouping-footer-container');
 
 				//GROUP
 				} else {
 					rowElement.addClass('row-detail');
 					rowElement.addClass('grouping'); //added basically to not select this line
-				}	
+				}
 
 				//
-				rowElement.attr('groupIndex', itemToRender.groupIndex);			
+				rowElement.attr('groupIndex', itemToRender.groupIndex);
 				rowElement.attr('children', itemToRender.children);
 
 			} else {
 				// GROUP CHILD
 				if (angular.isDefined(itemToRender.groupIndex)) {
-					rowElement.attr('groupIndex', itemToRender.groupIndex);		
-					rowElement.attr('indexInsideGroup', itemToRender.indexInsideGroup);						
+					rowElement.attr('groupIndex', itemToRender.groupIndex);
+					rowElement.attr('indexInsideGroup', itemToRender.indexInsideGroup);
 
 					// stripRows (odd line?)
 					if (controller.options.stripRows) {
 						if (itemToRender.indexInsideGroup % 2 == 1) {
 							rowElement.addClass('odd-row');
 						}
-					}	
+					}
 
-				// common row	
+				// common row
 				} else {
 					// stripRows (odd line?)
 					if (controller.options.stripRows) {
 						if (itemToRender.rowIndex % 2 == 1) {
-							rowElement.addClass('odd-row');						
+							rowElement.addClass('odd-row');
 							if (controller.options.fixedCols) {
 								fixedRowElement.addClass('odd-row');
-							}	
+							}
 						}
-					}	
+					}
 				}
 			}
 		}
-		
-		
+
+
 
 		///////////////////////////////////////////////
 		// onbeforerender event
@@ -4312,52 +4327,100 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	};
 
 	/**
-	 *	
+	 *
 	 *
 	 */
 	me.repaint = function(controller) {
 
 		//
 		var visibleRows = controller.managerRendererItems.getVisibleRows();
-		
+
 		//
 		for (var index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
 
 			if (!visibleRow.rendered) {
-				
+
 				// Card View
 				if (angular.isDefined(controller.options.cardView)) {
-					
-					//It might have more than one record by row whe is configured "cardView" property 
-					var recordsByRow = controller.options.cardView.numberOfColumns;		
-					
+
+					//It might have more than one record by row whe is configured "cardView" property
+					var recordsByRow = controller.options.cardView.numberOfColumns;
+
 					//
 					var rowElement = $(document.createElement('div'));
-					rowElement.addClass('ui-row');		
-					rowElement.attr('rowindex', itemToRender.rowIndex.toString());
-					rowElement.css('left', '0px'); 		
-					rowElement.css('height', itemToRender.height);
+					rowElement.addClass('ui-row');
+					rowElement.attr('rowindex', visibleRow.rowIndex);
+					rowElement.css('left', '0px');
+					rowElement.css('height', visibleRow.height);
 					rowElement.css('width', '100%');
-					rowElement.css('top', itemToRender.top + 'px'); 			
-					//rowElement.html('<table><tr><td></td><td></td><td></td><tr></table>');
-					rowElement.html('<table></table>');
+					rowElement.css('top', visibleRow.top + 'px');
+					rowElement.html('<table class="ui-table-card-view"><tr></tr></table>');
 					controller.bodyContainer.append(rowElement);
-					var tableRowCardView = rowElement.find('table');
-					
+					var rowTableRowCardView = rowElement.find('tr').get(0);
+					var colWidth = (100 / recordsByRow).toString() + '%';
+
 					//
 					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
 						var indexDataRecord = visibleRow.rowIndex;
 						//
 						if (visibleRow.rowIndex > 0) {
-							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow) + indexRecord;
+							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow);
 						}
+						indexDataRecord += indexRecord;
+
 						var record = controller.options.data[indexDataRecord];
-						
-						var divCell = $(tableRowCardView.insertRow());
-						var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);
-						divCell.html(valueToRender);
-						
+
+						var divCell = $(rowTableRowCardView.insertCell());
+						divCell.css('width', colWidth);
+						if (record) {
+							var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
+							divCell.html(valueToRender);
+							divCell.prop('record', record);							
+
+							divCell.click(function(event) {
+								controller.bodyContainer.find('td').removeClass('selected');
+								$(event.currentTarget).addClass('selected');
+
+								////////////////////////////////////////////////////
+								//onselectionchange event
+								////////////////////////////////////////////////////
+								if (controller.options.listeners.onselectionchange) {
+									controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
+								}
+								////////////////////////////////////////////////////
+								////////////////////////////////////////////////////
+
+							});	
+
+							if (controller.options.cardView.checkbox == true) {
+								var checkboxCardView = $(document.createElement('input'));
+								checkboxCardView.addClass('checkbox');
+								checkboxCardView.attr('type', 'checkbox');
+								if (controller.checkedRecords.indexOf(record) != -1) {
+									checkboxCardView.attr('checked', true);
+								}
+								checkboxCardView.click(function(event) {
+									var rec = $(event.target.parent).prop('record');
+									var indexOfRec = controller.checkedRecords.indexOf(rec);
+
+									if (indexOfRec != -1) {
+										controller.checkedRecords.splice(indexOfRec, 1);
+									}
+
+									if (event.target.checked) {
+										controller.checkedRecords.push(rec);
+									}
+
+									if (controller.options.listeners.oncheckboxchange) {
+										controller.options.listeners.oncheckboxchange(rec, controller.checkedRecords, event.target);
+									}
+								});
+								divCell.append(checkboxCardView);
+							}
+
+						}
+
 						/*
 						//
 						var divCell = _createDivCell(controller, rowElement);
@@ -4365,14 +4428,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
 						divCell.html(valueToRender);
 						*/
-					}	
+					}
 					visibleRow.rowElement = rowElement;
-					
-				// Not a Card View	
+
+				// Not a Card View
 				} else {
 					var record = controller.options.data[visibleRow.rowIndex];
 					visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
-				}	
+				}
 			}
 		}
 
@@ -4391,9 +4454,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	};
 
 	/**
-	 * 
 	 *
-	 */		 
+	 *
+	 */
 	me.getRowIndex = function(controller, record) {
 		var data = controller.options.data;
 		for (var index = 0 ; index < data.length ; index++) {
@@ -4458,7 +4521,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	////////////////////////////////////////////////////////////////
 
 
-});	
+});
 
 /**
  *

@@ -6,21 +6,34 @@
 
 <style>
 	#deniGrid {
-	  	height: 550px;
-	  	width: 900px;
+	  height: 550px;
+	  width: 900px;
 	}
 
 	.card-view-item {
-	  	width: 100%;
-	  	height: 100%;
-	  	position: relative;
-	  	cursor: pointer;
+	  width: 100%;
+	  height: 100%;
+	  display: block;
+	  position: relative;
 	}
 
-	.card-view-image {
-	  	width: 100%;
-		height: 100%;
-		position: absolute;
+	.card-view-watermark {
+	  content: "";
+	  opacity: 0.3;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  position: absolute;
+	  background-repeat: no-repeat;
+	  background-size: 100% 100%;
+	}
+
+	.card-view-content {
+    	position: absolute;
+    	top: 50px;
+    	left: 35px;
+    	color: #696969; 
 	}
 
 
@@ -30,7 +43,7 @@
 
 	<section ng-controller="ExampleCtrl as ctrl">
 	  <ui-deni-grid id="deniGrid" options="gridOptions"></ui-deni-grid>
-		<span>*Select a card and see the selected record in console.</span>
+		<span>*Check the card items and see the selected records in console.</span>
 	</section>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
