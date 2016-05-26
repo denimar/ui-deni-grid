@@ -474,7 +474,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 * when there is rowTemplate it also don't has column headers
 		 *
 		 */
-		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate));
+		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cadView));
 
 
 		/////////////////////////////////////////////////////
@@ -1358,7 +1358,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
         }
         return formatted;        
     }
-
+	
 	/**
 	 * This guy manages which items the grid should render
 	 *
@@ -1413,25 +1413,36 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 						top += rowHeight;
 					}
 				}
+			//	
 			} else {
-				for (var index = 0 ; index < controller.options.data.length ; index++) {
-					mng.items.push({
-						top: top,
-						height: mng.rowHeight,
-						rowIndex: index
-					});
-					top += mng.rowHeight;
-
-					if ((controller.options.rowDetails) && (controller.options.rowDetails.autoExpand)) {
-						var rowHeight = controller.options.rowDetails.height || 50;
-						rowHeight = parseInt(rowHeight.toString().replace('px', ''));
+				//It might have more than one record by row whe is configured "cardView" property 
+				var recordsByRow = angular.isDefined(controller.options.cardView) ? controller.options.cardView.numberOfColumns : 1;
+				
+				//for (var index = 0 ; index < controller.options.data.length ; index++) {
+				var index = 0;	
+				while (index < controller.options.data.length) {	
+				
+					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
 						mng.items.push({
 							top: top,
-							height: rowHeight,
-							rowIndex: index,
-							rowDetails: true
+							height: mng.rowHeight,
+							rowIndex: index
 						});
-						top += rowHeight;
+						top += mng.rowHeight;
+
+						if ((controller.options.rowDetails) && (controller.options.rowDetails.autoExpand)) {
+							var rowHeight = controller.options.rowDetails.height || 50;
+							rowHeight = parseInt(rowHeight.toString().replace('px', ''));
+							mng.items.push({
+								top: top,
+								height: rowHeight,
+								rowIndex: index,
+								rowDetails: true
+							});
+							top += rowHeight;
+						}	
+						
+						index++;
 					}	
 				}
 			}
@@ -2903,9 +2914,28 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		controller.options.listeners.onrenderer = function(rowElement, fixedRowElement, record, rowIndex, viewController) {
 
-
+			/*
+			// Card View
+			if (angular.isDefined(controller.options.cardView)) {
+				//
+				var divCell = _createDivCell(controller, rowElement);
+				rowElement.css('width', '100%');
+				divCell.css('width', '100%');
+				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
+				divCell.html(valueToRender);
+			*/
+			
+			// Row Template
+			if (angular.isDefined(controller.options.rowTemplate)) {
+				//
+				var divCell = _createDivCell(controller, rowElement);
+				rowElement.css('width', '100%');
+				divCell.css('width', '100%');
+				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowTemplate, record);
+				divCell.html(valueToRender);
+		
 			//Row Detail - Grouping or other type of row details
-			if (rowElement.is('.row-detail')) {
+			} else if (rowElement.is('.row-detail')) {
 				//uiDeniGridUtilSrv.renderCommonRow(controller, rowElement, record, rowIndex);
 
 				//
@@ -2949,15 +2979,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				uiDeniGridUtilSrv.createColumnFooters(controller, rowElement, columns, false);
 				//
 				uiDeniGridUtilSrv.renderColumnFooters(controller, rowElement, columns, records, false);
-
-			// Row Template
-			} else if (controller.options.rowTemplate) {
-				//
-				var divCell = _createDivCell(controller, rowElement);
-				rowElement.css('width', '100%');
-				divCell.css('width', '100%');
-				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowTemplate, record);
-				divCell.html(valueToRender);
 
 			// (Common Row)
 			} else {
@@ -4298,16 +4319,61 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//
 		var visibleRows = controller.managerRendererItems.getVisibleRows();
-
+		
 		//
 		for (var index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
 
 			if (!visibleRow.rendered) {
-				var record = controller.options.data[visibleRow.rowIndex];
-
-				visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
-			}	
+				
+				// Card View
+				if (angular.isDefined(controller.options.cardView)) {
+					
+					//It might have more than one record by row whe is configured "cardView" property 
+					var recordsByRow = controller.options.cardView.numberOfColumns;		
+					
+					//
+					var rowElement = $(document.createElement('div'));
+					rowElement.addClass('ui-row');		
+					rowElement.attr('rowindex', itemToRender.rowIndex.toString());
+					rowElement.css('left', '0px'); 		
+					rowElement.css('height', itemToRender.height);
+					rowElement.css('width', '100%');
+					rowElement.css('top', itemToRender.top + 'px'); 			
+					//rowElement.html('<table><tr><td></td><td></td><td></td><tr></table>');
+					rowElement.html('<table></table>');
+					controller.bodyContainer.append(rowElement);
+					var tableRowCardView = rowElement.find('table');
+					
+					//
+					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
+						var indexDataRecord = visibleRow.rowIndex;
+						//
+						if (visibleRow.rowIndex > 0) {
+							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow) + indexRecord;
+						}
+						var record = controller.options.data[indexDataRecord];
+						
+						var divCell = $(tableRowCardView.insertRow());
+						var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);
+						divCell.html(valueToRender);
+						
+						/*
+						//
+						var divCell = _createDivCell(controller, rowElement);
+						divCell.css('width', '100%');
+						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
+						divCell.html(valueToRender);
+						*/
+					}	
+					visibleRow.rowElement = rowElement;
+					
+				// Not a Card View	
+				} else {
+					var record = controller.options.data[visibleRow.rowIndex];
+					visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
+				}	
+			}
 		}
 
 		///////////////////////////////////////////////
