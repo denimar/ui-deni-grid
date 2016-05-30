@@ -3896,6 +3896,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			$http.get(url)
 				.then(function(response) {
+					
+					TESTANDO XML AQUI...
+					
+					alert($(response.data).find('results').find('news_item'))
+					
 					//
 					if (controller.options.paging) {
 						//
@@ -3919,8 +3924,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						controller.paging.find('.label-record-count').html(controller.options.paging.dataLength + ' records');
 						
 					} else {
-						controller.options.api.loadData(response.data);
-						deferred.resolve(response.data.data);
+						//
+						controller.options.api.loadData(response.data[controller.options.restConfig.data]);
+						deferred.resolve(response.data[controller.options.restConfig.data]);
+						
+						//controller.options.api.loadData(response.data);
+						//deferred.resolve(response.data.data);
 					}
 
 					controller.bodyViewport.removeClass('initilizing-data');					

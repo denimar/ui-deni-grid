@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <result_set>
+        <status>OK</status>
+        <copyright>Copyright (c) 2016 The New York Times Company. All Rights Reserved.</copyright>
+        <num_results>78179</num_results>
+        <results>
+            <news_item>
+                <section>Books</section>
+                <subsection></subsection>
+                <title>Review: In Emma Straub’s ‘Modern Lovers,’ Passion and Regret in Brooklyn</title>
+                <abstract>Ms. Straub’s new novel describes the love and second thoughts of two families in the transitioning neighborhood of Ditmas Park.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/books/review-modern-lovers-by-emma-straub.html</url>
+                <byline>By MICHIKO KAKUTANI</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/arts/31BOOKSTRAUB2/31BOOKSTRAUB2-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:10:19-04:00</updated_date>
+                <created_date>2016-05-30T17:10:20-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>Review</material_type_facet>
+                <kicker>Books of The Times</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Books and Literature</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet>
+                    <per_facet_item>Straub, Emma</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>When a Family Gets Away, Its Problems Make the Trip</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/06/05/books/in-the-vacationers-emma-straub-looks-at-infidelity.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>As a Straub, She Was Born to Be an Author</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/27/books/as-a-straub-she-was-born-to-be-an-author.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>How Emma Straub, Novelist, Spends Her Sundays</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/22/nyregion/how-emma-straub-novelist-spends-her-sundays.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31BOOKSTRAUB2/31BOOKSTRAUB2-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Emma Straub</caption>
+                        <copyright>Jennifer Bastian</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31BOOKSTRAUB2/31BOOKSTRAUB2-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>283</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Emma Straub</caption>
+                        <copyright>Jennifer Bastian</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31BOOKSTRAUB2/31BOOKSTRAUB2-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Emma Straub</caption>
+                        <copyright>Jennifer Bastian</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31BOOKSTRAUB2/31BOOKSTRAUB2-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Emma Straub</caption>
+                        <copyright>Jennifer Bastian</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Arts</section>
+                <subsection>Music</subsection>
+                <title>Review: The New York Youth Symphony, Empowered at Carnegie Hall</title>
+                <abstract>The orchestra tackled a premiere by Brendan Faegre and Mahler’s marathon “Resurrection” Symphony.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/arts/music/review-the-new-york-youth-symphony-empowered-at-carnegie-hall.html</url>
+                <byline>By CORINNA da FONSECA-WOLLHEIM</byline>
+                <thumbnail_standard></thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:07:35-04:00</updated_date>
+                <created_date>2016-05-30T17:07:37-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>Review</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Music</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>New York Youth Symphony</org_facet_item>
+                    <org_facet_item>Carnegie Hall</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Faegre, Brendan</per_facet_item>
+                    <per_facet_item>Mahler, Gustav</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls></related_urls>
+                <multimedia></multimedia>
+            </news_item>
+            <news_item>
+                <section>U.S.</section>
+                <subsection></subsection>
+                <title>Zoo Director Responds to Gorilla Death</title>
+                <abstract>The director of the Cincinnati Zoo addressed the killing of a silverback gorilla Harambe, saying the shooting was justified because the child who fell into the animal's pen was in serious danger.</abstract>
+                <url>http://www.nytimes.com/video/us/100000004444193/zoo-director-responds-to-gorilla-death.html</url>
+                <byline>By W.C.P.O. VIA ASSOCIATED PRESS</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/us/31zoo-vid/31zoo-vid-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Video</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:07:20-04:00</updated_date>
+                <created_date>2016-05-30T17:06:15-04:00</created_date>
+                <published_date>2016-05-30T00:00:00-04:00</published_date>
+                <material_type_facet></material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Monkeys and Apes</des_facet_item>
+                    <des_facet_item>Zoos</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet>
+                    <geo_facet_item>Cincinnati (Ohio)</geo_facet_item>
+                </geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Gorilla Killed After Child Enters Enclosure at Cincinnati Zoo</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/30/us/gorilla-killed-after-child-enters-enclosure-at-cincinnati-zoo.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/us/31zoo-vid/31zoo-vid-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>John Minchillo/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/us/31zoo-vid/31zoo-vid-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>John Minchillo/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/us/31zoo-vid/31zoo-vid-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>John Minchillo/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/us/31zoo-vid/31zoo-vid-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>John Minchillo/Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Arts</section>
+                <subsection>Dance</subsection>
+                <title>City Ballet Closes Its Season With Power and Glow</title>
+                <abstract>Andrew Litton conducts a week of “A Midsummer Night’s Dream,” creating “unusually powerful and eloquent” music, but the year has had its lapses.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/arts/dance/city-ballet-closes-its-season-with-power-and-glow.html</url>
+                <byline>By ALASTAIR MACAULAY</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/arts/31NYCB1/31NYCB1-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:03:37-04:00</updated_date>
+                <created_date>2016-05-30T17:03:37-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Dancing</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>New York City Ballet</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Litton, Andrew</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Review: ‘A Midsummer Night’s Dream,’ Nodding Off With the Mortals</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/26/arts/dance/review-a-midsummer-nights-dream-nodding-off-with-the-mortals.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Miriam Miller Talks About Her Success at New York City Ballet</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/28/arts/dance/miriam-miller-talks-about-her-success-at-new-york-city-ballet.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>The Conductor Andrew Litton, Finding a Different Tempo</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/19/arts/music/the-conductor-andrew-litton-finding-a-different-tempo.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31NYCB1/31NYCB1-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[Sara Mearns, center, and New York City Ballet company members in &ldquo;A Midsummer Night&rsquo;s Dream&rdquo; at the David H. Koch Theater.]]>
+                        </caption>
+                        <copyright>Julieta Cervantes for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31NYCB1/31NYCB1-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[Sara Mearns, center, and New York City Ballet company members in &ldquo;A Midsummer Night&rsquo;s Dream&rdquo; at the David H. Koch Theater.]]>
+                        </caption>
+                        <copyright>Julieta Cervantes for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31NYCB1/31NYCB1-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[Sara Mearns, center, and New York City Ballet company members in &ldquo;A Midsummer Night&rsquo;s Dream&rdquo; at the David H. Koch Theater.]]>
+                        </caption>
+                        <copyright>Julieta Cervantes for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31NYCB1/31NYCB1-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[Sara Mearns, center, and New York City Ballet company members in &ldquo;A Midsummer Night&rsquo;s Dream&rdquo; at the David H. Koch Theater.]]>
+                        </caption>
+                        <copyright>Julieta Cervantes for The New York Times</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Sports</section>
+                <subsection>Baseball</subsection>
+                <title>Matt Harvey Regains His Form as Mets Defeat the White Sox</title>
+                <abstract>Harvey gave up two hits and struck out six over seven innings, and he faced the minimum of 18 hitters through six innings.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/sports/baseball/matt-harvey-regains-his-form-as-mets-defeat-white-sox.html</url>
+                <byline>By THE ASSOCIATED PRESS</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/sports/31KEPNERweb/31KEPNERweb-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:09:11-04:00</updated_date>
+                <created_date>2016-05-30T17:01:57-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker>Mets 1, White Sox 0</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Baseball</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>New York Mets</org_facet_item>
+                    <org_facet_item>Chicago White Sox</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Harvey, Matt</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Matt Harvey Seeks to Rediscover Swagger After Falling to 3-7</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/26/sports/baseball/mets-matt-harvey-seeks-to-rediscover-swagger-after-falling-to-3-7.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Slide Deepens for Mets’ Matt Harvey as Nationals Hammer Him Again</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/25/sports/baseball/slide-deepens-for-mets-matt-harvey-as-nationals-hammer-him-again.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31KEPNERweb/31KEPNERweb-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Matt Harvey completed seven innings for the first time this season.</caption>
+                        <copyright>Al Bello/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31KEPNERweb/31KEPNERweb-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>128</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Matt Harvey completed seven innings for the first time this season.</caption>
+                        <copyright>Al Bello/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31KEPNERweb/31KEPNERweb-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Matt Harvey completed seven innings for the first time this season.</caption>
+                        <copyright>Al Bello/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31KEPNERweb/31KEPNERweb-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Matt Harvey completed seven innings for the first time this season.</caption>
+                        <copyright>Al Bello/Getty Images</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Sports</section>
+                <subsection>Tennis</subsection>
+                <title>David Haggerty Leads International Tennis Federation Toward Greater Transparency</title>
+                <abstract>Haggerty, the president of I.T.F., has faced a number of tough challenges during his short tenure, from doping scandals to concerns about match fixing.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/sports/tennis/david-haggerty-leads-international-tennis-federation-toward-greater-transparency.html</url>
+                <byline>By CHRISTOPHER CLAREY</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/sports/31CLAREYweb1/31CLAREYweb1-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T16:52:31-04:00</updated_date>
+                <created_date>2016-05-30T16:45:27-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker>On Tennis</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Tennis</des_facet_item>
+                    <des_facet_item>Doping (Sports)</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>International Tennis Federation</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Haggerty, David A</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>
+                        <![CDATA[I.T.F.&#8217;s Antidoping Policy Poses Test for New Leader]]>
+                    </suggested_link_text>
+                    <url>http://www.nytimes.com/2015/12/06/sports/tennis/itfs-antidoping-policy-poses-test-for-new-leader.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Tennis Announces Review of Anticorruption Efforts</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/27/sports/tennis/tennis-plans-new-measures-to-fight-match-fixing.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>British Panel Focuses on Tennis’s Self-Policing</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/25/sports/tennis/head-of-tennis-integrity-unit-pushes-for-greater-independence.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>David Haggerty of U.S. Will Lead International Tennis Federation</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/09/26/sports/david-haggerty-of-us-will-lead-international-tennis-federation.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31CLAREYweb1/31CLAREYweb1-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>David Haggerty has had to change his plans since taking over the I.T.F. last year.</caption>
+                        <copyright>Alastair Grant/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31CLAREYweb1/31CLAREYweb1-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>David Haggerty has had to change his plans since taking over the I.T.F. last year.</caption>
+                        <copyright>Alastair Grant/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31CLAREYweb1/31CLAREYweb1-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>David Haggerty has had to change his plans since taking over the I.T.F. last year.</caption>
+                        <copyright>Alastair Grant/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/sports/31CLAREYweb1/31CLAREYweb1-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>David Haggerty has had to change his plans since taking over the I.T.F. last year.</caption>
+                        <copyright>Alastair Grant/Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Science</section>
+                <subsection></subsection>
+                <title>Triplet and Higher-Order Births in U.S. Down 41%</title>
+                <abstract>The decline, which comes after a rapid rise in the 1980s and ’90s, occurred between 1998 and 2014, according to a new report.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/science/triplet-and-higher-order-births-in-us-down-41.html</url>
+                <byline>By NICHOLAS BAKALAR</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/science/31TRIPLETS/31TRIPLETS-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T16:37:17-04:00</updated_date>
+                <created_date>2016-05-30T16:37:18-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker>Take a Number</kicker>
+                <subheadline></subheadline>
+                <des_facet></des_facet>
+                <org_facet>
+                    <org_facet_item>National Center for Health Statistics</org_facet_item>
+                </org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>With In Vitro Fertilization, Persistence Pays Off, Study Suggests</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/12/23/health/with-in-vitro-fertilization-persistence-pays-off-study-suggests.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TRIPLETS/31TRIPLETS-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[The Braschler triplets were born in 1997. According to a new report from the National Center for Health Statistics, the rate of triplet and higher-order births <a href="http://www.cdc.gov/nchs/data/databriefs/db243.pdf">dropped 41 percent from 1998 to 2014</a>. More than 90 percent of these births are triplets.]]></caption>
+                        <copyright>Nick Gonzales/The Grand Rapids Press, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TRIPLETS/31TRIPLETS-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[The Braschler triplets were born in 1997. According to a new report from the National Center for Health Statistics, the rate of triplet and higher-order births <a href="http://www.cdc.gov/nchs/data/databriefs/db243.pdf">dropped 41 percent from 1998 to 2014</a>. More than 90 percent of these births are triplets.]]></caption>
+                        <copyright>Nick Gonzales/The Grand Rapids Press, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TRIPLETS/31TRIPLETS-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[The Braschler triplets were born in 1997. According to a new report from the National Center for Health Statistics, the rate of triplet and higher-order births <a href="http://www.cdc.gov/nchs/data/databriefs/db243.pdf">dropped 41 percent from 1998 to 2014</a>. More than 90 percent of these births are triplets.]]></caption>
+                        <copyright>Nick Gonzales/The Grand Rapids Press, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TRIPLETS/31TRIPLETS-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>
+                            <![CDATA[The Braschler triplets were born in 1997. According to a new report from the National Center for Health Statistics, the rate of triplet and higher-order births <a href="http://www.cdc.gov/nchs/data/databriefs/db243.pdf">dropped 41 percent from 1998 to 2014</a>. More than 90 percent of these births are triplets.]]></caption>
+                        <copyright>Nick Gonzales/The Grand Rapids Press, via Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Science</section>
+                <subsection></subsection>
+                <title>A Close Encounter for Earth and Mars</title>
+                <abstract>The two planets will be at their closest in more than a decade, separated by just 47 million miles.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/science/mars-earth-closest-approach.html</url>
+                <byline>By NICHOLAS ST. FLEUR</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/science/31TB-mars/31TB-mars-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:00:31-04:00</updated_date>
+                <created_date>2016-05-30T16:22:53-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker>Trilobites</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Space and Astronomy</des_facet_item>
+                    <des_facet_item>Mars (Planet)</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Watch Mercury Sail Across the Sun</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/09/science/watch-mercury-sail-across-the-sun.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>SpaceX Says It Plans to Send a Probe to Mars</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/28/science/mars-spacex-dragon-landing-2018.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Total Solar Eclipse Will End the Day Before It Begins</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/08/science/total-solar-eclipse-will-end-the-day-before-it-begins.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>How to View Five Planets Aligning in a Celestial Spectacle</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/20/science/space/five-planets-align-mars-jupiter-mercury-saturn-venus.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>How to Get Five Planets Into a Single Photograph</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/27/science/how-to-get-five-planets-into-a-single-photograph.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TB-mars/31TB-mars-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A view of Mars from NASA’s Hubble Space Telescope taken on May 12, 2016, when the red planet was 50 million miles from Earth.</caption>
+                        <copyright>NASA, ESA, the Hubble Heritage Team (STScI/AURA), J. Bell (ASU) and M. Wolff (Space Science Institute)</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TB-mars/31TB-mars-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>190</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A view of Mars from NASA’s Hubble Space Telescope taken on May 12, 2016, when the red planet was 50 million miles from Earth.</caption>
+                        <copyright>NASA, ESA, the Hubble Heritage Team (STScI/AURA), J. Bell (ASU) and M. Wolff (Space Science Institute)</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TB-mars/31TB-mars-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A view of Mars from NASA’s Hubble Space Telescope taken on May 12, 2016, when the red planet was 50 million miles from Earth.</caption>
+                        <copyright>NASA, ESA, the Hubble Heritage Team (STScI/AURA), J. Bell (ASU) and M. Wolff (Space Science Institute)</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31TB-mars/31TB-mars-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A view of Mars from NASA’s Hubble Space Telescope taken on May 12, 2016, when the red planet was 50 million miles from Earth.</caption>
+                        <copyright>NASA, ESA, the Hubble Heritage Team (STScI/AURA), J. Bell (ASU) and M. Wolff (Space Science Institute)</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Arts</section>
+                <subsection>Dance</subsection>
+                <title>Review: ‘Obsidian Tear’ Is a Choreographic Breakthrough for Wayne McGregor</title>
+                <abstract>He blends a pared-down quality with fullness and grace in this all-male work danced by the Royal Ballet in London.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/arts/dance/review-obsidian-tear-is-a-choreographic-breakthrough-for-wayne-mcgregor.html</url>
+                <byline>By ROSLYN SULCAS</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/arts/31mcgregorA/31mcgregorA-thumbStandard-v2.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T16:32:29-04:00</updated_date>
+                <created_date>2016-05-30T16:07:36-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>Review</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Dancing</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>Royal Ballet</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>McGregor, Wayne</per_facet_item>
+                    <per_facet_item>Salonen, Esa-Pekka</per_facet_item>
+                    <per_facet_item>McMillan, Kenneth</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Bird and Postman Meet, and a Fairy-Tale Heroine Is Born</suggested_link_text>
+                    <url>http://www.nytimes.com/2013/05/28/arts/dance/raven-girl-a-wayne-mcgregor-ballet-premiere-in-london.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>
+                        <![CDATA[Review: &#8216;Tree of Codes&#8217; Flaunts Jaw-Dropping Effects]]>
+                    </suggested_link_text>
+                    <url>http://www.nytimes.com/2015/07/06/arts/dance/review-tree-of-codes-flaunts-jaw-dropping-effects.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>
+                        <![CDATA[Royal Ballet&#8217;s Focus on British Choreography Exposes Its Limits]]>
+                    </suggested_link_text>
+                    <url>http://www.nytimes.com/2015/06/29/arts/dance/royal-ballets-focus-on-british-choreography-exposes-its-limits.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31mcgregorA/31mcgregorA-thumbStandard-v2.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Andrej Uspenski/ROH 2016</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31mcgregorA/31mcgregorA-articleInline-v2.jpg</url>
+                        <format>Normal</format>
+                        <height>131</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Andrej Uspenski/ROH 2016</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31mcgregorA/31mcgregorA-mediumThreeByTwo210-v2.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Andrej Uspenski/ROH 2016</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31mcgregorA/31mcgregorA-mediumThreeByTwo440-v2.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Andrej Uspenski/ROH 2016</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Arts</section>
+                <subsection>Television</subsection>
+                <title>Simon Cowell on Joining ‘America’s Got Talent’</title>
+                <abstract>“This 83-year-old woman in a leotard came on and stood on her head and sang the national anthem and I said, ‘You know what, I’m home.’”</abstract>
+                <url>http://www.nytimes.com/2016/05/31/arts/television/simon-cowell-americas-got-talent-donald-trump.html</url>
+                <byline>By JOHN KOBLIN</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/arts/31COWELL1-SUB/31COWELL1-SUB-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:12:26-04:00</updated_date>
+                <created_date>2016-05-30T15:56:54-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Television</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet>
+                    <per_facet_item>Cowell, Simon</per_facet_item>
+                </per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>How Pop Music Left ‘American Idol’ Behind</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/05/arts/television/american-idol-final-season.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31COWELL1-SUB/31COWELL1-SUB-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Simon Cowell joins “America’s Got Talent” on Tuesday.</caption>
+                        <copyright>Trae Patton/NBC</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31COWELL1-SUB/31COWELL1-SUB-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>171</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Simon Cowell joins “America’s Got Talent” on Tuesday.</caption>
+                        <copyright>Trae Patton/NBC</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31COWELL1-SUB/31COWELL1-SUB-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Simon Cowell joins “America’s Got Talent” on Tuesday.</caption>
+                        <copyright>Trae Patton/NBC</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/arts/31COWELL1-SUB/31COWELL1-SUB-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Simon Cowell joins “America’s Got Talent” on Tuesday.</caption>
+                        <copyright>Trae Patton/NBC</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Science</section>
+                <subsection></subsection>
+                <title>Cave Rings Indicate Neanderthals Were Smarter Than We Thought</title>
+                <abstract>The two structures, found deep in a French cave and estimated to be 176,500 years old, were made from hundreds of stalagmites chopped to length.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/science/neanderthals-cave-rings-france.html</url>
+                <byline>By THE ASSOCIATED PRESS</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/science/31OBS7/31OBS7-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:15:16-04:00</updated_date>
+                <created_date>2016-05-30T15:39:27-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Neanderthal Man</des_facet_item>
+                    <des_facet_item>Archaeology and Anthropology</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet>
+                    <per_facet_item>Jaubert, Jacques</per_facet_item>
+                </per_facet>
+                <geo_facet>
+                    <geo_facet_item>France</geo_facet_item>
+                </geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Ancestors of Modern Humans Interbred With Extinct Hominins, Study Finds</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/22/science/neanderthals-interbred-with-humans-denisovans.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>In Neanderthals’ DNA, Ancient Humans May Have Left Genetic Mark</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/23/science/ancient-humans-may-have-left-a-genetic-mark-on-neanderthals.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Neanderthals in Europe Died Out Thousands of Years Sooner Than Some Thought, Study Says</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/08/21/science/neanderthals-in-europe-died-out-thousands-of-years-sooner-than-some-thought-study-says.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Who’re You Calling a Neanderthal?</suggested_link_text>
+                    <url>http://www.nytimes.com/2013/05/03/opinion/global/Who-Are-You-Calling-a-Neanderthal.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Neanderthals Leave Their Mark on Us</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/01/30/science/neanderthals-leave-their-mark-on-us.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Neanderthal Decorative Shells Found in Southeastern Spain</suggested_link_text>
+                    <url>http://www.nytimes.com/2010/01/12/science/12obneander.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31OBS7/31OBS7-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A scientist measuring stone rings that scientists think were left by Neanderthals in a cave in France.</caption>
+                        <copyright>Etienne Fabre/CNRS Photothèque, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31OBS7/31OBS7-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>128</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A scientist measuring stone rings that scientists think were left by Neanderthals in a cave in France.</caption>
+                        <copyright>Etienne Fabre/CNRS Photothèque, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31OBS7/31OBS7-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A scientist measuring stone rings that scientists think were left by Neanderthals in a cave in France.</caption>
+                        <copyright>Etienne Fabre/CNRS Photothèque, via Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31OBS7/31OBS7-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A scientist measuring stone rings that scientists think were left by Neanderthals in a cave in France.</caption>
+                        <copyright>Etienne Fabre/CNRS Photothèque, via Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Science</section>
+                <subsection></subsection>
+                <title>How, and Why, to Hunt the Red-Spotted Newt</title>
+                <abstract>First of all, newts and salamanders are just plain cool. Also, many species in the United States may be on the brink of a deadly fungal assault.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/science/salamanders-newts-fungus-extinction.html</url>
+                <byline>By JAMES GORMAN</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/science/31SALAMANDERJP4/31SALAMANDERJP4-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:18:38-04:00</updated_date>
+                <created_date>2016-05-30T15:21:17-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Salamanders</des_facet_item>
+                    <des_facet_item>Conservation of Resources</des_facet_item>
+                    <des_facet_item>Fungi</des_facet_item>
+                    <des_facet_item>Environment</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>United States Geological Survey</org_facet_item>
+                    <org_facet_item>Pennsylvania State University</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Grant, Evan</per_facet_item>
+                </per_facet>
+                <geo_facet>
+                    <geo_facet_item>United States</geo_facet_item>
+                </geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>U.S. Restricts Movement of Salamanders, for Their Own Good</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/13/science/us-restricts-movement-of-salamanders-for-their-own-good.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Infection That Devastates Amphibians, Already in Europe, Could Spread to U.S. </suggested_link_text>
+                    <url>http://www.nytimes.com/2014/10/31/science/salamanders-fungal-disease-europe-an-martel.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Frogs That Escaped Extinction</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/27/science/photos-frogs-threatened-extinction.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31SALAMANDERJP4/31SALAMANDERJP4-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A spotted newt in Unity, N.H.</caption>
+                        <copyright>Jim Cole/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31SALAMANDERJP4/31SALAMANDERJP4-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>106</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A spotted newt in Unity, N.H.</caption>
+                        <copyright>Jim Cole/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31SALAMANDERJP4/31SALAMANDERJP4-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A spotted newt in Unity, N.H.</caption>
+                        <copyright>Jim Cole/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/science/31SALAMANDERJP4/31SALAMANDERJP4-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>A spotted newt in Unity, N.H.</caption>
+                        <copyright>Jim Cole/Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Business Day</section>
+                <subsection>DealBook</subsection>
+                <title>MetLife Suit Raises Questions of Extent of Corporate Liability</title>
+                <abstract>Victims of a Ponzi scheme have sued MetLife, claiming it failed to oversee brokers selling products connected to the insurance giant.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/business/dealbook/metlife-suit-raises-questions-of-extent-of-corporate-liability.html</url>
+                <byline>By VICTORIA FINKLE</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/25/business/26DB-PONZI/26DB-PONZI-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T15:18:28-04:00</updated_date>
+                <created_date>2016-05-30T15:18:29-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Suits and Litigation (Civil)</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>MetLife Inc</org_facet_item>
+                </org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>MetLife Wins Battle to Remove ‘Too Big to Fail’ Label</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/31/business/metlife-wins-battle-to-remove-too-big-to-fail-label.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>For a Generalist, ‘Too Big to Fail’ May Be Too Tricky to Judge</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/12/business/dealbook/for-a-generalist-too-big-to-fail-may-be-too-tricky-to-judge.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Claims of a Ponzi Scheme in the Collapse of a Rare-Wine Seller</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/03/business/claims-of-a-ponzi-scheme-in-the-collapse-of-a-rare-wine-seller.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/25/business/26DB-PONZI/26DB-PONZI-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christine Ramirez is suing MetLife after losing her personal savings in a Ponzi scheme.</caption>
+                        <copyright>Ann Summa for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/25/business/26DB-PONZI/26DB-PONZI-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>143</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christine Ramirez is suing MetLife after losing her personal savings in a Ponzi scheme.</caption>
+                        <copyright>Ann Summa for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/25/business/26DB-PONZI/26DB-PONZI-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christine Ramirez is suing MetLife after losing her personal savings in a Ponzi scheme.</caption>
+                        <copyright>Ann Summa for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/25/business/26DB-PONZI/26DB-PONZI-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christine Ramirez is suing MetLife after losing her personal savings in a Ponzi scheme.</caption>
+                        <copyright>Ann Summa for The New York Times</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Movies</section>
+                <subsection></subsection>
+                <title>Asian-American Actors Take a Stand and Readers Respond</title>
+                <abstract>New York Times readers weighed in on an article about Asian-American actors fighting for visibility in Hollywood</abstract>
+                <url>http://www.nytimes.com/2016/05/31/movies/asian-american-actors-take-a-stand-and-readers-respond.html</url>
+                <byline>By MARIE TAE McDERMOTT</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/29/arts/29ASIANACTORS1/29ASIANACTORS1-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T15:07:08-04:00</updated_date>
+                <created_date>2016-05-30T15:07:08-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Race and Ethnicity</des_facet_item>
+                    <des_facet_item>Movies</des_facet_item>
+                    <des_facet_item>Actors and Actresses</des_facet_item>
+                    <des_facet_item>Television</des_facet_item>
+                    <des_facet_item>Discrimination</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Asian-American Actors Are Fighting for Visibility. They Will Not Be Ignored.</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/29/movies/asian-american-actors-are-fighting-for-visibility-they-will-not-be-ignored.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/arts/29ASIANACTORS1/29ASIANACTORS1-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>From left, Daniel Dae Kim, Constance Wu and BD Wong.</caption>
+                        <copyright>Todd Heisler/The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/arts/29ASIANACTORS1/29ASIANACTORS1-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>From left, Daniel Dae Kim, Constance Wu and BD Wong.</caption>
+                        <copyright>Todd Heisler/The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/arts/29ASIANACTORS1/29ASIANACTORS1-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>From left, Daniel Dae Kim, Constance Wu and BD Wong.</caption>
+                        <copyright>Todd Heisler/The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/arts/29ASIANACTORS1/29ASIANACTORS1-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>From left, Daniel Dae Kim, Constance Wu and BD Wong.</caption>
+                        <copyright>Todd Heisler/The New York Times</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>
+                    <![CDATA[Fashion & Style]]>
+                </section>
+                <subsection>Men’s Style</subsection>
+                <title>Are Men Ready for a Summer Grooming Kit?</title>
+                <abstract>And other stylish items for right now.</abstract>
+                <url>http://www.nytimes.com/interactive/2016/06/03/fashion/mens-style/men-summer-watch.html</url>
+                <byline>By ALEX TUDELA</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/06/03/fashion/03-Pulse-10/03-Pulse-10-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Interactive</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T15:00:28-04:00</updated_date>
+                <created_date>2016-05-30T15:00:28-04:00</created_date>
+                <published_date>2016-06-03T00:00:00-04:00</published_date>
+                <material_type_facet></material_type_facet>
+                <kicker>Pulse</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Shopping and Retail</des_facet_item>
+                    <des_facet_item>Summer (Season)</des_facet_item>
+                    <des_facet_item>Fashion and Apparel</des_facet_item>
+                    <des_facet_item>Bars and Nightclubs</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls></related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/06/03/fashion/03-Pulse-10/03-Pulse-10-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright></copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/06/03/fashion/03-Pulse-10/03-Pulse-10-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>119</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright></copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/06/03/fashion/03-Pulse-10/03-Pulse-10-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright></copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/06/03/fashion/03-Pulse-10/03-Pulse-10-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright></copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>U.S.</section>
+                <subsection></subsection>
+                <title>A Day for the Fallen</title>
+                <abstract>On this Memorial Day, people paid their respects to those who have served and lost their lives.</abstract>
+                <url>http://www.nytimes.com/slideshow/2016/05/30/us/a-day-for-the-fallen.html</url>
+                <byline></byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/30/us/20160531MEMORIALDAY-hp-slide-JW75/20160531MEMORIALDAY-hp-slide-JW75-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Slideshow</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T15:49:19-04:00</updated_date>
+                <created_date>2016-05-30T14:44:48-04:00</created_date>
+                <published_date>2016-05-30T00:00:00-04:00</published_date>
+                <material_type_facet></material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet></des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls></related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/30/us/20160531MEMORIALDAY-hp-slide-JW75/20160531MEMORIALDAY-hp-slide-JW75-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christian Jacobs at his father’s gravestone in Arlington National Cemetery in Virginia on Monday.</caption>
+                        <copyright>Carolyn Kaster/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/30/us/20160531MEMORIALDAY-hp-slide-JW75/20160531MEMORIALDAY-hp-slide-JW75-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christian Jacobs at his father’s gravestone in Arlington National Cemetery in Virginia on Monday.</caption>
+                        <copyright>Carolyn Kaster/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/30/us/20160531MEMORIALDAY-hp-slide-JW75/20160531MEMORIALDAY-hp-slide-JW75-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christian Jacobs at his father’s gravestone in Arlington National Cemetery in Virginia on Monday.</caption>
+                        <copyright>Carolyn Kaster/Associated Press</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/30/us/20160531MEMORIALDAY-hp-slide-JW75/20160531MEMORIALDAY-hp-slide-JW75-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Christian Jacobs at his father’s gravestone in Arlington National Cemetery in Virginia on Monday.</caption>
+                        <copyright>Carolyn Kaster/Associated Press</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Business Day</section>
+                <subsection>Media</subsection>
+                <title>In Gawker’s Legal Battles, a Focus on Defamation</title>
+                <abstract>Many who have sued Gawker said it overstepped the boundaries of privacy, slandered reputations or failed to do adequate reporting before posting articles.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/business/media/gawker-lawsuits.html</url>
+                <byline>By KATIE ROGERS and DANIELLE IVORY</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/business/31gawkersuits1/31gawkersuits1-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T14:44:15-04:00</updated_date>
+                <created_date>2016-05-30T14:44:16-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Libel and Slander</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>Gawker Media</org_facet_item>
+                    <org_facet_item>Gawker.com</org_facet_item>
+                </org_facet>
+                <per_facet></per_facet>
+                <geo_facet></geo_facet>
+                <related_urls>
+                    <link>
+                    <suggested_link_text>Gawker Case Calls Attention to a Go-To Hollywood Lawyer</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/30/business/media/gawker-case-calls-attention-to-a-go-to-hollywood-lawyer.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Nick Denton, Gawker Founder, Assails Peter Thiel as ‘Vindictive’ Foe</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/27/business/dealbook/gawker-sale-peter-thiel.html</url>
+                    </link>
+                    <link>
+                    <suggested_link_text>Peter Thiel, Tech Billionaire, Reveals Secret War With Gawker</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/26/business/dealbook/peter-thiel-tech-billionaire-reveals-secret-war-with-gawker.html</url>
+                    </link>
+                </related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/business/31gawkersuits1/31gawkersuits1-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>In 2014, when Shiva Ayyadurai married the actress Fran Drescher, Gizmodo ran a story with the headline: “If Fran Drescher Read Gizmodo She Would Not Have Married This Fraud.”</caption>
+                        <copyright>Mike Coppola/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/business/31gawkersuits1/31gawkersuits1-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>286</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>In 2014, when Shiva Ayyadurai married the actress Fran Drescher, Gizmodo ran a story with the headline: “If Fran Drescher Read Gizmodo She Would Not Have Married This Fraud.”</caption>
+                        <copyright>Mike Coppola/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/business/31gawkersuits1/31gawkersuits1-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>In 2014, when Shiva Ayyadurai married the actress Fran Drescher, Gizmodo ran a story with the headline: “If Fran Drescher Read Gizmodo She Would Not Have Married This Fraud.”</caption>
+                        <copyright>Mike Coppola/Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/business/31gawkersuits1/31gawkersuits1-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>In 2014, when Shiva Ayyadurai married the actress Fran Drescher, Gizmodo ran a story with the headline: “If Fran Drescher Read Gizmodo She Would Not Have Married This Fraud.”</caption>
+                        <copyright>Mike Coppola/Getty Images</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>Science</section>
+                <subsection></subsection>
+                <title>Letters to the Editor</title>
+                <abstract>Readers react to articles in Science Times.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/science/letters-to-the-editor.html</url>
+                <byline></byline>
+                <thumbnail_standard></thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T14:38:04-04:00</updated_date>
+                <created_date>2016-05-30T14:35:30-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>Letter</material_type_facet>
+                <kicker>Reactions</kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Ovarian Cancer</des_facet_item>
+                    <des_facet_item>Nuclear Weapons</des_facet_item>
+                </des_facet>
+                <org_facet></org_facet>
+                <per_facet></per_facet>
+                <geo_facet>
+                    <geo_facet_item>Hiroshima (Japan)</geo_facet_item>
+                    <geo_facet_item>Japan</geo_facet_item>
+                </geo_facet>
+                <related_urls></related_urls>
+                <multimedia></multimedia>
+            </news_item>
+            <news_item>
+                <section>World</section>
+                <subsection>Africa</subsection>
+                <title>South Sudan Struggles to Collect Taxes After Years of War</title>
+                <abstract>The world’s youngest country has, at least officially, emerged from civil war, but its government has done little to right a devastated economy.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/world/africa/south-sudan-struggles-to-collect-taxes-after-years-of-war.html</url>
+                <byline>By JACEY FORTIN</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/world/31SouthSudan-web1/31SouthSudan-web1-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:18:37-04:00</updated_date>
+                <created_date>2016-05-30T14:19:02-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Refugees and Displaced Persons</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>Sudan Peoples Liberation Movement</org_facet_item>
+                </org_facet>
+                <per_facet>
+                    <per_facet_item>Machar, Riek</per_facet_item>
+                    <per_facet_item>Kiir Mayardit, Salva</per_facet_item>
+                </per_facet>
+                <geo_facet>
+                    <geo_facet_item>South Sudan</geo_facet_item>
+                    <geo_facet_item>Juba (South Sudan)</geo_facet_item>
+                </geo_facet>
+                <related_urls></related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/world/31SouthSudan-web1/31SouthSudan-web1-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Displaced people waiting this month in Wau, South Sudan, to register with aid organizations. The country has, at least officially, emerged from more than two years of civil war that killed tens of thousands of people and displaced
+                            over two million.</caption>
+                        <copyright>Albert Gonzalez Farran/Agence France-Presse — Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/world/31SouthSudan-web1/31SouthSudan-web1-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Displaced people waiting this month in Wau, South Sudan, to register with aid organizations. The country has, at least officially, emerged from more than two years of civil war that killed tens of thousands of people and displaced
+                            over two million.</caption>
+                        <copyright>Albert Gonzalez Farran/Agence France-Presse — Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/world/31SouthSudan-web1/31SouthSudan-web1-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Displaced people waiting this month in Wau, South Sudan, to register with aid organizations. The country has, at least officially, emerged from more than two years of civil war that killed tens of thousands of people and displaced
+                            over two million.</caption>
+                        <copyright>Albert Gonzalez Farran/Agence France-Presse — Getty Images</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/31/world/31SouthSudan-web1/31SouthSudan-web1-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption>Displaced people waiting this month in Wau, South Sudan, to register with aid organizations. The country has, at least officially, emerged from more than two years of civil war that killed tens of thousands of people and displaced
+                            over two million.</caption>
+                        <copyright>Albert Gonzalez Farran/Agence France-Presse — Getty Images</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+            <news_item>
+                <section>N.Y. / Region</section>
+                <subsection></subsection>
+                <title>A Renegade Muscles In on Mister Softee’s Turf</title>
+                <abstract>In a recent battle for Midtown Manhattan, a prime selling spot, Mister Softee says he has been pushed out by New York Ice Cream.</abstract>
+                <url>http://www.nytimes.com/2016/05/31/nyregion/a-king-of-ice-cream-a-renegade-upstart-and-a-simmering-turf-war.html</url>
+                <byline>By ANDY NEWMAN and EMILY S. RUEB</byline>
+                <thumbnail_standard>https://static01.nyt.com/images/2016/05/29/multimedia/vn-icecream-wars/vn-icecream-wars-thumbStandard.jpg</thumbnail_standard>
+                <item_type>Article</item_type>
+                <source>The New York Times</source>
+                <updated_date>2016-05-30T17:00:40-04:00</updated_date>
+                <created_date>2016-05-30T13:55:20-04:00</created_date>
+                <published_date>2016-05-31T00:00:00-04:00</published_date>
+                <material_type_facet>News</material_type_facet>
+                <kicker></kicker>
+                <subheadline></subheadline>
+                <des_facet>
+                    <des_facet_item>Ice Cream and Frozen Desserts</des_facet_item>
+                    <des_facet_item>Food Trucks and Vendors</des_facet_item>
+                </des_facet>
+                <org_facet>
+                    <org_facet_item>Mister Softee</org_facet_item>
+                    <org_facet_item>New York Ice Cream</org_facet_item>
+                </org_facet>
+                <per_facet></per_facet>
+                <geo_facet>
+                    <geo_facet_item>Midtown Area (Manhattan, NY)</geo_facet_item>
+                </geo_facet>
+                <related_urls></related_urls>
+                <multimedia>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/multimedia/vn-icecream-wars/vn-icecream-wars-thumbStandard.jpg</url>
+                        <format>Standard Thumbnail</format>
+                        <height>75</height>
+                        <width>75</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Michael Nagle for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/multimedia/vn-icecream-wars/vn-icecream-wars-articleInline.jpg</url>
+                        <format>Normal</format>
+                        <height>127</height>
+                        <width>190</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Michael Nagle for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/multimedia/vn-icecream-wars/vn-icecream-wars-mediumThreeByTwo210.jpg</url>
+                        <format>mediumThreeByTwo210</format>
+                        <height>140</height>
+                        <width>210</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Michael Nagle for The New York Times</copyright>
+                    </multimedia_item>
+                    <multimedia_item>
+                        <url>https://static01.nyt.com/images/2016/05/29/multimedia/vn-icecream-wars/vn-icecream-wars-mediumThreeByTwo440.jpg</url>
+                        <format>mediumThreeByTwo440</format>
+                        <height>293</height>
+                        <width>440</width>
+                        <type>image</type>
+                        <subtype>photo</subtype>
+                        <caption></caption>
+                        <copyright>Michael Nagle for The New York Times</copyright>
+                    </multimedia_item>
+                </multimedia>
+            </news_item>
+        </results>
+    </result_set>
+</xml>	
