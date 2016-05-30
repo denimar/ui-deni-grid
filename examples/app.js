@@ -54,20 +54,30 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 			children: [
 				{
 					text: 'Traditional Way',
-					img: 'basic-array-grid.gif',
+					img: '',
 					path: '????',
 					description: '?????'
 				},
 				{
-					text: 'Pagging',
+					text: 'Pagging 1',
 					img: 'basic-array-grid.gif',
 					path: 'pjvorqas',
 					description: '?????'
 				},
 				{
-					text: 'Infinite Scroll',
+					text: 'Pagging 2',
 					img: 'basic-array-grid.gif',
+					path: 'f1pLcwLw',
+					description: '?????'
+				},
+				{
+					text: 'Infinite Scroll',
 					path: '????',
+					description: '?????'
+				},
+				{
+					text: 'Endless Paging',
+					path: 'tnn61pkm',
 					description: '?????'
 				},
 			],

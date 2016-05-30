@@ -1541,7 +1541,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				var limit = controller.options.paging.pageSize;
 				var start = (page - 1) * limit;
 
-				url += '&page=' + page + '&start=' + start + '&limit=' + limit;
+				url += '&page=' + page + '&' + controller.options.restConfig.start + '=' + start + '&' + controller.options.restConfig.limit + '=' + limit;
 			}	
 
 			//var loading = controller.wrapper.find('.ui-deni-grid-loading');
@@ -1552,12 +1552,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					//
 					if (controller.options.paging) {
 						//
-						controller.options.paging.dataLength = response.data.total;
+						controller.options.paging.dataLength = response.data[controller.options.restConfig.total];
+						
 						controller.options.paging.pageCount = Math.floor(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
 						//
-						controller.options.api.loadData(response.data.data);
-						deferred.resolve(response.data.data);
+						controller.options.api.loadData(response.data[controller.options.restConfig.data]);
+						deferred.resolve(response.data[controller.options.restConfig.data]);
 
 						//
 						controller.paging.find('.label-page-count').html('of ' + controller.options.paging.pageCount);
