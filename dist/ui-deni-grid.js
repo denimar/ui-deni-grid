@@ -1185,6 +1185,9 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		buttonLast.addClass('button');
 		buttonLast.addClass('button-last');
 		paging.append(buttonLast);
+		buttonLast.click(function(event) {
+			controller.options.api.setPageNumber(controller.options.paging.pageCount);
+		})
 
 		//
 		var separator3 = $(document.createElement('span'));
@@ -3846,13 +3849,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 */
 	me.load = function(controller) {
-		if (!controller.options.data) {
-			controller.bodyViewport.addClass('initilizing-data');
-		}	
-		controller.loading = true;
-
 		var deferred = $q.defer();
 		if (controller.options.url) {
+			if (!controller.options.data) {
+				controller.bodyViewport.addClass('initilizing-data');
+			}	
+			controller.loading = true;
 
 			var url = controller.options.url;
 
@@ -3900,9 +3902,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					controller.loading = false;
 				},
 				function(response) {
+					controller.loading = false;
 					deferred.reject(response.statusText);
     			});
 		} else {
+			controller.loading = false;
 			deferred.reject('"load" : To use load function is necessary set the url property.');
 		}
 

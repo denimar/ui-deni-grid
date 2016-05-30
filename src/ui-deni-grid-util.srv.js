@@ -1125,6 +1125,9 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		buttonLast.addClass('button');
 		buttonLast.addClass('button-last');
 		paging.append(buttonLast);
+		buttonLast.click(function(event) {
+			controller.options.api.setPageNumber(controller.options.paging.pageCount);
+		})
 
 		//
 		var separator3 = $(document.createElement('span'));
