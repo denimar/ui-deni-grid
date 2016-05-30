@@ -61,7 +61,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 				{
 					text: 'Pagging',
 					img: 'basic-array-grid.gif',
-					path: '????',
+					path: 'pjvorqas',
 					description: '?????'
 				},
 				{
