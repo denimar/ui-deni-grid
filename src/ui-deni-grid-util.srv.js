@@ -544,9 +544,33 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 		//Paging
 		if (controller.options.paging) {
+			if (controller.options.paging === true) {
+				controller.options.paging = {};
+			}
+			
 			controller.options.paging.currentPage = controller.options.paging.currentPage || 1;
 			controller.options.paging.pageSize = controller.options.paging.pageSize || 50;
 		}
+		
+		////////////////////////////////////////////////////////////////////////////////////////
+		//restConfig
+		////////////////////////////////////////////////////////////////////////////////////////		
+		var restConfig = controller.options.restConfig;
+		var restConfigDefaults = {
+			data: 'data',
+			total: 'total',
+			start: 'start',
+			limit: 'limit'			
+		}
+		if (restConfig) {
+			angular.extend(restConfigDefaults, restConfig);
+		} else {
+			restConfig = restConfigDefaults;
+		}
+		controller.options.restConfig = restConfig;
+		////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////		
+		
 	}
 
 	/**

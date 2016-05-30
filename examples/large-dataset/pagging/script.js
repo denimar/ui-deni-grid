@@ -6,9 +6,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
   $scope.gridOptions = {
     url: 'http://server-denimar.rhcloud.com/examples/data?type=employees',
-    paging: {
-        pageSize: 50
-    },
+    paging: true,
     columns: [{
       header: 'Name',
       name: 'name',
