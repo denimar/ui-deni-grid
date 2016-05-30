@@ -1,6 +1,6 @@
-angular.module('myApp', ['app.scripts.deni-modal.mdl']);
+angular.module('myApp', []);
 
-angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
+angular.module('myApp').controller('MainCtrl', function($scope) {
 
 	$scope.examples = [
 		{
@@ -276,6 +276,9 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 	}
 
 	$scope.itemClick = function(item) {
+		//window.open('http://jsfiddle.net/denimar/' + item.path + '/embedded/result,html,js,css,resources/', '_blank');
+		window.open('preview.html?path=' + item.path + '&title=' + item.text + '&description=' + item.description, '_blank');
+		/*
 		//deniModalSrv.ghost('Title test', "Messages Here!");
 
 		var path = item.path || '';
@@ -294,8 +297,8 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 		                   '</div>';
 
 	 	var config = {
-			width: '800px',
-			height: '600px',
+			width: '950px',
+			height: '700px',
 			position: deniModalSrv.POSITION.CENTER,
 			modal: true,
 			htmlTemplate: htmlTemplate,
@@ -304,6 +307,7 @@ angular.module('myApp').controller('MainCtrl', function($scope, deniModalSrv) {
 
 		var objWindow = deniModalSrv.createWindow(config);		
 		objWindow.show();
+		*/
 	}
 
 

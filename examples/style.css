@@ -75,28 +75,3 @@ a:hover {text-decoration:underline; color:#24478f;}
 	font-size: 12px;
 	text-align: center;
 }
-
-.modal-exemple {
-    background-color: rgb(243,245,246);	
-	width: 100%;
-    height: 100%;
-    padding: 4px;
-    position: relative;
-}
-
-.modal-exemple-title {
-    display: flex;
-    width: 100%;
-	color: white;
-    background-color: #5BC0DE;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.modal-exemple-iframe {
-    height: 90%;
-    position: relative;    
-    position: relative;
-    display: flex;
-    width: 100%;
-}
