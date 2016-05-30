@@ -1506,20 +1506,77 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 *
 	 */
+	me.getPageNumber = function(controller) {
+		return controller.options.paging.currentPage;
+	}
+
+	/**
+	 *
+	 *
+	 */
+	me.setPageNumber = function(controller, pageNumber) {
+		controller.options.paging.currentPage = pageNumber;
+		controller.paging.find('input.input-page-number').val(pageNumber);
+		controller.options.api.reload();
+	}
+
+	/**
+	 *
+	 *
+	 */
 	me.load = function(controller) {
-		controller.bodyViewport.addClass('loading-data');
-		document.title = 'loading-data';
+		if (!controller.options.data) {
+			controller.bodyViewport.addClass('initilizing-data');
+		}	
+		controller.loading = true;
 
 		var deferred = $q.defer();
 		if (controller.options.url) {
-			$http.get(controller.options.url)
+
+			var url = controller.options.url;
+
+			if (controller.options.paging) {
+				var page = controller.options.paging.currentPage;
+				controller.paging.find('input.input-page-number').val(page);
+				var limit = controller.options.paging.pageSize;
+				var start = (page - 1) * limit;
+
+				url += '&page=' + page + '&start=' + start + '&limit=' + limit;
+			}	
+
+			//var loading = controller.wrapper.find('.ui-deni-grid-loading');
+			//loading.css('display', 'block');
+
+			$http.get(url)
 				.then(function(response) {
-					controller.options.api.loadData(response.data);
-					deferred.resolve(response.data);
+					//
+					if (controller.options.paging) {
+						//
+						controller.options.paging.dataLength = response.data.total;
+						controller.options.paging.pageCount = Math.floor(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
-					controller.bodyViewport.removeClass('loading-data');
-					document.title = '';
+						//
+						controller.options.api.loadData(response.data.data);
+						deferred.resolve(response.data.data);
 
+						//
+						controller.paging.find('.label-page-count').html('of ' + controller.options.paging.pageCount);
+
+						//
+						var limit = controller.options.paging.pageSize;
+						var start = (page - 1) * limit;
+						var end = start + controller.options.paging.pageSize;
+						controller.paging.find('.label-displaying').html(start + ' - ' + end);
+
+						controller.paging.find('.label-record-count').html(controller.options.paging.dataLength + ' records');
+						
+					} else {
+						controller.options.api.loadData(response.data);
+						deferred.resolve(response.data.data);
+					}
+
+					controller.bodyViewport.removeClass('initilizing-data');					
+					controller.loading = false;
 				},
 				function(response) {
 					deferred.reject(response.statusText);
@@ -1530,6 +1587,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		return deferred.promise;
 	}
+
+	/**
+	 *
+	 *
+	 */
+	me.reload = function(controller) {
+		return me.load(controller);
+	}
+
 
 	/**
 	 *

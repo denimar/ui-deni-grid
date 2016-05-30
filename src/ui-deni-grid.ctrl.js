@@ -3,11 +3,14 @@
  *
  *
  */
-angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $element, uiDeniGridSrv, uiDeniGridUtilSrv) {
+angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $element, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants) {
 	var me = this;
 	me.scope = $scope;
 	me.element = $element;	
 	me.checkedRecords = [];
+
+	//
+	me.loading = false;	
 
     //
     me.wrapper = me.element.find('.ui-deni-grid-wrapper');
@@ -57,6 +60,9 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	me.fixedColsFooterContainer = me.footerViewport.find('.ui-footer-container');
     // *************************************************************************
     // *************************************************************************
+
+    //Paging
+	me.paging = me.viewport.find('.ui-deni-grid-paging');    
 
 	//Set the default options talking to viewCtrl inside of it
 	uiDeniGridUtilSrv.setDefaultOptions(me, me.options);
@@ -134,6 +140,12 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	}
 	///////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////	
+
+	//Paging
+	if (me.options.paging) {
+		me.paging.css('height', uiDeniGridConstants.PAGING_HEIGHT);
+		uiDeniGridUtilSrv.createPagingItems(me, me.paging, me.options.paging);
+	}
 
 	me.searchInfo = null; //hold values for render the field values (realce)
 	me.searching = false;
@@ -233,6 +245,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *	
 		 *
 		 */		 
+		getPageNumber: function() {
+			return uiDeniGridSrv.getPageNumber(me);
+		},
+
+		/**
+		 *	
+		 *
+		 */		 
 		getRowHeight: function() {
 			return uiDeniGridSrv.getRowIndex(me);
 		},
@@ -322,6 +342,15 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		/**
 		 *	
 		 *
+		 */
+		reload: function() {
+			uiDeniGridSrv.reload(me);
+		},
+
+
+		/**
+		 *	
+		 *
 		*/		 
         resolveRowElement: function(row) {
         	return uiDeniGridSrv.resolveRowElement(me, row);        	
@@ -392,6 +421,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
         selectRow: function(row, preventSelecionChange, scrollIntoView) {
         	uiDeniGridSrv.selectRow(me, row, preventSelecionChange, scrollIntoView);
         },
+
+		/**
+		 *	
+		 *
+		 */		 
+		setPageNumber: function(pageNumber) {
+			uiDeniGridSrv.setPageNumber(me, pageNumber);
+		},
 
 		/**
 		 *	

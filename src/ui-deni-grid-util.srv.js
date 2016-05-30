@@ -420,6 +420,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 */
 		controller.options.hideHeaders = (controller.options.hideHeaders === true) || (angular.isDefined(controller.options.rowTemplate)) || (angular.isDefined(controller.options.cardView));
 
+		//CardView
 		if (controller.options.cardView) {
 			controller.options.rowHeight = controller.options.cardView.rowHeight || '150px';
 		}	
@@ -541,6 +542,11 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////		
 
+		//Paging
+		if (controller.options.paging) {
+			controller.options.paging.currentPage = controller.options.paging.currentPage || 1;
+			controller.options.paging.pageSize = controller.options.paging.pageSize || 50;
+		}
 	}
 
 	/**
@@ -555,6 +561,11 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		//Showing column header?
 		if (controller.headerViewportWrapper.css('display') != 'none') {
 			otherDivsheight += controller.headerViewportWrapper.height();
+		}
+
+		//Paging?
+		if (controller.options.paging) {
+			controller.container.css('height', 'calc(100% - ' +  uiDeniGridConstants.PAGING_HEIGHT + ')');
 		}
 
 		//Showing footer?
@@ -1031,6 +1042,131 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 			footerContainer.html(valueToRender);
 		}	
 
+	}
+
+	me.createPagingItems = function(controller, paging, pagingOptions) {
+		//First Page Button
+		var buttonFirst = $(document.createElement('span'));
+		buttonFirst.addClass('button');
+		buttonFirst.addClass('button-first');
+		paging.append(buttonFirst);
+		buttonFirst.click(function(event) {
+			controller.options.api.setPageNumber(1);
+		})
+
+		//Previous Page Button
+		var buttonPrev = $(document.createElement('span'));
+		buttonPrev.addClass('button');
+		buttonPrev.addClass('button-prev');
+		paging.append(buttonPrev);
+		buttonPrev.click(function(event) {
+			controller.options.api.setPageNumber(controller.options.api.getPageNumber() - 1);
+			checkDisableButtonsPageNavigation();
+		})
+
+		//
+		var separator1 = $(document.createElement('span'));
+		separator1.addClass('separator');
+		paging.append(separator1);
+
+		//
+		var labelPageNumber = $(document.createElement('span'));
+		labelPageNumber.addClass('label-page-number');
+		labelPageNumber.html('Page');
+		paging.append(labelPageNumber);
+
+		//
+		var inputPageNumber = $(document.createElement('input'));
+		inputPageNumber.addClass('input-page-number');
+		inputPageNumber.attr('type', 'text');
+		inputPageNumber.attr('value', controller.options.paging.currentPage);
+		paging.append(inputPageNumber);
+		inputPageNumber.keydown(function(event) {
+			if (event.keyCode == 13) { //Return
+				var pageNumber = parseInt($(event.target).val());
+				if ((pageNumber < 1) || (pageNumber > controller.options.paging.pageCount)) {
+					console.warn('Invalid page number: (' + pageNumber + ')');
+					controller.options.api.setPageNumber(controller.options.api.getPageNumber());
+				} else {
+					controller.options.api.setPageNumber(pageNumber);
+				}	
+
+				$(event.target).select();							
+			}	
+		});
+
+		//
+		inputPageNumber.focusin(function(event) {
+			$(event.target).select();
+		});
+
+		//
+		var labelPageCount = $(document.createElement('span'));
+		labelPageCount.addClass('label-page-count');
+		//labelPageCount.html('of 156');
+		paging.append(labelPageCount);
+
+		//
+		var separator2 = $(document.createElement('span'));
+		separator2.addClass('separator');
+		paging.append(separator2);
+
+		//Next Page Button
+		var buttonNext = $(document.createElement('span'));
+		buttonNext.addClass('button');
+		buttonNext.addClass('button-next');
+		paging.append(buttonNext);
+		buttonNext.click(function(event) {
+			controller.options.api.setPageNumber(controller.options.api.getPageNumber() + 1);
+		})
+
+		//
+		var buttonLast = $(document.createElement('span'));
+		buttonLast.addClass('button');
+		buttonLast.addClass('button-last');
+		paging.append(buttonLast);
+
+		//
+		var separator3 = $(document.createElement('span'));
+		separator3.addClass('separator');
+		paging.append(separator3);
+
+		//
+		var refreshButton = $(document.createElement('span'));
+		refreshButton.addClass('button');
+		refreshButton.addClass('button-refresh');
+		paging.append(refreshButton);
+		refreshButton.click(function(event) {
+			controller.options.api.reload();
+		})
+
+		//
+		paging.find('.button').mouseenter(function(event) {
+			$(event.target).addClass('hover');
+		});
+
+		//
+		paging.find('.button').mouseout(function(event) {
+			$(event.target).removeClass('hover');
+		});
+
+		//
+		var labelRecordCount = $(document.createElement('span'));
+		labelRecordCount.addClass('label-record-count');
+		//labelRecordCount.html('654 records');
+		paging.append(labelRecordCount);
+
+		//
+		var separator4 = $(document.createElement('span'));
+		separator4.addClass('separator');
+		separator4.css('float', 'right');
+		paging.append(separator4);
+
+		//
+		var labelDisplaying = $(document.createElement('span'));
+		labelDisplaying.addClass('label-displaying');
+		//labelDisplaying.html('Displaying records 51 - 100 of 6679');
+		paging.append(labelDisplaying);
 	}
 
 	/**

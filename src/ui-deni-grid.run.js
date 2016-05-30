@@ -21,7 +21,7 @@ angular.module('ui-deni-grid').run(['$templateCache', function($templateCache) {
 		'                                </div>\n' +
 		'                            </div>\n' +		
 		'                        </div>\n' +
-		                     ///////////////////////////////////////////////
+		                         ///////////////////////////////////////////////
 
 			    	             // BODY ///////////////////////////////////////
 		'                        <div class="ui-body-viewport-wrapper">\n' +  
@@ -77,6 +77,12 @@ angular.module('ui-deni-grid').run(['$templateCache', function($templateCache) {
 		             ///////////////////////////////////////////////////////////					
 
 		'        </div>\n' +
+		'        <div class="ui-deni-grid-paging">\n' +		
+		'        </div>\n' +		
+		'    </div>\n' +
+		'    <div class="ui-deni-grid-loading ng-hide" ng-show="ctrl.loading">\n' +
+		'        <div class="image"></div>\n' +		
+		'        <div class="text">Loading...</div>\n' +				
 		'    </div>\n' +
 		'</div>'
 

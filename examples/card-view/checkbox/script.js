@@ -18,7 +18,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
                   '    <div><b>Email : </b>{email}</div>\n' +
                   '  </div>\n' +
                   '</div>',
-		  rowHeight: 180, //default=80
+		  rowHeight: 180, //default=150
 	  },
     listeners: {
       oncheckboxchange: function(record, checkedRecords, checkbox) {

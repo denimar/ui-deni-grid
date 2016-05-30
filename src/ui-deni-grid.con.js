@@ -24,6 +24,10 @@ angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
 	DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT: '18px',
 
 	//
-	DEFAULT_ROW_HEIGHT: '22px'
+	DEFAULT_ROW_HEIGHT: '22px',
+
+	//
+	PAGING_HEIGHT: '26px'
+
 
 });	
