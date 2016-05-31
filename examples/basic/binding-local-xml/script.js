@@ -6,6 +6,14 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
 		url: 'news.xml',
+        restConfig: {
+            type: 'xml',
+            data: 'results',
+            dataItems: 'news_item',
+            total: 'num_results',
+            start: 'offset',
+            limit: 'limit'
+        },  
         columns: [
             { 
                 header:'Name', 

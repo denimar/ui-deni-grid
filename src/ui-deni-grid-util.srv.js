@@ -547,8 +547,8 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 			if (controller.options.paging === true) {
 				controller.options.paging = {};
 			}
-			
-			controller.options.paging.currentPage = controller.options.paging.currentPage || 1;
+
+			controller.options.paging.type = controller.options.paging.type || 'json';
 			controller.options.paging.pageSize = controller.options.paging.pageSize || 50;
 		}
 		
@@ -557,6 +557,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		////////////////////////////////////////////////////////////////////////////////////////		
 		var restConfig = controller.options.restConfig;
 		var restConfigDefaults = {
+			type: 'json',
 			data: 'data',
 			total: 'total',
 			start: 'start',
