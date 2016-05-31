@@ -13,16 +13,28 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					description: 'The simplest way to show data using the ui-deni-grid'
 				},
 				{
-					text: 'Binding to XML',
-				},
-				{
-					text: 'Binding to remote XML',
-				},
-				{
 					text: 'Binding to Local JSON',
+					img: 'basic-array-grid.gif',					
+					path: '88jxkb1w',
+					description: '????'
 				},
 				{
 					text: 'Binding to remote JSON',
+					img: 'basic-array-grid.gif',					
+					path: 'mc6a24xb',
+					description: '????'
+				},
+				{
+					text: 'Binding to Local XML',
+					img: 'basic-array-grid.gif',					
+					path: 'otey42jd',
+					description: '????'
+				},
+				{
+					text: 'Binding to remote XML',
+					img: 'basic-array-grid.gif',					
+					path: '0u7h2dxd',
+					description: '????'
 				},
 			],
 		},		
