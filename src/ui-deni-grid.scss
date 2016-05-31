@@ -82,12 +82,11 @@ ui-deni-grid {
 				width: 100%;		
 				//height: calc(100% - 24px);
 				height: 100%;
-				position: relative;
 				border: 0;
 				font-size: 11px;
 				overflow-y: hidden;
 				overflow-x: hidden;
-				/*display: inline-flex;*/
+				display: inline-flex;
 				box-sizing: border-box;
 				position: relative;
 

@@ -66,18 +66,17 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Traditional Way',
-					img: '',
 					path: '????',
 					description: '?????'
 				},
 				{
-					text: 'Pagging 1',
+					text: 'Paging 1',
 					img: 'basic-array-grid.gif',
 					path: 'pjvorqas',
 					description: '?????'
 				},
 				{
-					text: 'Pagging 2',
+					text: 'Paging 2',
 					img: 'basic-array-grid.gif',
 					path: 'f1pLcwLw',
 					description: '?????'
