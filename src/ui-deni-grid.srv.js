@@ -1827,6 +1827,13 @@ function xml2json(xml, tab) {
 					} else {
 						responseData = response.data;
 					}
+					if (angular.isArray(responseData)) {
+						responseData = {
+							success: true,
+							data: responseData,
+							total: responseData.length
+						};
+					}
 					
 					//
 					if (controller.options.paging) {
