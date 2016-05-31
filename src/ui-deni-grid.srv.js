@@ -1521,20 +1521,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	}
 
 
-	var _getPropertyXML = function(properties, item, parentProperty) {
-		var property = item.nodeName.toLowerCase();
-		if (parentProperty) {
-			property = parentProperty + '.' + property;
-		}
-		if (properties.indexOf(property) == -1) {
-			properties.push(property);
-
-			for (var index = 0 ; index < item.children.length ; index++) {
-				_getPropertyXML(properties, item.children[index], property);
-			}			
-		}	
-	}
-
 /*	This work is licensed under Creative Commons GNU LGPL License.
 
 	License: http://creativecommons.org/licenses/LGPL/2.1/
@@ -1542,6 +1528,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	Author:  Stefan Goessner/2006
 	Web:     http://goessner.net/ 
 */
+/*
 function xml2json(xml, tab) {
    var X = {
       toObj: function(xml) {
@@ -1713,32 +1700,96 @@ function xml2json(xml, tab) {
 	      alert("cannot parse xml string!");
 	   return dom;
 	}
+	*/
+
+	var _getPropertyXML = function(properties, item, parentProperty) {
+		var property = item.nodeName.toLowerCase();
+		if (parentProperty) {
+			property = parentProperty + '.' + property;
+		}
+		if (properties.indexOf(property) == -1) {
+			properties.push(property);
+
+			for (var index = 0 ; index < item.children.length ; index++) {
+				_getPropertyXML(properties, item.children[index], property);
+			}			
+		}	
+	}
+
+	/**
+	 *
+	 *
+	 */
+	var isArrayItem = function(itemToBeAnalyzed) {
+		if ((angular.isDefined(itemToBeAnalyzed.children)) && (itemToBeAnalyzed.children.length > 0)) {
+			var propName = '';
+			for (var i = 0 ; i < itemToBeAnalyzed.children.length ; i++) {
+				if (propName == '') {
+					propName = itemToBeAnalyzed.children[i].nodeName.toLowerCase();
+				} else {
+					if (itemToBeAnalyzed.children[i].nodeName.toLowerCase() != propName) {
+						return false;
+					}
+				}
+			}
+			
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 *
+	 *
+	 */
+	var _getRecordXML = function(records, item, parentNode) {
+		var record = parentNode ? parentNode : {};
+		
+		for (var index = 0 ; index < item.children.length ; index++) {
+			var property = item.children[index];
+			var propertyName = property.nodeName.toLowerCase();			
+			
+			if (property.children.length == 0) {
+				record[propertyName] = property.textContent;
+			} else {
+				if (isArrayItem(property)) {
+					var valueArray = [];
+					for (var childIndex = 0 ; childIndex < property.children.length ; childIndex++) {
+						_getRecordXML(valueArray, property.children[childIndex]);
+					}
+					record[propertyName] = valueArray;
+				} else {
+					record[propertyName] = {};
+					_getRecordXML(records, property, record[propertyName])
+				}	
+			}				
+		}	
+		if (!angular.isDefined(parentNode)) {
+			records.push(record);
+		}
+	}
+	
 
 	/**
 	 *
 	 *
 	 */
 	var _xmlToJson = function(controller, xml) {
-		var dom = parseXml(xml);
-	    var json = xml2json(dom);
-		console.info(json);
-
-
+		var xmlData = $(xml);
 		var items = xmlData.find(controller.options.restConfig.data).find(controller.options.restConfig.dataItems);		
-		console.log(items);
-
-		var json = xmlToJson(items);
-		console.info(JSON.stringify(json));
-		/*
-		var xmlData = $(data);
-		var items = xmlData.find(controller.options.restConfig.data).find(controller.options.restConfig.dataItems);		
-		var properties = [];
-		for (var index = 0 ; index < items[0].children.length ; index++) {
-			_getPropertyXML(properties, items[0].children[index]);
+		var records = [];
+		for (var index = 0 ; index < items.length ; index++) {
+			_getRecordXML(records, items[index]);
 		}
+		
+		var jsonReturn = {
+			success: true,
+		};
+		jsonReturn[controller.options.restConfig.data] = records;
+		jsonReturn[controller.options.restConfig.total] = parseInt(xmlData.find(controller.options.restConfig.total).text());		
 
-		return properties;
-		*/
+		return jsonReturn;
 	}
 
 	/**
@@ -1774,26 +1825,26 @@ function xml2json(xml, tab) {
 					if (controller.options.restConfig.type == 'xml') {
 						responseData = _xmlToJson(controller, response.data);
 					} else {
-						responseData = response.data[controller.options.restConfig.data];
+						responseData = response.data;
 					}
 					
 					//
 					if (controller.options.paging) {
 						//
-						controller.options.paging.dataLength = response.data[controller.options.restConfig.total];
+						controller.options.paging.dataLength = responseData[controller.options.restConfig.total];
 						
 						controller.options.paging.pageCount = Math.floor(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
 						//
-						controller.options.api.loadData(responseData);
-						deferred.resolve(responseData);
+						controller.options.api.loadData(responseData[controller.options.restConfig.data]);
+						deferred.resolve(responseData[controller.options.restConfig.data]);
 
 						//
 						controller.paging.find('.label-page-count').html('of ' + controller.options.paging.pageCount);
 
 						//
 						var limit = controller.options.paging.pageSize;
-						var start = (page - 1) * limit;
+						var start = (controller.options.paging.currentPage - 1) * limit;
 						var end = start + controller.options.paging.pageSize;
 						controller.paging.find('.label-displaying').html(start + ' - ' + end);
 
@@ -1801,8 +1852,8 @@ function xml2json(xml, tab) {
 						
 					} else {
 						//
-						controller.options.api.loadData(responseData);
-						deferred.resolve(responseData);
+						controller.options.api.loadData(responseData[controller.options.restConfig.data]);
+						deferred.resolve(responseData[controller.options.restConfig.data]);
 					}
 
 					controller.bodyViewport.removeClass('initilizing-data');					

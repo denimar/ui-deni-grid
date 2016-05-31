@@ -550,6 +550,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 			controller.options.paging.type = controller.options.paging.type || 'json';
 			controller.options.paging.pageSize = controller.options.paging.pageSize || 50;
+			controller.options.paging.currentPage = controller.options.paging.currentPage || 1;
 		}
 		
 		////////////////////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		url: 'news.xml',
+		url: 'https://api.nytimes.com/svc/news/v3/content/all/all.xml?api-key=8c0e3666087b43589789ee6b15eb5acb',
         restConfig: {
             type: 'xml',
             data: 'results',
@@ -14,6 +14,9 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
             start: 'offset',
             limit: 'limit'
         },  
+		paging: {
+			pageSize: 20
+		},
 		columns: [{
 		  header: 'Type',
 		  name: 'item_type',

@@ -1,0 +1,1356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result_set>
+    <status>OK</status>
+    <copyright>Copyright (c) 2016 The New York Times Company.  All Rights Reserved.</copyright>
+    <num_results>78082</num_results>
+    <results>
+        <news_item>
+            <section>U.S.</section>
+            <subsection>Politics</subsection>
+            <title>Obama, Riding High, Could Be the Ace in Clinton’s Pocket</title>
+            <abstract>The president may be able to help most by using his renewed popularity to rouse the elements of the Democratic coalition that twice elected him.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/us/politics/obama-riding-high-could-be-the-ace-in-clintons-pocket.html</url>
+            <byline>By JOHN HARWOOD</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/world/01Letter-web/01Letter-web-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:16:25-04:00</updated_date>
+            <created_date>2016-05-31T10:16:25-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>Letter From America</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Presidential Election of 2016</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet>
+                <per_facet_item>Obama, Barack</per_facet_item>
+                <per_facet_item>Clinton, Hillary Rodham</per_facet_item>
+                <per_facet_item>Trump, Donald J</per_facet_item>
+            </per_facet>
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Letter-web/01Letter-web-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>President Obama has seen his approval rating creep past 50 percent this year. For Democrats hoping to hold the White House, that has come at just the right time.</caption>
+                    <copyright>Zach Gibson/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Letter-web/01Letter-web-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>President Obama has seen his approval rating creep past 50 percent this year. For Democrats hoping to hold the White House, that has come at just the right time.</caption>
+                    <copyright>Zach Gibson/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Letter-web/01Letter-web-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>President Obama has seen his approval rating creep past 50 percent this year. For Democrats hoping to hold the White House, that has come at just the right time.</caption>
+                    <copyright>Zach Gibson/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Letter-web/01Letter-web-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>President Obama has seen his approval rating creep past 50 percent this year. For Democrats hoping to hold the White House, that has come at just the right time.</caption>
+                    <copyright>Zach Gibson/The New York Times</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Business Day</section>
+            <subsection />
+            <title>Wall St. Is Mixed in Early Trading</title>
+            <abstract>Consumer spending in the United States rose 1 percent in April, the largest amount in more than six years, led by a big jump in purchases of autos and other durable goods.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/business/daily-stock-market-activity.html</url>
+            <byline>By THE ASSOCIATED PRESS</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2014/07/31/business/energy-environment/daily-stock-chart-1452802675988/daily-stock-chart-1452802675988-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:10:24-04:00</updated_date>
+            <created_date>2016-05-31T10:10:25-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Stocks and Bonds</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2014/07/31/business/energy-environment/daily-stock-chart-1452802675988/daily-stock-chart-1452802675988-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Spencer Platt/Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2014/07/31/business/energy-environment/daily-stock-chart-1452802675988/daily-stock-chart-1452802675988-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Spencer Platt/Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2014/07/31/business/energy-environment/daily-stock-chart-1452802675988/daily-stock-chart-1452802675988-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Spencer Platt/Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2014/07/31/business/energy-environment/daily-stock-chart-1452802675988/daily-stock-chart-1452802675988-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Spencer Platt/Getty Images</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>Asia Pacific</subsection>
+            <title>As North Korean Missile Launch Fails, Pyongyang Official Visits Beijing</title>
+            <abstract>Ri Su-yong, who was recently promoted to the Politburo in North Korea, is said to want to discuss the recent congress of the Workers’ Party.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/asia/china-north-korea-ri-su-yong.html</url>
+            <byline>By JANE PERLEZ</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/world/01CHINA-web1/01CHINA-web1-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:11:21-04:00</updated_date>
+            <created_date>2016-05-31T09:49:37-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>International Relations</des_facet_item>
+                <des_facet_item>Embargoes and Sanctions</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet>
+                <per_facet_item>Ri Su-yong</per_facet_item>
+            </per_facet>
+            <geo_facet>
+                <geo_facet_item>North Korea</geo_facet_item>
+                <geo_facet_item>China</geo_facet_item>
+            </geo_facet>
+            <related_urls>
+                <link>
+                    <suggested_link_text>A Hole in North Korean Sanctions Big Enough for Coal, Oil and Used Pianos</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/01/world/asia/north-korea-china-sanctions-trade.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Q. and A.: Hyeonseo Lee on North Korean Defectors in China</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/01/world/asia/china-north-korea-defector-hyeonseo-lee.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>In Hail of Bullets and Fire, North Korea Killed Official Who Wanted Reform</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/13/world/asia/north-korea-executions-jang-song-thaek.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>U.S. and China Agree on Proposal for Tougher North Korea Sanctions</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/26/world/asia/north-korea-sanctions.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>To Build a Ski Resort Under U.N. Sanctions, North Korea Turned to China</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/06/world/asia/north-korea-china-sanctions-luxury.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01CHINA-web1/01CHINA-web1-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Ri Su-yong, a vice chairman of the central committee of North Korea’s ruling party, arriving at Beijing’s international airport on Tuesday.</caption>
+                    <copyright>Yonhap/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01CHINA-web1/01CHINA-web1-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>239</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Ri Su-yong, a vice chairman of the central committee of North Korea’s ruling party, arriving at Beijing’s international airport on Tuesday.</caption>
+                    <copyright>Yonhap/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01CHINA-web1/01CHINA-web1-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Ri Su-yong, a vice chairman of the central committee of North Korea’s ruling party, arriving at Beijing’s international airport on Tuesday.</caption>
+                    <copyright>Yonhap/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01CHINA-web1/01CHINA-web1-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Ri Su-yong, a vice chairman of the central committee of North Korea’s ruling party, arriving at Beijing’s international airport on Tuesday.</caption>
+                    <copyright>Yonhap/European Pressphoto Agency</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Technology</section>
+            <subsection />
+            <title>Software for Stopping Freedom</title>
+            <abstract>Software companies are selling spying and hacking tools to governments interested in quashing human-rights workers, political dissidents and journalists.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/technology/software-for-stopping-freedom.html</url>
+            <byline>By QUENTIN HARDY</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2011/11/30/technology/bits-daily-report/bits-daily-report-thumbStandard-v5.png</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:35:35-04:00</updated_date>
+            <created_date>2016-05-31T09:35:36-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>Bits</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Cyberattacks and Hackers</des_facet_item>
+                <des_facet_item>Computers and the Internet</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2011/11/30/technology/bits-daily-report/bits-daily-report-thumbStandard-v5.png</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright />
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2011/11/30/technology/bits-daily-report/bits-daily-report-articleInline-v5.png</url>
+                    <format>Normal</format>
+                    <height>126</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright />
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2011/11/30/technology/bits-daily-report/bits-daily-report-mediumThreeByTwo210-v4.png</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright />
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2011/11/30/technology/bits-daily-report/bits-daily-report-mediumThreeByTwo440-v3.png</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright />
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Technology</section>
+            <subsection>Personal Tech</subsection>
+            <title>Getting Up Close With the iOS Camera</title>
+            <abstract>Apple’s built-in camera app for its iOS devices includes controls for zooming and other fine-tuning — if you know where to tap.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/technology/personaltech/getting-up-close-with-the-ios-camera.html</url>
+            <byline>By J. D. BIERSDORFER</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/technology/personaltech/01techtipwebART/01techtipwebART-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:33:16-04:00</updated_date>
+            <created_date>2016-05-31T09:33:16-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>Question</material_type_facet>
+            <kicker>Tech Tip</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>iOS (Operating System)</des_facet_item>
+                <des_facet_item>Cameras</des_facet_item>
+                <des_facet_item>Mobile Applications</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>Apple Inc</org_facet_item>
+            </org_facet>
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/technology/personaltech/01techtipwebART/01techtipwebART-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>When using the iOS 9 Camera app, pinch your fingers on the screen to see a zoom slider appear. You can adjust the exposure by tapping an area of the screen and sliding the sun icon up or down.</caption>
+                    <copyright>The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/technology/personaltech/01techtipwebART/01techtipwebART-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>107</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>When using the iOS 9 Camera app, pinch your fingers on the screen to see a zoom slider appear. You can adjust the exposure by tapping an area of the screen and sliding the sun icon up or down.</caption>
+                    <copyright>The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/technology/personaltech/01techtipwebART/01techtipwebART-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>When using the iOS 9 Camera app, pinch your fingers on the screen to see a zoom slider appear. You can adjust the exposure by tapping an area of the screen and sliding the sun icon up or down.</caption>
+                    <copyright>The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/technology/personaltech/01techtipwebART/01techtipwebART-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>When using the iOS 9 Camera app, pinch your fingers on the screen to see a zoom slider appear. You can adjust the exposure by tapping an area of the screen and sliding the sun icon up or down.</caption>
+                    <copyright>The New York Times</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>Europe</subsection>
+            <title>Medieval Festival in Rebellious Catalonia Takes on Modern Meaning</title>
+            <abstract>The Patum, a spectacular centuries-old event in Berga, has come to symbolize Spain’s contemporary political and social struggles.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/europe/patum-catalonia-secession-berga-spain.html</url>
+            <byline>By RAPHAEL MINDER</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/world/01Spain-web1/01Spain-web1-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:38:50-04:00</updated_date>
+            <created_date>2016-05-31T09:30:14-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>Berga Journal</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Religion-State Relations</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>Roman Catholic Church</org_facet_item>
+                <org_facet_item>Convergence and Union Party (Spain)</org_facet_item>
+            </org_facet>
+            <per_facet />
+            <geo_facet>
+                <geo_facet_item>Catalonia (Spain)</geo_facet_item>
+            </geo_facet>
+            <related_urls>
+                <link>
+                    <suggested_link_text>Catalan Independence Bid Looms Over Spain’s Coalition Efforts</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/01/12/world/europe/catalan-independence-bid-looms-over-spains-coalition-efforts.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Azorean Diaspora Can’t Resist the Powerful Pull of Home</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/06/05/world/europe/azores-diaspora-holy-christ-of-miracles.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Pillars of Holy Week Processions Put Teamwork and Brawn on Display</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/04/01/world/europe/pillars-of-holy-week-processions-put-teamwork-and-brawn-on-display.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Spain-web1/01Spain-web1-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Performers during the Patum, a festival in Berga, Spain, on Sunday. Catalonia’s independence drive has imbued the Patum, like so many other cultural symbols and expressions in the region, with ever greater nationalist significance for Catalans.</caption>
+                    <copyright>Samuel Aranda for The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Spain-web1/01Spain-web1-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Performers during the Patum, a festival in Berga, Spain, on Sunday. Catalonia’s independence drive has imbued the Patum, like so many other cultural symbols and expressions in the region, with ever greater nationalist significance for Catalans.</caption>
+                    <copyright>Samuel Aranda for The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Spain-web1/01Spain-web1-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Performers during the Patum, a festival in Berga, Spain, on Sunday. Catalonia’s independence drive has imbued the Patum, like so many other cultural symbols and expressions in the region, with ever greater nationalist significance for Catalans.</caption>
+                    <copyright>Samuel Aranda for The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01Spain-web1/01Spain-web1-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Performers during the Patum, a festival in Berga, Spain, on Sunday. Catalonia’s independence drive has imbued the Patum, like so many other cultural symbols and expressions in the region, with ever greater nationalist significance for Catalans.</caption>
+                    <copyright>Samuel Aranda for The New York Times</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>T Magazine</section>
+            <subsection />
+            <title>Perfect Strangers: Maya Rudolph and Vanessa Beecroft</title>
+            <abstract>The master impersonator, whose new show, “Maya and Marty,” starts today, plays a game of free association with the outspoken performance artist.</abstract>
+            <url>http://www.nytimes.com/interactive/2016/05/31/t-magazine/maya-rudolph.html</url>
+            <byline />
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/22/t-magazine/22tmag-05arena_strangers-t_CA0/22tmag-05arena_strangers-t_CA0-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Interactive</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:03:30-04:00</updated_date>
+            <created_date>2016-05-31T09:28:37-04:00</created_date>
+            <published_date>2016-05-31T00:00:00-04:00</published_date>
+            <material_type_facet />
+            <kicker />
+            <subheadline />
+            <des_facet />
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/22/t-magazine/22tmag-05arena_strangers-t_CA0/22tmag-05arena_strangers-t_CA0-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>The outspoken performance artist Vanessa Beecroft (left) and the master impersonator Maya Rudolph.</caption>
+                    <copyright>Alex Aristei</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/22/t-magazine/22tmag-05arena_strangers-t_CA0/22tmag-05arena_strangers-t_CA0-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>147</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>The outspoken performance artist Vanessa Beecroft (left) and the master impersonator Maya Rudolph.</caption>
+                    <copyright>Alex Aristei</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/22/t-magazine/22tmag-05arena_strangers-t_CA0/22tmag-05arena_strangers-t_CA0-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>The outspoken performance artist Vanessa Beecroft (left) and the master impersonator Maya Rudolph.</caption>
+                    <copyright>Alex Aristei</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/22/t-magazine/22tmag-05arena_strangers-t_CA0/22tmag-05arena_strangers-t_CA0-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>The outspoken performance artist Vanessa Beecroft (left) and the master impersonator Maya Rudolph.</caption>
+                    <copyright>Alex Aristei</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>What in the World</subsection>
+            <title>Airport Near Everest Is Its Own Perilous Adventure</title>
+            <abstract>Planes heading to Tenzing-Hillary Airport in Lukla, Nepal, often have to deal with high wind and thick fog. Then pilots face a short, sloping runway.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/what-in-the-world/airport-near-everest-is-its-own-perilous-adventure.html</url>
+            <byline>By KAI SCHULTZ</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/24/world/what-in-the-world/00wit_nepal-airport/00wit_nepal-airport-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:22:05-04:00</updated_date>
+            <created_date>2016-05-31T09:22:06-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>What in the World</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Airports</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet>
+                <geo_facet_item>Mount Everest</geo_facet_item>
+                <geo_facet_item>Nepal</geo_facet_item>
+            </geo_facet>
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/24/world/what-in-the-world/00wit_nepal-airport/00wit_nepal-airport-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>A plane landing at Tenzing-Hillary Airport in Lukla, Nepal. The airport, the closest one to Mount Everest, challenges pilots with its weather and short, sloped runway.</caption>
+                    <copyright>Niranjan Shrestha/Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/24/world/what-in-the-world/00wit_nepal-airport/00wit_nepal-airport-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>A plane landing at Tenzing-Hillary Airport in Lukla, Nepal. The airport, the closest one to Mount Everest, challenges pilots with its weather and short, sloped runway.</caption>
+                    <copyright>Niranjan Shrestha/Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/24/world/what-in-the-world/00wit_nepal-airport/00wit_nepal-airport-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>A plane landing at Tenzing-Hillary Airport in Lukla, Nepal. The airport, the closest one to Mount Everest, challenges pilots with its weather and short, sloped runway.</caption>
+                    <copyright>Niranjan Shrestha/Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/24/world/what-in-the-world/00wit_nepal-airport/00wit_nepal-airport-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>A plane landing at Tenzing-Hillary Airport in Lukla, Nepal. The airport, the closest one to Mount Everest, challenges pilots with its weather and short, sloped runway.</caption>
+                    <copyright>Niranjan Shrestha/Associated Press</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>N.Y. / Region</section>
+            <subsection />
+            <title>Nancy Zimpher to Resign as SUNY Chancellor in 2017</title>
+            <abstract>Dr. Zimpher, who became chancellor of New York State’s public university system seven years ago, has relentlessly promoted it as an engine of economic growth and community development.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/nyregion/nancy-zimpher-to-resign-as-suny-chancellor-in-2017.html</url>
+            <byline>By DAVID W. CHEN</byline>
+            <thumbnail_standard />
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:15:11-04:00</updated_date>
+            <created_date>2016-05-31T09:15:12-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Colleges and Universities</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>State University of New York</org_facet_item>
+            </org_facet>
+            <per_facet>
+                <per_facet_item>Zimpher, Nancy L</per_facet_item>
+            </per_facet>
+            <geo_facet>
+                <geo_facet_item>New York State</geo_facet_item>
+            </geo_facet>
+            <related_urls>
+                <link>
+                    <suggested_link_text>Report Faults Binghamton’s Leaders in Scandal</suggested_link_text>
+                    <url>http://www.nytimes.com/2010/02/12/sports/ncaabasketball/12binghamton.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Ex-Official at SUNY Charged $131,000 in Personal Expenses to Foundation, Audit Finds</suggested_link_text>
+                    <url>http://www.nytimes.com/2012/10/23/nyregion/comptrollers-audit-of-suny-foundation-finds-financial-abuses.html</url>
+                </link>
+            </related_urls>
+            <multimedia />
+        </news_item>
+        <news_item>
+            <section><![CDATA[Fashion & Style]]></section>
+            <subsection />
+            <title>Louis Vuitton Makes a Statement, Fashion and Political, in Rio</title>
+            <abstract>The fashion house flew in celebrities and some of its best customers for an elaborate show an embattled country.</abstract>
+            <url>http://www.nytimes.com/2016/05/31/fashion/louis-vuitton-nicolas-ghesquiere.html</url>
+            <byline>By VANESSA FRIEDMAN</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/29/style/20160530OTR-slide-KA9G/20160530OTR-slide-KA9G-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:06:49-04:00</updated_date>
+            <created_date>2016-05-31T09:06:50-04:00</created_date>
+            <published_date>2016-05-31T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>On the Runway</kicker>
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Fashion and Apparel</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>Louis Vuitton</org_facet_item>
+            </org_facet>
+            <per_facet>
+                <per_facet_item>Ghesquiere, Nicolas</per_facet_item>
+            </per_facet>
+            <geo_facet>
+                <geo_facet_item>Rio de Janeiro (Brazil)</geo_facet_item>
+            </geo_facet>
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/29/style/20160530OTR-slide-KA9G/20160530OTR-slide-KA9G-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Louis Vuitton</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/29/style/20160530OTR-slide-KA9G/20160530OTR-slide-KA9G-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>126</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Louis Vuitton</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/29/style/20160530OTR-slide-KA9G/20160530OTR-slide-KA9G-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Louis Vuitton</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/29/style/20160530OTR-slide-KA9G/20160530OTR-slide-KA9G-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Louis Vuitton</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>T Magazine</section>
+            <subsection>Food</subsection>
+            <title>One-Thing Shops: Soda, Los Angeles</title>
+            <abstract>Galco’s in Highland Park, which opened in 1897, carries over 750 varieties and draws visitors from around the world.</abstract>
+            <url>http://www.nytimes.com/2016/05/31/t-magazine/food/soda-shop-los-angeles.html</url>
+            <byline>By ALEX RONAN</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/t-magazine/Galcos-soda-slide-5Z9T/Galcos-soda-slide-5Z9T-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:00:27-04:00</updated_date>
+            <created_date>2016-05-31T09:00:28-04:00</created_date>
+            <published_date>2016-05-31T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Soft Drinks</des_facet_item>
+                <des_facet_item>Supermarkets and Grocery Stores</des_facet_item>
+                <des_facet_item>Shopping and Retail</des_facet_item>
+                <des_facet_item>Family Business</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet>
+                <geo_facet_item>Los Angeles (Calif)</geo_facet_item>
+            </geo_facet>
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/t-magazine/Galcos-soda-slide-5Z9T/Galcos-soda-slide-5Z9T-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>John Nese, the owner of Galco’s Old World Grocery, stands in the aisles among some of the 750 soda variety he carries. Once a neighborhood Italian grocery, Galco’s has evolved into a soda specialty shop that draws visitors from around the world.</caption>
+                    <copyright>Laure Joliet</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/t-magazine/Galcos-soda-slide-5Z9T/Galcos-soda-slide-5Z9T-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>John Nese, the owner of Galco’s Old World Grocery, stands in the aisles among some of the 750 soda variety he carries. Once a neighborhood Italian grocery, Galco’s has evolved into a soda specialty shop that draws visitors from around the world.</caption>
+                    <copyright>Laure Joliet</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/t-magazine/Galcos-soda-slide-5Z9T/Galcos-soda-slide-5Z9T-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>John Nese, the owner of Galco’s Old World Grocery, stands in the aisles among some of the 750 soda variety he carries. Once a neighborhood Italian grocery, Galco’s has evolved into a soda specialty shop that draws visitors from around the world.</caption>
+                    <copyright>Laure Joliet</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/t-magazine/Galcos-soda-slide-5Z9T/Galcos-soda-slide-5Z9T-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>John Nese, the owner of Galco’s Old World Grocery, stands in the aisles among some of the 750 soda variety he carries. Once a neighborhood Italian grocery, Galco’s has evolved into a soda specialty shop that draws visitors from around the world.</caption>
+                    <copyright>Laure Joliet</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Business Day</section>
+            <subsection>DealBook</subsection>
+            <title>Great Plains Energy Agrees to Buy Westar for $8.6 Billion</title>
+            <abstract>The transaction would create a power company with more than 1.5 million customers in Kansas and Missouri.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/business/dealbook/great-plains-energy-westar.html</url>
+            <byline>By CHAD BRAY</byline>
+            <thumbnail_standard />
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:02:18-04:00</updated_date>
+            <created_date>2016-05-31T08:55:23-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Mergers, Acquisitions and Divestitures</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>Great Plains Energy Inc</org_facet_item>
+                <org_facet_item>Westar Energy Incorporated</org_facet_item>
+            </org_facet>
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <multimedia />
+        </news_item>
+        <news_item>
+            <section>Business Day</section>
+            <subsection>DealBook</subsection>
+            <title>Start-Up Gets Financing for Real-Time Sports Wagers via App</title>
+            <abstract>WinView, which will offer free contests at first, hopes to draw ads tied to live sports, and gained Tom Rogers and Hank Ratner as chairmen.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/business/dealbook/start-up-gets-financing-for-real-time-sports-wagers-via-app.html</url>
+            <byline>By MICHAEL J. de la MERCED</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/31/business/winview-combo2/winview-combo2-thumbStandard-v2.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:00:30-04:00</updated_date>
+            <created_date>2016-05-31T08:40:45-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Gambling</des_facet_item>
+                <des_facet_item>Venture Capital</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls>
+                <link>
+                    <suggested_link_text>Advertisers Seek a ‘Second Screen’ Connection With Viewers</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/05/05/business/media/advertisers-seek-a-second-screen-connection-with-viewers.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Fantasy Sites DraftKings and FanDuel Stop Taking Bets in New York</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/22/sports/football/draftkings-and-fanduel-stop-taking-bets-in-new-york.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/business/winview-combo2/winview-combo2-thumbStandard-v2.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>WinView will be led by Tom Rogers, left, and Hank Ratner as co-chairmen.</caption>
+                    <copyright>Left, Gus Ruelas/Reuters</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/business/winview-combo2/winview-combo2-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>130</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>WinView will be led by Tom Rogers, left, and Hank Ratner as co-chairmen.</caption>
+                    <copyright>Left, Gus Ruelas/Reuters</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/business/winview-combo2/winview-combo2-mediumThreeByTwo210-v2.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>WinView will be led by Tom Rogers, left, and Hank Ratner as co-chairmen.</caption>
+                    <copyright>Left, Gus Ruelas/Reuters</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/31/business/winview-combo2/winview-combo2-mediumThreeByTwo440-v2.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>WinView will be led by Tom Rogers, left, and Hank Ratner as co-chairmen.</caption>
+                    <copyright>Left, Gus Ruelas/Reuters</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>Middle East</subsection>
+            <title>3 Palestinians Executed in Gaza Soon After Call to Resume Death Penalty</title>
+            <abstract>The three men had exhausted their appeals, and the executions were the first approved by a court in nearly two years.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/middleeast/3-palestinians-executed-in-gaza-after-call-to-resume-death-penalty.html</url>
+            <byline>By DIAA HADID</byline>
+            <thumbnail_standard />
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:12:22-04:00</updated_date>
+            <created_date>2016-05-31T08:26:59-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet />
+            <org_facet>
+                <org_facet_item>Hamas</org_facet_item>
+            </org_facet>
+            <per_facet />
+            <geo_facet />
+            <related_urls>
+                <link>
+                    <suggested_link_text>Hamas Calls for Resumption of Death Penalty in Gaza</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/26/world/middleeast/hamas-calls-for-resumption-of-death-penalty-in-gaza.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Hamas Commander, Accused of Theft and Gay Sex, Is Killed by His Own</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/03/02/world/middleeast/hamas-commander-mahmoud-ishtiwi-killed-palestine.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Executions in Gaza Are a Warning to Spies</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/08/23/world/middleeast/israel-gaza.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>As Hamas Tunnels Back Into Israel, Palestinians Are Afraid, Too</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/21/world/middleeast/hamas-tunnels-gaza-strip-israel.html</url>
+                </link>
+            </related_urls>
+            <multimedia />
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>Asia Pacific</subsection>
+            <title>Mumbai Police Ask for Video Mocking Celebrities to Be Deleted</title>
+            <abstract>After receiving complaints from politicians, officers said they had asked Facebook and YouTube to remove a video mocking a cricket star and a Bollywood singer.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/asia/india-tanmay-bhat-sachin-lata.html</url>
+            <byline>By NIDA NAJAR and SUHASINI RAJ</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/world/01MUMBAI-web2/01MUMBAI-web2-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:06:23-04:00</updated_date>
+            <created_date>2016-05-31T08:05:08-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Video Recordings, Downloads and Streaming</des_facet_item>
+                <des_facet_item>Social Media</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet>
+                <per_facet_item>Bhat, Tanmay</per_facet_item>
+                <per_facet_item>Mangeshkar, Lata</per_facet_item>
+                <per_facet_item>Tendulkar, Sachin</per_facet_item>
+            </per_facet>
+            <geo_facet>
+                <geo_facet_item>Mumbai (India)</geo_facet_item>
+            </geo_facet>
+            <related_urls>
+                <link>
+                    <suggested_link_text>Sedition Arrests in India Inflame Old Free-Speech Tensions</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/25/world/asia/with-sedition-arrests-india-continues-to-wrestle-with-free-speech.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Facebook Loses a Battle in India Over Its Free Basics Program</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/02/09/business/facebook-loses-a-battle-in-india-over-its-free-basics-program.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>India Replaces China as Next Big Frontier for U.S. Tech Companies</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/09/28/technology/india-replaces-china-as-next-big-frontier-for-us-tech-companies.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>India Retracts Proposal on Encryption for Social Media Data After Outcry</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/09/23/world/asia/india-withdraws-social-media-data-proposal-after-outcry.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01MUMBAI-web2/01MUMBAI-web2-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Lata Mangeshkar, who has sung the vocals for Bollywood heroines for decades, at an award ceremony in Hyderabad, India, in 2010. The Indian police have asked for a comedian’s video, which mocks the singer, to be removed from the web.</caption>
+                    <copyright>Noah Seelam/Agence France-Presse — Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01MUMBAI-web2/01MUMBAI-web2-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>132</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Lata Mangeshkar, who has sung the vocals for Bollywood heroines for decades, at an award ceremony in Hyderabad, India, in 2010. The Indian police have asked for a comedian’s video, which mocks the singer, to be removed from the web.</caption>
+                    <copyright>Noah Seelam/Agence France-Presse — Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01MUMBAI-web2/01MUMBAI-web2-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Lata Mangeshkar, who has sung the vocals for Bollywood heroines for decades, at an award ceremony in Hyderabad, India, in 2010. The Indian police have asked for a comedian’s video, which mocks the singer, to be removed from the web.</caption>
+                    <copyright>Noah Seelam/Agence France-Presse — Getty Images</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/world/01MUMBAI-web2/01MUMBAI-web2-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Lata Mangeshkar, who has sung the vocals for Bollywood heroines for decades, at an award ceremony in Hyderabad, India, in 2010. The Indian police have asked for a comedian’s video, which mocks the singer, to be removed from the web.</caption>
+                    <copyright>Noah Seelam/Agence France-Presse — Getty Images</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>World</section>
+            <subsection>Europe</subsection>
+            <title>Poland Revives Effort to Extradite Roman Polanski</title>
+            <abstract>The move is the latest twist in the case involving the filmmaker, who is wanted in California over a 1977 conviction for having sex with a 13-year-old girl.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/world/europe/roman-polanski-poland-extradition.html</url>
+            <byline>By SEWELL CHAN and JOANNA BERENDT</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/international-home/01polanski-video/01polanski-video-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:10:11-04:00</updated_date>
+            <created_date>2016-05-31T08:01:42-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Extradition</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet>
+                <per_facet_item>Polanski, Roman</per_facet_item>
+            </per_facet>
+            <geo_facet>
+                <geo_facet_item>Poland</geo_facet_item>
+                <geo_facet_item>United States</geo_facet_item>
+            </geo_facet>
+            <related_urls>
+                <link>
+                    <suggested_link_text>Polish Judge Rejects Extradition of Roman Polanski</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/10/31/world/europe/roman-polanski-poland-extradiction.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Polanski Appeal Alleges More Secret Dealings by Judge in ’77 Case</suggested_link_text>
+                    <url>http://www.nytimes.com/2010/03/19/movies/19polanski.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Dershowitz Seeks to Bring Close to Polanski Case</suggested_link_text>
+                    <url>http://www.nytimes.com/2014/12/16/us/dershowitz-seeks-to-bring-close-to-polanski-case.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Swiss Reject U.S. Request to Extradite Polanski</suggested_link_text>
+                    <url>http://www.nytimes.com/2010/07/13/movies/13polanski.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/international-home/01polanski-video/01polanski-video-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Andrzej Grygiel/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/international-home/01polanski-video/01polanski-video-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>129</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Andrzej Grygiel/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/international-home/01polanski-video/01polanski-video-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Andrzej Grygiel/European Pressphoto Agency</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/international-home/01polanski-video/01polanski-video-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption />
+                    <copyright>Andrzej Grygiel/European Pressphoto Agency</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Education</section>
+            <subsection />
+            <title>Weekly News Quiz | May 24-30, 2016</title>
+            <abstract>Have you been following the news? Take our quiz to see what you know and to learn more.</abstract>
+            <url>http://learning.blogs.nytimes.com/2016/05/31/weekly-news-quiz-may-24-30-2016/</url>
+            <byline>By KATHERINE SCHULTEN</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/05/27/world/asia/27NYTNow-LNNewsQuiz/27NYTNow-Obama3-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Blog</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T08:17:38-04:00</updated_date>
+            <created_date>2016-05-31T07:49:43-04:00</created_date>
+            <published_date>2016-05-31T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker>The Learning Network</kicker>
+            <subheadline />
+            <des_facet />
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls />
+            <blog_name>The Learning Network</blog_name>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/27/world/asia/27NYTNow-LNNewsQuiz/27NYTNow-Obama3-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Above is a photograph related to one of the news stories we have followed this week. Do you know what it shows?</caption>
+                    <copyright>Doug Mills/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/27/world/asia/27NYTNow-LNNewsQuiz/27NYTNow-Obama3-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Above is a photograph related to one of the news stories we have followed this week. Do you know what it shows?</caption>
+                    <copyright>Doug Mills/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/27/world/asia/27NYTNow-LNNewsQuiz/27NYTNow-Obama3-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Above is a photograph related to one of the news stories we have followed this week. Do you know what it shows?</caption>
+                    <copyright>Doug Mills/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/05/27/world/asia/27NYTNow-LNNewsQuiz/27NYTNow-Obama3-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Above is a photograph related to one of the news stories we have followed this week. Do you know what it shows?</caption>
+                    <copyright>Doug Mills/The New York Times</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Sports</section>
+            <subsection>Soccer</subsection>
+            <title>An A.F.C. Wimbledon Movie Could Be Titled ‘Phoenix Rising’</title>
+            <abstract>The Wimbledon club, which was founded only 14 years ago when Wimbledon F.C. left town, has won promotion to the third tier of English soccer.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/sports/soccer/afc-wimbledon-movie-phoenix-rising-promoted-league-one.html</url>
+            <byline>By ROB HUGHES</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/01/sports/01hughes/01hughes-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>International New York Times</source>
+            <updated_date>2016-05-31T07:43:02-04:00</updated_date>
+            <created_date>2016-05-31T07:41:00-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Soccer</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>League One</org_facet_item>
+                <org_facet_item>English Football Assn</org_facet_item>
+                <org_facet_item>A.F.C. Wimbledon (Soccer Team)</org_facet_item>
+                <org_facet_item>Maynard Keynes Dons (Soccer Team)</org_facet_item>
+            </org_facet>
+            <per_facet>
+                <per_facet_item>Green, John (1977- )</per_facet_item>
+                <per_facet_item>Ardley, Neal (1972- )</per_facet_item>
+                <per_facet_item>Akinfenwa, Adebayo (1982- )</per_facet_item>
+            </per_facet>
+            <geo_facet />
+            <related_urls />
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/sports/01hughes/01hughes-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Adebayo Akinfenwa, right, and Andy Barcham celebrated Akinfenwa’s penalty kick in stoppage time. A.F.C. Wimbledon defeated Plymouth Argyle, 2-0, to win promotion to England’s third-tier League One.</caption>
+                    <copyright>Andrew Matthews/Press Association, via Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/sports/01hughes/01hughes-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>127</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Adebayo Akinfenwa, right, and Andy Barcham celebrated Akinfenwa’s penalty kick in stoppage time. A.F.C. Wimbledon defeated Plymouth Argyle, 2-0, to win promotion to England’s third-tier League One.</caption>
+                    <copyright>Andrew Matthews/Press Association, via Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/sports/01hughes/01hughes-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Adebayo Akinfenwa, right, and Andy Barcham celebrated Akinfenwa’s penalty kick in stoppage time. A.F.C. Wimbledon defeated Plymouth Argyle, 2-0, to win promotion to England’s third-tier League One.</caption>
+                    <copyright>Andrew Matthews/Press Association, via Associated Press</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/01/sports/01hughes/01hughes-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption>Adebayo Akinfenwa, right, and Andy Barcham celebrated Akinfenwa’s penalty kick in stoppage time. A.F.C. Wimbledon defeated Plymouth Argyle, 2-0, to win promotion to England’s third-tier League One.</caption>
+                    <copyright>Andrew Matthews/Press Association, via Associated Press</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+        <news_item>
+            <section>Business Day</section>
+            <subsection>DealBook</subsection>
+            <title>Darty’s Board Recommends That Investors Accept Fnac Offer</title>
+            <abstract>The recommendation came after a bidding war this year between Fnac and Conforama, a French unit of Steinhoff International Holdings.</abstract>
+            <url>http://www.nytimes.com/2016/06/01/business/dealbook/darty-fnac-conforama-takeover-retail.html</url>
+            <byline>By CHAD BRAY</byline>
+            <thumbnail_standard />
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T09:58:10-04:00</updated_date>
+            <created_date>2016-05-31T07:18:46-04:00</created_date>
+            <published_date>2016-06-01T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Mergers, Acquisitions and Divestitures</des_facet_item>
+            </des_facet>
+            <org_facet>
+                <org_facet_item>Darty PLC</org_facet_item>
+                <org_facet_item>Groupe Fnac</org_facet_item>
+                <org_facet_item>Conforama SA</org_facet_item>
+            </org_facet>
+            <per_facet />
+            <geo_facet />
+            <related_urls>
+                <link>
+                    <suggested_link_text>Conforama Declines to Raise Offer for Darty, Ending Bidding War</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/28/business/dealbook/darty-fnac-conforama.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Groupe Fnac Increases Stake in Darty and Makes a Final Offer</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/26/business/dealbook/groupe-fnac-increases-stake-in-darty-and-makes-a-final-offer.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>Fierce Bidding War Erupts for French Retailer Darty</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/04/22/business/dealbook/steinhoffs-conforama-and-fnac-in-bidding-war-for-darty.html</url>
+                </link>
+            </related_urls>
+            <multimedia />
+        </news_item>
+        <news_item>
+            <section>Theater</section>
+            <subsection />
+            <title>Women on Broadway: A Year of Living Dangerously</title>
+            <abstract>Roles were spread around this year, but women are often still playing victims. Our critics discuss what worked, what didn’t and what they hope to see.</abstract>
+            <url>http://www.nytimes.com/2016/06/05/theater/women-on-broadway-a-year-of-living-dangerously.html</url>
+            <byline>By LAURA COLLINS-HUGHES and ALEXIS SOLOSKI</byline>
+            <thumbnail_standard>https://static01.nyt.com/images/2016/06/05/arts/05STAGEWOMEN/05STAGEWOMEN-thumbStandard.jpg</thumbnail_standard>
+            <item_type>Article</item_type>
+            <source>The New York Times</source>
+            <updated_date>2016-05-31T10:02:43-04:00</updated_date>
+            <created_date>2016-05-31T07:00:40-04:00</created_date>
+            <published_date>2016-06-05T00:00:00-04:00</published_date>
+            <material_type_facet>News</material_type_facet>
+            <kicker />
+            <subheadline />
+            <des_facet>
+                <des_facet_item>Theater</des_facet_item>
+                <des_facet_item>Women and Girls</des_facet_item>
+            </des_facet>
+            <org_facet />
+            <per_facet />
+            <geo_facet />
+            <related_urls>
+                <link>
+                    <suggested_link_text>‘Hamilton’ and Company: Tony Award Nominees in a Season That Reflected the World</suggested_link_text>
+                    <url>http://www.nytimes.com/2016/05/15/theater/hamilton-and-company-tony-award-nominees-in-a-season-that-reflected-the-world.html</url>
+                </link>
+                <link>
+                    <suggested_link_text>This Broadway Season, Diversity Is Front and Center</suggested_link_text>
+                    <url>http://www.nytimes.com/2015/09/13/theater/this-broadway-season-diversity-is-front-and-center.html</url>
+                </link>
+            </related_urls>
+            <multimedia>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/05/arts/05STAGEWOMEN/05STAGEWOMEN-thumbStandard.jpg</url>
+                    <format>Standard Thumbnail</format>
+                    <height>75</height>
+                    <width>75</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption><![CDATA[Zainab Jah, left, and Lupita Nyong&rsquo;o in &ldquo;Eclipsed.&rdquo;]]></caption>
+                    <copyright>Sara Krulwich/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/05/arts/05STAGEWOMEN/05STAGEWOMEN-articleInline.jpg</url>
+                    <format>Normal</format>
+                    <height>125</height>
+                    <width>190</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption><![CDATA[Zainab Jah, left, and Lupita Nyong&rsquo;o in &ldquo;Eclipsed.&rdquo;]]></caption>
+                    <copyright>Sara Krulwich/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/05/arts/05STAGEWOMEN/05STAGEWOMEN-mediumThreeByTwo210.jpg</url>
+                    <format>mediumThreeByTwo210</format>
+                    <height>140</height>
+                    <width>210</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption><![CDATA[Zainab Jah, left, and Lupita Nyong&rsquo;o in &ldquo;Eclipsed.&rdquo;]]></caption>
+                    <copyright>Sara Krulwich/The New York Times</copyright>
+                </multimedia_item>
+                <multimedia_item>
+                    <url>https://static01.nyt.com/images/2016/06/05/arts/05STAGEWOMEN/05STAGEWOMEN-mediumThreeByTwo440.jpg</url>
+                    <format>mediumThreeByTwo440</format>
+                    <height>293</height>
+                    <width>440</width>
+                    <type>image</type>
+                    <subtype>photo</subtype>
+                    <caption><![CDATA[Zainab Jah, left, and Lupita Nyong&rsquo;o in &ldquo;Eclipsed.&rdquo;]]></caption>
+                    <copyright>Sara Krulwich/The New York Times</copyright>
+                </multimedia_item>
+            </multimedia>
+        </news_item>
+    </results>
+</result_set>
