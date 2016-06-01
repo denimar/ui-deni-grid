@@ -49,7 +49,7 @@ ui-deni-grid {
         font-size: 11px;
         overflow-y: hidden;
         overflow-x: hidden;
-        display: inline-flex;
+        display: block;
         box-sizing: border-box;
         position: relative;
         /*----------------------------*/
