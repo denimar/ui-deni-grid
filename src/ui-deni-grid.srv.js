@@ -919,7 +919,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						spanCellInner.css('text-align', 'center');						
 
 						var imgActionColumn = $(document.createElement('img'));
-						imgActionColumn.attr('src', column.action.icon);
+						var iconActionColumn = column.action.icon;
+						if (angular.isFunction(iconActionColumn)) {
+							iconActionColumn = iconActionColumn(record);
+						}
+						imgActionColumn.attr('src', iconActionColumn);
 						imgActionColumn.attr('title', column.action.tooltip);
 						imgActionColumn.css('cursor', 'pointer');
 						imgActionColumn.click(function(event) {

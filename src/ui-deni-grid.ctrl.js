@@ -384,7 +384,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 
 	}
 
-	me.element.ready(function(event) {
+	me.element.show(function(event) {
 		///////////////////////////////////////////////////////////////////////////
 		//FIXED COLUMNS ///////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////	
@@ -483,6 +483,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		} else if ((me.options.url) && (me.options.autoLoad)) {
 			me.options.api.load();
 		}
+
 	});
 
 

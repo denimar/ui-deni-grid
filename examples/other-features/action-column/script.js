@@ -5,7 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		url: '../../data/employees/00100.json',
+		url: 'http://denimar.github.io/static-data/employees/00100.json',
         columns: [
             { 
                 header:'Name', 
@@ -36,7 +36,14 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
             { 
                 width: '5%',
                 action: {
-                    icon: '../../images/delete.png',
+                    //icon: '../../images/delete.png',
+                    icon: function(record) {
+                        if (record.age > 50) {
+                            return '../../images/edit.png';
+                        } else {
+                            return '../../images/delete.png';
+                        }
+                    },                      
                     tooltip: 'Delete that employee...',
                     fn: function(record) {
                         alert('Deleting user "' + record.name + '"...');
