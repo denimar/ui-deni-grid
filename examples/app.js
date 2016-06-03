@@ -62,6 +62,17 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			],
 		},
 		{
+			text: 'searches and filters',
+			children: [
+				{
+					text: 'Filtering',
+					img: 'basic-array-grid.gif',
+					path: '7vyhnv36',
+					description: '?????'
+				}
+			]	
+		},
+		{
 			text: 'Large Dataset',
 			children: [
 				{

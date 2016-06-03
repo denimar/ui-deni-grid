@@ -6,7 +6,7 @@
 
 <style>
 	#deniGrid {
-		height: 300px;
+		height: 400px;
 		width: 800px;
 	}
 
@@ -15,8 +15,8 @@
 <body ng-app="myApp">
 
 	<section ng-controller="ExampleCtrl as ctrl">
-		<input type="text" ng-model="textFilter" placeHolder="type here to filter"></input>
-		<button ng-click="gridOptions.api.filter(textFilter)">Filter</button>
+		<input type="text" ng-model="textFilter" placeHolder="type here to filter" autofocus></input>
+		<button disabled ng-click="gridOptions.api.filter(textFilter)" ng-disabled="((textFilter == '') || (textFilter == null))">Filter</button>
 		<br>
 		<br>	
 	
