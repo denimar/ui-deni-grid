@@ -67,107 +67,6 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	//Set the default options talking to viewCtrl inside of it
 	uiDeniGridUtilSrv.setDefaultOptions(me, me.options);
 
-	me.element.ready(function(event) {
-		///////////////////////////////////////////////////////////////////////////
-		//FIXED COLUMNS ///////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-		if (me.options.fixedCols) {
-			//
-			me.fixedColsViewportWrapper.css('width', me.options.fixedCols.width + 'px');
-			//
-			me.colsViewportWrapper.css('width', 'calc(100% - ' + me.fixedColsViewportWrapper.css('width') + ')');		
-		} else {
-			//
-			me.fixedColsViewportWrapper.css('display', 'none');
-			//
-			me.colsViewportWrapper.css('width', '100%');				
-		}
-		///////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-
-		///
-		me.clientWidth = uiDeniGridUtilSrv.getClientWidthDeniGrid(me);	
-
-		///////////////////////////////////////////////////////////////////////////
-		//COLUMN HEADERS //////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-		if (me.options.hideHeaders) {
-			//
-			me.headerViewportWrapper.css('display', 'none');
-			me.fixedColsHeaderViewportWrapper.css('display', 'none');
-		} else {
-			//columnHeaderLevels has a numer greater than one when it has a grouped column headers.
-			me.columnHeaderLevels = uiDeniGridUtilSrv.getColumnHeaderLevels(me, me.options.columns);
-
-			//
-			uiDeniGridSrv.createColumnHeaders(me, me.options.columns);
-			uiDeniGridSrv.createColumnHeadersEvents(me);		
-
-			//the height of the column headers varies when there is grouped column headers (Just in this case)
-			me.headerViewportWrapper.css('height', 'calc(' + me.options.columnHeaderHeight + ' * ' + me.columnHeaderLevels + ')');
-			me.fixedColsHeaderViewportWrapper.css('height', 'calc(' + me.options.columnHeaderHeight + ' * ' + me.columnHeaderLevels + ')');
-		}	
-		///////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-
-		///////////////////////////////////////////////////////////////////////////
-		//GRID FOOTER /////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-
-		//How many column footer rows is there in the grid (footer.grid different from false)
-		me.columnFooterRowsNumberGrid = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me);		
-		//How many grouping footer rows is there in the grid (footer.grouping different from false)
-		me.columnFooterRowsNumberGrouping = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me, true);		
-		//
-		me.columnFooterNumber = uiDeniGridUtilSrv.getColumnFooterNumber(me);		
-
-		//Should show the footer?
-		if ((uiDeniGridUtilSrv.hasColumnFooter(me)) && (me.columnFooterRowsNumberGrid > 0)) {
-			//
-			uiDeniGridUtilSrv.createColumnFooters(me, me.footerContainer, me.options.columns, true);
-			//How many footers?
-			var columnFooterRowsNumber = me.footerContainer.find('.ui-footer-row').length;
-			//There is no need to add paadding when a footerRowTemplate was set
-			var padding = angular.isDefined(me.options.footerRowTemplate) ? '0px' : '2px';
-			me.footerViewportWrapper.css({
-				'padding-top': padding,
-				//'padding-bottom': padding,			
-				//'height': 'calc(' + me.options.columnFooterRowHeight + ' * ' + columnFooterRowsNumber + ' + (' + padding + ' * 2))'
-			});
-		} else {
-			//
-			me.footerViewportWrapper.css('display', 'none');
-			me.fixedColsFooterViewportWrapper.css('display', 'none');
-		}
-		///////////////////////////////////////////////////////////////////////////
-		///////////////////////////////////////////////////////////////////////////	
-
-		//Paging
-		if (me.options.paging) {
-			me.paging.css('height', uiDeniGridConstants.PAGING_HEIGHT);
-			uiDeniGridUtilSrv.createPagingItems(me, me.paging, me.options.paging);
-		}
-
-		me.searchInfo = null; //hold values for render the field values (realce)
-		me.searching = false;
-		me.resizing = false;
-
-		//This guy manages which items the grid should render
-		me.managerRendererItems = new uiDeniGridUtilSrv.ManagerRendererItems(me);
-
-		//Create Events for the ui-deni-view
-		uiDeniGridSrv.createUiDeniViewEvents(me);  //TODO: change the name of this method
-
-		//
-		uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(me);
-
-		if (me.options.data) {
-			me.options.api.loadData(me.options.data);
-		} else if ((me.options.url) && (me.options.autoLoad)) {
-			me.options.api.load();
-		}
-	});
-
 	//Inherit API from ui-deni-view and create some new APIs too		
 	me.options.api = {
 
@@ -484,5 +383,107 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 
 
 	}
+
+	me.element.ready(function(event) {
+		///////////////////////////////////////////////////////////////////////////
+		//FIXED COLUMNS ///////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+		if (me.options.fixedCols) {
+			//
+			me.fixedColsViewportWrapper.css('width', me.options.fixedCols.width + 'px');
+			//
+			me.colsViewportWrapper.css('width', 'calc(100% - ' + me.fixedColsViewportWrapper.css('width') + ')');		
+		} else {
+			//
+			me.fixedColsViewportWrapper.css('display', 'none');
+			//
+			me.colsViewportWrapper.css('width', '100%');				
+		}
+		///////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+
+		///
+		me.clientWidth = uiDeniGridUtilSrv.getClientWidthDeniGrid(me);	
+
+		///////////////////////////////////////////////////////////////////////////
+		//COLUMN HEADERS //////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+		if (me.options.hideHeaders) {
+			//
+			me.headerViewportWrapper.css('display', 'none');
+			me.fixedColsHeaderViewportWrapper.css('display', 'none');
+		} else {
+			//columnHeaderLevels has a numer greater than one when it has a grouped column headers.
+			me.columnHeaderLevels = uiDeniGridUtilSrv.getColumnHeaderLevels(me, me.options.columns);
+
+			//
+			uiDeniGridSrv.createColumnHeaders(me, me.options.columns);
+			uiDeniGridSrv.createColumnHeadersEvents(me);		
+
+			//the height of the column headers varies when there is grouped column headers (Just in this case)
+			me.headerViewportWrapper.css('height', 'calc(' + me.options.columnHeaderHeight + ' * ' + me.columnHeaderLevels + ')');
+			me.fixedColsHeaderViewportWrapper.css('height', 'calc(' + me.options.columnHeaderHeight + ' * ' + me.columnHeaderLevels + ')');
+		}	
+		///////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+
+		///////////////////////////////////////////////////////////////////////////
+		//GRID FOOTER /////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+
+		//How many column footer rows is there in the grid (footer.grid different from false)
+		me.columnFooterRowsNumberGrid = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me);		
+		//How many grouping footer rows is there in the grid (footer.grouping different from false)
+		me.columnFooterRowsNumberGrouping = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me, true);		
+		//
+		me.columnFooterNumber = uiDeniGridUtilSrv.getColumnFooterNumber(me);		
+
+		//Should show the footer?
+		if ((uiDeniGridUtilSrv.hasColumnFooter(me)) && (me.columnFooterRowsNumberGrid > 0)) {
+			//
+			uiDeniGridUtilSrv.createColumnFooters(me, me.footerContainer, me.options.columns, true);
+			//How many footers?
+			var columnFooterRowsNumber = me.footerContainer.find('.ui-footer-row').length;
+			//There is no need to add paadding when a footerRowTemplate was set
+			var padding = angular.isDefined(me.options.footerRowTemplate) ? '0px' : '2px';
+			me.footerViewportWrapper.css({
+				'padding-top': padding,
+				//'padding-bottom': padding,			
+				//'height': 'calc(' + me.options.columnFooterRowHeight + ' * ' + columnFooterRowsNumber + ' + (' + padding + ' * 2))'
+			});
+		} else {
+			//
+			me.footerViewportWrapper.css('display', 'none');
+			me.fixedColsFooterViewportWrapper.css('display', 'none');
+		}
+		///////////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////	
+
+		//Paging
+		if (me.options.paging) {
+			me.paging.css('height', uiDeniGridConstants.PAGING_HEIGHT);
+			uiDeniGridUtilSrv.createPagingItems(me, me.paging, me.options.paging);
+		}
+
+		me.searchInfo = null; //hold values for render the field values (realce)
+		me.searching = false;
+		me.resizing = false;
+
+		//This guy manages which items the grid should render
+		me.managerRendererItems = new uiDeniGridUtilSrv.ManagerRendererItems(me);
+
+		//Create Events for the ui-deni-view
+		uiDeniGridSrv.createUiDeniViewEvents(me);  //TODO: change the name of this method
+
+		//
+		uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(me);
+
+		if (me.options.data) {
+			me.options.api.loadData(me.options.data);
+		} else if ((me.options.url) && (me.options.autoLoad)) {
+			me.options.api.load();
+		}
+	});
+
 
 });
