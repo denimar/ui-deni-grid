@@ -909,75 +909,87 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					} else {
 						divCell = _createDivCell(controller, rowElement);
 					}
+					divCell.attr('colIndex', colIndex);
 
 					//
 					var spanCellInner = _createDivCellInner(divCell);
 
-					//
-					if (index == 0) {
+					//action column
+					if (column.action) {						
+						spanCellInner.css('text-align', 'center');						
+
+						var imgActionColumn = $(document.createElement('img'));
+						imgActionColumn.attr('src', column.action.icon);
+						imgActionColumn.attr('title', column.action.tooltip);
+						imgActionColumn.css('cursor', 'pointer');
+						imgActionColumn.click(function(event) {
+							column.action.fn(record);
+						});
+						spanCellInner.append(imgActionColumn);
+					} else {
 						//
-						//rowDetails Property
-						if (controller.options.rowDetails) {
-							spanCellInner.addClass('row-detail');
+						if (index == 0) {
+							//
+							//rowDetails Property
+							if (controller.options.rowDetails) {
+								spanCellInner.addClass('row-detail');
 
-							if (controller.options.rowDetails.autoExpand === true) {
-								spanCellInner.addClass('collapse');
-							} else {
-								spanCellInner.addClass('expand');
+								if (controller.options.rowDetails.autoExpand === true) {
+									spanCellInner.addClass('collapse');
+								} else {
+									spanCellInner.addClass('expand');
+								}
+
+								spanCellInner.click(function(event) {
+								 	if (event.offsetX <= 12) { //:before pseudo element width
+								 		var target = $(event.target);
+
+								 		if (target.is('.collapse')) {
+								 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, rowIndex);
+								 		} else {
+								 			uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
+								 		}
+								 	}
+								});
+
 							}
-
-							spanCellInner.click(function(event) {
-							 	if (event.offsetX <= 12) { //:before pseudo element width
-							 		var target = $(event.target);
-
-							 		if (target.is('.collapse')) {
-							 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, rowIndex);
-							 		} else {
-							 			uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
-							 		}
-							 	}
-							});
-
 						}
-					}
+
+						//
+						var style = column.style || {};
+						divCell.css(angular.extend(style, {
+							'text-align': column.align || 'left'
+						}));
+
+
+						//Margin First column inside of grouping
+						if ((index == 0) && (controller.options.api.isGrouped())) {
+							divCell.css('padding-left', '20px');
+						}
+
+						var value = eval('record.' + column.name); //Can be passed "adderess.cicy", for example;
+						//var value = record[column.name];
+
+						//Is there a specific render for this field?
+						if (column.renderer) {
+							value = column.renderer(value, record, columns, rowIndex);
+						}
+
+						var formattedValue = value;
+						if (angular.isDefined(column.format)) {
+							formattedValue = uiDeniGridUtilSrv.getFormatedValue(value, column.format);
+						}
+
+						//Is there something to realce (Used in Searches and Filters)
+						if ((isRowSelected) && (controller.searchInfo)) {
+							formattedValue = _rendererRealcedCells(column.name, formattedValue, controller.searchInfo);
+						}
+
+						//
+						spanCellInner.html(formattedValue);
+					}	
 
 					//
-					var style = column.style || {};
-					divCell.css(angular.extend(style, {
-						'text-align': column.align || 'left'
-					}));
-
-
-					//Margin First column inside of grouping
-					if ((index == 0) && (controller.options.api.isGrouped())) {
-						divCell.css('padding-left', '20px');
-					}
-
-					var value = eval('record.' + column.name); //Can be passed "adderess.cicy", for example;
-					//var value = record[column.name];
-
-					//Is there a specific render for this field?
-					if (column.renderer) {
-						value = column.renderer(value, record, columns, rowIndex);
-					}
-
-					var formattedValue = value;
-					if (angular.isDefined(column.format)) {
-						formattedValue = uiDeniGridUtilSrv.getFormatedValue(value, column.format);
-					}
-
-					//Is there something to realce (Used in Searches and Filters)
-					if ((isRowSelected) && (controller.searchInfo)) {
-						formattedValue = _rendererRealcedCells(column.name, formattedValue, controller.searchInfo);
-					}
-
-					//
-					spanCellInner.html(formattedValue);
-
-					//
-					//divCell.append(spanCellInner);
-					//
-					divCell.attr('colIndex', colIndex);
 					colIndex++;
 				}
 

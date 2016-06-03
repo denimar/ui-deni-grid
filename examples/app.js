@@ -273,6 +273,9 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 				},
 				{
 					text: 'Property Grid'
+				},
+				{
+					text: 'Action Button'
 				}
 			]
 		}
