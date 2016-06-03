@@ -32,7 +32,10 @@ angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
 	DEFAULT_ROW_HEIGHT: '22px',
 
 	//
-	PAGING_HEIGHT: '26px'
+	PAGING_HEIGHT: '26px',
+	
+	//
+	DEFAULT_REALCE_CELLS: 'background-color:#FFFF00;color:black;padding:1px;',
 
 
 });	
@@ -1873,6 +1876,9 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	me.scope = $scope;
 	me.element = $element;	
 	me.checkedRecords = [];
+	me.filterInfo = null;
+	me.searchInfo = null;	
+	me.initialData = []; //It is used when I filter the data and there is a need to know the original data
 
 	//
 	me.loading = false;	
@@ -2989,31 +2995,26 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 	//
 	//
-	var _rendererRealcedCells = function(colName, value, searchInfo) {
-		var keys = Object.keys(searchInfo.valuesToFind);
-		if (keys.indexOf(colName) == -1) {
-			return value;
-		} else {
-			var valueToFind = searchInfo.valuesToFind[colName];
-			var pos = value.indexOf(valueToFind);
-			if (pos == -1) {
-				return value;
-			} else {
-				var realce = searchInfo.opts.inLine.realce;
+	var _rendererRealcedCells = function(completeValue, valueToRealce, realceStyle) {
+		if (completeValue) {
+			completeValue = completeValue.toString();
+			var pos = completeValue.toLowerCase().indexOf(valueToRealce.toLowerCase());
+			var pos = completeValue.search(new RegExp(valueToRealce, "i"));
+			if (pos != -1) {		
 				var newValue = '';
-				var initPos = pos;
+				var initPos = 0;
 				while (pos != -1) {
-					newValue += value.substring(value, pos);
-					var valueToTemplate = value.substring(pos, pos + valueToFind.length);
-					var parsedValue = '<span style="' + realce.style + '">' + valueToTemplate + '</span>';
-					newValue += parsedValue;
-
-					initPos = pos + parsedValue.length;
-					pos = value.indexOf(valueToFind, initPos);
+					newValue += completeValue.substring(initPos, pos);
+					newValue += '<span style="' + realceStyle + '">' + completeValue.substring(pos, pos + valueToRealce.length) + '</span>';
+					initPos = pos + valueToRealce.length;
+					
+					pos = completeValue.toLowerCase().indexOf(valueToRealce.toLowerCase(), initPos);
 				}
+				newValue += completeValue.substring(initPos, completeValue.length);
 				return newValue;
-			}
-		}
+			}	
+		}	
+		return completeValue;
 	}
 
 	//
@@ -3340,8 +3341,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						}
 
 						//Is there something to realce (Used in Searches and Filters)
-						if ((isRowSelected) && (controller.searchInfo)) {
-							formattedValue = _rendererRealcedCells(column.name, formattedValue, controller.searchInfo);
+						if (controller.searchInfo) {
+							if (isRowSelected) {
+								formattedValue = _rendererRealcedCells(column.name, formattedValue, controller.searchInfo.valuesToField, controller.searchInfo.opts.inLine.realce.style);
+							}	
+						} else if (controller.filterInfo) {
+							
+							if (controller.filterInfo.options.realce) {
+								formattedValue = _rendererRealcedCells(formattedValue, controller.filterInfo.valuesToFilter, controller.filterInfo.options.realce);
+							}
+							
 						}
 
 						//
@@ -4276,7 +4285,34 @@ function xml2json(xml, tab) {
 		controller.renderedIndexes = [];
 
 		//Load the data
-		controller.options.data = data;
+		if (controller.filterInfo) {
+			var valuesToFilterObj;
+			//If the value to be used by the filtering is a string, then must be compared with all fields in the column grids
+			if (angular.isString(controller.filterInfo.valuesToFilter)) {
+				var columnNames = []; //I could simply pass a string, but it would search at all fields (whether or not in the columns grid)
+				for (var index = 0 ; index < controller.options.columns.length ; index++) {
+					columnNames.push(controller.options.columns[index].name);
+				}
+				controller.options.data = $filter('filter')(data, function(record, index, array) {
+					for (var colIndex = 0 ; colIndex < columnNames.length ; colIndex++) {
+						var value = record[columnNames[colIndex]];
+						if (value) {
+							//Insensitive Comparation
+							if (value.toString().search(new RegExp(controller.filterInfo.valuesToFilter, "i")) != -1) {
+								return true;
+							}
+						}	
+					}
+					return false;
+				});
+				
+			} else {
+				controller.options.data = $filter('filter')(data, controller.filterInfo.valuesToFilter);
+			}	
+		} else {
+			controller.options.data = data;			
+			controller.initialData = data;
+		}
 
 		//Records inside Grouping
 		controller.groupRecords = [];
@@ -4673,6 +4709,26 @@ function xml2json(xml, tab) {
 	 	return recordsFound;
 	}
 
+	me.filter = function(controller, valuesToFilter, opts) {
+		controller.filterInfo = {};
+		controller.filterInfo.valuesToFilter = valuesToFilter;
+		
+		//extends from default values
+		controller.filterInfo.options = angular.extend({
+			realce: uiDeniGridConstants.DEFAULT_REALCE_CELLS,
+			remote: false
+		}, opts || {});
+		
+		//remote filter
+		if (controller.filterInfo.options.remote) {
+			//TODO: implement it!
+			console.info('TODO : remote filter is not implemented!!');
+			
+		//local filter			
+		} else {
+			controller.options.api.loadData(controller.initialData);
+		}
+	}
 
 	/**
 	 *

@@ -8,6 +8,9 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	me.scope = $scope;
 	me.element = $element;	
 	me.checkedRecords = [];
+	me.filterInfo = null;
+	me.searchInfo = null;	
+	me.initialData = []; //It is used when I filter the data and there is a need to know the original data
 
 	//
 	me.loading = false;	

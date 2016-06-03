@@ -27,7 +27,10 @@ angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
 	DEFAULT_ROW_HEIGHT: '22px',
 
 	//
-	PAGING_HEIGHT: '26px'
+	PAGING_HEIGHT: '26px',
+	
+	//
+	DEFAULT_REALCE_CELLS: 'background-color:#FFFF00;color:black;padding:1px;',
 
 
 });	
