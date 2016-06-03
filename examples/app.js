@@ -275,7 +275,10 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 					text: 'Property Grid'
 				},
 				{
-					text: 'Action Button'
+					text: 'Action Column'
+					path: 'gxpa6yzt',
+					img: 'basic-array-grid.gif',
+					description: '????????'
 				}
 			]
 		}
