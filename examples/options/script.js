@@ -5,6 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
+        multiSelect: true,
         url: 'http://denimar.github.io/static-data/employees/00500.json',
         columns: [
             { 
@@ -61,8 +62,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
     }
 
     $scope.removesSelectedRow = function() {
-        var currentRow = $scope.gridOptions.api.getSelectedRowIndex();
-        $scope.gridOptions.api.removeRow(currentRow);
+        $scope.gridOptions.api.removeSelectedRows();
     }
 
     $scope.changeSelectedRow = function() {

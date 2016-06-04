@@ -2173,6 +2173,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		/**
 		 *	
 		 *
+		 */
+		removeSelectedRows: function() {
+			uiDeniGridSrv.removeSelectedRows(me);
+		},
+
+		/**
+		 *	
+		 *
 		*/		 
         resolveRowElement: function(row) {
         	return uiDeniGridSrv.resolveRowElement(me, row);        	
@@ -3619,30 +3627,31 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 	/**
 	 *
-	 *
+	 * return a integer value (see also getSelectedRowIndexes)
 	 */
 	me.getSelectedRowIndex = function(controller) {
 		return controller.rowIndex;
-		/*
-		var selectedRows = controller.bodyViewport.find('ui-row.selected');
-
-		//not found, return -1
-		if (selectedRows.length == 0) return -1;
-
-		//return just one index
-		if (selectedRows.length == 1) {
-			return parseInt($(selectedRows[0]).attr('rowindex'));
-		}
-		//return a array of index (multi select)
-		if (selectedRows.length > 1) {
-			var indexArray = [];
-			for (var index = 0 ; index < selectedRows.length ; index++) {
-				indexArray.push(parseInt($(selectedRows[index]).attr('rowindex')));
-			}
-			return indexArray;
-		}
-		*/
 	}
+
+	/**
+	 *
+	 * return a array (see also getSelectedRowIndex)
+	 *
+	 */
+	me.getSelectedRowIndexes = function(controller) {
+		var rowIndexes = [];
+
+		//
+		var selectedRows = controller.bodyViewport.find('.ui-row.selected');
+
+		//
+		for (var index = 0 ; index < selectedRows.length ; index++) {
+			rowIndexes.push(parseInt($(selectedRows[index]).attr('rowindex')));
+		}
+
+		return rowIndexes;
+	}
+
 
 	/**
 	 *	row {Object|Number} Can be passed rowIndex or the object record
@@ -5185,6 +5194,20 @@ function xml2json(xml, tab) {
 				controller.options.api.selectRow(rowIndexToSelect, false, false);
 			}
 		}	
+	}
+
+	/**
+	 *
+	 *
+	 */
+	me.removeSelectedRows = function(controller) {		
+		var selectedRowIndexes = me.getSelectedRowIndexes(controller);
+		var decreaseRowIndex = 0;
+		for (var index = 0 ; index < selectedRowIndexes.length ; index++) {
+			var rowIndex = selectedRowIndexes[index];
+			me.removeRow(controller, rowIndex - decreaseRowIndex);
+			decreaseRowIndex++;
+		}
 	}
 
 	// This function help some other functions which get row parameter where sometimes

@@ -271,6 +271,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		/**
 		 *	
 		 *
+		 */
+		removeSelectedRows: function() {
+			uiDeniGridSrv.removeSelectedRows(me);
+		},
+
+		/**
+		 *	
+		 *
 		*/		 
         resolveRowElement: function(row) {
         	return uiDeniGridSrv.resolveRowElement(me, row);        	
