@@ -260,6 +260,13 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			uiDeniGridSrv.reload(me);
 		},
 
+		/**
+		 *	
+		 *
+		 */
+		removeRow: function(row) {
+			uiDeniGridSrv.removeRow(me, row);
+		},
 
 		/**
 		 *	

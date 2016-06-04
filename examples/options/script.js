@@ -60,6 +60,11 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
         $scope.gridOptions.api.selectRow(452, false, true);
     }
 
+    $scope.removesSelectedRow = function() {
+        var currentRow = $scope.gridOptions.api.getSelectedRowIndex();
+        $scope.gridOptions.api.removeRow(currentRow);
+    }
+
     $scope.changeSelectedRow = function() {
         $scope.gridOptions.api.updateSelectedRow({
             name: 'Denimar de Moraes',

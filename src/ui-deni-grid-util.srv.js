@@ -1564,6 +1564,40 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		}
 
 		//
+		mng.removeRow = function(controller, rowIndex) {
+			var found = false;
+			var top;
+			for (var index = 0 ; index < mng.items.length ; index++) {
+				var item = mng.items[index];
+
+				if (found) {
+					item.rowIndex--;
+					item.top = top;
+					if (item.rendered) {
+						item.rowElement.remove();
+					}
+					item.rendered = false;
+					top += item.height;
+				} else {
+					if (item.rowIndex == rowIndex) {
+						found = true;
+						top = item.top
+						mng.items.splice(index, 1);						
+						if (item.rendered) {
+							item.rowElement.remove();
+						}
+						controller.options.data.splice(rowIndex, 1);
+						index--;
+					}
+				}	
+			}
+
+			var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
+			controller.bodyContainer.height(rowsContainerHeight);
+			controller.fixedColsBodyContainer.height(rowsContainerHeight);
+		}	
+
+		//
 		mng.insertRowDefailtBox = function(rowIndex) {
 			
 			var found = false;
@@ -1593,7 +1627,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 							//rowElement: elementRowDefailBox,
 							//rendered: true //it is important!
 						});
-							index++;
+						index++;
 						top += rowHeight;
 					}
 				}	

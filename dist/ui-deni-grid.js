@@ -1627,6 +1627,40 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		}
 
 		//
+		mng.removeRow = function(controller, rowIndex) {
+			var found = false;
+			var top;
+			for (var index = 0 ; index < mng.items.length ; index++) {
+				var item = mng.items[index];
+
+				if (found) {
+					item.rowIndex--;
+					item.top = top;
+					if (item.rendered) {
+						item.rowElement.remove();
+					}
+					item.rendered = false;
+					top += item.height;
+				} else {
+					if (item.rowIndex == rowIndex) {
+						found = true;
+						top = item.top
+						mng.items.splice(index, 1);						
+						if (item.rendered) {
+							item.rowElement.remove();
+						}
+						controller.options.data.splice(rowIndex, 1);
+						index--;
+					}
+				}	
+			}
+
+			var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
+			controller.bodyContainer.height(rowsContainerHeight);
+			controller.fixedColsBodyContainer.height(rowsContainerHeight);
+		}	
+
+		//
 		mng.insertRowDefailtBox = function(rowIndex) {
 			
 			var found = false;
@@ -1656,7 +1690,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 							//rowElement: elementRowDefailBox,
 							//rendered: true //it is important!
 						});
-							index++;
+						index++;
 						top += rowHeight;
 					}
 				}	
@@ -2128,6 +2162,13 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			uiDeniGridSrv.reload(me);
 		},
 
+		/**
+		 *	
+		 *
+		 */
+		removeRow: function(row) {
+			uiDeniGridSrv.removeRow(me, row);
+		},
 
 		/**
 		 *	
@@ -2389,7 +2430,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		if (controller.options.multiSelect) {
 			controller.bodyViewport.find('.ui-row.selected').addClass('selected');
 	 		controller.bodyViewport.find('.ui-cell.selected').addClass('selected');
-		} else {
+		} else {			
 			throw new Error('"selectAll" : to use selectAll method you must set multiSelect property to true!');
 		}
 	 }
@@ -2996,7 +3037,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	//
 	//
 	var _rendererRealcedCells = function(completeValue, valueToRealce, realceStyle) {
-		if (completeValue) {
+		if ((completeValue) && (valueToRealce)) {
 			completeValue = completeValue.toString();
 			var pos = completeValue.toLowerCase().indexOf(valueToRealce.toLowerCase());
 			var pos = completeValue.search(new RegExp(valueToRealce, "i"));
@@ -3282,8 +3323,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						imgActionColumn.attr('src', iconActionColumn);
 						imgActionColumn.attr('title', column.action.tooltip);
 						imgActionColumn.css('cursor', 'pointer');
+						imgActionColumn.prop('column', column);
 						imgActionColumn.click(function(event) {
-							column.action.fn(record);
+							var imgAction = $(event.currentTarget);
+							//var rowIdx = imgAction.closest('.ui-row').attr('rowindex');
+							//var rowRec = controller.options.data[rowIdx];
+							var colAction = imgAction.prop('column');
+							colAction.action.fn(record);
 						});
 						spanCellInner.append(imgActionColumn);
 					} else {
@@ -3477,9 +3523,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		        	//
 		        	controller.headerContainer.css('left', left);
-		        	//
-					controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
-					//controller.footerDivContainer.css('left', left);
+		        	
+					//Are there footer?
+					if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
+			        	//
+						controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
+						//controller.footerDivContainer.css('left', left);
+					}	
 		        }
 		    }
 
@@ -3572,7 +3622,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 */
 	me.getSelectedRowIndex = function(controller) {
-		var selectedRows = controller.bodyViewport.find('div.ui-row.selected');
+		return controller.rowIndex;
+		/*
+		var selectedRows = controller.bodyViewport.find('ui-row.selected');
 
 		//not found, return -1
 		if (selectedRows.length == 0) return -1;
@@ -3589,14 +3641,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 			return indexArray;
 		}
+		*/
 	}
 
 	/**
 	 *	row {Object|Number} Can be passed rowIndex or the object record
-	 *  preventSelectionChange {Boolean} default false
+	 *  preventOnSelectionChange {Boolean} default false
 	 *  scrollIntoView {Boolean} default true
 	*/
-    me.selectRow = function(controller, row, preventSelectionChange, scrollIntoView) {
+    me.selectRow = function(controller, row, preventOnSelectionChange, scrollIntoView) {
     	if ((controller.options.data) && (controller.options.data.length > 0)) {
 
     		//
@@ -3668,7 +3721,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						rowElement = itemRow.rowElement;
 					} else {
 		    			var rowHeight = parseInt(controller.options.rowHeight.replace('px', ''));
-		    			var scrollTop = (rowIndex * rowHeight) - 10;
+		    			var scrollTop = (rowIndex * rowHeight) - controller.bodyViewportWrapper.height() / 2;
 		    			controller.bodyViewport.scrollTop(scrollTop);
 		    			controller.options.api.repaint();
 		    			var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
@@ -3682,6 +3735,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				//remove all selections
 				controller.options.api.clearSelections();
 			}
+
+			//
+			rowElement.addClass('selected');
 
 			//
 		 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('selected');
@@ -3704,7 +3760,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			////////////////////////////////////////////////////
 			//onselectionchange event
 			////////////////////////////////////////////////////
-			if (!preventSelectionChange) {
+			if (!preventOnSelectionChange) {
 				if (controller.options.listeners.onselectionchange) {
 					controller.options.listeners.onselectionchange(controller, controller.element, controller.rowIndex, controller.options.data[controller.rowIndex]);
 				}
@@ -3719,11 +3775,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 	/**
 	 *	row {Object|Number} Can be passed rowIndex or the object record
-	 *  preventSelectionChange {Boolean} default false
+	 *  preventOnSelectionChange {Boolean} default false
 	 *  scrollIntoView {Boolean} default true
 	 *  colIndex {Integer} Column Index.
 	*/
-    me.selectCell = function(controller, row, colIndex, preventSelectionChange, scrollIntoView) {
+    me.selectCell = function(controller, row, colIndex, preventOnSelectionChange, scrollIntoView) {
     	if ((controller.options.data) && (controller.options.data.length > 0)) {
 
     		//
@@ -5107,6 +5163,29 @@ function xml2json(xml, tab) {
 		return -1;
 	}
 
+	/**
+	 *
+	 *
+	 */
+	me.removeRow = function(controller, row) {
+		var rowIndexToDelete = controller.options.api.resolveRowIndex(row);
+		var currentRowIndex = controller.options.api.getSelectedRowIndex();
+		var deletingCurrentRow = rowIndexToDelete == currentRowIndex;
+
+		controller.managerRendererItems.removeRow(controller, rowIndexToDelete);
+		controller.options.api.repaint();
+
+		// try to restore stat of selelction
+		if (controller.options.data.length > 0) {
+			if (currentRowIndex != -1) {
+				var rowIndexToSelect = currentRowIndex;
+				if (rowIndexToSelect > rowIndexToDelete) {
+					rowIndexToSelect--;
+				}
+				controller.options.api.selectRow(rowIndexToSelect, false, false);
+			}
+		}	
+	}
 
 	// This function help some other functions which get row parameter where sometimes
 	// it comes like a record object and sometimes comes its rowIndex
