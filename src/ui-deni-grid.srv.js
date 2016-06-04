@@ -526,6 +526,133 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		return sortersArray;
 	}
 
+	/*
+	 *
+	 *
+	 *
+	 */
+	var _repaint(controller, forceRepaint) {
+		//
+		var visibleRows = controller.managerRendererItems.getVisibleRows();
+
+		//
+		for (var index = 0 ; index < visibleRows.length ; index++) {
+			var visibleRow = visibleRows[index];
+
+			if (!visibleRow.rendered) {
+
+				// Card View
+				if (angular.isDefined(controller.options.cardView)) {
+
+					//It might have more than one record by row whe is configured "cardView" property
+					var recordsByRow = controller.options.cardView.numberOfColumns;
+
+					//
+					var rowElement = $(document.createElement('div'));
+					rowElement.addClass('ui-row');
+					rowElement.attr('rowindex', visibleRow.rowIndex);
+					rowElement.css('left', '0px');
+					rowElement.css('height', visibleRow.height);
+					rowElement.css('width', '100%');
+					rowElement.css('top', visibleRow.top + 'px');
+					rowElement.html('<table class="ui-table-card-view"><tr></tr></table>');
+					controller.bodyContainer.append(rowElement);
+					var rowTableRowCardView = rowElement.find('tr').get(0);
+					var colWidth = (100 / recordsByRow).toString() + '%';
+
+					//
+					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
+						var indexDataRecord = visibleRow.rowIndex;
+						//
+						if (visibleRow.rowIndex > 0) {
+							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow);
+						}
+						indexDataRecord += indexRecord;
+
+						var record = controller.options.data[indexDataRecord];
+
+						var divCell = $(rowTableRowCardView.insertCell());
+						divCell.css('width', colWidth);
+						if (record) {
+							var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
+							divCell.html(valueToRender);
+							divCell.prop('record', record);							
+
+							divCell.click(function(event) {
+								controller.bodyContainer.find('td').removeClass('selected');
+								$(event.currentTarget).addClass('selected');
+
+								////////////////////////////////////////////////////
+								//onselectionchange event
+								////////////////////////////////////////////////////
+								if (controller.options.listeners.onselectionchange) {
+									controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
+								}
+								////////////////////////////////////////////////////
+								////////////////////////////////////////////////////
+
+							});	
+
+							if (controller.options.cardView.checkbox == true) {
+								var checkboxCardView = $(document.createElement('input'));
+								checkboxCardView.addClass('checkbox');
+								checkboxCardView.attr('type', 'checkbox');
+								if (controller.checkedRecords.indexOf(record) != -1) {
+									checkboxCardView.attr('checked', true);
+								}
+								checkboxCardView.click(function(event) {
+									var rec = $(event.target.parent).prop('record');
+									var indexOfRec = controller.checkedRecords.indexOf(rec);
+
+									if (indexOfRec != -1) {
+										controller.checkedRecords.splice(indexOfRec, 1);
+									}
+
+									if (event.target.checked) {
+										controller.checkedRecords.push(rec);
+									}
+
+									if (controller.options.listeners.oncheckboxchange) {
+										controller.options.listeners.oncheckboxchange(rec, controller.checkedRecords, event.target);
+									}
+								});
+								divCell.append(checkboxCardView);
+							}
+
+						}
+
+						/*
+						//
+						var divCell = _createDivCell(controller, rowElement);
+						divCell.css('width', '100%');
+						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
+						divCell.html(valueToRender);
+						*/
+					}
+					visibleRow.rowElement = rowElement;
+
+				// Not a Card View
+				} else {
+					var record = controller.options.data[visibleRow.rowIndex];
+					visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
+				}
+			}
+		}
+
+		///////////////////////////////////////////////
+		// onafterrepaint event
+		///////////////////////////////////////////////
+		if (controller.options.listeners.onafterrepaint) {
+			controller.options.listeners.onafterrepaint(controller);
+		}
+		///////////////////////////////////////////////
+		///////////////////////////////////////////////
+
+		// remove all not visible rows elements
+		// preventing a overloading in the RAM memory
+		controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
+	}
+
 	/**
 	 * @param sorters {Array|Object|String} direction is optional
 	 * Example:
@@ -583,7 +710,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 				uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
 			}
-			controller.options.api.repaint();
+			_repaint(controller);
 
 		//COMMON ROW
 		} else {
@@ -1131,7 +1258,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		        }
 		    }
 
-			controller.options.api.repaint();
+			_repaint(controller);
 
         });
 
@@ -1308,21 +1435,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							var groupIndex = controller.options.data[rowIndex].groupIndex;
 							var groupInfo = controller.managerRendererItems.getInfoGroup(groupIndex);
 							controller.colsViewport.scrollTop(groupInfo.top);
-							controller.options.api.repaint();
+							_repaint(controller);
 							var record = controller.options.data[rowIndex];
 							uiDeniGridUtilSrv.groupExpand(controller, groupInfo.rowElement, record, rowIndex)
 							itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 						}
 
 						controller.colsViewport.scrollTop(itemRow.top);
-						controller.options.api.repaint();
+						_repaint(controller);
 
 						rowElement = itemRow.rowElement;
 					} else {
 		    			var rowHeight = parseInt(controller.options.rowHeight.replace('px', ''));
 		    			var scrollTop = (rowIndex * rowHeight) - controller.bodyViewportWrapper.height() / 2;
 		    			controller.bodyViewport.scrollTop(scrollTop);
-		    			controller.options.api.repaint();
+		    			_repaint(controller);
 		    			var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		    			rowElement = itemRow.rowElement;
 					}
@@ -2095,7 +2222,7 @@ function xml2json(xml, tab) {
 
 
 		//
-		me.repaint(controller);
+		_repaint(controller);
 
 
 		///////////////////////////////////////////////////////////////////////////
@@ -2107,97 +2234,6 @@ function xml2json(xml, tab) {
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
 	};
-
-	/**
-	 *
-	 *
-	 *
-	 *
-	 */
-	 /*
-	me.groupCollapse = function(controller, elementGroupRow) {
-		var indexStart = parseInt(elementGroupRow.attr('indexStart'));
-		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));
-
-		//Add divs which will have data
-		for (var index = indexStart ; index <= indexEnd ; index++) {
-			var divRow = controller.bodyViewport.find('div.ui-row[rowIndex=' + index + ']');
-			if (divRow.length > 0) {
-				divRow.css('display', 'none');
-			}
-		}
-
-		var footer = elementGroupRow.prop('footer');
-		if (angular.isDefined(footer)) {
-			footer.css('display', 'none');
-		}
-
-		me.repaint(controller);
-	}
-	*/
-
-	/**
-	 *
-	 *
-	 *
-	 *
-	 */
-	 /*
-	me.groupExpand = function(controller, elementGroupRow) {
-		var indexStart = parseInt(elementGroupRow.attr('indexStart'));
-		var indexEnd = parseInt(elementGroupRow.attr('indexEnd'));
-		var lastInsertedDivRow;
-
-		var groupRecords = controller.options.data.slice(indexStart, indexEnd + 1);
-		var groupIndex = parseInt(elementGroupRow.attr('groupindex'));
-
-		var divRow = controller.bodyViewport.find('div.ui-row[groupindex=' + groupIndex + ']');
-		if (divRow.length == 0) {
-			//Add divs which will have data
-			//for (var index = indexStart ; index <= indexEnd ; index++) {
-			for (var rowIndex = 0 ; rowIndex < groupRecords.length ; rowIndex++) {
-				divRow = $(document.createElement('div'));
-				divRow.attr('groupindex', groupIndex);
-				divRow.attr('groupRowIndex', rowIndex);
-				divRow.attr('rowindex', indexStart + rowIndex);
-				divRow.css('height', controller.options.rowHeight);
-				//divRow.css('padding-left', '25px');
-				divRow.addClass('ui-row');
-
-				if (controller.options.stripRows) {
-					if (rowIndex % 2 == 1) {
-						divRow.addClass('odd-line');
-					}
-				}
-
-				if (lastInsertedDivRow) {
-					divRow.insertAfter(lastInsertedDivRow);
-				} else {
-					divRow.insertAfter(elementGroupRow);
-				}
-				lastInsertedDivRow = divRow;
-			}
-
-			//
-			elementGroupRow.attr('displayRows', divRow.css('display'));
-			divRow.addClass('last-group-row');
-		} else {
-			divRow.css('display', elementGroupRow.attr('displayRows')); //restore the display css property saved before.
-		}
-
-		me.repaint(controller);
-
-		//////////////////////////////////////////////////////////////////
-		//OnAfterExpand Event
-		//////////////////////////////////////////////////////////////////
-		if (controller.options.listeners.onafterexpand) {
-			//var records = controller.options.data.splice(indexStart, indexEnd);
-			controller.options.listeners.onafterexpand(groupRecords, controller.options, elementGroupRow, lastInsertedDivRow);
-		}
-		//////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////
-	}
-	*/
 
 	/**
 	 *
@@ -2355,7 +2391,7 @@ function xml2json(xml, tab) {
 			}
 
 
-			controller.options.api.repaint();
+			_repaint(controller);
 		}
 		/////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////////////////////////////////////////
@@ -2625,126 +2661,7 @@ function xml2json(xml, tab) {
 	 *
 	 */
 	me.repaint = function(controller) {
-
-		//
-		var visibleRows = controller.managerRendererItems.getVisibleRows();
-
-		//
-		for (var index = 0 ; index < visibleRows.length ; index++) {
-			var visibleRow = visibleRows[index];
-
-			if (!visibleRow.rendered) {
-
-				// Card View
-				if (angular.isDefined(controller.options.cardView)) {
-
-					//It might have more than one record by row whe is configured "cardView" property
-					var recordsByRow = controller.options.cardView.numberOfColumns;
-
-					//
-					var rowElement = $(document.createElement('div'));
-					rowElement.addClass('ui-row');
-					rowElement.attr('rowindex', visibleRow.rowIndex);
-					rowElement.css('left', '0px');
-					rowElement.css('height', visibleRow.height);
-					rowElement.css('width', '100%');
-					rowElement.css('top', visibleRow.top + 'px');
-					rowElement.html('<table class="ui-table-card-view"><tr></tr></table>');
-					controller.bodyContainer.append(rowElement);
-					var rowTableRowCardView = rowElement.find('tr').get(0);
-					var colWidth = (100 / recordsByRow).toString() + '%';
-
-					//
-					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
-						var indexDataRecord = visibleRow.rowIndex;
-						//
-						if (visibleRow.rowIndex > 0) {
-							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow);
-						}
-						indexDataRecord += indexRecord;
-
-						var record = controller.options.data[indexDataRecord];
-
-						var divCell = $(rowTableRowCardView.insertCell());
-						divCell.css('width', colWidth);
-						if (record) {
-							var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
-							divCell.html(valueToRender);
-							divCell.prop('record', record);							
-
-							divCell.click(function(event) {
-								controller.bodyContainer.find('td').removeClass('selected');
-								$(event.currentTarget).addClass('selected');
-
-								////////////////////////////////////////////////////
-								//onselectionchange event
-								////////////////////////////////////////////////////
-								if (controller.options.listeners.onselectionchange) {
-									controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
-								}
-								////////////////////////////////////////////////////
-								////////////////////////////////////////////////////
-
-							});	
-
-							if (controller.options.cardView.checkbox == true) {
-								var checkboxCardView = $(document.createElement('input'));
-								checkboxCardView.addClass('checkbox');
-								checkboxCardView.attr('type', 'checkbox');
-								if (controller.checkedRecords.indexOf(record) != -1) {
-									checkboxCardView.attr('checked', true);
-								}
-								checkboxCardView.click(function(event) {
-									var rec = $(event.target.parent).prop('record');
-									var indexOfRec = controller.checkedRecords.indexOf(rec);
-
-									if (indexOfRec != -1) {
-										controller.checkedRecords.splice(indexOfRec, 1);
-									}
-
-									if (event.target.checked) {
-										controller.checkedRecords.push(rec);
-									}
-
-									if (controller.options.listeners.oncheckboxchange) {
-										controller.options.listeners.oncheckboxchange(rec, controller.checkedRecords, event.target);
-									}
-								});
-								divCell.append(checkboxCardView);
-							}
-
-						}
-
-						/*
-						//
-						var divCell = _createDivCell(controller, rowElement);
-						divCell.css('width', '100%');
-						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
-						divCell.html(valueToRender);
-						*/
-					}
-					visibleRow.rowElement = rowElement;
-
-				// Not a Card View
-				} else {
-					var record = controller.options.data[visibleRow.rowIndex];
-					visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
-				}
-			}
-		}
-
-		///////////////////////////////////////////////
-		// onafterrepaint event
-		///////////////////////////////////////////////
-		if (controller.options.listeners.onafterrepaint) {
-			controller.options.listeners.onafterrepaint(controller);
-		}
-		///////////////////////////////////////////////
-		///////////////////////////////////////////////
-
-		// remove all not visible rows elements
-		// preventing a overloading in the RAM memory
-		controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
+		_repaint(controller, true);
 	};
 
 	/**
@@ -2772,7 +2689,7 @@ function xml2json(xml, tab) {
 		var deletingCurrentRow = rowIndexToDelete == currentRowIndex;
 
 		controller.managerRendererItems.removeRow(controller, rowIndexToDelete);
-		controller.options.api.repaint();
+		_repaint(controller);
 
 		// try to restore stat of selelction
 		if (controller.options.data.length > 0) {
