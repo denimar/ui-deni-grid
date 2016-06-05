@@ -531,112 +531,147 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 *
 	 */
-	var _repaint(controller, forceRepaint) {
+	var _repaintCardView = function(controller, visibleRow) {
+		//It might have more than one record by row whe is configured "cardView" property
+		var recordsByRow = controller.options.cardView.numberOfColumns;
+
+		//
+		var rowElement = $(document.createElement('div'));
+		rowElement.addClass('ui-row');
+		rowElement.attr('rowindex', visibleRow.rowIndex);
+		rowElement.css('left', '0px');
+		rowElement.css('height', visibleRow.height);
+		rowElement.css('width', '100%');
+		rowElement.css('top', visibleRow.top + 'px');
+		rowElement.html('<table class="ui-table-card-view"><tr></tr></table>');
+		controller.bodyContainer.append(rowElement);
+		var rowTableRowCardView = rowElement.find('tr').get(0);
+		var colWidth = (100 / recordsByRow).toString() + '%';
+
+		//
+		for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
+			var indexDataRecord = visibleRow.rowIndex;
+			//
+			if (visibleRow.rowIndex > 0) {
+				indexDataRecord = ((visibleRow.rowIndex) * recordsByRow);
+			}
+			indexDataRecord += indexRecord;
+
+			var record = controller.options.data[indexDataRecord];
+
+			var divCell = $(rowTableRowCardView.insertCell());
+			divCell.css('width', colWidth);
+			if (record) {
+				var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
+				divCell.html(valueToRender);
+				divCell.prop('record', record);							
+
+				divCell.click(function(event) {
+					controller.bodyContainer.find('td').removeClass('selected');
+					$(event.currentTarget).addClass('selected');
+
+					////////////////////////////////////////////////////
+					//onselectionchange event
+					////////////////////////////////////////////////////
+					if (controller.options.listeners.onselectionchange) {
+						controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
+					}
+					////////////////////////////////////////////////////
+					////////////////////////////////////////////////////
+
+				});	
+
+				if (controller.options.cardView.checkbox == true) {
+					var checkboxCardView = $(document.createElement('input'));
+					checkboxCardView.addClass('checkbox');
+					checkboxCardView.attr('type', 'checkbox');
+					if (controller.checkedRecords.indexOf(record) != -1) {
+						checkboxCardView.attr('checked', true);
+					}
+					checkboxCardView.click(function(event) {
+						var rec = $(event.target.parent).prop('record');
+						var indexOfRec = controller.checkedRecords.indexOf(rec);
+
+						if (indexOfRec != -1) {
+							controller.checkedRecords.splice(indexOfRec, 1);
+						}
+
+						if (event.target.checked) {
+							controller.checkedRecords.push(rec);
+						}
+
+						if (controller.options.listeners.oncheckboxchange) {
+							controller.options.listeners.oncheckboxchange(rec, controller.checkedRecords, event.target);
+						}
+					});
+					divCell.append(checkboxCardView);
+				}
+
+			}
+		}
+		visibleRow.rowElement = rowElement;
+	}	
+
+
+	/*
+	 *
+	 *
+	 *
+	 */
+	var _repaintRow = function(controller, rowIndex, forceRepaint, execAfterRepaintEvent) {
+		var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
+		if (forceRepaint) {
+			itemRow.rendered = false;
+			itemRow.rowElement.remove();
+			itemRow.rowElement = undefined;
+		}	
+
+		if (!itemRow.rendered) {
+
+			// Card View
+			if (angular.isDefined(controller.options.cardView)) {
+				_repaintCardView(controller, itemRow);
+
+			// Not a Card View
+			} else {
+				var record = controller.options.data[itemRow.rowIndex];
+				itemRow.rowElement = _renderRowEl(controller, itemRow, record);
+			}
+
+			if (execAfterRepaintEvent) {
+				///////////////////////////////////////////////
+				// onafterrepaint event
+				///////////////////////////////////////////////
+				if (controller.options.listeners.onafterrepaint) {
+					controller.options.listeners.onafterrepaint(controller);
+				}
+				///////////////////////////////////////////////
+				///////////////////////////////////////////////
+			}
+		}
+	}	
+
+	/*
+	 *
+	 *
+	 *
+	 */
+	var _repaint = function(controller, forceRepaint) {
+
+		/*
+		//
+		if (forceRepaint) {
+			controller.managerRendererItems.setAllElementsToNotRendered();
+		}
+		*/
+
 		//
 		var visibleRows = controller.managerRendererItems.getVisibleRows();
 
 		//
 		for (var index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
-
-			if (!visibleRow.rendered) {
-
-				// Card View
-				if (angular.isDefined(controller.options.cardView)) {
-
-					//It might have more than one record by row whe is configured "cardView" property
-					var recordsByRow = controller.options.cardView.numberOfColumns;
-
-					//
-					var rowElement = $(document.createElement('div'));
-					rowElement.addClass('ui-row');
-					rowElement.attr('rowindex', visibleRow.rowIndex);
-					rowElement.css('left', '0px');
-					rowElement.css('height', visibleRow.height);
-					rowElement.css('width', '100%');
-					rowElement.css('top', visibleRow.top + 'px');
-					rowElement.html('<table class="ui-table-card-view"><tr></tr></table>');
-					controller.bodyContainer.append(rowElement);
-					var rowTableRowCardView = rowElement.find('tr').get(0);
-					var colWidth = (100 / recordsByRow).toString() + '%';
-
-					//
-					for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
-						var indexDataRecord = visibleRow.rowIndex;
-						//
-						if (visibleRow.rowIndex > 0) {
-							indexDataRecord = ((visibleRow.rowIndex) * recordsByRow);
-						}
-						indexDataRecord += indexRecord;
-
-						var record = controller.options.data[indexDataRecord];
-
-						var divCell = $(rowTableRowCardView.insertCell());
-						divCell.css('width', colWidth);
-						if (record) {
-							var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
-							divCell.html(valueToRender);
-							divCell.prop('record', record);							
-
-							divCell.click(function(event) {
-								controller.bodyContainer.find('td').removeClass('selected');
-								$(event.currentTarget).addClass('selected');
-
-								////////////////////////////////////////////////////
-								//onselectionchange event
-								////////////////////////////////////////////////////
-								if (controller.options.listeners.onselectionchange) {
-									controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
-								}
-								////////////////////////////////////////////////////
-								////////////////////////////////////////////////////
-
-							});	
-
-							if (controller.options.cardView.checkbox == true) {
-								var checkboxCardView = $(document.createElement('input'));
-								checkboxCardView.addClass('checkbox');
-								checkboxCardView.attr('type', 'checkbox');
-								if (controller.checkedRecords.indexOf(record) != -1) {
-									checkboxCardView.attr('checked', true);
-								}
-								checkboxCardView.click(function(event) {
-									var rec = $(event.target.parent).prop('record');
-									var indexOfRec = controller.checkedRecords.indexOf(rec);
-
-									if (indexOfRec != -1) {
-										controller.checkedRecords.splice(indexOfRec, 1);
-									}
-
-									if (event.target.checked) {
-										controller.checkedRecords.push(rec);
-									}
-
-									if (controller.options.listeners.oncheckboxchange) {
-										controller.options.listeners.oncheckboxchange(rec, controller.checkedRecords, event.target);
-									}
-								});
-								divCell.append(checkboxCardView);
-							}
-
-						}
-
-						/*
-						//
-						var divCell = _createDivCell(controller, rowElement);
-						divCell.css('width', '100%');
-						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
-						divCell.html(valueToRender);
-						*/
-					}
-					visibleRow.rowElement = rowElement;
-
-				// Not a Card View
-				} else {
-					var record = controller.options.data[visibleRow.rowIndex];
-					visibleRow.rowElement = _renderRowEl(controller, visibleRow, record);
-				}
-			}
+			_repaintRow(controller, visibleRow.rowIndex, forceRepaint);
 		}
 
 		///////////////////////////////////////////////
@@ -1573,8 +1608,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 
 		return null;
-    },
-
+    }
 
 	/**
 	 *
@@ -1589,30 +1623,31 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(json);
 			//
 			var keyFieldsToChange = Object.keys(fieldsNotNested);
+			//
+			var record = controller.options.data[controller.rowIndex];
+			//
+			var dataKeys = 	Object.keys(record);
 
 			//
 			for (var index = 0 ; index < keyFieldsToChange.length ; index++) {
 				var fieldNameToChange = keyFieldsToChange[index];
 
-				//Try to discover the col index
-				var column = controller.options.api.getColumn(fieldNameToChange);
-
-				if (column) {
-					//
-					var colIndex = controller.options.columns.indexOf(column);
-					//
-					var newValue = eval('json.' + fieldNameToChange);
-					//
-					me.updateCell(controller, controller.rowIndex, colIndex, newValue);
-				} else {
+				if (dataKeys.indexOf(fieldNameToChange) == -1) {
 					console.warn('"updateSelectedRow" : field "' + fieldNameToChange + '" not found!');
+				} else {
+					//
+					var newValue = eval('json.' + fieldNameToChange);						
+					record[fieldNameToChange] = newValue;
 				}
 			}
+
+			//
+			_repaintRow(controller, controller.rowIndex, true, true);
 		}
 	}
 
 	/**
-	 *	@param colIndex {Integer} this param is passed when we want to update a cell which is not selected
+	 *
 	 *
 	*/
 	me.updateSelectedCell = function(controller, value) {

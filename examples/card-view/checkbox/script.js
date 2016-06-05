@@ -5,7 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
   $scope.gridOptions = {
-    url: 'https://denimar.github.io/ui-deni-grid/examples/data/employees/00100.json',
+    url: 'http://denimar.github.io/static-data/employees/00100.json',
     cardView: {
 		  numberOfColumns: 3,
 		  checkbox: true,

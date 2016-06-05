@@ -1798,6 +1798,14 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 			}
 		}
 
+		//
+		mng.setAllElementsToNotRendered = function() {
+			for (var index = 0 ; index < mng.items.length ; index++) {
+				var item = mng.items[index];
+				item.rendered = false;
+				item.rowElement = undefined;
+			}
+		}
 
 		//
 		mng.getInfoGroup = function(groupIndex) {

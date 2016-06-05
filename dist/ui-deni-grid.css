@@ -62,9 +62,11 @@ ui-deni-grid {
           box-sizing: border-box;
           position: relative;
           border-right: solid 1px #99bce8; }
-          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-fixed-cols-viewport-wrapper .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport {
-            overflow-y: hidden;
-            overflow-x: hidden; }
+          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-fixed-cols-viewport-wrapper .ui-viewport .ui-container .ui-body-viewport-wrapper {
+            background-color: white; }
+            ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-fixed-cols-viewport-wrapper .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport {
+              overflow-y: hidden;
+              overflow-x: hidden; }
         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-variable-cols-viewport-wrapper {
           height: 100%;
           display: inline-block;
@@ -74,6 +76,7 @@ ui-deni-grid {
           height: 100%; }
           ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container {
             height: 100%;
+            background-color: white;
             /********************************************************************
 						** HEADER ***********************************************************
 						*********************************************************************/
@@ -172,6 +175,7 @@ ui-deni-grid {
               overflow-x: hidden;
               overflow-y: hidden;
               box-sizing: border-box;
+              background-color: white;
               /*height: calc(100% - 22px); */
               /* This height will recalculated after by "uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper" method. It depends on "Is there Header?", "Is there Footer?"... */ }
               ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport {
