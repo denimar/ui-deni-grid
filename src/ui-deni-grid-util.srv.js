@@ -1827,7 +1827,8 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 			for (var index = 0 ; index < mng.items.length ; index++) {
 				var item = mng.items[index];
 				//it don't get the rows which are groping
-				if ((item.rowIndex == rowIndex) && (!angular.isDefined(item.children))) {
+				//if ((item.rowIndex == rowIndex) && (!angular.isDefined(item.children))) {
+				if (item.rowIndex == rowIndex) {
 					return item;
 				}
 			}
