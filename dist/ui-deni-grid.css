@@ -2,11 +2,11 @@
 /* row - selected */
 ui-deni-grid {
   display: block;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  border: solid 1px #99bce8; }
   ui-deni-grid .ui-deni-grid-wrapper {
     width: 100%;
     height: 100%;
-    border: solid 1px #99bce8;
     overflow-y: hidden;
     font-family: tahoma, arial, verdana, sans-serif;
     box-sizing: border-box;
@@ -101,7 +101,7 @@ ui-deni-grid {
               border-bottom: solid 1px #cccccc;
               background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAIAAACOpGH9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVBhXHcNRCoBACATQuf9BZdHEZqKov1wfPDg/HOp8kep8UOq8carzgrQLJFFVMzNnRMDdsdaaZrb/qyo9fj2owlgAAAAASUVORK5CYII=");
               background-repeat-y: no-repeat;
-              background-size: 1px 100%; }
+              background-size: 2px 100%; }
               ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport {
                 float: left;
                 padding: 0px;
@@ -124,7 +124,7 @@ ui-deni-grid {
                       display: flex;
                       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAWCAIAAACOpGH9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA8SURBVBhXHcNRCoBACATQuf9BZdHEZqKov1wfPDg/HOp8kep8UOq8carzgrQLJFFVMzNnRMDdsdaaZrb/qyo9fj2owlgAAAAASUVORK5CYII=");
                       background-repeat-y: no-repeat;
-                      background-size: 1px 100%; }
+                      background-size: 2px 100%; }
                       ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell {
                         box-sizing: border-box;
                         align-items: center;
@@ -149,7 +149,7 @@ ui-deni-grid {
                           background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAVCAIAAAAIMBNTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABASURBVBhXY3j18TcDBP/CQ4PkfjE8f/+T4fGbbwwPX31luPv8M8Ptp58Yrj96z3DlwTuGC3ffMJy7/Zrh1I0XAKx7Oetvilz1AAAAAElFTkSuQmCC");
                           background-color: #F2F2F2;
                           background-repeat-y: no-repeat;
-                          background-size: 1px 100%; }
+                          background-size: 2px 100%; }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell.sort {
                           background-repeat: no-repeat;
                           background-position: right center;
@@ -268,7 +268,7 @@ ui-deni-grid {
                           background-image: url(data:image/gif;base64,R0lGODlhCgAKAIcAAMAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAEALAAAAAAKAAoAAAgdAAEIFBigYMGBAAwaHKhwYcKGByFKnEixosWJAQEAOw==); }
                       ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell.selected {
                         background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAUCAIAAADDbMD2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABSSURBVBhXBcFrCoJAAIXRb/8rMkQikZCIUPDRNCaDWRYu4d4fnUPcTfiZ8Wv6zXQf075Ns5rbS1wXc0miTuY8i+opykmcojg+RBFEfheHUWSD/l6pNN1FlJB5AAAAAElFTkSuQmCC") !important;
-                        background-size: 1px 100% !important;
+                        background-size: 2px 100% !important;
                         /*border-top: solid 1px $ui-deni-grid-row-selected-border-color;
 												border-bottom: solid 1px $ui-deni-grid-row-selected-border-color;*/ }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell.selected .ui-cell-inner.indicator {
@@ -283,7 +283,7 @@ ui-deni-grid {
                           font-weight: bold; }
                       ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell.hover {
                         background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAATCAIAAADeafBOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAA7SURBVBhXFcMJCoAwEATB/v9XRYLEHJrsrGNBISX/HfLk3fJkLjFW0h/R/J6i+jXCRWlB6eK8w8VR4wNNhTeEKcMuPgAAAABJRU5ErkJggg==");
-                        background-size: 1px 100%;
+                        background-size: 2px 100%;
                         /*border-top: solid 1px $ui-deni-grid-row-hover-border-color;
 												border-bottom: solid 1px $ui-deni-grid-row-hover-border-color;*/ }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell.hover .ui-cell-inner.indicator {

@@ -142,7 +142,7 @@ ui-deni-grid {
 							border-bottom: solid 1px #cccccc;
 							background-image: $background-header-columns;
 							background-repeat-y: no-repeat;
-							background-size: 1px 100%;																						
+							background-size: 2px 100%;																						
 
 
 							.ui-header-viewport {
@@ -170,7 +170,7 @@ ui-deni-grid {
 											display: flex;
 											background-image: $background-header-columns;
 											background-repeat-y: no-repeat;
-											background-size: 1px 100%;																						
+											background-size: 2px 100%;																						
 
 											.ui-header-cell {
 												box-sizing: border-box;
@@ -186,7 +186,7 @@ ui-deni-grid {
 												    background-image: $background-header-columns-hover;
 												    background-color: $background-color-auxiliar-fixed-column;
 												    background-repeat-y: no-repeat;
-												    background-size: 1px 100%;
+												    background-size: 2px 100%;
 												}	
 
 												&.sort {
@@ -370,7 +370,7 @@ ui-deni-grid {
 
 											&.selected {
 												background: $background-selected !important;
-												background-size: 1px 100% !important;
+												background-size: 2px 100% !important;
 												/*border-top: solid 1px $ui-deni-grid-row-selected-border-color;
 												border-bottom: solid 1px $ui-deni-grid-row-selected-border-color;*/
 
@@ -396,7 +396,7 @@ ui-deni-grid {
 
 											&.hover {
 												background-image: $background-hover;
-												background-size: 1px 100%;
+												background-size: 2px 100%;
 												/*border-top: solid 1px $ui-deni-grid-row-hover-border-color;
 												border-bottom: solid 1px $ui-deni-grid-row-hover-border-color;*/
 
