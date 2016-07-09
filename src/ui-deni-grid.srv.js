@@ -1172,25 +1172,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//
 		//
-		controller.options.listeners.onbeforeload = function(data, options) {
-			//Are there footer?
-			if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
-				//
-				uiDeniGridUtilSrv.renderColumnFooters(controller, controller.footerContainer, controller.options.columns, data, true);
-				//
-				uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
-			}
-		}
-
-		//
-		//
-		controller.options.listeners.onafterload = function(data, options) {
-			//
-			uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
-		}
-
-		//
-		//
 		controller.options.listeners.onafterexpand = function(records, options, elementGroupRow, lastInsertedDivRow) {
 			if (records.length > 0) {
 				var rowIndex = controller.options.api.resolveRowIndex(records[0]);
@@ -2098,6 +2079,15 @@ function xml2json(xml, tab) {
 		//////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
 
+		//Are there footer?
+		if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
+			//
+			uiDeniGridUtilSrv.renderColumnFooters(controller, controller.footerContainer, controller.options.columns, data, true);
+			//
+			uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
+		}
+
+
 		//
 		controller.renderedIndexes = [];
 
@@ -2259,6 +2249,7 @@ function xml2json(xml, tab) {
 		//
 		_repaint(controller);
 
+		uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
 
 		///////////////////////////////////////////////////////////////////////////
 		//AfterLoad Event
