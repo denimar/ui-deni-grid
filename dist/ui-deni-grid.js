@@ -2168,7 +2168,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *
 		 */
 		reload: function() {
-			uiDeniGridSrv.reload(me);
+			return uiDeniGridSrv.reload(me);
 		},
 
 		/**
