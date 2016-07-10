@@ -5,6 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
+        keyField: 'id',
         multiSelect: true,
         url: 'http://denimar.github.io/static-data/employees/00500.json',
         columns: [
@@ -59,6 +60,13 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.selectThirdRow = function() {
         $scope.gridOptions.api.selectRow(452, false, true);
+    }
+
+    $scope.findById61 = function(id) {
+        var options = {
+          "inLine": true
+        };
+        $scope.gridOptions.api.findKey(61, options);
     }
 
     $scope.removesSelectedRow = function() {

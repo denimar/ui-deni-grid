@@ -101,8 +101,8 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *	
 		 *
 		 */		 
-		findKey: function(keyValue) {
-			return uiDeniGridSrv.findKey(me, valuesToFind, opts);
+		findKey: function(keyValue, opts) {
+			return uiDeniGridSrv.findKey(me, keyValue, opts);
 		},
 
 		/**

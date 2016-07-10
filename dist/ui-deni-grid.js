@@ -2012,8 +2012,8 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *	
 		 *
 		 */		 
-		findKey: function(keyValue) {
-			return uiDeniGridSrv.findKey(me, valuesToFind, opts);
+		findKey: function(keyValue, opts) {
+			return uiDeniGridSrv.findKey(me, keyValue, opts);
 		},
 
 		/**
@@ -4680,6 +4680,12 @@ function xml2json(xml, tab) {
 		///////////////////////////////////////////////////////////////////////////
 	};
 
+
+	me.findKey = function(controller, keyValue, opts) {
+		var valuesToFind = JSON.parse('{"' + controller.options.keyField + '": "' + keyValue + '"}');
+		return me.find(controller, valuesToFind, opts);
+	}
+
 	/**
 	 *
 	 *
@@ -4707,7 +4713,7 @@ function xml2json(xml, tab) {
 	 	var ignoreCase = (opts.ignoreCase == true ? true : false) //Ignore case when comparing strings (only used for string values)
 	 	////////////////////////////////////////////////////////////////////////////////
 
-	 	var recordsFound = (all ? [] : null); //the type of return depends on the value of "all" parameter
+	 	var recordsFound = [];
 	 	var breakParentLoop = false;
 
 	 	var newJson = uiDeniGridUtilSrv.prepareForNestedJson(valuesToFind);
@@ -4750,10 +4756,9 @@ function xml2json(xml, tab) {
 	 		if (foundRecord) { //found record?
 	 			found = true;
 
-				if (all) {
-					recordsFound.push(record);
-				} else {
-					return record;
+				recordsFound.push(record);
+				if (!all) {
+					break;
 				}
 	 		}
 
@@ -4842,7 +4847,11 @@ function xml2json(xml, tab) {
 		/////////////////////////////////////////////////////////////////////////
 
 
-	 	return recordsFound;
+		if (all) {
+	 		return recordsFound;
+	 	} else {
+	 		return recordsFound[0];
+	 	}	
 	}
 
 	me.filter = function(controller, valuesToFilter, opts) {
