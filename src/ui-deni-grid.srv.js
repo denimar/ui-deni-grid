@@ -1203,8 +1203,42 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		controller.options.listeners.onafterrepaint = function(viewController) {
 
+			//All columns were specified in percentage?
+			allColumnsInPercentage = true;
+			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+				if (controller.options.columns[colIndex].width.toString().indexOf('%') == -1) {
+					allColumnsInPercentage = false;
+					break;
+				}
+			}
+			
+			//Any column was specified in percentage?
+			anyColumnInPercentage = false;
+			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
+					anyColumnInPercentage = true;
+					break;
+				}
+			}
+		
 			//
-			if (!controller.options.hideHeaders) {
+			if (controller.options.hideHeaders) {
+				
+				if (anyColumnInPercentage) {
+					controller.container.find('.ui-row').css('width', '100%');
+				}	
+				
+				for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+					var column = controller.options.columns[colIndex];
+					var newWidth = column.width;
+					if (!anyColumnInPercentage) {
+						newWidth = uiDeniGridUtilSrv.getRealColumnWidth(controller, newWidth, controller.clientWidth);
+					}	
+					controller.container.find('.ui-cell[colIndex=' + colIndex + ']').css('width', newWidth);
+				}
+				
+			//	
+			} else {	
 				var colIndex = 0;
 
 				//Fixed Columns
