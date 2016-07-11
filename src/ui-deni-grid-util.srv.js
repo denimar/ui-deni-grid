@@ -299,8 +299,22 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 */ 
         opt.selType = 'row';
 		
-		
+		/**
+		 *
+		 * (default = true)
+		 * 
+		 *
+		 */ 
+        opt.colLines = true;
 
+		/**
+		 *
+		 * (default = true)
+		 * 
+		 *
+		 */ 
+        opt.rowLines = true;
+		
 		/**
 		 * @opt {Boolean} [autoLoad=true]
 		 *

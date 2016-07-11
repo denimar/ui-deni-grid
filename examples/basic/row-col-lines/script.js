@@ -5,12 +5,14 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		hideHeaders: true,
+		colLines: false,
+		rowLines: false,		
         columns: [
             { 
                 header:'Name', 
                 name: 'name', 
-                width: 'calc(100% - 100px)', 
+                //width: 'calc(100% - 100px)', 
+				width: '200px'
             },
             { 
                 header:'Gender', 

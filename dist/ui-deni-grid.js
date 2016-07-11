@@ -362,8 +362,22 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 */ 
         opt.selType = 'row';
 		
-		
+		/**
+		 *
+		 * (default = true)
+		 * 
+		 *
+		 */ 
+        opt.colLines = true;
 
+		/**
+		 *
+		 * (default = true)
+		 * 
+		 *
+		 */ 
+        opt.rowLines = true;
+		
 		/**
 		 * @opt {Boolean} [autoLoad=true]
 		 *
@@ -1978,9 +1992,9 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
     //Paging
 	me.paging = me.viewport.find('.ui-deni-grid-paging');    
 
-	//Set the default options talking to viewCtrl inside of it
+	//Set the default options
 	uiDeniGridUtilSrv.setDefaultOptions(me, me.options);
-
+	
 	//Inherit API from ui-deni-view and create some new APIs too		
 	me.options.api = {
 
@@ -2359,7 +2373,10 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		///////////////////////////////////////////////////////////////////////////
 		//GRID FOOTER /////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////	
-
+		if (me.options.colLines) {
+			me.headerContainer.find('.ui-header-container-column').css('border-right', 'solid 1px silver');
+		}
+		
 		//How many column footer rows is there in the grid (footer.grid different from false)
 		me.columnFooterRowsNumberGrid = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me);		
 		//How many grouping footer rows is there in the grid (footer.grouping different from false)
@@ -2510,13 +2527,37 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		var colIndex = colIndexStart || 0;
 
+		//Any column was specified in percentage? TODO: create a function to get this
+		/*
+		var anyColumnInPercentage = false;
+		for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+			if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
+				anyColumnInPercentage = true;
+				break;
+			}
+		}
+		
+		//
+		if (anyColumnInPercentage) {
+			controller.headerViewport.css('width', '100%');		
+			controller.headerContainer.css('width', '100%');
+		}
+		*/
+		
 		//
 		for (var index = 0 ; index < columns.length ; index++) {
 			var column = columns[index];
 
 			//ui-header-container-column
 			var divHeaderContainerColumn = $(document.createElement('div'));
-			divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
+			
+			//
+			//if (anyColumnInPercentage) {
+			//	divHeaderContainerColumn.css('width', column.width);
+			//} else {	
+				divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
+			//}	
+			
 			divHeaderContainerColumn.addClass('ui-header-container-column');
 			divHeaderContainerColumn.attr('colindex', colIndex);
 			if (angular.isDefined(headerContainerColumnRow)) {
@@ -3245,7 +3286,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		var divCell = $(document.createElement('div'));
 		divCell.addClass('ui-cell');
+		
+		if (controller.options.colLines) {
+			divCell.css('border-right', 'solid 1px #e6e6e6');
+		}
 
+		if (controller.options.rowLines) {
+			divCell.css('border-bottom', 'solid 1px #e6e6e6');
+		}
+		
 		if (!rowElement.is('.row-detail')) {
 			///////////////////////////////////''
 			//Set the events here
@@ -3622,8 +3671,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		controller.options.listeners.onafterrepaint = function(viewController) {
 
-			//All columns were specified in percentage?
-			allColumnsInPercentage = true;
+			//All columns were specified in percentage? TODO: create a function to get this
+			var allColumnsInPercentage = true;
 			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
 				if (controller.options.columns[colIndex].width.toString().indexOf('%') == -1) {
 					allColumnsInPercentage = false;
@@ -3631,8 +3680,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				}
 			}
 			
-			//Any column was specified in percentage?
-			anyColumnInPercentage = false;
+			//Any column was specified in percentage? TODO: create a function to get this
+			var anyColumnInPercentage = false;
 			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
 				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
 					anyColumnInPercentage = true;
@@ -3675,6 +3724,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
 					colIndex++;
 				}
+				
+				/*
+				//
+				if (anyColumnInPercentage) {
+					for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+						var column = controller.options.columns[colIndex];
+						controller.container.find('.ui-cell[colIndex=' + colIndex + ']').css('width', column.width);
+					}	
+				}
+				*/
 			}
 
         }

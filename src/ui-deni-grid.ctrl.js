@@ -67,9 +67,9 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
     //Paging
 	me.paging = me.viewport.find('.ui-deni-grid-paging');    
 
-	//Set the default options talking to viewCtrl inside of it
+	//Set the default options
 	uiDeniGridUtilSrv.setDefaultOptions(me, me.options);
-
+	
 	//Inherit API from ui-deni-view and create some new APIs too		
 	me.options.api = {
 
@@ -448,7 +448,10 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		///////////////////////////////////////////////////////////////////////////
 		//GRID FOOTER /////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////	
-
+		if (me.options.colLines) {
+			me.headerContainer.find('.ui-header-container-column').css('border-right', 'solid 1px silver');
+		}
+		
 		//How many column footer rows is there in the grid (footer.grid different from false)
 		me.columnFooterRowsNumberGrid = uiDeniGridUtilSrv.getColumnFooterRowsNumber(me);		
 		//How many grouping footer rows is there in the grid (footer.grouping different from false)
