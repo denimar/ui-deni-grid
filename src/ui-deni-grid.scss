@@ -161,7 +161,7 @@ ui-deni-grid {
 									position: absolute;
 
 									.ui-header-container-column {
-										border-right: solid 1px silver;
+										/*border-right: solid 1px silver;*/
 										box-sizing: border-box;
 										display: inline-block;
 
@@ -301,8 +301,8 @@ ui-deni-grid {
 											box-sizing: border-box;
 											align-items: center; /*do not work in Olds IE*/
 											height: 100%;
-				    						border-right: solid 1px $default-gridlines-border-color;
-											border-bottom: solid 1px $default-gridlines-border-color;				    						
+				    						//border-right: solid 1px $default-gridlines-border-color;
+											//border-bottom: solid 1px $default-gridlines-border-color;				    						
 
 											.ui-cell-inner {
 												width: 100%;
