@@ -1121,7 +1121,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							//var rowIdx = imgAction.closest('.ui-row').attr('rowindex');
 							//var rowRec = controller.options.data[rowIdx];
 							var colAction = imgAction.prop('column');
-							colAction.action.fn(record);
+							colAction.action.fn(record, column, imgActionColumn);
 						});
 						spanCellInner.append(imgActionColumn);
 					} else {

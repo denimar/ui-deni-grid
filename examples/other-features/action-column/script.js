@@ -28,7 +28,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
                 action: {
                     icon: '../../images/edit.png',
                     tooltip: 'Edit that employee...',
-                    fn: function(record) {
+                    fn: function(record, column, imgActionColumn) {
                         alert('Editing user "' + record.name + '"...');
                     }
                 }   
@@ -45,7 +45,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
                         }
                     },                      
                     tooltip: 'Delete that employee...',
-                    fn: function(record) {
+                    fn: function(record, column, imgActionColumn) {
                         alert('Deleting user "' + record.name + '"...');
                     }
                 }   
