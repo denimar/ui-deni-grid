@@ -301,8 +301,16 @@ ui-deni-grid {
 											box-sizing: border-box;
 											align-items: center; /*do not work in Olds IE*/
 											height: 100%;
-				    						//border-right: solid 1px $default-gridlines-border-color;
-											//border-bottom: solid 1px $default-gridlines-border-color;				    						
+
+											.material-icons {
+												color: #b3b3b3;
+												font-size: 20px;
+												margin-top: 2px;
+
+												&:hover {
+													color: #3764A0;
+												}
+											}
 
 											.ui-cell-inner {
 												width: 100%;

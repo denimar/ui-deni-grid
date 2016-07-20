@@ -3543,23 +3543,31 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					if (column.action) {						
 						spanCellInner.css('text-align', 'center');						
 
-						var imgActionColumn = $(document.createElement('img'));
-						var iconActionColumn = column.action.icon;
+						var imgActionColumn;
+						var iconActionColumn = column.action.mdIcon || column.action.icon;
 						if (angular.isFunction(iconActionColumn)) {
 							iconActionColumn = iconActionColumn(record);
-						}
-						imgActionColumn.attr('src', iconActionColumn);
-						imgActionColumn.attr('title', column.action.tooltip);
-						imgActionColumn.css('cursor', 'pointer');
-						imgActionColumn.prop('column', column);
+						}						
+						if (column.action.mdIcon) { //Usa o md-icon do Angular Material
+							imgActionColumn = $(document.createElement('md-icon'));
+							imgActionColumn.addClass('material-icons');
+							imgActionColumn.html(iconActionColumn);
+						} else {
+							imgActionColumn = $(document.createElement('img'));
+							imgActionColumn.attr('src', iconActionColumn);
+							imgActionColumn.attr('title', column.action.tooltip);
+						}	
+
 						imgActionColumn.click(function(event) {
 							var imgAction = $(event.currentTarget);
-							//var rowIdx = imgAction.closest('.ui-row').attr('rowindex');
-							//var rowRec = controller.options.data[rowIdx];
 							var colAction = imgAction.prop('column');
 							colAction.action.fn(record, column, imgActionColumn);
 						});
+
+						imgActionColumn.prop('column', column);						
+						imgActionColumn.css('cursor', 'pointer');
 						spanCellInner.append(imgActionColumn);
+
 					} else {
 						//
 						if (index == 0) {

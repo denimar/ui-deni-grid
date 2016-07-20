@@ -215,6 +215,12 @@ ui-deni-grid {
                       /*do not work in Olds IE*/
                       height: 100%;
                       /* indicator, rownumber, .... */ }
+                      ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .material-icons {
+                        color: #b3b3b3;
+                        font-size: 20px;
+                        margin-top: 2px; }
+                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .material-icons:hover {
+                          color: #3764A0; }
                       ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .ui-cell-inner {
                         width: 100%;
                         margin-bottom: 1px;
