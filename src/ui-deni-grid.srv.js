@@ -673,6 +673,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				///////////////////////////////////////////////
 			}
 		}
+
+		///////////////////////////////////////////////
+		// onafterrepaintrow event
+		///////////////////////////////////////////////
+		if (controller.options.listeners.onafterrepaintrow) {
+			controller.options.listeners.onafterrepaintrow(visibleRow.rowIndex, visibleRow.rowElement);
+		}
+		///////////////////////////////////////////////
+		///////////////////////////////////////////////
 	}	
 
 	/*
@@ -696,16 +705,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		for (var index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
 			_repaintRow(controller, visibleRow.rowIndex, forceRepaint);
-
-			///////////////////////////////////////////////
-			// onafterrepaintrow event
-			///////////////////////////////////////////////
-			if (controller.options.listeners.onafterrepaintrow) {
-				controller.options.listeners.onafterrepaintrow(visibleRow.rowIndex, visibleRow.rowElement);
-			}
-			///////////////////////////////////////////////
-			///////////////////////////////////////////////
-
 		}
 
 		///////////////////////////////////////////////
