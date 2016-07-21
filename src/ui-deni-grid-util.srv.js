@@ -146,8 +146,10 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 		//
 		 		divCellElementKeyDown.append(spanCellInnerKeyDown);
 
+				var rowElement = divCellElementKeyDown.closest('.ui-row');
+				
 				//
-				controller.options.api.updateSelectedCell(newValue);
+				controller.options.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
 
 			//not confirmed
 			} else { 
@@ -642,19 +644,23 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 	 *
 	 */
 	me.getColumnHeaderLevels = function(controller, columns) {
-		var levels = 1;
-
+		var greaterLevelChild = 0;
+		var levelsChild = 0;
 		for (var index = 0 ; index < columns.length ; index++) {
 			var column = columns[index];
 			//
 			if (column.columns) {
 				//
-				levels += me.getColumnHeaderLevels(controller, column.columns);
+				levelsChild = me.getColumnHeaderLevels(controller, column.columns);
+				
+				if (levelsChild > greaterLevelChild) {
+					greaterLevelChild = levelsChild;
+				}
 			}	
 		}	
 
 
-		return levels;
+		return 1 + greaterLevelChild;
 	}
 
 

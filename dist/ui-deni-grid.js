@@ -209,8 +209,10 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		 		//
 		 		divCellElementKeyDown.append(spanCellInnerKeyDown);
 
+				var rowElement = divCellElementKeyDown.closest('.ui-row');
+				
 				//
-				controller.options.api.updateSelectedCell(newValue);
+				controller.options.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
 
 			//not confirmed
 			} else { 
@@ -705,19 +707,23 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 	 *
 	 */
 	me.getColumnHeaderLevels = function(controller, columns) {
-		var levels = 1;
-
+		var greaterLevelChild = 0;
+		var levelsChild = 0;
 		for (var index = 0 ; index < columns.length ; index++) {
 			var column = columns[index];
 			//
 			if (column.columns) {
 				//
-				levels += me.getColumnHeaderLevels(controller, column.columns);
+				levelsChild = me.getColumnHeaderLevels(controller, column.columns);
+				
+				if (levelsChild > greaterLevelChild) {
+					greaterLevelChild = levelsChild;
+				}
 			}	
 		}	
 
 
-		return levels;
+		return 1 + greaterLevelChild;
 	}
 
 
@@ -2328,6 +2334,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *	
 		 *
 		*/		 
+        updateCell: function(rowIndex, colIndex, value) {
+        	uiDeniGridSrv.updateCell(me, rowIndex, colIndex, value);
+        },
+		
+		/**
+		 *	
+		 *
+		*/		 
         updateSelectedCell: function(value) {
         	uiDeniGridSrv.updateSelectedCell(me, value);
         },
@@ -3090,7 +3104,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		if (forceRepaint) {
 			itemRow.rendered = false;
-			itemRow.rowElement.remove();
+			if (angular.isDefined(itemRow.rowElement)) {
+				itemRow.rowElement.remove();
+			}	
 			itemRow.rowElement = undefined;
 		}	
 
@@ -3109,9 +3125,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			///////////////////////////////////////////////
 			// onafterrepaintrow event
 			///////////////////////////////////////////////
-			if (controller.options.listeners.onafterrepaintrow) {
-				controller.options.listeners.onafterrepaintrow(visibleRow.rowIndex, visibleRow.rowElement);
-			}
+			if (itemRow.rowElement) {
+				if (controller.options.listeners.onafterrepaintrow) {
+					controller.options.listeners.onafterrepaintrow(itemRow.rowIndex, itemRow.rowElement);
+				}
+			}	
 			///////////////////////////////////////////////
 			///////////////////////////////////////////////
 
@@ -3376,16 +3394,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			//doubleclick
 	    	divCell.dblclick(function(event) {
-	    		var divCell = $(event.currentTarget);
-	    		var colIndex = parseInt(divCell.attr('colIndex'));
-				var column = controller.options.columns[colIndex]
+	    		var targetEl = $(event.target);
+	    		if (targetEl.is('.ui-cell-inner')) {
+		    		var divCell = $(event.currentTarget);
+		    		var colIndex = parseInt(divCell.attr('colIndex'));
+					var columns = me.getColumns(controller, controller.options.columns);
+					var column = columns[colIndex]
 
-				if (column.editor) {
-					var rowElement = divCell.closest('.ui-row');
-					var rowIndex = parseInt(rowElement.attr('rowindex'));
-					var record = controller.options.data[rowIndex];
-					uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
-				}
+					if (column.editor) {
+						var rowElement = divCell.closest('.ui-row');
+						var rowIndex = parseInt(rowElement.attr('rowindex'));
+						var record = controller.options.data[rowIndex];
+						uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
+					}
+				}	
 	    	});
 
 			///////////////////////////////////
@@ -4170,20 +4192,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 *
 	*/
-	me.updateSelectedCell = function(controller, value) {
-
-		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
-			throw "You have to select a record";
-		} else {
-			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
-		}
-
-	}
-
-	/**
-	 *
-	 *
-	*/
 	me.updateCell = function(controller, rowIndex, colIndex, value) {
 		var rowElement = controller.options.api.resolveRowElement(rowIndex);
 		var divCell = rowElement.find('.ui-cell[colIndex=' + colIndex + ']');
@@ -4195,6 +4203,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//When we need the changed records we can get by ".ui-row.changed"
 		divCell.closest('.ui-row').addClass('changed');
 	}
+	
+	/**
+	 *
+	 *
+	*/
+	me.updateSelectedCell = function(controller, value) {
+
+		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
+			throw "You have to select a record";
+		} else {
+			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
+		}
+
+	}
+	
 
 	/**
 	 *

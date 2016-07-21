@@ -403,6 +403,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		 *	
 		 *
 		*/		 
+        updateCell: function(rowIndex, colIndex, value) {
+        	uiDeniGridSrv.updateCell(me, rowIndex, colIndex, value);
+        },
+		
+		/**
+		 *	
+		 *
+		*/		 
         updateSelectedCell: function(value) {
         	uiDeniGridSrv.updateSelectedCell(me, value);
         },

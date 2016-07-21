@@ -5,7 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('SimpleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-        url: '../../data/employees/10000.json',
+        url: 'http://denimar.github.io/static-data/employees/01000.json',
         selType: 'cell',
         columns: [
             { 
