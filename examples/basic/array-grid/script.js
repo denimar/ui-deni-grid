@@ -49,7 +49,14 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
                 "gender": "male",
                 "age": 69,
             },
-        ]
+        ],
+        listeners: {
+
+            onafterrepaintrow: function(rowIndex, elementRow) {
+                console.log(elementRow);
+            }
+
+        }
     };
 
 });
