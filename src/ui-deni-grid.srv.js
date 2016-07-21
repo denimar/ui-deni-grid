@@ -2788,6 +2788,25 @@ function xml2json(xml, tab) {
 	 *
 	 *
 	 */
+	me.repaintRow = function(controller, row) {
+		var rowIndex = controller.options.api.resolveRowIndex(row);
+		_repaintRow(controller, rowIndex, true, true);
+	};
+
+	/**
+	 *	
+	 *
+	 */
+	me.repaintSelectedRow = function(controller) {
+		var selectedRowIndex = me.getSelectedRowIndex(controller);
+		me.repaintRow(controller, selectedRowIndex);
+	};	
+
+
+	/**
+	 *
+	 *
+	 */
 	me.getRowIndex = function(controller, record) {
 		var data = controller.options.data;
 		for (var index = 0 ; index < data.length ; index++) {

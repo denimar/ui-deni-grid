@@ -2234,6 +2234,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			return uiDeniGridSrv.repaintRow(me, row);							
 		},
 
+		/**
+		 *	
+		 *
+		 */
+		repaintSelectedRow: function() {
+			return uiDeniGridSrv.repaintSelectedRow(me);
+		},
+
 
 		/**
 		 *	
@@ -3540,8 +3548,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					var spanCellInner = _createDivCellInner(divCell);
 
 					//action column
-					if (column.action) {						
+					if (column.action) {
 						spanCellInner.css('text-align', 'center');						
+						spanCellInner.addClass('ui-cell-inner-action');
 
 						var imgActionColumn;
 						var iconActionColumn = column.action.mdIcon || column.action.icon;
@@ -5218,6 +5227,25 @@ function xml2json(xml, tab) {
 	me.repaint = function(controller) {
 		_repaint(controller, true);
 	};
+
+	/**
+	 *
+	 *
+	 */
+	me.repaintRow = function(controller, row) {
+		var rowIndex = controller.options.api.resolveRowIndex(row);
+		_repaintRow(controller, rowIndex, true, true);
+	};
+
+	/**
+	 *	
+	 *
+	 */
+	me.repaintSelectedRow = function(controller) {
+		var selectedRowIndex = me.getSelectedRowIndex(controller);
+		me.repaintRow(controller, selectedRowIndex);
+	};	
+
 
 	/**
 	 *

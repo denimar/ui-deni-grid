@@ -309,6 +309,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			return uiDeniGridSrv.repaintRow(me, row);							
 		},
 
+		/**
+		 *	
+		 *
+		 */
+		repaintSelectedRow: function() {
+			return uiDeniGridSrv.repaintSelectedRow(me);
+		},
+
 
 		/**
 		 *	
