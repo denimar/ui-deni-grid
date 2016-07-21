@@ -1104,8 +1104,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					var spanCellInner = _createDivCellInner(divCell);
 
 					//action column
-					if (column.action) {						
+					if (column.action) {
 						spanCellInner.css('text-align', 'center');						
+						spanCellInner.addClass('ui-cell-inner-action');
 
 						var imgActionColumn;
 						var iconActionColumn = column.action.mdIcon || column.action.icon;
