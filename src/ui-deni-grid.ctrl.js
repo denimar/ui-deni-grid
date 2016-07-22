@@ -450,6 +450,11 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			//columnHeaderLevels has a numer greater than one when it has a grouped column headers.
 			me.columnHeaderLevels = uiDeniGridUtilSrv.getColumnHeaderLevels(me, me.options.columns);
 
+			if (me.columnHeaderLevels > 1) {
+				//realPercentageWidth cause effect only when there are more then one level of columns
+				uiDeniGridUtilSrv.setRealPercentageWidths(me.options.columns, '100%');
+			}
+
 			//
 			uiDeniGridSrv.createColumnHeaders(me, me.options.columns);
 			uiDeniGridSrv.createColumnHeadersEvents(me);		

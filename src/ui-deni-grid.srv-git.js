@@ -92,6 +92,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var colIndex = colIndexStart || 0;
 
 		//Any column was specified in percentage? TODO: create a function to get this
+		/*
 		var anyColumnInPercentage = false;
 		for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
 			if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
@@ -102,9 +103,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		
 		//
 		if (anyColumnInPercentage) {
-			controller.headerViewport.css('width', 'calc(100% - 17px)');		
+			controller.headerViewport.css('width', '100%');		
 			controller.headerContainer.css('width', '100%');
 		}
+		*/
 		
 		//
 		for (var index = 0 ; index < columns.length ; index++) {
@@ -114,10 +116,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var divHeaderContainerColumn = $(document.createElement('div'));
 			
 			//
-			//if (anyColumnInPercentage) { aqui
-				divHeaderContainerColumn.css('width', column.width);
+			//if (anyColumnInPercentage) {
+			//	divHeaderContainerColumn.css('width', column.width);
 			//} else {	
-				//divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
+				divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
 			//}	
 			
 			divHeaderContainerColumn.addClass('ui-header-container-column');
@@ -167,13 +169,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			} else {
 				var content = column.header || column.name;
 				spanHeaderCellInner.html(content);
-
-				if (column.action) {
-					//
-					divHeaderContainerColumn.addClass('action-button-column');
-					//
-					divHeaderCell.addClass('action-button-column');
-				}
 			}
 
 
@@ -483,20 +478,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 					if (controller.colsViewport.css('cursor') == 'default') { //prevent conflict with the resizing columns function
 						if (controller.options.sortableColumns) {
+							var headerCell = $(event.currentTarget);
+							var direction = 'ASC'; //default
+							if (headerCell.is('.asc')) {
+								direction = 'DESC';
+							}
+
 							var headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
 
-							//Action column should not be ordered
-							if (!headerContainerColumn.is('.action-button-column')) {
-								var headerCell = $(event.currentTarget);
-								var direction = 'ASC'; //default
-								if (headerCell.is('.asc')) {
-									direction = 'DESC';
-								}
-
-								if (!headerContainerColumn.is('.has-subcolumns')) {
-									controller.options.api.sort({name: headerCell.attr('name'), direction: direction});
-								}
-							}	
+							if (!headerContainerColumn.is('.has-subcolumns')) {
+								controller.options.api.sort({name: headerCell.attr('name'), direction: direction});
+							}
 						}
 					}
 				}
@@ -654,9 +646,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		if (forceRepaint) {
 			itemRow.rendered = false;
-			if (angular.isDefined(itemRow.rowElement)) {
-				itemRow.rowElement.remove();
-			}	
+			itemRow.rowElement.remove();
 			itemRow.rowElement = undefined;
 		}	
 
@@ -675,11 +665,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			///////////////////////////////////////////////
 			// onafterrepaintrow event
 			///////////////////////////////////////////////
-			if (itemRow.rowElement) {
-				if (controller.options.listeners.onafterrepaintrow) {
-					controller.options.listeners.onafterrepaintrow(itemRow.rowIndex, itemRow.rowElement);
-				}
-			}	
+			if (controller.options.listeners.onafterrepaintrow) {
+				controller.options.listeners.onafterrepaintrow(visibleRow.rowIndex, visibleRow.rowElement);
+			}
 			///////////////////////////////////////////////
 			///////////////////////////////////////////////
 
@@ -944,20 +932,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			//doubleclick
 	    	divCell.dblclick(function(event) {
-	    		var targetEl = $(event.target);
-	    		if (targetEl.is('.ui-cell-inner')) {
-		    		var divCell = $(event.currentTarget);
-		    		var colIndex = parseInt(divCell.attr('colIndex'));
-					var columns = me.getColumns(controller, controller.options.columns);
-					var column = columns[colIndex]
+	    		var divCell = $(event.currentTarget);
+	    		var colIndex = parseInt(divCell.attr('colIndex'));
+				var column = controller.options.columns[colIndex]
 
-					if (column.editor) {
-						var rowElement = divCell.closest('.ui-row');
-						var rowIndex = parseInt(rowElement.attr('rowindex'));
-						var record = controller.options.data[rowIndex];
-						uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
-					}
-				}	
+				if (column.editor) {
+					var rowElement = divCell.closest('.ui-row');
+					var rowIndex = parseInt(rowElement.attr('rowindex'));
+					var record = controller.options.data[rowIndex];
+					uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
+				}
 	    	});
 
 			///////////////////////////////////
@@ -980,6 +964,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		return spanCellInner;
 	}
+
 
 	/**
 	 *
@@ -1193,6 +1178,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							'text-align': column.align || 'left'
 						}));
 
+
 						//Margin First column inside of grouping
 						if ((index == 0) && (controller.options.api.isGrouped())) {
 							divCell.css('padding-left', '20px');
@@ -1227,9 +1213,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						//
 						spanCellInner.html(formattedValue);
 					}	
-
-					//realPercentageWidth cause effect only when there are more then one level of columns
-					divCell.css('width', column.realPercentageWidth || column.width);					
 
 					//
 					colIndex++;
@@ -1267,60 +1250,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 		}
 
-		controller.options.listeners.onafterrepaint = function(viewController) {
-
-			var columns = me.getColumns(controller, controller.options.columns);
-			//Any column was specified in percentage? TODO: create a function to get this
-			var anyColumnInPercentage = false;
-			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
-				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
-					anyColumnInPercentage = true;
-					break;
-				}
-			}
-			if (anyColumnInPercentage) {
-				controller.bodyContainer.find('.ui-row').css('width', '100%');
-			}
-
-			/*
-			controller.clientWidth;
-
-			var columns = me.getColumns(controller, controller.options.columns);
-			//Any column was specified in percentage? TODO: create a function to get this
-			var anyColumnInPercentage = false;
-			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
-				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
-					anyColumnInPercentage = true;
-					break;
-				}
-			}
-			*/
-
-			/*
-			var colIndex = 0;
-
-			//Fixed Columns
-			var headerContainerColumns = controller.fixedColsHeaderContainer.find('.ui-header-container-column:not(.has-subcolumns)');
-			for (var index = 0 ; index < headerContainerColumns.length ; index++) {
-				var headerContainerColumn = $(headerContainerColumns[index]);
-				uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
-				colIndex++;
-			}
-
-			//Variable Columns
-			var headerContainerColumns = controller.headerContainer.find('.ui-header-container-column:not(.has-subcolumns)');
-			for (var index = 0 ; index < headerContainerColumns.length ; index++) {
-				var headerContainerColumn = $(headerContainerColumns[index]);
-				uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
-				colIndex++;
-			}
-			*/
-
-        }
-
 		//
 		//
-		/*
 		controller.options.listeners.onafterrepaint = function(viewController) {
 
 			//All columns were specified in percentage? TODO: create a function to get this
@@ -1376,10 +1307,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
 					colIndex++;
 				}
+				
+				/*
+				//
+				if (anyColumnInPercentage) {
+					for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+						var column = controller.options.columns[colIndex];
+						controller.container.find('.ui-cell[colIndex=' + colIndex + ']').css('width', column.width);
+					}	
+				}
+				*/
 			}
 
         }
-        */
 
         //
         controller.bodyViewport.scroll(function(event) {
@@ -1786,6 +1726,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 *
 	*/
+	me.updateSelectedCell = function(controller, value) {
+
+		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
+			throw "You have to select a record";
+		} else {
+			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
+		}
+
+	}
+
+	/**
+	 *
+	 *
+	*/
 	me.updateCell = function(controller, rowIndex, colIndex, value) {
 		var rowElement = controller.options.api.resolveRowElement(rowIndex);
 		var divCell = rowElement.find('.ui-cell[colIndex=' + colIndex + ']');
@@ -1797,21 +1751,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//When we need the changed records we can get by ".ui-row.changed"
 		divCell.closest('.ui-row').addClass('changed');
 	}
-	
-	/**
-	 *
-	 *
-	*/
-	me.updateSelectedCell = function(controller, value) {
-
-		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
-			throw "You have to select a record";
-		} else {
-			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
-		}
-
-	}
-	
 
 	/**
 	 *
@@ -1856,7 +1795,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 /*	This work is licensed under Creative Commons GNU LGPL License.
-
 	License: http://creativecommons.org/licenses/LGPL/2.1/
    Version: 0.9
 	Author:  Stefan Goessner/2006
@@ -2011,7 +1949,6 @@ function xml2json(xml, tab) {
    var json = X.toJson(X.toObj(X.removeWhite(xml)), xml.nodeName, "\t");
    return "{\n" + tab + (tab ? json.replace(/\t/g, tab) : json.replace(/\t|\n/g, "")) + "\n}";
 }
-
 	function parseXml(xml) {
 	   var dom = null;
 	   if (window.DOMParser) {
@@ -2025,7 +1962,6 @@ function xml2json(xml, tab) {
 	         dom = new ActiveXObject('Microsoft.XMLDOM');
 	         dom.async = false;
 	         if (!dom.loadXML(xml)) // parse error ..
-
 	            window.alert(dom.parseError.reason + dom.parseError.srcText);
 	      } 
 	      catch (e) { dom = null; }
@@ -2331,7 +2267,6 @@ function xml2json(xml, tab) {
 			var sortGroupingFn = function(rec1, rec2) {
 				var val1 = functionToEvaluate(rec1, expressionToGroup);
 				var val2 = functionToEvaluate(rec2, expressionToGroup);
-
 				if (val1 == val2) {
 					return 0;
 				} else {
@@ -2707,7 +2642,6 @@ function xml2json(xml, tab) {
 		fixedRow.css('top', itemToRender.top + 'px');
 		fixedRow.css('height', itemToRender.height + 'px');
 		//.html(itemToRender.rowIndex.toString());
-
 		controller.fixedColsBodyContainer.append(fixedRow);
 	}
 	*/

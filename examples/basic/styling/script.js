@@ -1,16 +1,17 @@
 //Module
-angular.module('myApp', ['ui-deni-grid']);
+angular.module('myApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ui-deni-grid']);
 
 //Controller
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		rowHeight: '32px',
+		rowHeight: '34px',
 		//selType: 'cell',
+		enableColumnResize: false,
         columns: [
             {
                 header: 'Periodo',
-                width: '40%',
+                width: '35%',
                 align: 'center',
                 columns: [		
 					{ 
@@ -29,7 +30,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 			},
             {
                 header: 'Planejamento',
-                width: '30%',
+                width: '25%',
                 align: 'center',
                 columns: [		
 					{ 
@@ -48,7 +49,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 			},
             {
                 header: 'Realizado',
-                width: '30%',
+                width: '25%',
                 align: 'center',
                 columns: [		
 					{ 
@@ -69,6 +70,36 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 						align: 'center' 
 					},
 				]	
+			},
+			{
+	            width: '5%',
+	            action: {
+	                mdIcon: 'edit',
+	                tooltip: 'Edit that employee...',
+	                fn: function(record) {
+	                    alert('Editing user "' + record.name + '"...');
+	                }
+	            }				
+			},
+			{
+	            width: '5%',
+	            action: {
+	                mdIcon: 'delete_forever',
+	                tooltip: 'Edit that employee...',
+	                fn: function(record) {
+	                    alert('Editing user "' + record.name + '"...');
+	                }
+	            }				
+			},
+			{
+	            width: '5%',
+	            action: {
+	                mdIcon: 'timeline',
+	                tooltip: 'Edit that employee...',
+	                fn: function(record) {
+	                    alert('Editing user "' + record.name + '"...');
+	                }
+	            }				
 			}
         ],
         data: [

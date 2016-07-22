@@ -218,6 +218,24 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 	}	
 
 	/**
+	 * realPercentageWidth cause effect only when there are more then one level of columns
+	 */
+	me.setRealPercentageWidths = function(columns, percentageMaster) {
+		var percentageMasterValue = parseFloat(percentageMaster.replace('%', ''));
+		for (var index = 0 ; index < columns.length ; index++) {
+			if (percentageMaster != '100%') {
+				var percentageWidthValue = parseFloat(columns[index].width.replace('%', ''));
+				columns[index].realPercentageWidth = (percentageMasterValue * percentageWidthValue / 100) + '%';
+			}
+			var columnChildren = columns[index].columns;			
+			if ((columnChildren) && (columnChildren.length > 0)) {
+				me.setRealPercentageWidths(columnChildren, columns[index].width);
+			}	
+		}
+	}
+
+
+	/**
 	 *
 	 *
 	 */

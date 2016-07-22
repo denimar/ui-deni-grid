@@ -5,10 +5,12 @@
 </head>
 
 <style>
-	#deniGrid {
-		height: 300px;
+
+	ui-deni-grid {
+		height: 200px;
 		width: 100%;
 	}
+
 
 </style>
 
@@ -16,8 +18,9 @@
 
 	<section ng-controller="ExampleCtrl as ctrl">
 		Columns width were set in pergentage (%). Resize the window to see that.
-		<ui-deni-grid id="deniGrid" options="gridOptions"></ui-deni-grid>
-		
+		<ui-deni-grid id="deniGrid2" options="gridOptions2"></ui-deni-grid>		
+		<hr />		
+		<ui-deni-grid id="deniGrid" options="gridOptions"></ui-deni-grid>		
 	</section>	
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
