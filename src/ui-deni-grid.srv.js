@@ -1133,32 +1133,53 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						spanCellInner.css('text-align', 'center');						
 						spanCellInner.addClass('ui-cell-inner-action');
 
-						var imgActionColumn;
 						var iconActionColumn = column.action.mdIcon || column.action.icon;
 						if (angular.isFunction(iconActionColumn)) {
 							iconActionColumn = iconActionColumn(record);
-						}						
+						}	
+						var imgActionColumn;					
 						if (column.action.mdIcon) { //Usa o md-icon do Angular Material
+							var imgActionColumnBtn = $(document.createElement('md-button'));
+							
+							if (column.action.tooltip) {							
+								var imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
+								imgActionColumnBtnTooltip.html(column.action.tooltip);
+								imgActionColumnBtn.append(imgActionColumnBtnTooltip);
+							}	
+						
 							imgActionColumn = $(document.createElement('md-icon'));
 							imgActionColumn.addClass('material-icons');
 							imgActionColumn.html(iconActionColumn);
+							imgActionColumnBtn.append(imgActionColumn);														
+							
+							var imgActionColumnBtnCompiled = $compile(imgActionColumnBtn) (controller.scope);
+							spanCellInner.append(imgActionColumnBtn);							
+							imgActionColumnBtn.find('md-icon').prop('column', column);							
+
+							imgActionColumnBtn.click(function(event) {
+								var imgAction = $(event.currentTarget).find('md-icon');
+								var colAction = imgAction.prop('column');
+								colAction.action.fn(record, column, imgAction);
+							});
+
+
 						} else {
 							imgActionColumn = $(document.createElement('img'));
 							imgActionColumn.attr('src', iconActionColumn);
 							imgActionColumn.attr('title', column.action.tooltip);
+							spanCellInner.append(imgActionColumn);
+
+							imgActionColumn.click(function(event) {
+								var imgAction = $(event.currentTarget);
+								var colAction = imgAction.prop('column');
+								colAction.action.fn(record, column, imgActionColumn);
+							});
+
+							imgActionColumn.css('cursor', 'pointer');
 						}	
 
-						imgActionColumn.click(function(event) {
-							var imgAction = $(event.currentTarget);
-							var colAction = imgAction.prop('column');
-							colAction.action.fn(record, column, imgActionColumn);
-						});
-
-						imgActionColumn.prop('column', column);						
-						imgActionColumn.css('cursor', 'pointer');
-						spanCellInner.append(imgActionColumn);
-
 					} else {
+
 						//
 						if (index == 0) {
 							//
@@ -1198,8 +1219,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							divCell.css('padding-left', '20px');
 						}
 
-						var value = eval('record.' + column.name); //Can be passed "adderess.cicy", for example;
-						//var value = record[column.name];
+						var value = null;
+						try {
+							value = eval('record.' + column.name); //value = record[column.name];
+						} catch (err) {
+						}
 
 						//Is there a specific render for this field?
 						if (column.renderer) {
@@ -1582,16 +1606,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					throw new Error("selectRow: row passed in a wrong way!");
 				}
 
-				/*
-		    	//
+				//
 				var scrollIntoViewFn = function(rowElementToScroll) {
 					if (scrollIntoView) {
-						if (!controller.options.api.isRowVisible(rowElementToScroll)) {
-							rowElementToScroll.get(0).scrollIntoView(false);
-						}
+						//if (!controller.options.api.isRowVisible(rowElementToScroll)) {
+						//	rowElementToScroll.get(0).scrollIntoView(false);
+						//}
 					}
 				};
-				*/
 
 				//if (rowIndex == controller.rowIndex) {
 				if (me.isRowSelected(controller, rowIndex)) {
@@ -1624,9 +1646,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		    			var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		    			rowElement = itemRow.rowElement;
 					}
+
 				}
 			}
-
+			
 			//
 			if ((controller.rowIndex !== undefined) && (!controller.options.multiSelect)) {
 				//remove all selections
@@ -1649,7 +1672,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 			if (controller.options.rowDetails) {
 				rowElement.parent().find('.ui-row.row-detail-container[rowIndex=' + rowElement.attr('rowindex') + ']').addClass('selected');
-			}
+			}			
 
 			//
 			//scrollIntoViewFn(rowElement);
@@ -2407,6 +2430,10 @@ function xml2json(xml, tab) {
 
 		uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
 
+		if (data.length > 0) {
+			controller.options.api.selectRow(0, false, false);
+		}
+
 		///////////////////////////////////////////////////////////////////////////
 		//AfterLoad Event
 		///////////////////////////////////////////////////////////////////////////
@@ -2842,6 +2869,21 @@ function xml2json(xml, tab) {
 		}
 		///////////////////////////////////////////////
 		///////////////////////////////////////////////
+
+		////////////////////////////////////////////////////
+		//ondblclick event
+		////////////////////////////////////////////////////
+    	rowElement.dblclick(function(event) {
+    		var targetEl = $(event.target);
+    		var rowElementDblClick = targetEl.closest('.ui-row');
+			var rowIndexDblClick = parseInt(rowElementDblClick.attr('rowindex'));
+			var recordDblClick = controller.options.data[rowIndexDblClick];    		
+			if (controller.options.listeners.onrowdblclick) {
+				controller.options.listeners.onrowdblclick(recordDblClick, rowElementDblClick, rowIndexDblClick);
+			}
+		});	
+		////////////////////////////////////////////////////
+		////////////////////////////////////////////////////
 
 		itemToRender.rendered = true;
 		return rowElement;

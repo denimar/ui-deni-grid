@@ -302,15 +302,23 @@ ui-deni-grid {
 											align-items: center; /*do not work in Olds IE*/
 											height: 100%;
 
-											.material-icons {
-												color: #b3b3b3;
-												font-size: 20px;
-												margin-top: 2px;
+											.md-button {
+												padding: 0px;
+												margin: 0px;
+												line-height: 0px;
+    											min-height: 0px;
+    											min-width: 0px;
 
-												&:hover {
-													color: #3764A0;
+												.material-icons {
+													color: #b3b3b3;
+													font-size: 20px;
+													margin-top: 2px;
+
+													&:hover {
+														color: #3764A0;
+													}
 												}
-											}
+											}	
 
 											.ui-cell-inner {
 												width: 100%;
@@ -380,7 +388,7 @@ ui-deni-grid {
 											&.selected, &.selected.hover {
 												background-image: $background-selected;
 												background-size: 2px 100%;
-												z-index: 999;
+												/*z-index: 999;*/
 												border-top: solid 1px $ui-deni-grid-row-selected-border-color;
 												border-bottom: solid 1px $ui-deni-grid-row-selected-border-color;
 

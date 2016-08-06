@@ -75,7 +75,7 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 	            width: '5%',
 	            action: {
 	                mdIcon: 'edit',
-	                tooltip: 'Edit that employee...',
+	                tooltip: 'Edit that employee dsfdsfdasfdasfdas...',
 	                fn: function(record) {
 	                    alert('Editing user "' + record.name + '"...');
 	                }
@@ -130,6 +130,12 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 			
         ]
     };
+
+	$scope.increaseGridHeight = function()     {
+		var divContainer = $('.div-container');
+		//divContainer.height(divContainer.height() + 50);
+		divContainer.css('height', '500px');
+	}
 
 });
 

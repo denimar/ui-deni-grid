@@ -3,7 +3,7 @@
  *
  *
  */
-angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $element, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants) {
+angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $element, $timeout, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants) {
 	var me = this;
 	me.scope = $scope;
 	me.element = $element;	
@@ -63,6 +63,15 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	me.fixedColsFooterContainer = me.footerViewport.find('.ui-footer-container');
     // *************************************************************************
     // *************************************************************************
+
+	var currentHeight = me.element.css('height');
+	$timeout(function() {
+		if (me.element.css('height') != currentHeight) {
+			currentHeight = me.element.css('height');
+			me.wrapper.css('height', currentHeight);
+			me.element.css('height', currentHeight);
+		}
+	}, 2000);
 
     //Paging
 	me.paging = me.viewport.find('.ui-deni-grid-paging');    

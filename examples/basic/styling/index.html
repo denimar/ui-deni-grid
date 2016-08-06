@@ -9,8 +9,17 @@
 </head>
 
 <style>
+
+	body {
+		padding: 4px;
+	}
+
+	.div-container {
+		border: solid 2px orange;
+	}
+
 	#deniGrid {
-		height: 300px;
+		height: 100%;
 		width: 100%;
 	}
 	
@@ -23,16 +32,34 @@
 		font-size: 24px;	
 	}	
 
+	.brother-div {
+		border: solid 1px green;
+		height: 250px;
+	}
+
 
 </style>
 
-<body ng-app="myApp">
+<body ng-app="myApp" layout="column">
 
-	<section ng-controller="ExampleCtrl as ctrl">
+	<div data-ng-controller="ExampleCtrl" layout="column" layout-align="start stretch"  flex>
 
-		<ui-deni-grid id="deniGrid" options="gridOptions"></ui-deni-grid>
-		
-	</section>	
+	  <md-toolbar style="color:white;">   
+	    <div class="md-toolbar-tools" style="color:white;">
+	      <h2>
+	        <span style="color:white;">Gráfico de Releases</span>
+	      </h2>
+	    </div>
+	  </md-toolbar>   
+
+	  <div style="background-color: white; padding: 4px; border: solid 2px orange;" layout="column" flex>
+
+	    <ui-deni-grid style="border: solid 1px red" id="deniGrid" options="gridOptions" flex></ui-deni-grid>
+
+	    <div style="border: solid 1px red;" flex> Div Teste </div>
+
+	  </div>
+	</div>  	
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
