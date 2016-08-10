@@ -65,6 +65,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
     // *************************************************************************
 
 	var currentHeight = me.element.css('height');
+	/*
 	$timeout(function() {
 		if (me.element.css('height') != currentHeight) {
 			currentHeight = me.element.css('height');
@@ -72,6 +73,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 			me.element.css('height', currentHeight);
 		}
 	}, 2000);
+	*/
 
     //Paging
 	me.paging = me.viewport.find('.ui-deni-grid-paging');    
