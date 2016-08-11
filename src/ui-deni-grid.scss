@@ -261,9 +261,14 @@ ui-deni-grid {
 							.ui-body-viewport {
 								float: left;
 								width: 100%;
-								height: 100%;							
+								height: 100%;
+								overflow-y: hidden;
+								overflow-x: hidden;
+
+								/*
 								overflow-y: scroll;
 								overflow-x: auto;
+								*/
 								box-sizing: border-box;
 								padding-top: 1px;
 								display: block;
