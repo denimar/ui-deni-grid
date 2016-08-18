@@ -2308,9 +2308,9 @@ function xml2json(xml, tab) {
 				controller.options.data = $filter('filter')(data, controller.filterInfo.valuesToFilter);
 			}	
 		} else {
-			controller.options.data = data;			
-			controller.initialData = data;
+			controller.options.data = data;
 		}
+		controller.options.alldata = data;
 
 		//Records inside Grouping
 		controller.groupRecords = [];
@@ -2442,7 +2442,7 @@ function xml2json(xml, tab) {
 
 		uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
 
-		if (data.length > 0) {
+		if (controller.options.data.length > 0) {
 			controller.options.api.selectRow(0, false, false);
 		}
 
@@ -2450,7 +2450,7 @@ function xml2json(xml, tab) {
 		//AfterLoad Event
 		///////////////////////////////////////////////////////////////////////////
 		if (controller.options.listeners.onafterload) {
-			controller.options.listeners.onafterload(data, controller.options);
+			controller.options.listeners.onafterload(controller.options.data, controller.options);
 		}
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
@@ -2647,7 +2647,7 @@ function xml2json(xml, tab) {
 			
 		//local filter			
 		} else {
-			controller.options.api.loadData(controller.initialData);
+			controller.options.api.loadData(controller.options.alldata);
 		}
 	}
 

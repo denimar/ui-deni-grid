@@ -10,8 +10,7 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 	me.checkedRecords = [];
 	me.filterInfo = null;
 	me.searchInfo = null;	
-	me.initialData = []; //It is used when I filter the data and there is a need to know the original data
-
+	
 	//
 	me.loading = false;	
 
@@ -80,6 +79,8 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 
 	//Set the default options
 	uiDeniGridUtilSrv.setDefaultOptions(me, me.options);
+	
+	me.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
 	
 	//Inherit API from ui-deni-view and create some new APIs too		
 	me.options.api = {
