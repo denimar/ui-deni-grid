@@ -3652,7 +3652,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							
 							if (column.action.tooltip) {							
 								var imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
-								imgActionColumnBtnTooltip.html(column.action.tooltip);
+								var textTooltip;
+
+								if (angular.isFunction(column.action.tooltip)) {
+									textTooltip = column.action.tooltip(record);
+								} else {
+									textTooltip = column.action.tooltip;
+								}	
+								imgActionColumnBtnTooltip.html(textTooltip);
 								imgActionColumnBtn.append(imgActionColumnBtnTooltip);
 							}	
 						
