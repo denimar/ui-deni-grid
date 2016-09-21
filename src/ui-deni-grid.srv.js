@@ -1175,6 +1175,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							imgActionColumn.attr('src', iconActionColumn);
 							imgActionColumn.attr('title', column.action.tooltip);
 							spanCellInner.append(imgActionColumn);
+							imgActionColumn.prop('column', column);							
 
 							imgActionColumn.click(function(event) {
 								var imgAction = $(event.currentTarget);
