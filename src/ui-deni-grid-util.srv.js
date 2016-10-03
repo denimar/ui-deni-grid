@@ -25,7 +25,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 				return $filter(format)(value);
 
 			case 'date':
-				return $filter(format)(value, 'MM/dd/yyyy')
+				return $filter(format)(value, 'shortDate')
 
 			case 'float':
 				return $filter('currency')(value, '');

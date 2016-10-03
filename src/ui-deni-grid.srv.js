@@ -281,6 +281,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//Mouse Down
 		controller.headerContainer.mousedown(function(event) {
+			if (!controller.enabled) {
+				return;
+			}
+
 			headerContainerColumn = $(event.target).closest('.ui-header-container-column');
 			if (headerContainerColumn.length > 0) {
 			//if (event.toElement.parentElement === controller.headerContainer.get(0)) {
@@ -336,6 +340,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//Mouse Up
 		$(document).mouseup(function(event){
+			if (!controller.enabled) {
+				return;
+			}
+
 			if (controller.resizing) {
 				if (headerContainerColumnResizing) {
 					//
@@ -415,6 +423,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//Mouse Move
 		$(document).mousemove(function(event) {
+			if (!controller.enabled) {
+				return;
+			}
+
 			if (controller.options.enableColumnResize) {
 
 				if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
@@ -468,18 +480,30 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//
 			// Mouse Enter
 			columnHeaderCell.mouseenter(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
+
 				$(event.currentTarget).addClass('hover');
 			});
 
 			//
 			// Mouse Leave
 			columnHeaderCell.mouseleave(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
+
 				$(event.currentTarget).removeClass('hover');
 			});
 
 			//
 			// Mouse Up
 			columnHeaderCell.mouseup(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
+
 				if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 					if (controller.colsViewport.css('cursor') == 'default') { //prevent conflict with the resizing columns function
 						if (controller.options.sortableColumns) {
@@ -887,6 +911,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			///////////////////////////////////
 			//mouseenter
 	    	divCell.mouseenter(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
 
 	    		//selType = 'row'
 	    		if (controller.options.selType == 'row') {
@@ -905,6 +932,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			//mouseleave
 	    	divCell.mouseleave(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
+
 	    		//$(event.currentTarget).parent().find('.ui-cell').removeClass('hover');
 				//
 			 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']').find('.ui-cell').removeClass('hover');
@@ -915,6 +946,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 	    	//mousedown
 	    	divCell.mousedown(function(event) {
+				if (!controller.enabled) {
+					return;
+				}
+
 	    		if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 
 	    			//selType = 'row'
@@ -2161,6 +2196,24 @@ function xml2json(xml, tab) {
 	 *
 	 *
 	 */
+	var _getDefaultRequestPromise = function(url) {
+		var deferred = $q.defer();
+
+		$http.get(url)
+			.then(function(response) {		
+				deferred.resolve(response);				
+			},
+			function(response) {
+				deferred.reject(response);
+			});			
+
+		return deferred.promise;
+	}
+
+	/**
+	 *
+	 *
+	 */
 	me.load = function(controller) {
 		var deferred = $q.defer();
 		if (controller.options.url) {
@@ -2177,13 +2230,23 @@ function xml2json(xml, tab) {
 				var limit = controller.options.paging.pageSize;
 				var start = (page - 1) * limit;
 
-				url += '&page=' + page + '&' + controller.options.restConfig.start + '=' + start + '&' + controller.options.restConfig.limit + '=' + limit;
+				if (url.indexOf('?') === -1) {
+					url += '?'
+				} else {
+					url += '&'
+				}
+
+				url += 'page=' + page + '&' + controller.options.restConfig.start + '=' + start + '&' + controller.options.restConfig.limit + '=' + limit;
 			}	
 
 			//var loading = controller.wrapper.find('.ui-deni-grid-loading');
 			//loading.css('display', 'block');
+			var requestPromise = controller.options.requestPromise;
+			if (!controller.options.requestPromise) {
+				requestPromise = _getDefaultRequestPromise;
+			}
 
-			$http.get(url)
+			requestPromise(url)
 				.then(function(response) {
 					var responseData;
 					
@@ -2205,7 +2268,7 @@ function xml2json(xml, tab) {
 						//
 						controller.options.paging.dataLength = responseData[controller.options.restConfig.total];
 						
-						controller.options.paging.pageCount = Math.floor(controller.options.paging.dataLength / controller.options.paging.pageSize);
+						controller.options.paging.pageCount = Math.ceil(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
 						//
 						controller.options.api.loadData(responseData[controller.options.restConfig.data]);
@@ -3026,6 +3089,47 @@ function xml2json(xml, tab) {
 			return row;
 		}
 	}
+
+	me.setEnabled = function(controller, enabled) {
+		controller.enabled = enabled;
+
+		if (enabled) {
+			controller.element.removeClass('disabled');
+		} else {
+			controller.element.addClass('disabled');			
+		}
+	}
+
+	/*
+	me.setEnabled = function(controller, enabled) {
+		controller.enabled = enabled;
+
+		var opacity;
+		if (enabled) {
+			opacity = '1';
+			$(controller.bodyViewport).enableScroll(controller);						
+		} else {
+			opacity = '0.6';
+			$(controller.bodyViewport).disableScroll(controller);			
+		}
+
+		controller.element.css('opacity', opacity);
+		$(controller.element).attr("disabled", "disabled").off('click');
+	}
+
+	$.fn.disableScroll = function(controller) {
+	    controller.bodyViewport.oldScrollPos = $(controller.bodyViewport).scrollTop();
+
+	    $(controller.bodyViewport).on('scroll.scrolldisabler',function ( event ) {
+	       $(controller.bodyViewport).scrollTop(controller.bodyViewport.oldScrollPos );
+	       event.preventDefault();
+	    });
+	};
+
+	$.fn.enableScroll = function(controller) {
+		$(controller.bodyViewport).off('scroll.scrolldisabler');
+  	};	
+  	*/
 
 
 	////////////////////////////////////////////////////////////////

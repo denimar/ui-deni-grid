@@ -3,7 +3,12 @@
 ui-deni-grid {
   display: block;
   box-sizing: border-box;
-  border: solid 1px #99bce8; }
+  border: solid 1px #99bce8;
+  pointer-events: auto;
+  opacity: 1; }
+  ui-deni-grid.disabled {
+    pointer-events: none;
+    opacity: 0.6; }
   ui-deni-grid .ui-deni-grid-wrapper {
     width: 100%;
     height: 100%;

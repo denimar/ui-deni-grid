@@ -6,13 +6,16 @@
 angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $element, $timeout, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants) {
 	var me = this;
 	me.scope = $scope;
-	me.element = $element;	
+	me.enabled = true;
 	me.checkedRecords = [];
 	me.filterInfo = null;
 	me.searchInfo = null;	
 	
 	//
 	me.loading = false;	
+
+	//
+	me.element = $element;	
 
     //
     me.wrapper = me.element.find('.ui-deni-grid-wrapper');
@@ -165,6 +168,15 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
         getColumn: function(fieldName) {
         	return uiDeniGridSrv.getColumn(me, fieldName);
         },
+
+
+		/**
+		 *	
+		 *
+		 */		 
+		getEnabled: function(enabled) {
+			return me.enabled;
+		},
 
 		/**
 		 *	
@@ -365,6 +377,14 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		/**
 		 *	
 		 *
+		 */		 
+		setEnabled: function(enabled) {
+			uiDeniGridSrv.setEnabled(me, enabled);
+		},
+
+		/**
+		 *	
+		 *
 		*/		 
         selectRow: function(row, preventSelecionChange, scrollIntoView) {
         	uiDeniGridSrv.selectRow(me, row, preventSelecionChange, scrollIntoView);
@@ -537,7 +557,6 @@ angular.module('ui-deni-grid').controller('uiDeniGridCtrl', function($scope, $el
 		} else if ((me.options.url) && (me.options.autoLoad)) {
 			me.options.api.load();
 		}
-
 	});
 
 

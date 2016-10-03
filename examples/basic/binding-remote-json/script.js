@@ -5,10 +5,7 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		url: 'http://server-denimar.rhcloud.com/examples/data?type=employees',
-		paging: {
-			pageSize: 20
-		},
+		url: 'http://denimar.github.io/static-data/employees/00500.json',
         columns: [
             { 
                 header:'Name', 
