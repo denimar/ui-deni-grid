@@ -1113,6 +1113,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonFirst = $(document.createElement('span'));
 		buttonFirst.addClass('button');
 		buttonFirst.addClass('button-first');
+		buttonFirst.addClass('disabled');
 		paging.append(buttonFirst);
 		buttonFirst.click(function(event) {
 			controller.options.api.setPageNumber(1);
@@ -1122,10 +1123,10 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonPrev = $(document.createElement('span'));
 		buttonPrev.addClass('button');
 		buttonPrev.addClass('button-prev');
+		buttonPrev.addClass('disabled');
 		paging.append(buttonPrev);
 		buttonPrev.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.api.getPageNumber() - 1);
-			checkDisableButtonsPageNavigation();
 		})
 
 		//
@@ -1148,13 +1149,12 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		inputPageNumber.keydown(function(event) {
 			if (event.keyCode == 13) { //Return
 				var pageNumber = parseInt($(event.target).val());
-				if ((pageNumber < 1) || (pageNumber > controller.options.paging.pageCount)) {
-					console.warn('Invalid page number: (' + pageNumber + ')');
-					controller.options.api.setPageNumber(controller.options.api.getPageNumber());
-				} else {
-					controller.options.api.setPageNumber(pageNumber);
-				}	
-
+				if (pageNumber < 1) {				
+					pageNumber = 1;
+				} else if (pageNumber > controller.options.paging.pageCount) {
+					pageNumber = controller.options.paging.pageCount;
+				}
+				controller.options.api.setPageNumber(pageNumber);
 				$(event.target).select();							
 			}	
 		});
@@ -1179,6 +1179,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonNext = $(document.createElement('span'));
 		buttonNext.addClass('button');
 		buttonNext.addClass('button-next');
+		buttonNext.addClass('disabled');		
 		paging.append(buttonNext);
 		buttonNext.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.api.getPageNumber() + 1);
@@ -1188,6 +1189,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonLast = $(document.createElement('span'));
 		buttonLast.addClass('button');
 		buttonLast.addClass('button-last');
+		buttonLast.addClass('disabled');
 		paging.append(buttonLast);
 		buttonLast.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.paging.pageCount);

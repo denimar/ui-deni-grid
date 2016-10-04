@@ -1192,6 +1192,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonFirst = $(document.createElement('span'));
 		buttonFirst.addClass('button');
 		buttonFirst.addClass('button-first');
+		buttonFirst.addClass('disabled');
 		paging.append(buttonFirst);
 		buttonFirst.click(function(event) {
 			controller.options.api.setPageNumber(1);
@@ -1201,10 +1202,10 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonPrev = $(document.createElement('span'));
 		buttonPrev.addClass('button');
 		buttonPrev.addClass('button-prev');
+		buttonPrev.addClass('disabled');
 		paging.append(buttonPrev);
 		buttonPrev.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.api.getPageNumber() - 1);
-			checkDisableButtonsPageNavigation();
 		})
 
 		//
@@ -1227,13 +1228,12 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		inputPageNumber.keydown(function(event) {
 			if (event.keyCode == 13) { //Return
 				var pageNumber = parseInt($(event.target).val());
-				if ((pageNumber < 1) || (pageNumber > controller.options.paging.pageCount)) {
-					console.warn('Invalid page number: (' + pageNumber + ')');
-					controller.options.api.setPageNumber(controller.options.api.getPageNumber());
-				} else {
-					controller.options.api.setPageNumber(pageNumber);
-				}	
-
+				if (pageNumber < 1) {				
+					pageNumber = 1;
+				} else if (pageNumber > controller.options.paging.pageCount) {
+					pageNumber = controller.options.paging.pageCount;
+				}
+				controller.options.api.setPageNumber(pageNumber);
 				$(event.target).select();							
 			}	
 		});
@@ -1258,6 +1258,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonNext = $(document.createElement('span'));
 		buttonNext.addClass('button');
 		buttonNext.addClass('button-next');
+		buttonNext.addClass('disabled');		
 		paging.append(buttonNext);
 		buttonNext.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.api.getPageNumber() + 1);
@@ -1267,6 +1268,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		var buttonLast = $(document.createElement('span'));
 		buttonLast.addClass('button');
 		buttonLast.addClass('button-last');
+		buttonLast.addClass('disabled');
 		paging.append(buttonLast);
 		buttonLast.click(function(event) {
 			controller.options.api.setPageNumber(controller.options.paging.pageCount);
@@ -4446,6 +4448,37 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		controller.options.paging.currentPage = pageNumber;
 		controller.paging.find('input.input-page-number').val(pageNumber);
 		controller.options.api.reload();
+		_checkDisableButtonsPageNavigation(controller, controller.options.data, pageNumber);
+	}
+
+	/**
+	 *
+	 *
+	 */
+	var _checkDisableButtonsPageNavigation = function(controller, data, pageNumber) {
+		var firstButton = controller.paging.find('.button.button-first');
+		var prevButton = controller.paging.find('.button.button-prev');
+		var nextButton = controller.paging.find('.button.button-next');
+		var lastButton = controller.paging.find('.button.button-last');
+
+		var backwards = (data.length > 0) && (pageNumber > 1);
+		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount - 1);		
+
+		if (backwards) {			
+			firstButton.removeClass('disabled');
+			prevButton.removeClass('disabled');			
+		} else {
+			firstButton.addClass('disabled');
+			prevButton.addClass('disabled');			
+		}
+
+		if (forwards) {			
+			nextButton.removeClass('disabled');
+			lastButton.removeClass('disabled');			
+		} else {
+			nextButton.addClass('disabled');
+			lastButton.addClass('disabled');			
+		}
 	}
 
 
@@ -4809,6 +4842,10 @@ function xml2json(xml, tab) {
 						var limit = controller.options.paging.pageSize;
 						var start = (controller.options.paging.currentPage - 1) * limit;
 						var end = start + controller.options.paging.pageSize;
+
+						if (end > controller.options.paging.dataLength) {
+							end = controller.options.paging.dataLength;
+						}
 						controller.paging.find('.label-displaying').html(start + ' - ' + end);
 
 						controller.paging.find('.label-record-count').html(controller.options.paging.dataLength + ' records');
@@ -5054,6 +5091,8 @@ function xml2json(xml, tab) {
 		}
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
+
+		_checkDisableButtonsPageNavigation(controller, data, controller.options.paging.currentPage);
 	};
 
 
