@@ -33,12 +33,12 @@ ui-deni-grid {
 	display: block;	
 	box-sizing: border-box;
 	border: solid 1px $default-border-color;
-	//pointer-events: auto;	
-	//opacity: 1;
+	pointer-events: auto;	
+	opacity: 1;
 
 	&.disabled {
-		//pointer-events: none;	
-		//opacity: 0.6;
+		pointer-events: none;	
+		opacity: 0.6;
 	}	
 		
 	.ui-deni-grid-wrapper {
