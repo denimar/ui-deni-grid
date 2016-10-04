@@ -288,7 +288,7 @@ ui-deni-grid {
 								/********************/
 
 								.ui-body-container {
-									calc(100% - 4px);						
+									height: calc(100% - 4px);						
 									overflow-x: hidden;
 									overflow-y: hidden;					
 									display: inline-flex;
