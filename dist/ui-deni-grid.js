@@ -5023,6 +5023,7 @@ function xml2json(xml, tab) {
 		//
 		controller.managerRendererItems.createItems();
 
+		/*
 		if (data.length > 0) {
 			controller.bodyViewport.css({
 				'overflow-x': 'auto',
@@ -5034,6 +5035,7 @@ function xml2json(xml, tab) {
 				'overflow-y': 'hidden'				
 			});
 		}		
+		*/
 
 		//
 		_repaint(controller);
