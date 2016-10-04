@@ -269,8 +269,6 @@ ui-deni-grid {
 								float: left;
 								width: 100%;
 								height: 100%;
-								overflow-y: hidden;
-								overflow-x: hidden;
 
 
 								overflow-y: scroll;
@@ -290,7 +288,7 @@ ui-deni-grid {
 								/********************/
 
 								.ui-body-container {
-									height: 100%;								
+									calc(100% - 4px);						
 									overflow-x: hidden;
 									overflow-y: hidden;					
 									display: inline-flex;
