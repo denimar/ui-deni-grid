@@ -5092,7 +5092,9 @@ function xml2json(xml, tab) {
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
 
-		_checkDisableButtonsPageNavigation(controller, data, controller.options.paging.currentPage);
+		if (controller.options.paging) {
+			_checkDisableButtonsPageNavigation(controller, data, controller.options.paging.currentPage);
+		}	
 	};
 
 
