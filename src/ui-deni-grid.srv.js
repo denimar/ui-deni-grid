@@ -2320,18 +2320,6 @@ function xml2json(xml, tab) {
 	 *
 	 */
 	me.loadData = function(controller, data) {
-		if (data.length > 0) {
-			controller.bodyViewport.css({
-				'overflow-x': 'auto',
-				'overflow-y': 'scroll'				
-			});
-		} else {
-			controller.bodyViewport.css({
-				'overflow-x': 'hidden',
-				'overflow-y': 'hidden'				
-			});
-		}
-
 		///////////////////////////////////////////////////////////////////////////
 		//BeforeLoad Event
 		///////////////////////////////////////////////////////////////////////////
@@ -2525,6 +2513,18 @@ function xml2json(xml, tab) {
 		}
 		///////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////
+
+		if (data.length > 0) {
+			controller.bodyViewport.css({
+				'overflow-x': 'auto',
+				'overflow-y': 'scroll'				
+			});
+		} else {
+			controller.bodyViewport.css({
+				'overflow-x': 'hidden',
+				'overflow-y': 'hidden'				
+			});
+		}		
 	};
 
 
