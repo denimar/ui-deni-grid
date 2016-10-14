@@ -54,7 +54,7 @@ ui-deni-grid {
         font-size: 11px;
         overflow-y: hidden;
         overflow-x: hidden;
-        display: block;
+        display: inline-flex;
         box-sizing: border-box;
         position: relative;
         /*----------------------------*/
