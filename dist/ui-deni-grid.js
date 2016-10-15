@@ -2619,12 +2619,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		var currentLevel = level || 1;
 
-		var colIndex = colIndexStart || 0;
-
 		//Any column was specified in percentage? TODO: create a function to get this
 		var anyColumnInPercentage = false;
-		for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
-			if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
+		for (var idx = 0 ; idx < controller.options.columns.length ; idx++) {
+			if (controller.options.columns[idx].width.toString().indexOf('%') != -1) {
 				anyColumnInPercentage = true;
 				break;
 			}
@@ -2635,6 +2633,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			controller.headerViewport.css('width', 'calc(100% - 17px)');		
 			controller.headerContainer.css('width', '100%');
 		}
+
+		var colIndex = colIndexStart || 0;
 		
 		//
 		for (var index = 0 ; index < columns.length ; index++) {
