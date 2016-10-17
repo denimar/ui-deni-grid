@@ -1938,7 +1938,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var lastButton = controller.paging.find('.button.button-last');
 
 		var backwards = (data.length > 0) && (pageNumber > 1);
-		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount - 1);		
+		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount);		
 
 		if (backwards) {			
 			firstButton.removeClass('disabled');
