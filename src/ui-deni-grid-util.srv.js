@@ -1726,6 +1726,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.groupIndex == groupIndex) {
+						item.expanded = true;
 						found = true;
 						top = item.top + item.height;
 
@@ -1765,6 +1766,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.groupIndex == groupIndex) {
+						item.expanded = false;
 						found = true;
 						index++;
 						while (mng.items[index].groupIndex == groupIndex) {

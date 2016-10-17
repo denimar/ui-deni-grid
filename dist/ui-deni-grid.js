@@ -1805,6 +1805,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.groupIndex == groupIndex) {
+						item.expanded = true;
 						found = true;
 						top = item.top + item.height;
 
@@ -1844,6 +1845,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.groupIndex == groupIndex) {
+						item.expanded = false;
 						found = true;
 						index++;
 						while (mng.items[index].groupIndex == groupIndex) {
@@ -3204,8 +3206,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	 *
 	 */
-	var _repaintRow = function(controller, rowIndex, forceRepaint, execAfterRepaintEvent) {
-		var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
+	var _repaintRow = function(controller, rowIndex, forceRepaint, execAfterRepaintEvent, rowObject) {
+		var itemRow = rowObject || controller.managerRendererItems.getInfoRow(rowIndex);
 		if (forceRepaint) {
 			itemRow.rendered = false;
 			if (angular.isDefined(itemRow.rowElement)) {
@@ -3271,7 +3273,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//
 		for (var index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
-			_repaintRow(controller, visibleRow.rowIndex, forceRepaint);
+			_repaintRow(controller, visibleRow.rowIndex, forceRepaint, null, visibleRow);
 		}
 
 		///////////////////////////////////////////////
@@ -3554,7 +3556,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		//
 		//
-		controller.options.listeners.onrenderer = function(rowElement, fixedRowElement, record, rowIndex, viewController) {
+		controller.options.listeners.onrenderer = function(rowElement, fixedRowElement, record, itemToRender, viewController) {
 
 			/*
 			// Card View
@@ -3578,7 +3580,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			//Row Detail - Grouping or other type of row details
 			} else if (rowElement.is('.row-detail')) {
-				//uiDeniGridUtilSrv.renderCommonRow(controller, rowElement, record, rowIndex);
+				//uiDeniGridUtilSrv.renderCommonRow(controller, rowElement, record, itemToRender.rowIndex);
 
 				//
 				var divCell = _createDivCell(controller, rowElement);
@@ -3587,7 +3589,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				//
 				var spanCellInner = _createDivCellInner(divCell);
 				spanCellInner.addClass('row-detail');
-				spanCellInner.addClass('expand');
+				if (itemToRender.expanded) {
+					spanCellInner.addClass('collapse');
+				} else {
+					spanCellInner.addClass('expand');
+				}	
 				spanCellInner.css('cursor', 'pointer');
 
 				spanCellInner.click(function(event) {
@@ -3596,9 +3602,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				 		rowElement.toggleClass('expand collapse');
 
 				 		if (spanCellInner.is('.collapse')) {
-				 			uiDeniGridUtilSrv.groupExpand(controller, rowElement, record, rowIndex);
+				 			uiDeniGridUtilSrv.groupExpand(controller, rowElement, record, itemToRender.rowIndex);
 				 		} else {
-				 			uiDeniGridUtilSrv.groupCollapse(controller, rowElement, record, rowIndex);
+				 			uiDeniGridUtilSrv.groupCollapse(controller, rowElement, record, itemToRender.rowIndex);
 				 		}
 				 	//}
 				});
@@ -3615,7 +3621,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			} else if (rowElement.is('.ui-grouping-footer-container')) {
 				var columns = controller.options.columns;
 				var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-				var records = controller.options.data.slice(rowIndex, rowIndex + totalRowsInGroup);
+				var records = controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
 
 				//
 				uiDeniGridUtilSrv.createColumnFooters(controller, rowElement, columns, false);
@@ -3669,7 +3675,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 								divCellRowNumber.addClass('auxiliar-fixed-column');
 								var spanCellRowNumberInner = _createDivCellInner(divCellRowNumber);
 								spanCellRowNumberInner.addClass('rownumber');
-								spanCellRowNumberInner.html(rowIndex + 1);
+								spanCellRowNumberInner.html(itemToRender.rowIndex + 1);
 								colIndex++;
 							}
 						}
@@ -3771,9 +3777,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 								 		var target = $(event.target);
 
 								 		if (target.is('.collapse')) {
-								 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, rowIndex);
+								 			uiDeniGridUtilSrv.rowDetailsCollapse(controller, rowElement, record, itemToRender.rowIndex);
 								 		} else {
-								 			uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
+								 			uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, itemToRender.rowIndex);
 								 		}
 								 	}
 								});
@@ -3800,7 +3806,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 						//Is there a specific render for this field?
 						if (column.renderer) {
-							value = column.renderer(value, record, columns, rowIndex);
+							value = column.renderer(value, record, columns, itemToRender.rowIndex);
 						}
 
 						var formattedValue = value;
@@ -5467,6 +5473,13 @@ function xml2json(xml, tab) {
 				} else {
 					rowElement.addClass('row-detail');
 					rowElement.addClass('grouping'); //added basically to not select this line
+
+					if (itemToRender.expanded) {
+						rowElement.addClass('collapse');
+					} else {
+						rowElement.addClass('expand');
+					}	
+
 				}
 
 				//
@@ -5512,11 +5525,11 @@ function xml2json(xml, tab) {
 		///////////////////////////////////////////////
 		///////////////////////////////////////////////
 
-		controller.options.listeners.onrenderer(rowElement, fixedRowElement, record, itemToRender.rowIndex, controller);
+		controller.options.listeners.onrenderer(rowElement, fixedRowElement, record, itemToRender, controller);
 
 		///////////////////////////////////////////////
 		// onafterrender event
-		///////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////
 		if (controller.options.listeners.onafterrender) {
 			controller.options.listeners.onafterrender(rowElement, controller);
 		}
