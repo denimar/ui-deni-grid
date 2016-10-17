@@ -79,7 +79,7 @@ ui-deni-grid {
 		.ui-deni-grid-viewport {
 			height: 100%;
 			width: 100%;
-			display: inline-block;
+			display: block;
 			overflow-y: hidden;			
 			position: relative;		
 			overflow-x: hidden;
@@ -93,7 +93,7 @@ ui-deni-grid {
 				font-size: 11px;
 				overflow-y: hidden;
 				overflow-x: hidden;
-				//display: inline-flex;
+				display: flex;
 				box-sizing: border-box;
 				position: relative;
 
