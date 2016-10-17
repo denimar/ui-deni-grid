@@ -32,7 +32,7 @@ angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
 	DEFAULT_ROW_HEIGHT: '22px',
 
 	//
-	PAGING_HEIGHT: '24px',
+	PAGING_HEIGHT: '26px',
 	
 	//
 	DEFAULT_REALCE_CELLS: 'background-color:#FFFF00;color:black;padding:1px;',
@@ -4470,7 +4470,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var lastButton = controller.paging.find('.button.button-last');
 
 		var backwards = (data.length > 0) && (pageNumber > 1);
-		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount - 1);		
+		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount);		
 
 		if (backwards) {			
 			firstButton.removeClass('disabled');
