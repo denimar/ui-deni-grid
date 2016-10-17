@@ -32,7 +32,7 @@ angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
 	DEFAULT_ROW_HEIGHT: '22px',
 
 	//
-	PAGING_HEIGHT: '26px',
+	PAGING_HEIGHT: '24px',
 	
 	//
 	DEFAULT_REALCE_CELLS: 'background-color:#FFFF00;color:black;padding:1px;',
@@ -695,7 +695,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 	me.remakeHeightBodyViewportWrapper = function(controller) {
 		var paddingfooterDivContainerWidth = 3;
 		
-		var otherDivsheight = paddingfooterDivContainerWidth;
+		var otherDivsheight = 0;
 
 		//Showing column header?
 		if (controller.headerViewportWrapper.css('display') != 'none') {
@@ -709,7 +709,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 		//Showing footer?
 		if (controller.footerViewportWrapper.css('display') != 'none') {
-			otherDivsheight += controller.footerViewportWrapper.height();
+			otherDivsheight += controller.footerViewportWrapper.height() + paddingfooterDivContainerWidth;
 		}
 
 		var viewMainDivHeight = 'calc(100% - ' + otherDivsheight + 'px)';

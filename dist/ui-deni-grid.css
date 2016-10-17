@@ -54,7 +54,6 @@ ui-deni-grid {
         font-size: 11px;
         overflow-y: hidden;
         overflow-x: hidden;
-        display: inline-flex;
         box-sizing: border-box;
         position: relative;
         /*----------------------------*/
@@ -190,7 +189,6 @@ ui-deni-grid {
                 overflow-y: scroll;
                 overflow-x: auto;
                 box-sizing: border-box;
-                padding-top: 1px;
                 display: block;
                 position: relative;
                 /* avoid a blink while it is initilizing the data */
