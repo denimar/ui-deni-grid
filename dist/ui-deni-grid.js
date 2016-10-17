@@ -3162,7 +3162,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					//onselectionchange event
 					////////////////////////////////////////////////////
 					if (controller.options.listeners.onselectionchange) {
-						controller.options.listeners.onselectionchange($(event.currentTarget).prop('record'));
+						controller.options.listeners.onselectionchange(controller, controller.element, indexDataRecord, $(event.currentTarget).prop('record'));
 					}
 					////////////////////////////////////////////////////
 					////////////////////////////////////////////////////
@@ -3872,18 +3872,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		controller.options.listeners.onafterrepaint = function(viewController) {
 
-			var columns = me.getColumns(controller, controller.options.columns);
-			//Any column was specified in percentage? TODO: create a function to get this
-			var anyColumnInPercentage = false;
-			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
-				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
-					anyColumnInPercentage = true;
-					break;
+			if (angular.isDefined(controller.options.columns)) {
+				var columns = me.getColumns(controller, controller.options.columns);
+				//Any column was specified in percentage? TODO: create a function to get this
+				var anyColumnInPercentage = false;
+				for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+					if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
+						anyColumnInPercentage = true;
+						break;
+					}
 				}
-			}
-			if (anyColumnInPercentage) {
-				controller.bodyContainer.find('.ui-row').css('width', '100%');
-			}
+				if (anyColumnInPercentage) {
+					controller.bodyContainer.find('.ui-row').css('width', '100%');
+				}
+			}	
 
 			/*
 			controller.clientWidth;
