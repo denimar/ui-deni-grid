@@ -1732,6 +1732,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.rowIndex == rowIndex) {
+						item.expanded = true;
 						found = true;
 						top = item.top + item.height - 2;
 
@@ -1773,6 +1774,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.rowIndex == rowIndex) {
+						item.expanded = false;
 						found = true;
 						top = item.top + item.height;
 						//mng.items[index+1].rowElement.remove();
@@ -3766,7 +3768,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							if (controller.options.rowDetails) {
 								spanCellInner.addClass('row-detail');
 
-								if (controller.options.rowDetails.autoExpand === true) {
+								if ((itemToRender.expanded) || (controller.options.rowDetails.autoExpand === true)) {
 									spanCellInner.addClass('collapse');
 								} else {
 									spanCellInner.addClass('expand');
@@ -5503,6 +5505,16 @@ function xml2json(xml, tab) {
 
 				// common row
 				} else {
+					/*
+					if (controller.options.rowDetails) {
+						if (itemToRender.expanded) {
+							rowElement.addClass('collapse');
+						} else {
+							rowElement.addClass('expand');
+						}	
+					}
+					*/
+
 					// stripRows (odd line?)
 					if (controller.options.stripRows) {
 						if (itemToRender.rowIndex % 2 == 1) {

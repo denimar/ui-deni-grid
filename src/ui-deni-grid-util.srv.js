@@ -1653,6 +1653,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.rowIndex == rowIndex) {
+						item.expanded = true;
 						found = true;
 						top = item.top + item.height - 2;
 
@@ -1694,6 +1695,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					top += item.height;
 				} else {
 					if (item.rowIndex == rowIndex) {
+						item.expanded = false;
 						found = true;
 						top = item.top + item.height;
 						//mng.items[index+1].rowElement.remove();
