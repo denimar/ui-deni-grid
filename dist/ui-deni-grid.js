@@ -1323,6 +1323,7 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 					var additionalButton = $(document.createElement('span'));
 					additionalButton.addClass('button');
 					additionalButton.addClass('button-additional');
+					additionalButton.addClass('disabled');			
 					additionalButton.html(buttonConfig.text);
 					paging.append(additionalButton);
 					additionalButton.get(0).onclick = buttonConfig.click;
