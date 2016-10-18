@@ -4497,9 +4497,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var prevButton = controller.paging.find('.button.button-prev');
 		var nextButton = controller.paging.find('.button.button-next');
 		var lastButton = controller.paging.find('.button.button-last');
+		var additionalButtons = controller.paging.find('.button.button-additional');		
 
 		var backwards = (data.length > 0) && (pageNumber > 1);
 		var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount);		
+
+		if (data.length > 0) {
+			additionalButtons.removeClass('disabled');
+		} else {
+			additionalButtons.addClass('disabled');			
+		}	
 
 		if (backwards) {			
 			firstButton.removeClass('disabled');
