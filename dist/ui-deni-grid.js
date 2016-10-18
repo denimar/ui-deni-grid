@@ -1289,6 +1289,50 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		})
 
 		//
+		var labelRecordCount = $(document.createElement('span'));
+		labelRecordCount.addClass('label-record-count');
+		//labelRecordCount.html('654 records');
+		paging.append(labelRecordCount);
+
+		//
+		var separator5 = $(document.createElement('span'));
+		separator5.addClass('separator');
+		separator5.css('float', 'right');
+		paging.append(separator5);
+
+		//
+		var labelDisplaying = $(document.createElement('span'));
+		labelDisplaying.addClass('label-displaying');
+		//labelDisplaying.html('Displaying records 51 - 100 of 6679');
+		paging.append(labelDisplaying);
+
+
+		//Additional buttons
+		if (angular.isDefined(pagingOptions.buttons)) {
+			if (angular.isArray(pagingOptions.buttons)) {
+				var separator4 = $(document.createElement('span'));
+				separator4.addClass('separator');
+				separator4.css({
+					float: 'right',
+					'margin-left': '4px'
+				});
+				paging.append(separator4);
+
+				angular.forEach(pagingOptions.buttons, function(buttonConfig) {
+					//
+					var additionalButton = $(document.createElement('span'));
+					additionalButton.addClass('button');
+					additionalButton.addClass('button-additional');
+					additionalButton.html(buttonConfig.text);
+					paging.append(additionalButton);
+					additionalButton.get(0).onclick = buttonConfig.click;
+				});
+			} else {
+				console.log('"buttons" property must be a array.');
+			}	
+		}	
+
+		//
 		paging.find('.button').mouseenter(function(event) {
 			$(event.target).addClass('hover');
 		});
@@ -1298,23 +1342,6 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 			$(event.target).removeClass('hover');
 		});
 
-		//
-		var labelRecordCount = $(document.createElement('span'));
-		labelRecordCount.addClass('label-record-count');
-		//labelRecordCount.html('654 records');
-		paging.append(labelRecordCount);
-
-		//
-		var separator4 = $(document.createElement('span'));
-		separator4.addClass('separator');
-		separator4.css('float', 'right');
-		paging.append(separator4);
-
-		//
-		var labelDisplaying = $(document.createElement('span'));
-		labelDisplaying.addClass('label-displaying');
-		//labelDisplaying.html('Displaying records 51 - 100 of 6679');
-		paging.append(labelDisplaying);
 	}
 
 	/**
