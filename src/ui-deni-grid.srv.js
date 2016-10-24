@@ -1353,7 +1353,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				if (anyColumnInPercentage) {
 					controller.bodyContainer.find('.ui-row').css('width', '100%');
 				}
-			}	
+			}
 
 			/*
 			controller.clientWidth;
@@ -1369,7 +1369,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 			*/
 
-			/*
+			
 			var colIndex = 0;
 
 			//Fixed Columns
@@ -1387,7 +1387,6 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
 				colIndex++;
 			}
-			*/
 
         }
 
