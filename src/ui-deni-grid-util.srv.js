@@ -288,6 +288,46 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 		//groupFooterRows.find('.grouping-footer-cell[colIndex=' + colIndex + ']').css('width', headerContainerColumn.css('width'));
 	}	
 
+	/**
+	 *	
+	 *
+	 */
+	me.adjustAllColumnWidtsAccordingColumnHeader = function(controller) {
+		if (angular.isDefined(controller.options.columns)) {
+			var columns = me.getColumns(controller, controller.options.columns);
+			//Any column was specified in percentage? TODO: create a function to get this
+			var anyColumnInPercentage = false;
+			for (var colIndex = 0 ; colIndex < controller.options.columns.length ; colIndex++) {
+				if (controller.options.columns[colIndex].width.toString().indexOf('%') != -1) {
+					anyColumnInPercentage = true;
+					break;
+				}
+			}
+			if (anyColumnInPercentage) {
+				controller.bodyContainer.find('.ui-row').css('width', '100%');
+			}
+		}
+
+		var colIndex = 0;
+
+		//Fixed Columns
+		var headerContainerColumns = controller.fixedColsHeaderContainer.find('.ui-header-container-column:not(.has-subcolumns)');
+		for (var index = 0 ; index < headerContainerColumns.length ; index++) {
+			var headerContainerColumn = $(headerContainerColumns[index]);
+			me.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
+			colIndex++;
+		}
+
+		//Variable Columns
+		var headerContainerColumns = controller.headerContainer.find('.ui-header-container-column:not(.has-subcolumns)');
+		for (var index = 0 ; index < headerContainerColumns.length ; index++) {
+			var headerContainerColumn = $(headerContainerColumns[index]);
+			me.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
+			colIndex++;
+		}
+	}	
+
+
 
 	/**
 	 *	
@@ -1511,6 +1551,28 @@ angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', function($filter, ui
 
 	 	return root;
 	};
+
+	/**
+	 *	Usage:  getColumns(controller, controller.options.columns)
+	 *
+	*/
+    me.getColumns = function(controller, sourceColumns) {
+
+    	var columns = [];
+		for (var index = 0 ; index < sourceColumns.length ; index++) {
+			var column = sourceColumns[index];
+
+			//
+			if (column.columns) {
+				columns = columns.concat(me.getColumns(controller, column.columns));
+			} else {
+				columns.push(column);
+			}
+		}
+
+		return columns;
+    },
+	
 
 	/**
 	 *
