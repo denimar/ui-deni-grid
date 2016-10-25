@@ -17,7 +17,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 	 	controller.bodyViewport.find('.ui-cell.selected').removeClass('selected');
 	 	controller.fixedColsBodyViewport.find('.ui-cell.selected').removeClass('selected');
-	 }
+	 };
 
 	/**
 	 *
@@ -31,7 +31,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {			
 			throw new Error('"selectAll" : to use selectAll method you must set multiSelect property to true!');
 		}
-	 }
+	 };
 
 
 	/**
@@ -49,7 +49,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			headerContainerColumn.append(divHeaderContainerColumnRow);
 
 			return divHeaderContainerColumnRow;
-		}
+		};
 
 		if (controller.options.fixedCols) {
 			angular.copy(columnsToCreate, columns);
@@ -92,7 +92,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//Any column was specified in percentage? TODO: create a function to get this
 		var anyColumnInPercentage = false;
 		for (var idx = 0 ; idx < controller.options.columns.length ; idx++) {
-			if (controller.options.columns[idx].width.toString().indexOf('%') != -1) {
+			if (controller.options.columns[idx].width.toString().indexOf('%') !== -1) {
 				anyColumnInPercentage = true;
 				break;
 			}
@@ -107,7 +107,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var colIndex = colIndexStart || 0;
 		
 		//
-		for (var index = 0 ; index < columns.length ; index++) {
+		for (let index = 0 ; index < columns.length ; index++) {
 			var column = columns[index];
 
 			//ui-header-container-column
@@ -123,16 +123,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			divHeaderContainerColumn.addClass('ui-header-container-column');
 			divHeaderContainerColumn.attr('colindex', colIndex);
 			if (angular.isDefined(headerContainerColumnRow)) {
-				if (index == 0) {
+				if (index === 0) {
 					divHeaderContainerColumn.addClass('first-subcolumn');
-				} else if (index == columns.length - 1) {
+				} else if (index === columns.length - 1) {
 					divHeaderContainerColumn.addClass('last-subcolumn');
 				}
 			}
 
 
 			//ui-header-container-column-row
-			var divHeaderContainerColumnRow = divHeaderContainerColumnRow = createDivHeaderContainerColumnRow(divHeaderContainerColumn);
+			var divHeaderContainerColumnRow = createDivHeaderContainerColumnRow(divHeaderContainerColumn);
 
 			//ui-header-cell
 			var divHeaderCell = $(document.createElement('div'));
@@ -158,8 +158,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				});
 				spanHeaderCellInner.append(inputCheck);
 				inputCheck.change(function(event) {
-					var checkboxes = controller.fixedColsBodyContainer.find('.ui-cell-inner.checkbox').find('input[type=checkbox]')
-					for (var index = 0 ; index < checkboxes.length ; index++) {
+					var checkboxes = controller.fixedColsBodyContainer.find('.ui-cell-inner.checkbox').find('input[type=checkbox]');
+					for (let index = 0 ; index < checkboxes.length ; index++) {
 						checkboxes[index].checked = event.target.checked;
 					}
 				});
@@ -226,7 +226,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			colIndex++;
 		}
 
-	}
+	};
 
 	/**
 	 *
@@ -242,7 +242,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var updResizing = function() {
 			//controller.colsViewport.css('cursor', 'col-resize');
 			//if ((columnHeaderCellResizing) && (event.which == 1)) {
-				if (hrVerticalLineResizing == undefined) {
+				if (!angular.isDefined(hrVerticalLineResizing)) {
 					hrVerticalLineResizing = document.createElement('hr');
 					hrVerticalLineResizing.classList.add('ui-deni-grid-vertical-line-resizing');
 					controller.colsViewport.append(hrVerticalLineResizing);
@@ -258,7 +258,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//} else 	{
 			//	$(hrVerticalLineResizing).css('display', 'none');
 			//}
-		}
+		};
 
 		var setResizing = function() {
 			if (!hrVerticalLineResizing) {
@@ -267,7 +267,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				controller.colsViewport.append(hrVerticalLineResizing);
 			}
 			updResizing();
-		}
+		};
 
 		var setResizingOff = function() {
 			controller.resizing = false;
@@ -277,7 +277,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			if (hrVerticalLineResizing) {
 				$(hrVerticalLineResizing).css('display', 'none');
 			}
-		}
+		};
 
 		//Mouse Down
 		controller.headerContainer.mousedown(function(event) {
@@ -285,7 +285,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				return;
 			}
 
-			headerContainerColumn = $(event.target).closest('.ui-header-container-column');
+			let headerContainerColumn = $(event.target).closest('.ui-header-container-column');
 			if (headerContainerColumn.length > 0) {
 			//if (event.toElement.parentElement === controller.headerContainer.get(0)) {
 				if (canResize) {
@@ -312,7 +312,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				return adjustParentColumnsWidths(headerContainerColumnParent, differenceNewWidth);
 			}
 			return headerContainerColumn;
-		}
+		};
 
 		//It is necessary when there are grouped columns
 		var adjustChildrenColumnsWidths = function(headerContainerColumn, newWidth) {
@@ -323,19 +323,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			if (children.length > 0) {
 				//sum the widths
 				var totalWidth = 0;
-				for (var index = 0 ; index < children.length ; index++) {
+				for (let index = 0 ; index < children.length ; index++) {
 					totalWidth += $(children[index]).width();
 				}
 
 				//get the column width percentage
-				for (var index = 0 ; index < children.length ; index++) {
+				for (let index = 0 ; index < children.length ; index++) {
 					var child = $(children[index]);
 					var percentage = child.width() * 100 / totalWidth;
 
 					child.css('width', (newWidth * percentage / 100) + 'px');
 				}
 			}
-		}
+		};
 
 
 		//Mouse Up
@@ -347,23 +347,23 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			if (controller.resizing) {
 				if (headerContainerColumnResizing) {
 					//
-					//var leftResizing = event.pageX - controller.colsViewport.offset().left;
-					//var difference = event.clientX - headerContainerColumnResizing.getBoundingClientRect().right;
-					var right = headerContainerColumnResizing.getBoundingClientRect().left + headerContainerColumnResizing.clientWidth;
-					var difference = event.pageX - right;
-					$headerContainerColumnResizing = $(headerContainerColumnResizing);
-					var newWidth = $headerContainerColumnResizing.width() + difference;
+					//let leftResizing = event.pageX - controller.colsViewport.offset().left;
+					//let difference = event.clientX - headerContainerColumnResizing.getBoundingClientRect().right;
+					let right = headerContainerColumnResizing.getBoundingClientRect().left + headerContainerColumnResizing.clientWidth;
+					let difference = event.pageX - right;
+					let $headerContainerColumnResizing = $(headerContainerColumnResizing);
+					let newWidth = $headerContainerColumnResizing.width() + difference;
 
 					//It is necessary when there are grouped columns
 					if ($headerContainerColumnResizing.is('.has-subcolumns')) {
 						//
-						var lastSubcolumn = $headerContainerColumnResizing.find('.ui-header-container-column.last-subcolumn');
-						var lastSubcolumnWidth = lastSubcolumn.width();
+						let lastSubcolumn = $headerContainerColumnResizing.find('.ui-header-container-column.last-subcolumn');
+						let lastSubcolumnWidth = lastSubcolumn.width();
 						//
 						$headerContainerColumnResizing.width(newWidth);
 
 						//
-						var borderWidth = 1;
+						let borderWidth = 1;
 						lastSubcolumn.width(lastSubcolumnWidth + difference + borderWidth);
 						//uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, lastSubcolumn, lastSubcolumn.attr('colindex'));
 						//
@@ -375,7 +375,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						//
 						//
 						//var headerContainerColumns = $headerContainerColumnResizing.find('.ui-header-container-column');
-						//for (var index = 0 ; index < headerContainerColumns.length ; index++) {
+						//for (let index = 0 ; index < headerContainerColumns.length ; index++) {
 						//	var headerContainerColumn = $(headerContainerColumns.get(index));
 						//	uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, headerContainerColumn.attr('colindex'));
 						//}
@@ -384,7 +384,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					} else {
 
 						//
-						var lastAdjustedParent = adjustParentColumnsWidths($headerContainerColumnResizing, difference);
+						let lastAdjustedParent = adjustParentColumnsWidths($headerContainerColumnResizing, difference);
 						//
 						$headerContainerColumnResizing.width(newWidth);
 						//
@@ -414,12 +414,16 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				var args = arguments;
 				var later = function() {
 					timeout = null;
-					if (!immediate) func.apply(context, args);
+					if (!immediate) {
+						func.apply(context, args);
+					}	
 				};
 				var callNow = immediate && !timeout;
 				clearTimeout(timeout);
 				timeout = setTimeout(later, wait);
-				if (callNow) func.apply(context, args);
+				if (callNow) {
+					func.apply(context, args);
+				}	
 			};
 		};
 
@@ -438,7 +442,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				} else if (event.which === 0) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 					controller.colsViewport.css('cursor', 'default');
 
-					headerContainerColumn = $(event.target).closest('.ui-header-container-column');
+					let headerContainerColumn = $(event.target).closest('.ui-header-container-column');
 					if (headerContainerColumn.length > 0) {
 
 						var columnHeadersCell = controller.headerContainer.find('.ui-header-cell');
@@ -446,7 +450,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						//columnHeaderCellResizing = null;
 						headerContainerColumnResizing = null;
 
-						for (var index = 0 ; index < columnHeadersCell.length ; index++) {
+						for (let index = 0 ; index < columnHeadersCell.length ; index++) {
 							var columnHeaderCell = columnHeadersCell[index];
 
 							var position = columnHeaderCell.getBoundingClientRect();
@@ -476,7 +480,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//////////////
 		//////////////
 		var columnHeadersCell = controller.headerContainer.find('.ui-header-cell');
-		for (var index = 0 ; index < columnHeadersCell.length ; index++) {
+		for (let index = 0 ; index < columnHeadersCell.length ; index++) {
 			var columnHeaderCell = $(columnHeadersCell[index]);
 
 			//
@@ -507,7 +511,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				}
 
 				if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
-					if (controller.colsViewport.css('cursor') == 'default') { //prevent conflict with the resizing columns function
+					if (controller.colsViewport.css('cursor') === 'default') { //prevent conflict with the resizing columns function
 						if (controller.options.sortableColumns) {
 							var headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
 
@@ -531,7 +535,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		//////////////
 		//////////////
 
-	}
+	};
 
 
 	/**
@@ -567,12 +571,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 		if (controller.options.data) {
 			var sortFn = function(array) {
-				for (var index = 0 ; index < array.length ; index++) {
+				for (let index = 0 ; index < array.length ; index++) {
 					var sort = array[index];
 					var direction = sort.direction || 'ASC'; //default value
-					controller.options.data = $filter('orderBy')(controller.options.data, sort.name, direction.toUpperCase() == 'DESC');
+					controller.options.data = $filter('orderBy')(controller.options.data, sort.name, direction.toUpperCase() === 'DESC');
 				}
-			}
+			};
 			// Are there fixed sorters?
 			if (controller.options.fixedSorters) {
 				sortFn(controller.options.fixedSorters);
@@ -582,7 +586,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 
 		return sortersArray;
-	}
+	};
 
 	/*
 	 *
@@ -607,7 +611,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var colWidth = (100 / recordsByRow).toString() + '%';
 
 		//
-		for (var indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
+		for (let indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
 			var indexDataRecord = visibleRow.rowIndex;
 			//
 			if (visibleRow.rowIndex > 0) {
@@ -639,18 +643,18 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 				});	
 
-				if (controller.options.cardView.checkbox == true) {
+				if (controller.options.cardView.checkbox === true) {
 					var checkboxCardView = $(document.createElement('input'));
 					checkboxCardView.addClass('checkbox');
 					checkboxCardView.attr('type', 'checkbox');
-					if (controller.checkedRecords.indexOf(record) != -1) {
+					if (controller.checkedRecords.indexOf(record) !== -1) {
 						checkboxCardView.attr('checked', true);
 					}
 					checkboxCardView.click(function(event) {
 						var rec = $(event.target.parent).prop('record');
 						var indexOfRec = controller.checkedRecords.indexOf(rec);
 
-						if (indexOfRec != -1) {
+						if (indexOfRec !== -1) {
 							controller.checkedRecords.splice(indexOfRec, 1);
 						}
 
@@ -668,7 +672,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}
 		}
 		visibleRow.rowElement = rowElement;
-	}	
+	};	
 
 
 	/*
@@ -721,7 +725,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				///////////////////////////////////////////////
 			}
 		}
-	}	
+	};	
 
 	/*
 	 *
@@ -741,7 +745,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var visibleRows = controller.managerRendererItems.getVisibleRows();
 
 		//
-		for (var index = 0 ; index < visibleRows.length ; index++) {
+		for (let index = 0 ; index < visibleRows.length ; index++) {
 			var visibleRow = visibleRows[index];
 			_repaintRow(controller, visibleRow.rowIndex, forceRepaint, null, visibleRow);
 		}
@@ -758,7 +762,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		// remove all not visible rows elements
 		// preventing a overloading in the RAM memory
 		controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
-	}
+	};
 
 	/**
 	 * @param sorters {Array|Object|String} direction is optional
@@ -771,7 +775,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	me.sort = function(controller, sorters, holdSelection) {
 		//var shouldHoldSelection = holdSelection == false ? false : true;
 		var recordToHold;
-		if (holdSelection != false) {
+		if (holdSelection !== false) {
 			recordToHold = me.getSelectedRow(controller);
 		}
 
@@ -810,7 +814,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//
 			controller.options.api.loadData(controller.options.data);
 
-			for (var index = 0 ; index < recordsToExpand.length ; index++) {
+			for (let index = 0 ; index < recordsToExpand.length ; index++) {
 				var record = recordsToExpand[index];
 				var rowIndex = controller.options.api.resolveRowIndex(record);
 				var rowElement = controller.options.api.resolveRowElement(rowIndex);
@@ -828,7 +832,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 
 
-		for (var index = 0 ; index < sortersArray.length ; index++) {
+		for (let index = 0 ; index < sortersArray.length ; index++) {
 			var sort = sortersArray[index];
 
 			if (!angular.isFunction(sort)) {
@@ -847,15 +851,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 
 		return sortersArray;
-	}
+	};
 
 	/**
 	 * @param raiseError {boolean} Raise a error when it is not found
 	 *
 	 */
 	var _getHeaderColElementByName = function(controller, columnName, raiseError) {
-		var columns = controller.headerContainer.find('div.ui-header-cell[name="' + columnName + '"]');
-		if (columns.length == 0) {
+		let columns = controller.headerContainer.find('div.ui-header-cell[name="' + columnName + '"]');
+		if (columns.length === 0) {
 			if (raiseError) {
 				throw new Error('There is not a columns with a name "' + columnName + '"!');
 			} else {
@@ -864,19 +868,18 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {
 			return columns[0];
 		}
-	}
+	};
 
 	//
 	//
 	var _rendererRealcedCells = function(completeValue, valueToRealce, realceStyle) {
 		if ((completeValue) && (valueToRealce)) {
 			completeValue = completeValue.toString();
-			var pos = completeValue.toLowerCase().indexOf(valueToRealce.toLowerCase());
-			var pos = completeValue.search(new RegExp(valueToRealce, "i"));
-			if (pos != -1) {		
-				var newValue = '';
-				var initPos = 0;
-				while (pos != -1) {
+			let pos = completeValue.search(new RegExp(valueToRealce, 'i'));
+			if (pos !== -1) {		
+				let newValue = '';
+				let initPos = 0;
+				while (pos !== -1) {
 					newValue += completeValue.substring(initPos, pos);
 					newValue += '<span style="' + realceStyle + '">' + completeValue.substring(pos, pos + valueToRealce.length) + '</span>';
 					initPos = pos + valueToRealce.length;
@@ -888,7 +891,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			}	
 		}	
 		return completeValue;
-	}
+	};
 
 	//
 	//
@@ -896,7 +899,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	var _createDivCell = function(controller, rowElement) {
 
 		//
-		var divCell = $(document.createElement('div'));
+		let divCell = $(document.createElement('div'));
 		divCell.addClass('ui-cell');
 		
 		if (controller.options.colLines) {
@@ -918,7 +921,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				}
 
 	    		//selType = 'row'
-	    		if (controller.options.selType == 'row') {
+	    		if (controller.options.selType === 'row') {
 	        		//$(event.currentTarget).parent().find('.ui-cell').addClass('hover');
 					//
 				 	controller.bodyViewport.find('.ui-row[rowindex=' + rowElement.attr('rowindex') + ']:not(.row-detail)').find('.ui-cell').addClass('hover');
@@ -955,20 +958,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	    		if (event.which === 1) { //event.which: left: 1, middle: 2, right: 3 (pressed)
 
 	    			//selType = 'row'
-	    			if (controller.options.selType == 'row') {
-	    				var divCell = $(event.currentTarget);
-						var rowElement = divCell.closest('.ui-row');
-						var rowIndex = parseInt(rowElement.attr('rowindex'));
+	    			if (controller.options.selType === 'row') {
+	    				let divCell = $(event.currentTarget);
+						let rowElement = divCell.closest('.ui-row');
+						let rowIndex = parseInt(rowElement.attr('rowindex'));
 
 						me.selectRow(controller, rowElement);
 
 					//selType = 'cell'
 					} else {
 						//$(event.currentTarget).parent().find('.ui-cell').addClass('hover');
-						var divCell = $(event.currentTarget);
-						var colIndex = parseInt(divCell.attr('colIndex'));
-						var rowElement = divCell.closest('.ui-row');
-						var rowIndex = parseInt(rowElement.attr('rowindex'));
+						let divCell = $(event.currentTarget);
+						let colIndex = parseInt(divCell.attr('colIndex'));
+						let rowElement = divCell.closest('.ui-row');
+						let rowIndex = parseInt(rowElement.attr('rowindex'));
 
 						//var rowElement = $(event.currentTarget).closest('.ui-row');
 						//var divCell = rowElement.closest('.ui-cell');
@@ -981,17 +984,17 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			//doubleclick
 	    	divCell.dblclick(function(event) {
-	    		var targetEl = $(event.target);
+	    		let targetEl = $(event.target);
 	    		if (targetEl.is('.ui-cell-inner')) {
-		    		var divCell = $(event.currentTarget);
-		    		var colIndex = parseInt(divCell.attr('colIndex'));
-					var columns = uiDeniGridUtilSrv.getColumns(controller, controller.options.columns);
-					var column = columns[colIndex]
+		    		let divCell = $(event.currentTarget);
+		    		let colIndex = parseInt(divCell.attr('colIndex'));
+					let columns = uiDeniGridUtilSrv.getColumns(controller, controller.options.columns);
+					let column = columns[colIndex];
 
 					if (column.editor) {
-						var rowElement = divCell.closest('.ui-row');
-						var rowIndex = parseInt(rowElement.attr('rowindex'));
-						var record = controller.options.data[rowIndex];
+						let rowElement = divCell.closest('.ui-row');
+						let rowIndex = parseInt(rowElement.attr('rowindex'));
+						let record = controller.options.data[rowIndex];
 						uiDeniGridUtilSrv.setInputEditorDivCell(controller, record, column, divCell);
 					}
 				}	
@@ -1004,7 +1007,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		rowElement.append(divCell);
 
 		return divCell;
-	}
+	};
 
 	//
 	//
@@ -1016,7 +1019,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		divCellParent.append(spanCellInner);
 
 		return spanCellInner;
-	}
+	};
 
 	/**
 	 *
@@ -1042,10 +1045,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			// Row Template
 			if (angular.isDefined(controller.options.rowTemplate)) {
 				//
-				var divCell = _createDivCell(controller, rowElement);
+				let divCell = _createDivCell(controller, rowElement);
 				rowElement.css('width', '100%');
 				divCell.css('width', '100%');
-				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowTemplate, record);
+				let valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowTemplate, record);
 				divCell.html(valueToRender);
 
 			//Row Detail - Grouping or other type of row details
@@ -1053,11 +1056,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				//uiDeniGridUtilSrv.renderCommonRow(controller, rowElement, record, itemToRender.rowIndex);
 
 				//
-				var divCell = _createDivCell(controller, rowElement);
+				let divCell = _createDivCell(controller, rowElement);
 				divCell.addClass('row-detail');
 
 				//
-				var spanCellInner = _createDivCellInner(divCell);
+				let spanCellInner = _createDivCellInner(divCell);
 				spanCellInner.addClass('row-detail');
 				if (itemToRender.expanded) {
 					spanCellInner.addClass('collapse');
@@ -1079,9 +1082,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				 	//}
 				});
 
-				var valueToRender;
+				let valueToRender;
 				if (controller.options.grouping.template) {
-					var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
+					let totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
 					valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.grouping.template, record, {count: totalRowsInGroup});
 				}
 
@@ -1089,9 +1092,9 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			// Grouping Footer
 			} else if (rowElement.is('.ui-grouping-footer-container')) {
-				var columns = controller.options.columns;
-				var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-				var records = controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
+				let columns = controller.options.columns;
+				let totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
+				let records = controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
 
 				//
 				uiDeniGridUtilSrv.createColumnFooters(controller, rowElement, columns, false);
@@ -1102,24 +1105,24 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			} else {
 				//rowElement.css('width', '100%');
 
-				var isRowSelected = rowElement.is('.selected');
-				var columns = uiDeniGridUtilSrv.getColumns(controller, controller.options.columns);
-				var colIndex = 0;
-				for (var index = 0 ; index < columns.length ; index++) {
+				let isRowSelected = rowElement.is('.selected');
+				let columns = uiDeniGridUtilSrv.getColumns(controller, controller.options.columns);
+				let colIndex = 0;
+				for (let index = 0 ; index < columns.length ; index++) {
 
 					//
-					if (index == 0) {
+					if (index === 0) {
 						//if Fixed Columns
 						if (controller.options.fixedCols) {
 
 							//if has checkbox
 							if (controller.options.fixedCols.checkbox) {
-								var divCellIndicator = _createDivCell(controller, fixedRowElement);
+								let divCellIndicator = _createDivCell(controller, fixedRowElement);
 								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
-								var spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
+								let spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('checkbox');
-								var inputCheck = $(document.createElement('input'));
+								let inputCheck = $(document.createElement('input'));
 								inputCheck.attr('type', 'checkbox');
 								inputCheck.css({
 									cursor: 'pointer'
@@ -1130,20 +1133,20 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 							//if has indicator
 							if (controller.options.fixedCols.indicator) {
-								var divCellIndicator = _createDivCell(controller, fixedRowElement);
+								let divCellIndicator = _createDivCell(controller, fixedRowElement);
 								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
-								var spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
+								let spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('indicator');
 								colIndex++;
 							}
 
 							//if has row number
 							if (controller.options.fixedCols.rowNumber) {
-								var divCellRowNumber = _createDivCell(controller, fixedRowElement);
+								let divCellRowNumber = _createDivCell(controller, fixedRowElement);
 								divCellRowNumber.css('width', uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH);
 								divCellRowNumber.addClass('auxiliar-fixed-column');
-								var spanCellRowNumberInner = _createDivCellInner(divCellRowNumber);
+								let spanCellRowNumberInner = _createDivCellInner(divCellRowNumber);
 								spanCellRowNumberInner.addClass('rownumber');
 								spanCellRowNumberInner.html(itemToRender.rowIndex + 1);
 								colIndex++;
@@ -1152,11 +1155,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					}
 
 					//
-					var column = columns[index];
+					let column = columns[index];
 
 
 					//
-					var divCell;
+					let divCell;
 
 					//if fixed column?
 					if (uiDeniGridUtilSrv.isFixedColumn(controller, column.name)) {
@@ -1167,24 +1170,24 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					divCell.attr('colIndex', colIndex);
 
 					//
-					var spanCellInner = _createDivCellInner(divCell);
+					let spanCellInner = _createDivCellInner(divCell);
 
 					//action column
 					if (column.action) {
 						spanCellInner.css('text-align', 'center');						
 						spanCellInner.addClass('ui-cell-inner-action');
 
-						var iconActionColumn = column.action.mdIcon || column.action.icon;
+						let iconActionColumn = column.action.mdIcon || column.action.icon;
 						if (angular.isFunction(iconActionColumn)) {
 							iconActionColumn = iconActionColumn(record);
 						}	
-						var imgActionColumn;					
+						let imgActionColumn;					
 						if (column.action.mdIcon) { //Usa o md-icon do Angular Material
-							var imgActionColumnBtn = $(document.createElement('md-button'));
+							let imgActionColumnBtn = $(document.createElement('md-button'));
 							
 							if (column.action.tooltip) {							
-								var imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
-								var textTooltip;
+								let imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
+								let textTooltip;
 
 								if (angular.isFunction(column.action.tooltip)) {
 									textTooltip = column.action.tooltip(record);
@@ -1200,13 +1203,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							imgActionColumn.html(iconActionColumn);
 							imgActionColumnBtn.append(imgActionColumn);														
 							
-							var imgActionColumnBtnCompiled = $compile(imgActionColumnBtn) (controller.scope);
+							let imgActionColumnBtnCompiled = $compile(imgActionColumnBtn) (controller.scope);
 							spanCellInner.append(imgActionColumnBtn);							
 							imgActionColumnBtn.find('md-icon').prop('column', column);							
 
 							imgActionColumnBtn.click(function(event) {
-								var imgAction = $(event.currentTarget).find('md-icon');
-								var colAction = imgAction.prop('column');
+								let imgAction = $(event.currentTarget).find('md-icon');
+								let colAction = imgAction.prop('column');
 								colAction.action.fn(record, column, imgAction);
 							});
 
@@ -1219,8 +1222,8 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 							imgActionColumn.prop('column', column);							
 
 							imgActionColumn.click(function(event) {
-								var imgAction = $(event.currentTarget);
-								var colAction = imgAction.prop('column');
+								let imgAction = $(event.currentTarget);
+								let colAction = imgAction.prop('column');
 								colAction.action.fn(record, column, imgActionColumn);
 							});
 
@@ -1230,7 +1233,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					} else {
 
 						//
-						if (index == 0) {
+						if (index === 0) {
 							//
 							//rowDetails Property
 							if (controller.options.rowDetails) {
@@ -1264,7 +1267,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 						}));
 
 						//Margin First column inside of grouping
-						if ((index == 0) && (controller.options.api.isGrouped())) {
+						if ((index === 0) && (controller.options.api.isGrouped())) {
 							divCell.css('padding-left', '20px');
 						}
 
@@ -1309,25 +1312,25 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 				}
 
 			}
-		}
+		};
 
 		//
 		//
 		controller.options.listeners.onafterexpand = function(records, options, elementGroupRow, lastInsertedDivRow) {
 			if (records.length > 0) {
-				var rowIndex = controller.options.api.resolveRowIndex(records[0]);
+				let rowIndex = controller.options.api.resolveRowIndex(records[0]);
 				me.selectRow(controller, rowIndex);
 			}
 
 			//Are there footer?
 			if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
 
-				var footerDivContainer = elementGroupRow.prop('footer');
+				let footerDivContainer = elementGroupRow.prop('footer');
 				if (angular.isDefined(footerDivContainer)) {
 					footerDivContainer.css('display', 'block');
 				} else {
 					//Create a div container to insert the footer of the grouping
-					var footerDivContainer = $(document.createElement('div'));
+					footerDivContainer = $(document.createElement('div'));
 					footerDivContainer.addClass('ui-deni-grid-grouping-footer-container');
 
 					//Used to collapse
@@ -1338,7 +1341,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					uiDeniGridUtilSrv.renderColumnFooters(footerDivContainer, controller.footerContainer, controller.options.columns, records, controller);
 				}
 			}
-		}
+		};
 
 		controller.options.listeners.onafterrepaint = function(viewController) {
 			/*
@@ -1357,22 +1360,22 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 			
 			uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
-        }
+        };
         
         //
         controller.bodyViewport.scroll(function(event) {
-		    var currentLeft = $(this).scrollLeft();
+		    let currentLeft = $(this).scrollLeft();
 
 		    //Vertical Scroll
 		    if(controller.bodyViewport.currentScrollLeft === currentLeft) {
 		    	controller.bodyViewport.currentScrollTop = $(this).scrollTop();
 
-		        var firstViewRow = controller.bodyViewport.find('.ui-row:eq(0)');
+		        let firstViewRow = controller.bodyViewport.find('.ui-row:eq(0)');
 		        if (firstViewRow.length > 0) { //if there is at least one record
-		        	var boundingClientTop = firstViewRow.get(0).getBoundingClientRect().top;
+		        	let boundingClientTop = firstViewRow.get(0).getBoundingClientRect().top;
 
 		        	//
-		        	var top = (controller.bodyViewport.currentScrollTop * -1) + 'px';
+		        	let top = (controller.bodyViewport.currentScrollTop * -1) + 'px';
 
 		        	//
 					if (controller.options.fixedCols) {
@@ -1388,12 +1391,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		    else {
 		    	controller.bodyViewport.currentScrollLeft = currentLeft;
 
-		        var firstViewRow = controller.bodyViewport.find('.ui-row:eq(0)');
+		        let firstViewRow = controller.bodyViewport.find('.ui-row:eq(0)');
 		        if (firstViewRow.length > 0) { //if there is at least one record
-		        	var boundingClientLeft = firstViewRow.get(0).getBoundingClientRect().left;
+		        	let boundingClientLeft = firstViewRow.get(0).getBoundingClientRect().left;
 
 		        	//
-		        	var left = (controller.bodyViewport.currentScrollLeft * -1) + 'px';
+		        	let left = (controller.bodyViewport.currentScrollLeft * -1) + 'px';
 
 		        	//
 		        	controller.headerContainer.css('left', left);
@@ -1411,7 +1414,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
         });
 
-	}
+	};
 
 	/**
 	 *
@@ -1422,7 +1425,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {
 			return controller.options.data[controller.rowIndex];
 		}
-	}
+	};
 
 	/**
 	 *
@@ -1431,13 +1434,13 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var changedRows = controller.bodyViewport.find('div.ui-row.changed');
 		var data = controller.options.data;
 		var changedRecords = [];
-		for (var index = 0 ; index < changedRows.length ; index++) {
+		for (let index = 0 ; index < changedRows.length ; index++) {
 			var rowIndex = $(changedRows[index]).attr('rowindex');
 			var changedRecord = data[rowIndex];
 			changedRecords.push(changedRecord);
 		}
 		return changedRecords;
-	}
+	};
 
 	//
 	//
@@ -1452,7 +1455,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {
 			return element;
 		}
-	}
+	};
 
 	//
 	//
@@ -1463,11 +1466,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	var _resolveJQueryElement = function(element) {
 		// If element is already a jQuery object
 		if(angular.isElement(element)) {
-		    return element
+		    return element;
 		} else {
 			return $(element);
 		}
-	}
+	};
 
 	// This function help some other functions which get row parameter where sometimes
 	// it comes like a record object and sometimes comes its recordIndex
@@ -1480,7 +1483,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else { //passed rowIndex
 			return controller.options.data[record];
 		}
-	}
+	};
 
 	/**
 	 *	row {Number|Object|Element} Can be passed rowIndex, the object record or even the DOM element which corresponds to the object record
@@ -1489,7 +1492,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	me.isRowSelected = function(controller, row) {
 		var rowElement = controller.options.api.resolveRowElement(row);
 		return rowElement.is('.selected');
-	}
+	};
 
 	/**
 	 *
@@ -1497,7 +1500,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 */
 	me.getSelectedRowIndex = function(controller) {
 		return controller.rowIndex;
-	}
+	};
 
 	/**
 	 *
@@ -1511,12 +1514,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		var selectedRows = controller.bodyViewport.find('.ui-row.selected');
 
 		//
-		for (var index = 0 ; index < selectedRows.length ; index++) {
+		for (let index = 0 ; index < selectedRows.length ; index++) {
 			rowIndexes.push(parseInt($(selectedRows[index]).attr('rowindex')));
 		}
 
 		return rowIndexes;
-	}
+	};
 
 
 	/**
@@ -1553,15 +1556,15 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		    	//var rowElement = controller.options.api.resolveRowElement(row);
 
 	    		//
-	    		scrollIntoView = (scrollIntoView == false ? false : true);
+	    		scrollIntoView = (scrollIntoView === false ? false : true);
 
 				//
-				if (rowIndex == -1) {
-					throw new Error("selectRow: row passed in a wrong way!");
+				if (rowIndex === -1) {
+					throw new Error('selectRow: row passed in a wrong way!');
 				}
 
 				//
-				var scrollIntoViewFn = function(rowElementToScroll) {
+				let scrollIntoViewFn = function(rowElementToScroll) {
 					if (scrollIntoView) {
 						//if (!controller.options.api.isRowVisible(rowElementToScroll)) {
 						//	rowElementToScroll.get(0).scrollIntoView(false);
@@ -1577,14 +1580,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 					controller.rowIndex = rowIndex;
 
 					if (controller.options.api.isGrouped()) {
-						var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
+						let itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 						if (!itemRow) {
-							var groupIndex = controller.options.data[rowIndex].groupIndex;
-							var groupInfo = controller.managerRendererItems.getInfoGroup(groupIndex);
+							let groupIndex = controller.options.data[rowIndex].groupIndex;
+							let groupInfo = controller.managerRendererItems.getInfoGroup(groupIndex);
 							controller.colsViewport.scrollTop(groupInfo.top);
 							_repaint(controller);
-							var record = controller.options.data[rowIndex];
-							uiDeniGridUtilSrv.groupExpand(controller, groupInfo.rowElement, record, rowIndex)
+							let record = controller.options.data[rowIndex];
+							uiDeniGridUtilSrv.groupExpand(controller, groupInfo.rowElement, record, rowIndex);
 							itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 						}
 
@@ -1593,11 +1596,11 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 
 						rowElement = itemRow.rowElement;
 					} else {
-		    			var rowHeight = parseInt(controller.options.rowHeight.replace('px', ''));
-		    			var scrollTop = (rowIndex * rowHeight) - controller.bodyViewportWrapper.height() / 2;
+		    			let rowHeight = parseInt(controller.options.rowHeight.replace('px', ''));
+		    			let scrollTop = (rowIndex * rowHeight) - controller.bodyViewportWrapper.height() / 2;
 		    			controller.bodyViewport.scrollTop(scrollTop);
 		    			_repaint(controller);
-		    			var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
+		    			let itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 		    			rowElement = itemRow.rowElement;
 					}
 
@@ -1645,7 +1648,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		} else {
 			throw new Error('"selectRow": There is not record to select!');
 		}
-    }
+    };
 
 	/**
 	 *	row {Object|Number} Can be passed rowIndex or the object record
@@ -1657,19 +1660,19 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
     	if ((controller.options.data) && (controller.options.data.length > 0)) {
 
     		//
-    		scrollIntoView = (scrollIntoView == false ? false : true);
+    		scrollIntoView = (scrollIntoView === false ? false : true);
 
     		//
     		var rowElement = controller.options.api.resolveRowElement(row);
 			//
-			if (row.length == 0) {
-				throw new Error("selectCell: row passed in a wrong way!");
+			if (row.length === 0) {
+				throw new Error('selectCell: row passed in a wrong way!');
 			}
 
     		var divCell = rowElement.find('.ui-cell[colIndex=' + colIndex + ']');
 			//
-			if (divCell.length == 0) {
-				throw new Error("selectCell: colIndex passed in a wrong way!");
+			if (divCell.length === 0) {
+				throw new Error('selectCell: colIndex passed in a wrong way!');
 			}
 
 			if (!controller.options.multiSelect) {
@@ -1684,7 +1687,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			controller.rowIndex = rowIndex;
 			controller.colIndex = colIndex;
 		}
-    }
+    };
 
 
 	/**
@@ -1692,14 +1695,14 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 *
 	*/
     me.getColumn = function(controller, fieldName) {
-		for (var index = 0 ; index < controller.options.columns.length ; index++) {
-			if (controller.options.columns[index].name == fieldName) {
+		for (let index = 0 ; index < controller.options.columns.length ; index++) {
+			if (controller.options.columns[index].name === fieldName) {
 				return controller.options.columns[index];
 			}
 		}
 
 		return null;
-    }
+    };
 
 	/**
 	 *
@@ -1708,7 +1711,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	me.updateSelectedRow = function(controller, json) {
 
 		if (controller.rowIndex === undefined) {
-			throw "You have to select a record";
+			throw 'You have to select a record';
 		} else {
 			//
 			var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(json);
@@ -1720,10 +1723,10 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			var dataKeys = 	Object.keys(record);
 
 			//
-			for (var index = 0 ; index < keyFieldsToChange.length ; index++) {
+			for (let index = 0 ; index < keyFieldsToChange.length ; index++) {
 				var fieldNameToChange = keyFieldsToChange[index];
 
-				if (dataKeys.indexOf(fieldNameToChange) == -1) {
+				if (dataKeys.indexOf(fieldNameToChange) === -1) {
 					console.warn('"updateSelectedRow" : field "' + fieldNameToChange + '" not found!');
 				} else {
 					//
@@ -1735,7 +1738,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			//
 			_repaintRow(controller, controller.rowIndex, true, true);
 		}
-	}
+	};
 
 	/**
 	 *
@@ -1751,7 +1754,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		divCell.addClass('changed');
 		//When we need the changed records we can get by ".ui-row.changed"
 		divCell.closest('.ui-row').addClass('changed');
-	}
+	};
 	
 	/**
 	 *
@@ -1760,12 +1763,12 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	me.updateSelectedCell = function(controller, value) {
 
 		if ((!angular.isDefined(controller.rowIndex)) || (!angular.isDefined(controller.colIndex))) {
-			throw "You have to select a record";
+			throw 'You have to select a record';
 		} else {
 			me.updateCell(controller, controller.rowIndex, controller.colIndex, value);
 		}
 
-	}
+	};
 	
 
 	/**
@@ -1774,7 +1777,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	*/
 	me.isHideHeaders = function(controller) {
 		return controller.options.hideHeaders;
-    }
+    };
 
 	/**
 	 *
@@ -1789,7 +1792,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		}
 		controller.colsViewport.find('.ui-header-viewport').css('display', display);
 		controller.options.hideHeaders = hideHeaders;
-	}
+	};
 
 	/**
 	 *
@@ -1797,7 +1800,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 	 */
 	me.getPageNumber = function(controller) {
 		return controller.options.paging.currentPage;
-	}
+	};
 
 	/**
 	 *
@@ -1808,7 +1811,7 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 		controller.paging.find('input.input-page-number').val(pageNumber);
 		controller.options.api.reload();
 		_checkDisableButtonsPageNavigation(controller, controller.options.data, pageNumber);
-	}
+	};
 
 	/**
 	 *
@@ -1845,203 +1848,21 @@ angular.module('ui-deni-grid').service('uiDeniGridSrv', function($compile, $time
 			nextButton.addClass('disabled');
 			lastButton.addClass('disabled');			
 		}
-	}
-
-
-/*	This work is licensed under Creative Commons GNU LGPL License.
-
-	License: http://creativecommons.org/licenses/LGPL/2.1/
-   Version: 0.9
-	Author:  Stefan Goessner/2006
-	Web:     http://goessner.net/ 
-*/
-/*
-function xml2json(xml, tab) {
-   var X = {
-      toObj: function(xml) {
-         var o = {};
-         if (xml.nodeType==1) {   // element node ..
-            if (xml.attributes.length)   // element with attributes  ..
-               for (var i=0; i<xml.attributes.length; i++)
-                  o["@"+xml.attributes[i].nodeName] = (xml.attributes[i].nodeValue||"").toString();
-            if (xml.firstChild) { // element has child nodes ..
-               var textChild=0, cdataChild=0, hasElementChild=false;
-               for (var n=xml.firstChild; n; n=n.nextSibling) {
-                  if (n.nodeType==1) hasElementChild = true;
-                  else if (n.nodeType==3 && n.nodeValue.match(/[^ \f\n\r\t\v]/)) textChild++; // non-whitespace text
-                  else if (n.nodeType==4) cdataChild++; // cdata section node
-               }
-               if (hasElementChild) {
-                  if (textChild < 2 && cdataChild < 2) { // structured element with evtl. a single text or/and cdata node ..
-                     X.removeWhite(xml);
-                     for (var n=xml.firstChild; n; n=n.nextSibling) {
-                        if (n.nodeType == 3)  // text node
-                           o["#text"] = X.escape(n.nodeValue);
-                        else if (n.nodeType == 4)  // cdata node
-                           o["#cdata"] = X.escape(n.nodeValue);
-                        else if (o[n.nodeName]) {  // multiple occurence of element ..
-                           if (o[n.nodeName] instanceof Array)
-                              o[n.nodeName][o[n.nodeName].length] = X.toObj(n);
-                           else
-                              o[n.nodeName] = [o[n.nodeName], X.toObj(n)];
-                        }
-                        else  // first occurence of element..
-                           o[n.nodeName] = X.toObj(n);
-                     }
-                  }
-                  else { // mixed content
-                     if (!xml.attributes.length)
-                        o = X.escape(X.innerXml(xml));
-                     else
-                        o["#text"] = X.escape(X.innerXml(xml));
-                  }
-               }
-               else if (textChild) { // pure text
-                  if (!xml.attributes.length)
-                     o = X.escape(X.innerXml(xml));
-                  else
-                     o["#text"] = X.escape(X.innerXml(xml));
-               }
-               else if (cdataChild) { // cdata
-                  if (cdataChild > 1)
-                     o = X.escape(X.innerXml(xml));
-                  else
-                     for (var n=xml.firstChild; n; n=n.nextSibling)
-                        o["#cdata"] = X.escape(n.nodeValue);
-               }
-            }
-            if (!xml.attributes.length && !xml.firstChild) o = null;
-         }
-         else if (xml.nodeType==9) { // document.node
-            o = X.toObj(xml.documentElement);
-         }
-         else
-            alert("unhandled node type: " + xml.nodeType);
-         return o;
-      },
-      toJson: function(o, name, ind) {
-         var json = name ? ("\""+name+"\"") : "";
-         if (o instanceof Array) {
-            for (var i=0,n=o.length; i<n; i++)
-               o[i] = X.toJson(o[i], "", ind+"\t");
-            json += (name?":[":"[") + (o.length > 1 ? ("\n"+ind+"\t"+o.join(",\n"+ind+"\t")+"\n"+ind) : o.join("")) + "]";
-         }
-         else if (o == null)
-            json += (name&&":") + "null";
-         else if (typeof(o) == "object") {
-            var arr = [];
-            for (var m in o)
-               arr[arr.length] = X.toJson(o[m], m, ind+"\t");
-            json += (name?":{":"{") + (arr.length > 1 ? ("\n"+ind+"\t"+arr.join(",\n"+ind+"\t")+"\n"+ind) : arr.join("")) + "}";
-         }
-         else if (typeof(o) == "string")
-            json += (name&&":") + "\"" + o.toString() + "\"";
-         else
-            json += (name&&":") + o.toString();
-         return json;
-      },
-      innerXml: function(node) {
-         var s = ""
-         if ("innerHTML" in node)
-            s = node.innerHTML;
-         else {
-            var asXml = function(n) {
-               var s = "";
-               if (n.nodeType == 1) {
-                  s += "<" + n.nodeName;
-                  for (var i=0; i<n.attributes.length;i++)
-                     s += " " + n.attributes[i].nodeName + "=\"" + (n.attributes[i].nodeValue||"").toString() + "\"";
-                  if (n.firstChild) {
-                     s += ">";
-                     for (var c=n.firstChild; c; c=c.nextSibling)
-                        s += asXml(c);
-                     s += "</"+n.nodeName+">";
-                  }
-                  else
-                     s += "/>";
-               }
-               else if (n.nodeType == 3)
-                  s += n.nodeValue;
-               else if (n.nodeType == 4)
-                  s += "<![CDATA[" + n.nodeValue + "]]>";
-               return s;
-            };
-            for (var c=node.firstChild; c; c=c.nextSibling)
-               s += asXml(c);
-         }
-         return s;
-      },
-      escape: function(txt) {
-         return txt.replace(/[\\]/g, "\\\\")
-                   .replace(/[\"]/g, '\\"')
-                   .replace(/[\n]/g, '\\n')
-                   .replace(/[\r]/g, '\\r');
-      },
-      removeWhite: function(e) {
-         e.normalize();
-         for (var n = e.firstChild; n; ) {
-            if (n.nodeType == 3) {  // text node
-               if (!n.nodeValue.match(/[^ \f\n\r\t\v]/)) { // pure whitespace text node
-                  var nxt = n.nextSibling;
-                  e.removeChild(n);
-                  n = nxt;
-               }
-               else
-                  n = n.nextSibling;
-            }
-            else if (n.nodeType == 1) {  // element node
-               X.removeWhite(n);
-               n = n.nextSibling;
-            }
-            else                      // any other node
-               n = n.nextSibling;
-         }
-         return e;
-      }
-   };
-   if (xml.nodeType == 9) // document node
-      xml = xml.documentElement;
-   var json = X.toJson(X.toObj(X.removeWhite(xml)), xml.nodeName, "\t");
-   return "{\n" + tab + (tab ? json.replace(/\t/g, tab) : json.replace(/\t|\n/g, "")) + "\n}";
-}
-
-	function parseXml(xml) {
-	   var dom = null;
-	   if (window.DOMParser) {
-	      try { 
-	         dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
-	      } 
-	      catch (e) { dom = null; }
-	   }
-	   else if (window.ActiveXObject) {
-	      try {
-	         dom = new ActiveXObject('Microsoft.XMLDOM');
-	         dom.async = false;
-	         if (!dom.loadXML(xml)) // parse error ..
-
-	            window.alert(dom.parseError.reason + dom.parseError.srcText);
-	      } 
-	      catch (e) { dom = null; }
-	   }
-	   else
-	      alert("cannot parse xml string!");
-	   return dom;
-	}
-	*/
+	};
 
 	var _getPropertyXML = function(properties, item, parentProperty) {
 		var property = item.nodeName.toLowerCase();
 		if (parentProperty) {
 			property = parentProperty + '.' + property;
 		}
-		if (properties.indexOf(property) == -1) {
+		if (properties.indexOf(property) === -1) {
 			properties.push(property);
 
-			for (var index = 0 ; index < item.children.length ; index++) {
+			for (let index = 0 ; index < item.children.length ; index++) {
 				_getPropertyXML(properties, item.children[index], property);
 			}			
 		}	
-	}
+	};
 
 	/**
 	 *
@@ -2051,10 +1872,10 @@ function xml2json(xml, tab) {
 		if ((angular.isDefined(itemToBeAnalyzed.children)) && (itemToBeAnalyzed.children.length > 0)) {
 			var propName = '';
 			for (var i = 0 ; i < itemToBeAnalyzed.children.length ; i++) {
-				if (propName == '') {
+				if (propName === '') {
 					propName = itemToBeAnalyzed.children[i].nodeName.toLowerCase();
 				} else {
-					if (itemToBeAnalyzed.children[i].nodeName.toLowerCase() != propName) {
+					if (itemToBeAnalyzed.children[i].nodeName.toLowerCase() !== propName) {
 						return false;
 					}
 				}
@@ -2064,7 +1885,7 @@ function xml2json(xml, tab) {
 		} else {
 			return false;
 		}
-	}
+	};
 	
 	/**
 	 *
@@ -2073,11 +1894,11 @@ function xml2json(xml, tab) {
 	var _getRecordXML = function(records, item, parentNode) {
 		var record = parentNode ? parentNode : {};
 		
-		for (var index = 0 ; index < item.children.length ; index++) {
+		for (let index = 0 ; index < item.children.length ; index++) {
 			var property = item.children[index];
 			var propertyName = property.nodeName.toLowerCase();			
 			
-			if (property.children.length == 0) {
+			if (property.children.length === 0) {
 				record[propertyName] = property.textContent;
 			} else {
 				if (isArrayItem(property)) {
@@ -2088,14 +1909,14 @@ function xml2json(xml, tab) {
 					record[propertyName] = valueArray;
 				} else {
 					record[propertyName] = {};
-					_getRecordXML(records, property, record[propertyName])
+					_getRecordXML(records, property, record[propertyName]);
 				}	
 			}				
 		}	
 		if (!angular.isDefined(parentNode)) {
 			records.push(record);
 		}
-	}
+	};
 	
 
 	/**
@@ -2106,7 +1927,7 @@ function xml2json(xml, tab) {
 		var xmlData = $(xml);
 		var items = xmlData.find(controller.options.restConfig.data).find(controller.options.restConfig.dataItems);		
 		var records = [];
-		for (var index = 0 ; index < items.length ; index++) {
+		for (let index = 0 ; index < items.length ; index++) {
 			_getRecordXML(records, items[index]);
 		}
 		
@@ -2117,7 +1938,7 @@ function xml2json(xml, tab) {
 		jsonReturn[controller.options.restConfig.total] = parseInt(xmlData.find(controller.options.restConfig.total).text());		
 
 		return jsonReturn;
-	}
+	};
 
 	/**
 	 *
@@ -2135,7 +1956,7 @@ function xml2json(xml, tab) {
 			});			
 
 		return deferred.promise;
-	}
+	};
 
 	/**
 	 *
@@ -2158,9 +1979,9 @@ function xml2json(xml, tab) {
 				var start = (page - 1) * limit;
 
 				if (url.indexOf('?') === -1) {
-					url += '?'
+					url += '?';
 				} else {
-					url += '&'
+					url += '&';
 				}
 
 				url += 'page=' + page + '&' + controller.options.restConfig.start + '=' + start + '&' + controller.options.restConfig.limit + '=' + limit;
@@ -2177,7 +1998,7 @@ function xml2json(xml, tab) {
 				.then(function(response) {
 					var responseData;
 					
-					if (controller.options.restConfig.type == 'xml') {
+					if (controller.options.restConfig.type === 'xml') {
 						responseData = _xmlToJson(controller, response.data);
 					} else {
 						responseData = response.data;
@@ -2235,7 +2056,7 @@ function xml2json(xml, tab) {
 		}
 
 		return deferred.promise;
-	}
+	};
 
 	/**
 	 *
@@ -2243,7 +2064,7 @@ function xml2json(xml, tab) {
 	 */
 	me.reload = function(controller) {
 		return me.load(controller);
-	}
+	};
 
 
 	/**
@@ -2278,7 +2099,7 @@ function xml2json(xml, tab) {
 			//If the value to be used by the filtering is a string, then must be compared with all fields in the column grids
 			if (angular.isString(controller.filterInfo.valuesToFilter)) {
 				var columnNames = []; //I could simply pass a string, but it would search at all fields (whether or not in the columns grid)
-				for (var index = 0 ; index < controller.options.columns.length ; index++) {
+				for (let index = 0 ; index < controller.options.columns.length ; index++) {
 					columnNames.push(controller.options.columns[index].name);
 				}
 				controller.options.data = $filter('filter')(data, function(record, index, array) {
@@ -2286,7 +2107,7 @@ function xml2json(xml, tab) {
 						var value = record[columnNames[colIndex]];
 						if (value) {
 							//Insensitive Comparation
-							if (value.toString().search(new RegExp(controller.filterInfo.valuesToFilter, "i")) != -1) {
+							if (value.toString().search(new RegExp(controller.filterInfo.valuesToFilter, 'i')) !== -1) {
 								return true;
 							}
 						}	
@@ -2327,7 +2148,7 @@ function xml2json(xml, tab) {
 
 			var getEvalFieldValue = function(record, fieldName) {
 				return eval('record.' + fieldName);
-			}
+			};
 
 			var getEvalExpressionValue = function(record, expression) {
 				var evalStr = '(function() {\n' +
@@ -2337,7 +2158,7 @@ function xml2json(xml, tab) {
 							  '})()';
 
 				return eval(evalStr);
-			}
+			};
 
 			var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(controller.options.data[0]);
 			var fields = Object.keys(fieldsNotNested);
@@ -2378,12 +2199,12 @@ function xml2json(xml, tab) {
 			var oldValue;
 			var recordGroup;
 			var groupIndex = -1;
-			for (var index = 0 ; index < controller.options.data.length ; index++) {
+			for (let index = 0 ; index < controller.options.data.length ; index++) {
 				var record = controller.options.data[index];
 				var value = functionToEvaluate(record, expressionToGroup);
 
 				//
-				if (oldValue == value) {
+				if (oldValue === value) {
 					//
 					recordGroup.children++;
 
@@ -2467,7 +2288,7 @@ function xml2json(xml, tab) {
 	me.findKey = function(controller, keyValue, opts) {
 		var valuesToFind = JSON.parse('{"' + controller.options.keyField + '": "' + keyValue + '"}');
 		return me.find(controller, valuesToFind, opts);
-	}
+	};
 
 	/**
 	 *
@@ -2481,9 +2302,9 @@ function xml2json(xml, tab) {
 	 	var data = controller.options.data || [];
 	 	valuesToFind = valuesToFind || {};
 	 	var keys = Object.keys(valuesToFind);
-	 	if (data.length == 0) {
+	 	if (data.length === 0) {
 			throw new Error ('"Find" : There is no data to find!');
-	 	} else if (keys.length == 0) {
+	 	} else if (keys.length === 0) {
 			throw new Error ('"Find" : param "valuesToFind" must be informed!');
 	 	}
 
@@ -2491,9 +2312,9 @@ function xml2json(xml, tab) {
 	 	//get the opt parameter and fill the detault values too
 	 	////////////////////////////////////////////////////////////////////////////////
 	 	opts = opts || {};
-	 	var exactSearch = (opts.exactSearch == false ? false : true); //Exact search? default = true (only used for string values)
-	 	var all = (opts.all == true ? true : false); //Return all records found? default = false (In this case the search stop when the first record is found)
-	 	var ignoreCase = (opts.ignoreCase == true ? true : false) //Ignore case when comparing strings (only used for string values)
+	 	var exactSearch = (opts.exactSearch === false ? false : true); //Exact search? default = true (only used for string values)
+	 	var all = (opts.all === true ? true : false); //Return all records found? default = false (In this case the search stop when the first record is found)
+	 	var ignoreCase = (opts.ignoreCase === true ? true : false); //Ignore case when comparing strings (only used for string values)
 	 	////////////////////////////////////////////////////////////////////////////////
 
 	 	var recordsFound = [];
@@ -2506,7 +2327,7 @@ function xml2json(xml, tab) {
 	 	var found = false;
 
 	 	//loop over the data
-	 	for (var index = 0 ; index < data.length ; index++) {
+	 	for (let index = 0 ; index < data.length ; index++) {
 	 		var record = data[index];
 
 		 	var foundRecord = false;
@@ -2526,9 +2347,9 @@ function xml2json(xml, tab) {
 		 		}
 
 				if ((exactSearch) || (!valueIsString)) {
-					foundRecord = valueToFind == value;
+					foundRecord = valueToFind === value;
 				} else {
-					foundRecord = value.indexOf(valueToFind) != -1;
+					foundRecord = value.indexOf(valueToFind) !== -1;
 				}
 
 				if (!foundRecord) {
@@ -2577,7 +2398,7 @@ function xml2json(xml, tab) {
 			};
 			var inLineRealce;
 			if (inLine.realce) {
-				if (inLine.realce == true) { //opts.inLine.realce: true
+				if (inLine.realce === true) { //opts.inLine.realce: true
 					inLine.realce = inLineRealceDefaultValue;
 				} else { //opts.inLine: {...}
 					inLine.realce = opts.inLine.realce;
@@ -2586,7 +2407,7 @@ function xml2json(xml, tab) {
 			}
 
 			// "inLine.scrollIntoView"
-			inLine.scrollIntoView = (inLine.scrollIntoView == false ? false : true);
+			inLine.scrollIntoView = (inLine.scrollIntoView === false ? false : true);
 
 			/////////////////////////////////////////////////////////////////////////
 			/////////////////////////////////////////////////////////////////////////
@@ -2596,19 +2417,19 @@ function xml2json(xml, tab) {
 				'opts': opts
 			};
 
-			var selectAndRemoveRendered = function(record, preventSelecionChange, scrollIntoView) {
-				controller.options.api.selectRow(record, preventSelecionChange, scrollIntoView);
+			var selectAndRemoveRendered = function(record, preventSelectionChange, scrollIntoView) {
+				controller.options.api.selectRow(record, preventSelectionChange, scrollIntoView);
 				var rowElement = controller.options.api.resolveRowElement(record);
 				rowElement.attr('rendered', false);
-			}
+			};
 
 			//remove all selections
 			controller.options.api.clearSelections();
 			if (Array.isArray(recordsFound)) {
 				//multiSelect
 				if (controller.options.multiSelect) {
-					for (var index = 0 ; index < recordsFound.length ; index++) {
-						selectAndRemoveRendered(recordsFound[index], index != 0, index == 0);
+					for (let index = 0 ; index < recordsFound.length ; index++) {
+						selectAndRemoveRendered(recordsFound[index], index !== 0, index === 0);
 					}
 				//singleSelect
 				} else {
@@ -2618,8 +2439,8 @@ function xml2json(xml, tab) {
 					selectAndRemoveRendered(recordsFound[0], false, true);
 				}
 			} else {
-				if (recordsFound != null) {
-					selectAndRemoveRendered(recordsFound, preventSelecionChange, scrollIntoView);
+				if (recordsFound !== null) {
+					selectAndRemoveRendered(recordsFound, false, true);
 				}
 			}
 
@@ -2635,7 +2456,7 @@ function xml2json(xml, tab) {
 	 	} else {
 	 		return recordsFound[0];
 	 	}	
-	}
+	};
 
 	me.filter = function(controller, valuesToFilter, opts) {
 		controller.filterInfo = {};
@@ -2656,7 +2477,7 @@ function xml2json(xml, tab) {
 		} else {
 			controller.options.api.loadData(controller.options.alldata);
 		}
-	}
+	};
 
 	/**
 	 *
@@ -2664,7 +2485,7 @@ function xml2json(xml, tab) {
 	 */
 	me.getRowHeight = function(controller) {
 		return controller.options.rowHeight;
-	}
+	};
 
 	/**
 	 *
@@ -2673,19 +2494,13 @@ function xml2json(xml, tab) {
 	me.setRowHeight = function(controller, rowHeight) {
 		var rowElements = controller.bodyViewport.find('div.ui-row:not(.grouping-footer-container)');
 		rowElements.css('height', controller.options.rowHeight);
-	}
+	};
 
 
 	/**
-	 * @param record {Object|Number} Can be passed rowIndex or the object record
+	 *
 	 *
 	 */
-	me.getRowElement = function(controller, record) {
-		var rowIndex = _resolveRowIndex(record);
-		return me.bodyViewport.find('div.ui-row[rowIndex=' + rowIndex + ']');
-	}
-
-
 	var _recreateAll = function(controller) {
 		if (controller.options.data) {
 			//Remmove all rows before load
@@ -2694,7 +2509,7 @@ function xml2json(xml, tab) {
 
 			me.loadData(controller, controller.options.data);
 		}
-	}
+	};
 
 	/**
 	 *
@@ -2703,7 +2518,7 @@ function xml2json(xml, tab) {
 	me.toogleGrouping = function(controller) {
 		controller.options.enableGrouping = !controller.options.enableGrouping;
 		_recreateAll(controller);
-	}
+	};
 
 
 	/**
@@ -2712,7 +2527,7 @@ function xml2json(xml, tab) {
 	 */
 	me.isEnableGrouping = function(controller) {
 		return controller.options.enableGrouping;
-	},
+	};
 
 	/**
 	 *
@@ -2720,7 +2535,7 @@ function xml2json(xml, tab) {
 	 */
 	me.isGrouped = function(controller) {
 		return controller.isGrouped;
-	},
+	};
 
 	/**
 	 *
@@ -2729,7 +2544,7 @@ function xml2json(xml, tab) {
 	me.setEnableGrouping = function(controller) {
 		controller.options.enableGrouping = true;
 		_recreateAll(controller);
-	}
+	};
 
 	/**
 	 *
@@ -2738,7 +2553,7 @@ function xml2json(xml, tab) {
 	me.setDisableGrouping = function(controller) {
 		controller.options.enableGrouping = false;
 		_recreateAll(controller);
-	}
+	};
 
 	//
 	//
@@ -2764,12 +2579,12 @@ function xml2json(xml, tab) {
 	//
 	var _renderRowEl = function(controller, itemToRender, record) {
 
-		var rowElement = $(document.createElement('div'));
+		let rowElement = $(document.createElement('div'));
 		rowElement.addClass('ui-row');
 		rowElement.attr('rowindex', itemToRender.rowIndex.toString());
 		rowElement.css('left', '0px');
 
-		var fixedRowElement;
+		let fixedRowElement;
 		if (controller.options.fixedCols) {
 			fixedRowElement = $(document.createElement('div'));
 			fixedRowElement.addClass('ui-row');
@@ -2780,20 +2595,20 @@ function xml2json(xml, tab) {
 
 		//ROW DETAIL
 		if (itemToRender.rowDetails) {
-			var rowElementParent = controller.bodyContainer.find('.ui-row[rowIndex=' + itemToRender.rowIndex + ']:not(.row-detail-container)');
+			let rowElementParent = controller.bodyContainer.find('.ui-row[rowIndex=' + itemToRender.rowIndex + ']:not(.row-detail-container)');
 			rowElement.insertAfter(rowElementParent);
 
-			var isSelected = rowElementParent.find('.ui-cell:eq(0)').is('.selected');
+			let isSelected = rowElementParent.find('.ui-cell:eq(0)').is('.selected');
 			if (isSelected) {
 				rowElement.addClass('selected');
 			}
 			rowElement.addClass('row-detail-container');
 
-			var rowDetailsBox = $(document.createElement('div'));
+			let rowDetailsBox = $(document.createElement('div'));
 			rowDetailsBox.addClass('row-detail-box');
 			rowElement.append(rowDetailsBox);
 
-			var rowElementParent = controller.options.api.resolveRowElement(itemToRender.rowIndex);
+			rowElementParent = controller.options.api.resolveRowElement(itemToRender.rowIndex);
 
 			rowElement.css('height', itemToRender.height + 'px');
 			rowElement.css('top', itemToRender.top + 'px');
@@ -2807,7 +2622,7 @@ function xml2json(xml, tab) {
 
 
 			if (controller.options.rowDetails.template) {
-				var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowDetails.template, record);
+				let valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowDetails.template, record);
 				itemToRender.rowElement.html(valueToRender);
 			} else if (controller.options.rowDetails.renderer)	{
 				controller.options.rowDetails.renderer(itemToRender.rowElements, record);
@@ -2854,7 +2669,7 @@ function xml2json(xml, tab) {
 
 					// stripRows (odd line?)
 					if (controller.options.stripRows) {
-						if (itemToRender.indexInsideGroup % 2 == 1) {
+						if (itemToRender.indexInsideGroup % 2 === 1) {
 							rowElement.addClass('odd-row');
 						}
 					}
@@ -2873,7 +2688,7 @@ function xml2json(xml, tab) {
 
 					// stripRows (odd line?)
 					if (controller.options.stripRows) {
-						if (itemToRender.rowIndex % 2 == 1) {
+						if (itemToRender.rowIndex % 2 === 1) {
 							rowElement.addClass('odd-row');
 							if (controller.options.fixedCols) {
 								fixedRowElement.addClass('odd-row');
@@ -2958,14 +2773,14 @@ function xml2json(xml, tab) {
 	 */
 	me.getRowIndex = function(controller, record) {
 		var data = controller.options.data;
-		for (var index = 0 ; index < data.length ; index++) {
+		for (let index = 0 ; index < data.length ; index++) {
 			var rec = data[index];
 			if (angular.equals(rec, record)) {
 				return index;
 			}
 		}
 		return -1;
-	}
+	};
 
 	/**
 	 *
@@ -2974,14 +2789,14 @@ function xml2json(xml, tab) {
 	me.removeRow = function(controller, row) {
 		var rowIndexToDelete = controller.options.api.resolveRowIndex(row);
 		var currentRowIndex = controller.options.api.getSelectedRowIndex();
-		var deletingCurrentRow = rowIndexToDelete == currentRowIndex;
+		var deletingCurrentRow = rowIndexToDelete === currentRowIndex;
 
 		controller.managerRendererItems.removeRow(controller, rowIndexToDelete);
 		_repaint(controller);
 
 		// try to restore stat of selelction
 		if (controller.options.data.length > 0) {
-			if (currentRowIndex != -1) {
+			if (currentRowIndex !== -1) {
 				var rowIndexToSelect = currentRowIndex;
 				if (rowIndexToSelect > rowIndexToDelete) {
 					rowIndexToSelect--;
@@ -2989,7 +2804,7 @@ function xml2json(xml, tab) {
 				controller.options.api.selectRow(rowIndexToSelect, false, false);
 			}
 		}	
-	}
+	};
 
 	/**
 	 *
@@ -2998,12 +2813,12 @@ function xml2json(xml, tab) {
 	me.removeSelectedRows = function(controller) {		
 		var selectedRowIndexes = me.getSelectedRowIndexes(controller);
 		var decreaseRowIndex = 0;
-		for (var index = 0 ; index < selectedRowIndexes.length ; index++) {
+		for (let index = 0 ; index < selectedRowIndexes.length ; index++) {
 			var rowIndex = selectedRowIndexes[index];
 			me.removeRow(controller, rowIndex - decreaseRowIndex);
 			decreaseRowIndex++;
 		}
-	}
+	};
 
 	// This function help some other functions which get row parameter where sometimes
 	// it comes like a record object and sometimes comes its rowIndex
@@ -3024,7 +2839,7 @@ function xml2json(xml, tab) {
 
 		//don't select grouping rows
 		return controller.bodyViewport.find('.ui-row[rowindex=' + rowIndex + ']:not(.grouping)');
-	}
+	};
 
 	// This function help some other functions which get row parameter where sometimes
 	// it comes like a record object and sometimes comes its rowIndex
@@ -3041,7 +2856,7 @@ function xml2json(xml, tab) {
 		} else { //passed rowIndex
 			return row;
 		}
-	}
+	};
 
 	me.setEnabled = function(controller, enabled) {
 		controller.enabled = enabled;
@@ -3051,51 +2866,7 @@ function xml2json(xml, tab) {
 		} else {
 			controller.element.addClass('disabled');			
 		}
-	}
-
-	/*
-	me.setEnabled = function(controller, enabled) {
-		controller.enabled = enabled;
-
-		var opacity;
-		if (enabled) {
-			opacity = '1';
-			$(controller.bodyViewport).enableScroll(controller);						
-		} else {
-			opacity = '0.6';
-			$(controller.bodyViewport).disableScroll(controller);			
-		}
-
-		controller.element.css('opacity', opacity);
-		$(controller.element).attr("disabled", "disabled").off('click');
-	}
-
-	$.fn.disableScroll = function(controller) {
-	    controller.bodyViewport.oldScrollPos = $(controller.bodyViewport).scrollTop();
-
-	    $(controller.bodyViewport).on('scroll.scrolldisabler',function ( event ) {
-	       $(controller.bodyViewport).scrollTop(controller.bodyViewport.oldScrollPos );
-	       event.preventDefault();
-	    });
 	};
-
-	$.fn.enableScroll = function(controller) {
-		$(controller.bodyViewport).off('scroll.scrolldisabler');
-  	};	
-  	*/
-
-
-	////////////////////////////////////////////////////////////////
-	// PRIVATES METHODS
-	////////////////////////////////////////////////////////////////
-
-	//
-	//
-	//
-	//
-
-	////////////////////////////////////////////////////////////////
-	////////////////////////////////////////////////////////////////
 
 
 });
