@@ -3,7 +3,7 @@ var webserver = require('gulp-webserver');
 
 module.exports = function() {
 
-	gulp.src(process.env.DIST_FOLDER)
+	gulp.src(['./', process.env.DIST_FOLDER])
 		.pipe(webserver({
 			//livereload: true,
 			//directoryListing: true,
