@@ -21,12 +21,11 @@ module.exports = function() {
 		// note: It was used "gulp-add-src" to put the files in order
 		//////////////////////////////////////////////////////////////////////  
 		.pipe(addsrc.append('./src/ui-deni-grid.con.js'))      
-		.pipe(addsrc.append('./src/ui-deni-grid.drv.js'))
+		.pipe(addsrc.append('./src/ui-deni-grid.js'))				
 		.pipe(addsrc.append('./src/ui-deni-grid-util.srv.js')) //Kind of Privates Methods, Variables, Constants...)    
 		.pipe(addsrc.append('./src/ui-deni-grid.ctrl.js'))  
 		.pipe(addsrc.append('./src/ui-deni-grid.srv.js'))    
-		.pipe(addsrc.append('./src/ui-deni-grid.run.js'))      
-
+		.pipe(addsrc.append('./src/ui-deni-grid.run.js'))      		
 		//////////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////////  
 

@@ -7,10 +7,10 @@ module.exports = function() {
 		.pipe(webserver({
 			//livereload: true,
 			//directoryListing: true,
-			fallback: 'index.html',
+			//fallback: 'index.html',
 			open: true,
 			port: 3000,
-			open: 'http://localhost:3000/ui-deni-grid'
+			//open: 'http://localhost:3000/ui-deni-grid'
 	    }));
 
 }
