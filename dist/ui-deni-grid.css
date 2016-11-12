@@ -191,7 +191,7 @@ ui-deni-grid {
                 overflow-x: auto;
                 box-sizing: border-box;
                 display: block;
-                position: relative;
+                position: absolute;
                 /* avoid a blink while it is initilizing the data */
                 /********************/ }
                 ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport.initilizing-data::-webkit-scrollbar {
