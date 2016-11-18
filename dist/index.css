@@ -7,7 +7,7 @@
   .index header {
     display: block; }
     .index header .header-inner {
-      background: #2e7bcf url(../images/header-bg2.png) 0 0 repeat-x;
+      background: #2e7bcf url(./dist/images/header-bg2.png) 0 0 repeat-x;
       color: white;
       padding: 0px 0px 10px 10px; }
       .index header .header-inner .header-description {
@@ -31,10 +31,11 @@
         .index header .header-inner .header-description div.github-button {
           border: solid 1px white;
           font-size: 14px;
-          margin-top: 10px;
-          padding: 2px;
+          margin: 10px 5px 0px 0px;
+          padding: 4px;
           border-radius: 3px;
-          width: 150px; }
+          width: 160px;
+          display: inline-block; }
           .index header .header-inner .header-description div.github-button a {
             color: white;
             text-decoration: none; }
@@ -45,7 +46,7 @@
         .index header .header-inner .header-github-image div.github-button {
           border: solid 2px white;
           margin: 4px;
-          padding: 4px;
+          padding: 8px;
           border-radius: 5px; }
           .index header .header-inner .header-github-image div.github-button a {
             color: white;
@@ -83,31 +84,36 @@
     width: 200px;
     background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
     padding-top: 20px;
-    padding-left: 10px; }
+    padding-left: 15px; }
     .index .content-wrapper .content-inner aside .button-zip-tar {
       color: #1C5169;
       font-size: 18px;
-      margin-left: 10px;
+      margin-left: 0px;
       border: solid 1px #c3e1ef;
       margin-bottom: 5px;
       padding: 4px 20px;
       border-radius: 4px; }
       .index .content-wrapper .content-inner aside .button-zip-tar span:first-child {
         font-size: 10px; }
-    .index .content-wrapper .content-inner aside .bower-install {
-      margin: 5px 0px 0px 10px;
-      border: solid 1px #d9d9d9;
-      font-size: 14px;
-      padding: 6px;
-      background-color: #ECF0F1;
-      color: gray;
-      font-family: tahoma;
-      color: #1C5169; }
     .index .content-wrapper .content-inner aside a {
       text-decoration: none; }
     .index .content-wrapper .content-inner aside .avatar {
-      margin: 20px 0px 0px 10px;
+      margin-top: 20px;
       font-size: 11px;
       color: gray;
       border-top: solid 1px #f2f2f2;
       padding-top: 20px; }
+  .index .bower-install {
+    margin: 10px 0px 0px 0px;
+    border: solid 1px #9ddcff;
+    font-size: 14px;
+    padding: 8px;
+    background-color: #f0f3f4;
+    color: gray;
+    font-family: tahoma;
+    color: #1C5169;
+    height: 34px;
+    width: 200px;
+    border-radius: 3px;
+    vertical-align: top;
+    display: inline-block; }
