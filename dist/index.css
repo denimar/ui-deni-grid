@@ -4,52 +4,54 @@
   formatLink-color: white; }
   .index * {
     box-sizing: border-box; }
-  .index .header-inner {
-    background: #2e7bcf url(../images/header-bg2.png) 0 0 repeat-x;
-    color: white;
-    padding: 0px 0px 55px 10px; }
-    .index .header-inner .header-description {
-      width: calc(960px - 200px); }
-      .index .header-inner .header-description .title {
-        font-weight: normal;
-        margin: 0px;
-        padding: 0px; }
-        .index .header-inner .header-description .title.title1 {
-          font-size: 72px; }
-        .index .header-inner .header-description .title.title2 {
-          font-size: 64px; }
-      .index .header-inner .header-description .subtitle {
-        color: #9ddcff;
-        font-weight: normal;
-        margin: 0px; }
-        .index .header-inner .header-description .subtitle.subtitle1 {
-          font-size: 24px; }
-        .index .header-inner .header-description .subtitle.subtitle2 {
-          font-size: 18px; }
-      .index .header-inner .header-description div.github-button {
-        border: solid 1px white;
-        font-size: 14px;
-        margin-top: 10px;
-        padding: 2px;
-        border-radius: 3px;
-        width: 150px; }
-        .index .header-inner .header-description div.github-button a {
-          color: white;
-          text-decoration: none; }
-          .index .header-inner .header-description div.github-button a span {
-            margin-right: 5px; }
-    .index .header-inner .header-github-image {
-      width: 200px; }
-      .index .header-inner .header-github-image div.github-button {
-        border: solid 2px white;
-        margin: 4px;
-        padding: 4px;
-        border-radius: 5px; }
-        .index .header-inner .header-github-image div.github-button a {
-          color: white;
-          text-decoration: none; }
-          .index .header-inner .header-github-image div.github-button a span {
-            margin-right: 5px; }
+  .index header {
+    display: block; }
+    .index header .header-inner {
+      background: #2e7bcf url(../images/header-bg2.png) 0 0 repeat-x;
+      color: white;
+      padding: 0px 0px 10px 10px; }
+      .index header .header-inner .header-description {
+        width: calc(960px - 200px); }
+        .index header .header-inner .header-description .title {
+          font-weight: normal;
+          margin: 0px;
+          padding: 0px; }
+          .index header .header-inner .header-description .title.title1 {
+            font-size: 72px; }
+          .index header .header-inner .header-description .title.title2 {
+            font-size: 64px; }
+        .index header .header-inner .header-description .subtitle {
+          color: #9ddcff;
+          font-weight: normal;
+          margin: 0px; }
+          .index header .header-inner .header-description .subtitle.subtitle1 {
+            font-size: 24px; }
+          .index header .header-inner .header-description .subtitle.subtitle2 {
+            font-size: 18px; }
+        .index header .header-inner .header-description div.github-button {
+          border: solid 1px white;
+          font-size: 14px;
+          margin-top: 10px;
+          padding: 2px;
+          border-radius: 3px;
+          width: 150px; }
+          .index header .header-inner .header-description div.github-button a {
+            color: white;
+            text-decoration: none; }
+            .index header .header-inner .header-description div.github-button a span {
+              margin-right: 5px; }
+      .index header .header-inner .header-github-image {
+        width: 200px; }
+        .index header .header-inner .header-github-image div.github-button {
+          border: solid 2px white;
+          margin: 4px;
+          padding: 4px;
+          border-radius: 5px; }
+          .index header .header-inner .header-github-image div.github-button a {
+            color: white;
+            text-decoration: none; }
+            .index header .header-inner .header-github-image div.github-button a span {
+              margin-right: 5px; }
   .index .content-wrapper .content-inner section {
     width: calc(960px - 200px);
     overflow-y: auto; }

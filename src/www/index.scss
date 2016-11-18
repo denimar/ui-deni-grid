@@ -13,89 +13,94 @@
 		color: white;
 	}
 	
-	.header-inner {
-		//background-color: #307BCC;
-		background: #2e7bcf url(../images/header-bg2.png) 0 0 repeat-x;
-		color: white;
-		padding: 0px 0px 55px 10px;
 
-		.header-description {
-			width: calc(#{$screen-width} - #{$aside-width});
+	header {
+	    display: block;
 
-			.title {
+		.header-inner {
+			//background-color: #307BCC;
+			background: #2e7bcf url(../images/header-bg2.png) 0 0 repeat-x;
+			color: white;
+			padding: 0px 0px 10px 10px;
 
-				font-weight: normal;
-				margin: 0px;
-				padding: 0px;
+			.header-description {
+				width: calc(#{$screen-width} - #{$aside-width});
 
-				&.title1 {
-					font-size: 72px;
+				.title {
+
+					font-weight: normal;
+					margin: 0px;
+					padding: 0px;
+
+					&.title1 {
+						font-size: 72px;
+					}
+
+					&.title2 {
+						font-size: 64px;
+					}
+
 				}
 
-				&.title2 {
-					font-size: 64px;
+				.subtitle {
+					color: #9ddcff;
+					font-weight: normal;
+					margin: 0px;
+
+					&.subtitle1 {
+						font-size: 24px;
+					}
+
+					&.subtitle2 {
+						font-size: 18px;
+					}
 				}
+
+				div.github-button {
+					border: solid 1px white;
+					font-size: 14px;
+					margin-top: 10px;
+					padding: 2px;
+					border-radius: 3px;
+					width: 150px;
+
+					a {
+						color: white;
+						text-decoration: none;
+
+						span {
+							margin-right: 5px;
+						}
+					}		
+
+				}	
 
 			}
 
-			.subtitle {
-				color: #9ddcff;
-				font-weight: normal;
-				margin: 0px;
+			.header-github-image { 
+				width: $aside-width;
 
-				&.subtitle1 {
-					font-size: 24px;
-				}
+				div.github-button {
+					border: solid 2px white;
+					margin: 4px;
+					padding: 4px;
+					border-radius: 5px;
 
-				&.subtitle2 {
-					font-size: 18px;
-				}
+					a {
+						color: white;
+						text-decoration: none;
+
+						span {
+							margin-right: 5px;
+						}
+					}		
+
+				}	
+
+
 			}
-
-			div.github-button {
-				border: solid 1px white;
-				font-size: 14px;
-				margin-top: 10px;
-				padding: 2px;
-				border-radius: 3px;
-				width: 150px;
-
-				a {
-					color: white;
-					text-decoration: none;
-
-					span {
-						margin-right: 5px;
-					}
-				}		
-
-			}	
-
 		}
-
-		.header-github-image { 
-			width: $aside-width;
-
-			div.github-button {
-				border: solid 2px white;
-				margin: 4px;
-				padding: 4px;
-				border-radius: 5px;
-
-				a {
-					color: white;
-					text-decoration: none;
-
-					span {
-						margin-right: 5px;
-					}
-				}		
-
-			}	
-
-
-		}
-	}
+	}	
 
 	.content-wrapper {
 
