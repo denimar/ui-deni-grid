@@ -11,7 +11,7 @@ module.exports = function() {
 	//del([process.env.DIST_FOLDER + '/index.html'], {force: true}).then(function() {
 
 		//index.html
-		gulp.src('./index.html')
+		gulp.src('./src/www/index.html')
 			.pipe(gulp.dest(process.env.DIST_FOLDER))
 			.pipe((notify({
 		        title: 'HTMLs successfully!',

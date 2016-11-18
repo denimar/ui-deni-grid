@@ -4,7 +4,7 @@ var livereload = require('gulp-livereload');
 module.exports = function() {
 
 	gulp.watch(['src/**/*.scss'], ['sass']);
-  	gulp.watch(['index.html'], ['html']);   		
+  	gulp.watch(['index.html', 'src/www/index.html'], ['html']);   		
   	gulp.watch(['src/*.js'], ['scripts']);  
 
   	// Create LiveReload server

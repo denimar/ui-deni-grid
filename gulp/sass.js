@@ -5,26 +5,23 @@ var livereload = require('gulp-livereload');
 var notify = require('gulp-notify');
 var path = require('path');
 
-module.exports = function() {
-
-    gulp.src([
-    		'./src/ui-deni-grid.scss'
-    	])
+function compileSass(sassFile, targetFileName) {
+    gulp.src([sassFile])
     	.pipe(sass().on("error", function(error) {
 			var pos = error.file.lastIndexOf('/');
 			var file = error.file.substr(pos + 1);
-			var message = error.messageFormatted;
+			var message = error.formattedMessage;
 
 			notify({
 				title: file,
-				message: 'line ' + error.line + ', column ' + error.column + ': ' + error.messageOriginal,
+				message: 'line ' + error.line + ', column ' + error.column + ': ' + error.originalMessage,
 		        sound: 'Frog',
 				icon: path.join(__dirname, 'error.png')
 			}).write({});
 		}))
 		
         .pipe(gulp.dest(process.env.DIST_FOLDER))        
-        .pipe(rename('ui-deni-grid.min.css'))
+        .pipe(rename(targetFileName))
         .pipe(gulp.dest(process.env.DIST_FOLDER))
 		.pipe((notify({
 	        title: 'Sass successfully!',
@@ -32,5 +29,9 @@ module.exports = function() {
 			icon: path.join(__dirname, 'successfully.png')
 		})))
         .pipe(livereload());	
+}
 
+module.exports = function() {
+	compileSass('./src/www/index.scss', 'index.css');
+	compileSass('./src/ui-deni-grid.scss', 'ui-deni-grid.min.css');
 }
