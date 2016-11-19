@@ -32,6 +32,5 @@ function compileSass(sassFile, targetFileName) {
 }
 
 module.exports = function() {
-	compileSass('./src/www/index.scss', 'index.css');
 	compileSass('./src/ui-deni-grid.scss', 'ui-deni-grid.min.css');
 }
