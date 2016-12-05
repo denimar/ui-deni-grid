@@ -1,0 +1,46 @@
+.filter-field-type-float-container {
+	$button-filter-height: 18px;
+
+	.filter-field-type-float-row {
+		padding: 2px;
+
+		.filter-field-type-float-caption {
+			width: 40px;
+			text-align: right;
+			margin-right: 4px;
+			font-weight: normal;
+			font-size: 16px;
+			font-family: courier;
+			color: gray;
+			display: inline-block;			
+		}
+
+		.filter-field-type-float {
+			width: 120px;
+			display: inline-block;			
+		}
+
+	}	
+
+	.filter-field-type-float-button-container {
+		height: $button-filter-height;	
+		margin-top: 4px;
+		margin-bottom: 2px;		
+		border-top: solid 1px #e6e6e6;
+		padding-top: 2px;
+
+		.filter-field-type-float-button {
+			height: $button-filter-height;
+			position: absolute;
+			right: 5px;
+			color: black;
+			cursor: pointer;
+
+			&:hover {
+				color: #002699;
+			}			
+		}
+
+	}	
+
+}

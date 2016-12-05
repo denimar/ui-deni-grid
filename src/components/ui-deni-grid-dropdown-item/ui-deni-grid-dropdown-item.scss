@@ -1,0 +1,102 @@
+.ui-deni-grid-dropdown-item-container {
+	$image-column-width: 30px;
+	$image-width: 16px;
+	$image-height: 16px;
+	$filter-checkbox-width: 13px;	
+	//$row-height: 24px;	
+	$ui-deni-grid-row-selected-border-color: #B8D6FB;
+	$background-selected: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAUCAIAAADDbMD2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABSSURBVBhXBcFrCoJAAIXRb/8rMkQikZCIUPDRNCaDWRYu4d4fnUPcTfiZ8Wv6zXQf075Ns5rbS1wXc0miTuY8i+opykmcojg+RBFEfheHUWSD/l6pNN1FlJB5AAAAAElFTkSuQmCC');
+
+	padding: 0px;
+	//height: $row-height;
+	//border: solid 1px red;
+
+	* {
+		box-sizing: border-box;
+		font-family: tahoma,arial,verdana,sans-serif;
+		font-size: 11px;
+		font-weight: normal;
+	}
+
+	.ui-deni-grid-dropdown-item-inner {
+		height: 100%;
+		display: flex;
+		//border: solid 1px green;
+
+		.ui-deni-grid-dropdown-item-center-container {
+			position: relative;
+			border-right: solid 1px white;
+			padding-right: 1px;
+			display: inline-block;
+			//height: 100%;
+			width: $image-column-width;
+
+			.ui-deni-grid-dropdown-item-center-inner {
+				display: flex;
+				position: relative;
+			    width: 100%;
+			    height: 100%;
+			    align-items: center;				
+			    text-align: center;
+			    border-right: solid 1px #c3daf9;
+
+			    .ui-deni-grid-dropdown-item-center-image-checkbox {
+					img {
+						width: $image-width;
+						height: $image-height;
+						margin-left: #{($image-column-width - $image-width) / 2};
+						//border: solid 1px red;
+					}
+					/*
+					input[type=checkbox] {
+						width: $filter-checkbox-width;
+						margin-left: #{($image-column-width - $filter-checkbox-width) / 2};
+						cursor: pointer;
+					}*/
+				}	
+			}	
+		}
+
+		.ui-deni-grid-dropdown-item-caption {
+			display: inline-block;
+			width: calc(100% - #{$image-column-width});
+			padding: 4px;
+
+			.ui-deni-grid-dropdown-item-caption-text {
+				padding-left: 8px;			
+				padding-right: 8px;							
+				vertical-align: middle;
+				display: flex;
+				position: relative;
+			    height: 100%;
+			    align-items: center;				
+
+			    cursor: default;
+
+				-moz-user-select: none; 
+				-khtml-user-select: none; 
+				-webkit-user-select: none; 
+				/* Introduced in IE 10. See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/ */ 
+				-ms-user-select: none; user-select: none; 			    
+			}
+		}
+
+	    &.separator {
+			border-top: solid 1px white; 
+			border-width: 0px;
+	    }
+
+	    &:hover {
+			background-image: $background-selected;
+			background-size: 2px 100%;
+			//border-top: solid 1px #88bcf6;			
+			//border-bottom: solid 1px #88bcf6;
+	    }
+
+	}
+
+    &.separator {
+		border-top: solid 1px #c3daf9; 
+    }
+
+}

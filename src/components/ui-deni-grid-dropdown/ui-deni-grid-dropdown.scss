@@ -1,0 +1,22 @@
+.ui-deni-grid-dropdown-container {
+	$box-shadow-color: gray;
+	$background-color-auxiliar-fixed-column: #F2F2F2;
+	$background-header-columns-hover: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAVCAIAAAAIMBNTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABASURBVBhXY3j18TcDBP/CQ4PkfjE8f/+T4fGbbwwPX31luPv8M8Ptp58Yrj96z3DlwTuGC3ffMJy7/Zrh1I0XAKx7Oetvilz1AAAAAElFTkSuQmCC');
+
+    background-color: #ecf1f7;
+
+	z-index: 999;
+	border: solid 1px silver;
+	position: fixed;
+	font-family: arial;
+	font-size: 12px;
+
+	-webkit-box-shadow: 6px 6px 5px -4px $box-shadow-color;
+	-moz-box-shadow: 6px 6px 5px -4px $box-shadow-color;
+	box-shadow: 6px 6px 5px -4px $box-shadow-color;
+
+	* {
+		box-sizing: border-box;
+	}
+	
+}

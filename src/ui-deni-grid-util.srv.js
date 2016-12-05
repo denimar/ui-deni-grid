@@ -413,6 +413,12 @@
 			opt.enableColumnResize = true;
 
 			/**
+			 * @opt {Object}
+			 *
+			 */
+			opt.filter = uiDeniGridConstants.DEFAULT_FILTER_OPTIONS;
+
+			/**
 			 * @opt {Boolean} [hideHeader=false]
 			 *
 			 */
@@ -480,8 +486,7 @@
 
 
 			//
-			angular.extend(opt, controller.options);
-
+			angular.merge(opt, controller.options);
 			controller.options = opt;
 
 
@@ -646,6 +651,107 @@
 			////////////////////////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////////////////////////		
 			
+		};
+
+		/**
+		 *	
+		 *
+		 */
+		me.ckeckInitialValueFilter = function(controller, columns) {
+			
+			angular.forEach(columns, function(column) {
+				if ((column.filter) && (column.filter.initialValue)) {
+					let initialValue = column.filter.initialValue;
+					
+					if (angular.isFunction(initialValue)) {
+						initialValue = initialValue();
+					}
+
+					let value = {};
+
+					//integer
+					if (column.filter.type === 'integer') {
+						//TODO: missing implementation
+					
+					//float
+					} else if (column.filter.type === 'float') {
+						//TODO: missing implementation
+
+					//string	
+					} else if (column.filter.type === 'string') {
+						value = {
+							key: initialValue.toString(),
+							value: initialValue.toString(),
+							oper: '~'
+						};	
+
+					//date	
+					} else if (column.filter.type === 'date') {
+						//TODO: missing implementation
+
+					//date and time	
+					} else if (column.filter.type === 'datetime') {
+						//Transform the initValue in a array
+						let initialValueArray = initialValue;
+						if (!angular.isArray(initialValueArray)) {
+							initialValueArray = [initialValue];
+						}
+
+						value = [];
+
+						if (initialValueArray.length > 0) {
+							//<=
+							value.push({
+								key: initialValueArray[0],
+								value: initialValueArray[0],
+								oper: '<='
+							});	
+						}	
+
+						if (initialValueArray.length > 1) {
+							//>=
+							value.push({
+								key: initialValueArray[1],
+								value: initialValueArray[1],
+								oper: '>='
+							});	
+						}	
+
+
+					//boolean	
+					} else if (column.filter.type === 'boolean') {
+						//TODO: missing implementation
+
+					//select (radio)	
+					} else if (column.filter.type === 'select') {
+						//TODO: missing implementation
+
+					//multi select (checkbox)	
+					} else if (column.filter.type === 'multiSelect') {
+						//Transform the initValue in a array
+						let initialValueArray = initialValue;
+						if (!angular.isArray(initialValueArray)) {
+							initialValueArray = [initialValue];
+						}
+
+						value = [];
+						angular.forEach(initialValueArray, function (initialValueArrayItem) {
+							value.push({
+								key: initialValueArrayItem,
+								value: initialValueArrayItem,
+								oper: '='
+							});
+						});
+
+						//
+					} else {
+						throw new Error('Filter type invalid!');
+					}
+
+					controller.options.filter.model[column.filter.field || column.name] = value;
+				}		
+			});
+
 		};
 
 		/**
@@ -1362,35 +1468,6 @@
 				return sumValue;
 			},
 
-		};
-
-		//
-		//
-		var _rendererRealcedCells = function(colName, value, searchInfo) {
-			var keys = Object.keys(searchInfo.valuesToFind);
-			if (keys.indexOf(colName) === -1) {
-				return value;
-			} else {
-				var valueToFind = searchInfo.valuesToFind[colName];
-				var pos = value.indexOf(valueToFind);
-				if (pos === -1) {
-					return value;
-				} else {
-					var realce = searchInfo.opts.inLine.realce;
-					var newValue = ''; 
-					var initPos = pos;
-					while (pos !== -1) {
-						newValue += value.substring(value, pos);
-						var valueToTemplate = value.substring(pos, pos + valueToFind.length);
-						var parsedValue = '<span style="' + realce.style + '">' + valueToTemplate + '</span>';
-						newValue += parsedValue;
-
-						initPos = pos + parsedValue.length;
-						pos = value.indexOf(valueToFind, initPos);
-					}
-					return newValue;			
-				}		
-			}
 		};
 
 		/**

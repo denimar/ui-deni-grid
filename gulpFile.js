@@ -5,7 +5,7 @@ var gulp = require('gulp');
 
 //own modules
 var sass = require('./gulp/sass');
-var html = require('./gulp/html');
+//var html = require('./gulp/html');
 var scripts = require('./gulp/scripts');
 var dist = require('./gulp/dist');
 var serve = require('./gulp/serve');
@@ -13,7 +13,7 @@ var watch = require('./gulp/watch');
 
 //Taks which are part of the "dist" task
 gulp.task('sass', sass);	
-gulp.task('html', html);	
+//gulp.task('html', html);	
 gulp.task('scripts', scripts);	
 gulp.task('dist', dist);
 

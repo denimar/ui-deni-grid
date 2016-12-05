@@ -7,7 +7,7 @@
 		.run(['$templateCache', function($templateCache) {
 
 			/**
-			 *
+			 * template: ui-deni-grid-sections
 			 *
 			 *
 			 */
@@ -24,6 +24,7 @@
 				'                            </div>\n' +		
 				'                        </div>\n' +
 				                         ///////////////////////////////////////////////
+
 
 					    	             // BODY ///////////////////////////////////////
 				'                        <div class="ui-body-viewport-wrapper">\n' +  
@@ -49,7 +50,7 @@
 			);		
 
 			/**
-			 *
+			 * template: ui-deni-grid
 			 *
 			 *
 			 */

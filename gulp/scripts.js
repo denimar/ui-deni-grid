@@ -14,15 +14,32 @@ process.env.DISABLE_NOTIFIER = true;
 
 module.exports = function() {
 
-	gulp.src('./src/ui-deni-grid.mdl.js')
+	gulp.src('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.module.js')
 
 		//////////////////////////////////////////////////////////////////////
 		// Files which are part of the project
 		// note: It was used "gulp-add-src" to put the files in order
 		//////////////////////////////////////////////////////////////////////  
+
+		//dropdown item component
+		//.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown-item.module.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.service.js'))      		
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.controller.js'))      		
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.directive.js'))      				
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.run.js'))
+
+		//dropdown component
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.module.js'))      
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.service.js'))      		
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.controller.js'))  
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.run.js'))		
+
+		//ui-deni-grid itself
+		.pipe(addsrc.append('./src/ui-deni-grid.mdl.js'))
 		.pipe(addsrc.append('./src/ui-deni-grid.con.js'))      
 		.pipe(addsrc.append('./src/ui-deni-grid.js'))				
 		.pipe(addsrc.append('./src/ui-deni-grid-util.srv.js')) //Kind of Privates Methods, Variables, Constants...)    
+		.pipe(addsrc.append('./src/ui-deni-grid-events.service.js')) //All internal events are there
 		.pipe(addsrc.append('./src/ui-deni-grid.ctrl.js'))  
 		.pipe(addsrc.append('./src/ui-deni-grid.srv.js'))    
 		.pipe(addsrc.append('./src/ui-deni-grid.run.js'))      		

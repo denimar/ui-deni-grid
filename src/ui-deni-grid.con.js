@@ -30,7 +30,13 @@
 			PAGING_HEIGHT: '26px',
 			
 			//
-			DEFAULT_REALCE_CELLS: 'background-color:#FFFF00;color:black;padding:1px;',
+			DEFAULT_FILTER_OPTIONS: {
+				remote: false,
+				allFields: false,
+				realce: 'background-color:#ffffb3;color:black;padding:1px;',
+				model: {} //save the fields and values to filter
+			}
+			
 		});
 
 })();	

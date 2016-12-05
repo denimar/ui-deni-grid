@@ -6,14 +6,13 @@
 		.module('ui-deni-grid')
 		.controller('uiDeniGridCtrl', uiDeniGridCtrl);
 
-	function uiDeniGridCtrl($scope, $element, $timeout, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants) {
+	function uiDeniGridCtrl($scope, $element, $timeout, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants, uiDeniGridEventsService) {
 		var vm = this;
 		vm.scope = $scope;
 		vm.enabled = true;
 		vm.checkedRecords = [];
-		vm.filterInfo = null;
 		vm.searchInfo = null;	
-		
+
 		//
 		vm.loading = false;	
 
@@ -69,6 +68,9 @@
 	    // *************************************************************************
 	    // *************************************************************************
 
+		//Set the controller to the service of the events. Always there'll be one controller to eache uiDeniGridEventsService
+		uiDeniGridEventsService.setController(vm);
+
 		var currentHeight = vm.element.css('height');
 		/*
 		$timeout(function() {
@@ -85,7 +87,11 @@
 
 		//Set the default options
 		uiDeniGridUtilSrv.setDefaultOptions(vm, vm.options);
+
+		//
+		uiDeniGridUtilSrv.ckeckInitialValueFilter(vm, vm.options.columns);
 		
+		//
 		vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
 		
 		//Inherit API from ui-deni-view and create some new APIs too		
@@ -187,9 +193,6 @@
 			//This guy manages which items the grid should render
 			vm.managerRendererItems = new uiDeniGridUtilSrv.ManagerRendererItems(vm);
 
-			//Create Events for the ui-deni-view
-			uiDeniGridSrv.createUiDeniViewEvents(vm);  //TODO: change the name of this method
-
 			//
 			uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(vm);
 
@@ -197,10 +200,37 @@
 				vm.options.api.loadData(vm.options.data);
 			} else if ((vm.options.url) && (vm.options.autoLoad)) {
 				vm.options.api.load();
+				_checkSize(vm);
 			}
 		});
 
 	}
+
+	/*
+	 * 
+	 *
+	 */
+	function _checkSize(controller) {
+		controller.scope.$watch(
+		    function () { 
+		        return {
+		           width: controller.element.width(),
+		           height: controller.element.height(),
+		        }
+		   },
+		   function (newValue, oldValue) {
+		   		if (newValue !== oldValue) {
+		   			controller.options.api.repaint();
+		   		}	
+		   }, //listener 
+		   true //deep watch
+		);
+
+	    angular.element(window).on("resize", function() {
+	        controller.scope.$apply();
+	    });				
+	}
+
 
 	function _getApi(controller, uiDeniGridSrv) {
 
@@ -265,8 +295,8 @@
 			 *	
 			 *
 			 */		 
-			filter: function(valuesToFilter, opts) {
-				return uiDeniGridSrv.filter(controller, valuesToFilter, opts);
+			filter: function(filterModel, opts) {
+				return uiDeniGridSrv.filter(controller, filterModel, opts);
 			},
 
 
@@ -505,6 +535,14 @@
 			*/		 
 	        selectRow: function(row, preventSelecionChange, scrollIntoView) {
 	        	uiDeniGridSrv.selectRow(controller, row, preventSelecionChange, scrollIntoView);
+	        },
+
+			/**
+			 *	
+			 *
+			*/		 
+	        selectCell: function(row, col, preventSelecionChange, scrollIntoView) {
+	        	uiDeniGridSrv.selectRow(controller, row, col, preventSelecionChange, scrollIntoView);
 	        },
 
 			/**
