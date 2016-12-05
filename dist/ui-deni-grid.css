@@ -25,7 +25,8 @@ ui-deni-grid {
       padding: 6px;
       border-color: #cccccc;
       border-style: double;
-      background-color: white; }
+      background-color: white;
+      z-index: 9999999; }
       ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-loading .image {
         width: 32px;
         height: 32px;
@@ -155,34 +156,38 @@ ui-deni-grid {
                           background-color: #F2F2F2;
                           background-repeat-y: no-repeat;
                           background-size: 2px 100%; }
-                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell.sort {
-                          background-repeat: no-repeat;
-                          background-position: right center;
-                          background-color: #dfe9f2;
-                          background-size: 9px 5px;
-                          padding-right: 6px; }
-                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell.sort.asc {
-                            background-image: url(data:image/gif;base64,R0lGODlhCQAFAKEDAGGQzUD/QOPu+////yH5BAEKAAMALAAAAAAJAAUAAAIMnAenwIrcDJxD2HsLADs=); }
-                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell.sort.desc {
-                            background-image: url(data:image/gif;base64,R0lGODlhCQAFAKEDAGGQzUD/QOPu+////yH5BAEKAAMALAAAAAAJAAUAAAIMFI4gY7nD0INxUnYLADs=); }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-inner {
                           padding: 0px 4px 0px 4px;
-                          width: 100%;
+                          width: calc(100% - 13px);
                           white-space: nowrap;
-                          overflow: hidden; }
+                          overflow: hidden;
+                          box-sizing: border-box; }
+                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-inner.sort {
+                            background-repeat: no-repeat;
+                            background-position: right center;
+                            background-color: #dfe9f2;
+                            background-size: 9px 5px;
+                            padding-right: 15px;
+                            background-color: transparent; }
+                            ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-inner.sort.asc {
+                              background-image: url(data:image/gif;base64,R0lGODlhCQAFAKEDAGGQzUD/QOPu+////yH5BAEKAAMALAAAAAAJAAUAAAIMnAenwIrcDJxD2HsLADs=); }
+                            ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-inner.sort.desc {
+                              background-image: url(data:image/gif;base64,R0lGODlhCQAFAKEDAGGQzUD/QOPu+////yH5BAEKAAMALAAAAAAJAAUAAAIMFI4gY7nD0INxUnYLADs=); }
+                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown {
+                          width: 13px;
+                          height: 100%;
+                          box-sizing: border-box; }
+                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown.active {
+                            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAYCAYAAADOMhxqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACiSURBVDhPYzx86+d/G1U2hlevPjMQA5igNNFgVAMxgGgNjIwQmmgN//9DaBYIBQHXr59jcCi+CeVhgpfbIlFt0NU1YTjQqw7loQKQODMzE6qGP3/+YdUE4uvrmzH8/fsP0w/ommCKf/36g2kDDCBrgikGgb9//+MOJZAmTU0juGIIQNEADTcCAEkDNGYIACxOwq8Riwb8TsPpaVxg0GlgYAAAySU7QWQh1UAAAAAASUVORK5CYII=");
+                            background-repeat: no-repeat;
+                            cursor: pointer; }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column.last-subcolumn {
                       border-right-width: 0px; }
-                  ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-sub-header-container {
-                    background-color: yellow !important;
-                    box-sizing: border-box;
-                    display: flex; }
             ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper {
               overflow-x: hidden;
               overflow-y: hidden;
               box-sizing: border-box;
-              background-color: white;
-              /*height: calc(100% - 22px); */
-              /* This height will recalculated after by "uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper" method. It depends on "Is there Header?", "Is there Footer?"... */ }
+              background-color: white; }
               ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport {
                 float: left;
                 width: 100%;
@@ -191,7 +196,7 @@ ui-deni-grid {
                 overflow-x: auto;
                 box-sizing: border-box;
                 display: block;
-                position: absolute;
+                position: relative;
                 /* avoid a blink while it is initilizing the data */
                 /********************/ }
                 ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport.initilizing-data::-webkit-scrollbar {
@@ -522,3 +527,300 @@ ui-deni-grid {
     ui-deni-grid .ui-deni-grid-wrapper input[type=number]::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0; }
+
+.ui-deni-grid-dropdown-container {
+  background-color: #ecf1f7;
+  z-index: 999;
+  border: solid 1px silver;
+  position: fixed;
+  font-family: arial;
+  font-size: 12px;
+  -webkit-box-shadow: 6px 6px 5px -4px gray;
+  -moz-box-shadow: 6px 6px 5px -4px gray;
+  box-shadow: 6px 6px 5px -4px gray; }
+  .ui-deni-grid-dropdown-container * {
+    box-sizing: border-box; }
+
+.ui-deni-grid-dropdown-item-container {
+  padding: 0px; }
+  .ui-deni-grid-dropdown-item-container * {
+    box-sizing: border-box;
+    font-family: tahoma,arial,verdana,sans-serif;
+    font-size: 11px;
+    font-weight: normal; }
+  .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner {
+    height: 100%;
+    display: flex; }
+    .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-center-container {
+      position: relative;
+      border-right: solid 1px white;
+      padding-right: 1px;
+      display: inline-block;
+      width: 30px; }
+      .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-center-container .ui-deni-grid-dropdown-item-center-inner {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+        border-right: solid 1px #c3daf9; }
+        .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-center-container .ui-deni-grid-dropdown-item-center-inner .ui-deni-grid-dropdown-item-center-image-checkbox {
+          /*
+					input[type=checkbox] {
+						width: $filter-checkbox-width;
+						margin-left: 8.5px;
+						cursor: pointer;
+					}*/ }
+          .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-center-container .ui-deni-grid-dropdown-item-center-inner .ui-deni-grid-dropdown-item-center-image-checkbox img {
+            width: 16px;
+            height: 16px;
+            margin-left: 7px; }
+    .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-caption {
+      display: inline-block;
+      width: calc(100% - 30px);
+      padding: 4px; }
+      .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner .ui-deni-grid-dropdown-item-caption .ui-deni-grid-dropdown-item-caption-text {
+        padding-left: 8px;
+        padding-right: 8px;
+        vertical-align: middle;
+        display: flex;
+        position: relative;
+        height: 100%;
+        align-items: center;
+        cursor: default;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        /* Introduced in IE 10. See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/ */
+        -ms-user-select: none;
+        user-select: none; }
+    .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner.separator {
+      border-top: solid 1px white;
+      border-width: 0px; }
+    .ui-deni-grid-dropdown-item-container .ui-deni-grid-dropdown-item-inner:hover {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAUCAIAAADDbMD2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABSSURBVBhXBcFrCoJAAIXRb/8rMkQikZCIUPDRNCaDWRYu4d4fnUPcTfiZ8Wv6zXQf075Ns5rbS1wXc0miTuY8i+opykmcojg+RBFEfheHUWSD/l6pNN1FlJB5AAAAAElFTkSuQmCC");
+      background-size: 2px 100%; }
+  .ui-deni-grid-dropdown-item-container.separator {
+    border-top: solid 1px #c3daf9; }
+
+.filter-field-type-date-container .filter-field-type-date-row {
+  padding: 2px; }
+  .filter-field-type-date-container .filter-field-type-date-row .filter-field-type-date-caption {
+    width: 40px;
+    text-align: right;
+    margin-right: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: courier;
+    color: gray;
+    display: inline-block; }
+  .filter-field-type-date-container .filter-field-type-date-row .filter-field-type-date {
+    width: 120px;
+    height: 21px;
+    display: inline-block; }
+
+.filter-field-type-date-container .filter-field-type-date-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-date-container .filter-field-type-date-button-container .filter-field-type-date-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black; }
+    .filter-field-type-date-container .filter-field-type-date-button-container .filter-field-type-date-button:hover {
+      color: #002699; }
+
+.filter-field-type-datetime-container .filter-field-type-datetime-row {
+  padding: 2px; }
+  .filter-field-type-datetime-container .filter-field-type-datetime-row .filter-field-type-datetime-caption {
+    width: 40px;
+    text-align: right;
+    margin-right: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: courier;
+    color: gray;
+    display: inline-block; }
+  .filter-field-type-datetime-container .filter-field-type-datetime-row .filter-field-type-datetime {
+    width: 170px;
+    height: 21px;
+    display: inline-block; }
+
+.filter-field-type-datetime-container .filter-field-type-datetime-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-datetime-container .filter-field-type-datetime-button-container .filter-field-type-datetime-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black; }
+    .filter-field-type-datetime-container .filter-field-type-datetime-button-container .filter-field-type-datetime-button:hover {
+      color: #002699; }
+
+.filter-field-type-datetime-container input[type=datetime-local]::-webkit-inner-spin-button,
+.filter-field-type-datetime-container input[type=datetime-local]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+.filter-field-type-datetime-container input[type=number] {
+  -moz-appearance: textfield; }
+
+.filter-field-type-float-container .filter-field-type-float-row {
+  padding: 2px; }
+  .filter-field-type-float-container .filter-field-type-float-row .filter-field-type-float-caption {
+    width: 40px;
+    text-align: right;
+    margin-right: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: courier;
+    color: gray;
+    display: inline-block; }
+  .filter-field-type-float-container .filter-field-type-float-row .filter-field-type-float {
+    width: 120px;
+    display: inline-block; }
+
+.filter-field-type-float-container .filter-field-type-float-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-float-container .filter-field-type-float-button-container .filter-field-type-float-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black;
+    cursor: pointer; }
+    .filter-field-type-float-container .filter-field-type-float-button-container .filter-field-type-float-button:hover {
+      color: #002699; }
+
+.filter-field-type-integer-container .filter-field-type-integer-row {
+  padding: 2px; }
+  .filter-field-type-integer-container .filter-field-type-integer-row .filter-field-type-integer-caption {
+    width: 40px;
+    text-align: right;
+    margin-right: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: courier;
+    color: gray;
+    display: inline-block; }
+  .filter-field-type-integer-container .filter-field-type-integer-row .filter-field-type-integer {
+    width: 120px;
+    display: inline-block; }
+
+.filter-field-type-integer-container .filter-field-type-integer-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-integer-container .filter-field-type-integer-button-container .filter-field-type-integer-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black;
+    cursor: pointer; }
+    .filter-field-type-integer-container .filter-field-type-integer-button-container .filter-field-type-integer-button:hover {
+      color: #002699; }
+
+.filter-field-type-multiselect-container * {
+  cursor: pointer; }
+
+.filter-field-type-multiselect-container .filter-field-type-multiselect-row {
+  display: flex;
+  height: 18px; }
+  .filter-field-type-multiselect-container .filter-field-type-multiselect-row label {
+    display: flex;
+    align-items: center;
+    height: 18px; }
+    .filter-field-type-multiselect-container .filter-field-type-multiselect-row label input {
+      margin: 0; }
+    .filter-field-type-multiselect-container .filter-field-type-multiselect-row label span {
+      align-self: center;
+      margin-left: 2px; }
+    .filter-field-type-multiselect-container .filter-field-type-multiselect-row label:not(:last-child) {
+      margin-bottom: 1px; }
+
+.filter-field-type-multiselect-container .filter-field-type-multiselect-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-multiselect-container .filter-field-type-multiselect-button-container .filter-field-type-multiselect-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black; }
+    .filter-field-type-multiselect-container .filter-field-type-multiselect-button-container .filter-field-type-multiselect-button:hover {
+      color: #002699; }
+
+.filter-field-type-select-container * {
+  cursor: pointer; }
+
+.filter-field-type-select-container .filter-field-type-select-row {
+  display: flex;
+  height: 18px; }
+  .filter-field-type-select-container .filter-field-type-select-row label {
+    display: flex;
+    align-items: center;
+    height: 18px; }
+    .filter-field-type-select-container .filter-field-type-select-row label input {
+      margin: 0; }
+    .filter-field-type-select-container .filter-field-type-select-row label span {
+      align-self: center;
+      margin-left: 2px; }
+    .filter-field-type-select-container .filter-field-type-select-row label:not(:last-child) {
+      margin-bottom: 1px; }
+
+.filter-field-type-select-container .filter-field-type-select-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-select-container .filter-field-type-select-button-container .filter-field-type-select-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black; }
+    .filter-field-type-select-container .filter-field-type-select-button-container .filter-field-type-select-button:hover {
+      color: #002699; }
+
+.filter-field-type-string-container .filter-field-type-string-row {
+  padding: 2px; }
+  .filter-field-type-string-container .filter-field-type-string-row .filter-field-type-string-caption {
+    width: 20px;
+    text-align: right;
+    margin-right: 4px;
+    font-weight: normal;
+    font-size: 16px;
+    font-family: courier;
+    color: gray;
+    display: inline-block; }
+  .filter-field-type-string-container .filter-field-type-string-row .filter-field-type-string {
+    width: 140px;
+    display: inline-block; }
+
+.filter-field-type-string-container .filter-field-type-string-button-container {
+  height: 18px;
+  margin-top: 4px;
+  margin-bottom: 2px;
+  border-top: solid 1px #e6e6e6;
+  padding-top: 2px; }
+  .filter-field-type-string-container .filter-field-type-string-button-container .filter-field-type-string-button {
+    height: 18px;
+    position: absolute;
+    right: 5px;
+    color: black; }
+    .filter-field-type-string-container .filter-field-type-string-button-container .filter-field-type-string-button:hover {
+      color: #002699; }
