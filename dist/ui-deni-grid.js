@@ -3497,15 +3497,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		vm.fixedColsViewport = vm.fixedColsViewportWrapper.find('.ui-viewport');
 		vm.fixedColsContainer = vm.fixedColsViewport.find('.ui-container');
 
-		// header    
+		// header
 		vm.fixedColsHeaderViewportWrapper = vm.fixedColsContainer.find('.ui-header-viewport-wrapper');
 		vm.fixedColsHeaderViewport = vm.fixedColsHeaderViewportWrapper.find('.ui-header-viewport');
 		vm.fixedColsHeaderContainer = vm.fixedColsHeaderViewport.find('.ui-header-container');
-		// body	
+		// body
 		vm.fixedColsBodyViewportWrapper = vm.fixedColsContainer.find('.ui-body-viewport-wrapper');
 		vm.fixedColsBodyViewport = vm.fixedColsBodyViewportWrapper.find('.ui-body-viewport');
 		vm.fixedColsBodyContainer = vm.fixedColsBodyViewport.find('.ui-body-container');
-		// footer	
+		// footer
 		vm.fixedColsFooterViewportWrapper = vm.fixedColsContainer.find('.ui-footer-viewport-wrapper');
 		vm.fixedColsFooterViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
 		vm.fixedColsFooterContainer = vm.footerViewport.find('.ui-footer-container');
@@ -3538,13 +3538,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		//
 		vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
 
-		//Inherit API from ui-deni-view and create some new APIs too		
+		//Inherit API from ui-deni-view and create some new APIs too
 		vm.options.api = _getApi(vm, uiDeniGridSrv);
 
 		vm.element.show(function (event) {
 			///////////////////////////////////////////////////////////////////////////
 			//FIXED COLUMNS ///////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 			if (vm.options.fixedCols) {
 				//
 				vm.fixedColsViewportWrapper.css('width', vm.options.fixedCols.width + 'px');
@@ -3557,14 +3557,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				vm.colsViewportWrapper.css('width', '100%');
 			}
 			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 
 			///
 			vm.clientWidth = uiDeniGridUtilSrv.getClientWidthDeniGrid(vm);
 
 			///////////////////////////////////////////////////////////////////////////
 			//COLUMN HEADERS //////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 			if (vm.options.hideHeaders) {
 				//
 				vm.headerViewportWrapper.css('display', 'none');
@@ -3587,11 +3587,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				vm.fixedColsHeaderViewportWrapper.css('height', 'calc(' + vm.options.columnHeaderHeight + ' * ' + vm.columnHeaderLevels + ')');
 			}
 			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 
 			///////////////////////////////////////////////////////////////////////////
 			//GRID FOOTER /////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 			if (vm.options.colLines) {
 				vm.headerContainer.find('.ui-header-container-column').css('border-right', 'solid 1px silver');
 			}
@@ -3620,7 +3620,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				vm.fixedColsFooterViewportWrapper.css('display', 'none');
 			}
 			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////	
+			///////////////////////////////////////////////////////////////////////////
 
 			//Paging
 			if (vm.options.paging) {
@@ -3648,7 +3648,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	}
 
 	/*
-  * 
+  *
   *
   */
 	function _checkSize(controller, uiDeniGridUtilSrv) {
@@ -3659,10 +3659,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			};
 		}, function (newValue, oldValue) {
 			if (newValue !== oldValue) {
-				uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
-				controller.options.api.repaint();
+				if (controller.options.data) {
+					uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
+					controller.options.api.repaint();
+				}
 			}
-		}, //listener 
+		}, //listener
 		true //deep watch
 		);
 
@@ -3675,7 +3677,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 		return {
 			/**
-    *	
+    *
     *
     */
 			clearSelections: function clearSelections() {
@@ -3683,7 +3685,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			find: function find(valuesToFind, opts) {
@@ -3691,7 +3693,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			findFirst: function findFirst(valuesToFind, opts) {
@@ -3699,7 +3701,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			findKey: function findKey(keyValue, opts) {
@@ -3707,7 +3709,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			findLast: function findLast(valuesToFind, opts) {
@@ -3715,7 +3717,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			findNext: function findNext(valuesToFind, opts) {
@@ -3723,7 +3725,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			findPrevious: function findPrevious(valuesToFind, opts) {
@@ -3731,7 +3733,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			filter: function filter(filterModel, opts) {
@@ -3739,7 +3741,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			getChangedRecords: function getChangedRecords() {
@@ -3747,7 +3749,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			getColumn: function getColumn(fieldName) {
@@ -3755,7 +3757,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			getEnabled: function getEnabled(enabled) {
@@ -3763,7 +3765,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			getPageNumber: function getPageNumber() {
@@ -3771,7 +3773,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			getRowHeight: function getRowHeight() {
@@ -3779,7 +3781,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			getRowIndex: function getRowIndex(record) {
@@ -3787,7 +3789,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			getSelectedRow: function getSelectedRow() {
@@ -3795,7 +3797,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			getSelectedRowIndex: function getSelectedRowIndex() {
@@ -3803,7 +3805,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			isEnableGrouping: function isEnableGrouping() {
@@ -3811,7 +3813,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			isGrouped: function isGrouped() {
@@ -3819,7 +3821,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			isRowSelected: function isRowSelected(row) {
@@ -3828,14 +3830,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			/**
     * @param row {Element|Integer} Can be the rowIndex or a jquery element row
-    * 
+    *
     */
 			isRowVisible: function isRowVisible(row) {
 				return uiDeniGridSrv.isRowVisible(controller, row);
 			},
 
 			/**
-    *	
+    *
     *
     */
 			load: function load() {
@@ -3843,7 +3845,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			loadData: function loadData(data) {
@@ -3851,7 +3853,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			isHideHeaders: function isHideHeaders() {
@@ -3859,7 +3861,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			reload: function reload() {
@@ -3867,7 +3869,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			removeRow: function removeRow(row) {
@@ -3875,7 +3877,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			removeSelectedRows: function removeSelectedRows() {
@@ -3883,7 +3885,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			resolveRowElement: function resolveRowElement(row) {
@@ -3891,7 +3893,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			resolveRowIndex: function resolveRowIndex(row) {
@@ -3899,15 +3901,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    * forceRepaint force repaint all visible rows
     *
     */
-			repaint: function repaint() {
-				uiDeniGridSrv.repaint(controller);
+			repaint: function repaint(forceRepaint) {
+				uiDeniGridSrv.repaint(controller, forceRepaint);
 			},
 
 			/**
-    *	
+    *
     *
     */
 			repaintRow: function repaintRow(row) {
@@ -3915,7 +3917,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			repaintSelectedRow: function repaintSelectedRow() {
@@ -3923,7 +3925,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setDisableGrouping: function setDisableGrouping() {
@@ -3931,7 +3933,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setEnableGrouping: function setEnableGrouping() {
@@ -3939,7 +3941,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			setHideHeaders: function setHideHeaders(hideHeaders) {
@@ -3947,7 +3949,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			selectAll: function selectAll() {
@@ -3955,7 +3957,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setEnabled: function setEnabled(enabled) {
@@ -3963,7 +3965,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			selectRow: function selectRow(row, preventSelecionChange, scrollIntoView) {
@@ -3971,7 +3973,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			selectCell: function selectCell(row, col, preventSelecionChange, scrollIntoView) {
@@ -3979,7 +3981,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setPageNumber: function setPageNumber(pageNumber) {
@@ -3987,7 +3989,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setRowHeight: function setRowHeight(rowHeight) {
@@ -3995,7 +3997,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
     */
 			setToogleGrouping: function setToogleGrouping() {
@@ -4003,7 +4005,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     * holdSelection {boolean} true is default
    */
 			sort: function sort(sorters, holdSelection) {
@@ -4012,7 +4014,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			updateSelectedRow: function updateSelectedRow(json) {
@@ -4020,7 +4022,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			updateCell: function updateCell(rowIndex, colIndex, value) {
@@ -4028,7 +4030,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			},
 
 			/**
-    *	
+    *
     *
    */
 			updateSelectedCell: function updateSelectedCell(value) {
@@ -4155,11 +4157,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var divHeaderContainerColumn = $(document.createElement('div'));
 
 				//
-				//if (anyColumnInPercentage) { 
+				//if (anyColumnInPercentage) {
 				divHeaderContainerColumn.css('width', column.width);
-				//} else {	
+				//} else {
 				//divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
-				//}	
+				//}
 
 				divHeaderContainerColumn.addClass('ui-header-container-column');
 				divHeaderContainerColumn.attr('colindex', colIndex);
@@ -4641,7 +4643,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			};
 		};
 
-		/**			
+		/**
    * TODO: It doesn't work when the data is grouped and its children are expanded... IMPROVE THAT!
       *
    * @param sorters {Array|Object|String} direction is optional
@@ -6082,7 +6084,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			if (controller.options.filter && controller.options.filter.remote) {
 				controller.options.api.reload();
 
-				//local filter			
+				//local filter
 			} else {
 				controller.options.api.loadData(controller.options.alldata);
 			}
@@ -6287,7 +6289,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       		rowElement.addClass('collapse');
       	} else {
       		rowElement.addClass('expand');
-      	}	
+      	}
       }
       */
 
@@ -6344,11 +6346,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		};
 
 		/**
-   *
+   * forceRepaint force repaint all visible rows
    *
    */
-		me.repaint = function (controller) {
-			_repaint(controller, true);
+		me.repaint = function (controller, forceRepaint) {
+			_repaint(controller, forceRepaint);
 		};
 
 		/**
@@ -6361,7 +6363,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.repaintSelectedRow = function (controller) {

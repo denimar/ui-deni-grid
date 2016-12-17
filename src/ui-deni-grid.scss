@@ -284,11 +284,13 @@ ui-deni-grid {
 								position: relative;
 
 								/* avoid a blink while it is initilizing the data */
+								/*
 								&.initilizing-data {
 									&::-webkit-scrollbar {
 										background-color: white;
 									}
 								}
+								*/
 								/********************/
 
 								.ui-body-container {

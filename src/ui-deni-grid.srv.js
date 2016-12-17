@@ -32,7 +32,7 @@
 			if (controller.options.multiSelect) {
 				controller.bodyViewport.find('.ui-row.selected').addClass('selected');
 		 		controller.bodyViewport.find('.ui-cell.selected').addClass('selected');
-			} else {			
+			} else {
 				throw new Error('"selectAll" : to use selectAll method you must set multiSelect property to true!');
 			}
 		 };
@@ -101,29 +101,29 @@
 					break;
 				}
 			}
-			
+
 			//
 			if (anyColumnInPercentage) {
-				controller.headerViewport.css('width', 'calc(100% - 17px)');		
+				controller.headerViewport.css('width', 'calc(100% - 17px)');
 				controller.headerContainer.css('width', '100%');
 			}
 
 			var colIndex = colIndexStart || 0;
-			
+
 			//
 			for (let index = 0 ; index < columns.length ; index++) {
 				var column = columns[index];
 
 				//ui-header-container-column
 				var divHeaderContainerColumn = $(document.createElement('div'));
-				
+
 				//
-				//if (anyColumnInPercentage) { 
+				//if (anyColumnInPercentage) {
 					divHeaderContainerColumn.css('width', column.width);
-				//} else {	
+				//} else {
 					//divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
-				//}	
-				
+				//}
+
 				divHeaderContainerColumn.addClass('ui-header-container-column');
 				divHeaderContainerColumn.attr('colindex', colIndex);
 				if (angular.isDefined(headerContainerColumnRow)) {
@@ -162,7 +162,7 @@
 					let target = $(event.target);
 					if (!target.is('.clicked')) {
 						target.removeClass('active');
-					}	
+					}
 				});
 				divHeaderCell.append(spanHeaderCellDropdown);
 
@@ -435,14 +435,14 @@
 						timeout = null;
 						if (!immediate) {
 							func.apply(context, args);
-						}	
+						}
 					};
 					var callNow = immediate && !timeout;
 					clearTimeout(timeout);
 					timeout = setTimeout(later, wait);
 					if (callNow) {
 						func.apply(context, args);
-					}	
+					}
 				};
 			};
 
@@ -532,7 +532,7 @@
 						let target = $(event.target);
 						let headerCell = target.closest('.ui-header-cell');
 						let fieldName = headerCell.attr('name');
-						let column = me.getColumn(controller, fieldName);						
+						let column = me.getColumn(controller, fieldName);
 						let isDropDownMenu = target.is('.ui-header-cell-dropdown');
 
 
@@ -541,12 +541,12 @@
 
 							let mousePoint = getPositionDropDownMenuColumns(target.get(0));
 							let dropdownMenuCallbackFunctionFn = function(column, execSortObj, execFilter) {
-								dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);	
+								dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);
 							};
 							let sortable = (controller.options.sortableColumns && (column.sortable !== false));
-							uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);							
+							uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);
 
-						} else {							
+						} else {
 							if (controller.colsViewport.css('cursor') === 'default') { //prevent conflict with the resizing columns function
 								if ((controller.options.sortableColumns) && (column.sortable !== false)) {
 									let headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
@@ -562,7 +562,7 @@
 										if (!headerContainerColumn.is('.has-subcolumns')) {
 											controller.options.api.sort({name: headerCell.attr('name'), direction: direction});
 										}
-									}	
+									}
 								}
 							}
 						}
@@ -591,7 +591,7 @@
 		var getPositionDropDownMenuColumns = function(dropDowmButtonEl) {
 			var xPos = 0;
 			var yPos = 0;
-			var el = dropDowmButtonEl;			
+			var el = dropDowmButtonEl;
 
 			while (el) {
 				if (el.tagName === 'BODY') {
@@ -616,7 +616,7 @@
 		};
 
 
-		/**			
+		/**
 		 * TODO: It doesn't work when the data is grouped and its children are expanded... IMPROVE THAT!
 	     *
 		 * @param sorters {Array|Object|String} direction is optional
@@ -702,9 +702,9 @@
 				var divCell = $(rowTableRowCardView.insertCell());
 				divCell.css('width', colWidth);
 				if (record) {
-					var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);							
+					var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);
 					divCell.html(valueToRender);
-					divCell.prop('record', record);							
+					divCell.prop('record', record);
 
 					divCell.click(function(event) {
 						controller.bodyContainer.find('td').removeClass('selected');
@@ -719,7 +719,7 @@
 						////////////////////////////////////////////////////
 						////////////////////////////////////////////////////
 
-					});	
+					});
 
 					if (controller.options.cardView.checkbox === true) {
 						var checkboxCardView = $(document.createElement('input'));
@@ -750,7 +750,7 @@
 				}
 			}
 			visibleRow.rowElement = rowElement;
-		};	
+		};
 
 
 		/*
@@ -764,9 +764,9 @@
 				itemRow.rendered = false;
 				if (angular.isDefined(itemRow.rowElement)) {
 					itemRow.rowElement.remove();
-				}	
+				}
 				itemRow.rowElement = undefined;
-			}	
+			}
 
 			if (!itemRow.rendered) {
 
@@ -787,7 +787,7 @@
 					if (controller.options.listeners.onafterrepaintrow) {
 						controller.options.listeners.onafterrepaintrow(itemRow.rowIndex, itemRow.rowElement);
 					}
-				}	
+				}
 				///////////////////////////////////////////////
 				///////////////////////////////////////////////
 
@@ -803,7 +803,7 @@
 					///////////////////////////////////////////////
 				}
 			}
-		};	
+		};
 
 		/*
 		 *
@@ -1139,7 +1139,7 @@
 
 					}
 				}
-				
+
 				//
 				if ((controller.rowIndex !== undefined) && (!controller.options.multiSelect)) {
 					//remove all selections
@@ -1162,7 +1162,7 @@
 				}
 				if (controller.options.rowDetails) {
 					rowElement.parent().find('.ui-row.row-detail-container[rowIndex=' + rowElement.attr('rowindex') + ']').addClass('selected');
-				}			
+				}
 
 				//
 				//scrollIntoViewFn(rowElement);
@@ -1263,7 +1263,7 @@
 						console.warn('"updateSelectedRow" : field "' + fieldNameToChange + '" not found!');
 					} else {
 						//
-						var newValue = eval('json.' + fieldNameToChange);						
+						var newValue = eval('json.' + fieldNameToChange);
 						record[fieldNameToChange] = newValue;
 					}
 				}
@@ -1288,7 +1288,7 @@
 			//When we need the changed records we can get by ".ui-row.changed"
 			divCell.closest('.ui-row').addClass('changed');
 		};
-		
+
 		/**
 		 *
 		 *
@@ -1302,7 +1302,7 @@
 			}
 
 		};
-		
+
 
 		/**
 		 *
@@ -1355,31 +1355,31 @@
 			var prevButton = controller.paging.find('.button.button-prev');
 			var nextButton = controller.paging.find('.button.button-next');
 			var lastButton = controller.paging.find('.button.button-last');
-			var additionalButtons = controller.paging.find('.button.button-additional');		
+			var additionalButtons = controller.paging.find('.button.button-additional');
 
 			var backwards = (data.length > 0) && (pageNumber > 1);
-			var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount);		
+			var forwards = (data.length > 0) && (pageNumber < controller.options.paging.pageCount);
 
 			if (data.length > 0) {
 				additionalButtons.removeClass('disabled');
 			} else {
-				additionalButtons.addClass('disabled');			
-			}	
-
-			if (backwards) {			
-				firstButton.removeClass('disabled');
-				prevButton.removeClass('disabled');			
-			} else {
-				firstButton.addClass('disabled');
-				prevButton.addClass('disabled');			
+				additionalButtons.addClass('disabled');
 			}
 
-			if (forwards) {			
+			if (backwards) {
+				firstButton.removeClass('disabled');
+				prevButton.removeClass('disabled');
+			} else {
+				firstButton.addClass('disabled');
+				prevButton.addClass('disabled');
+			}
+
+			if (forwards) {
 				nextButton.removeClass('disabled');
-				lastButton.removeClass('disabled');			
+				lastButton.removeClass('disabled');
 			} else {
 				nextButton.addClass('disabled');
-				lastButton.addClass('disabled');			
+				lastButton.addClass('disabled');
 			}
 		};
 
@@ -1393,8 +1393,8 @@
 
 				for (let index = 0 ; index < item.children.length ; index++) {
 					_getPropertyXML(properties, item.children[index], property);
-				}			
-			}	
+				}
+			}
 		};
 
 		/**
@@ -1413,24 +1413,24 @@
 						}
 					}
 				}
-				
+
 				return true;
 			} else {
 				return false;
 			}
 		};
-		
+
 		/**
 		 *
 		 *
 		 */
 		var _getRecordXML = function(records, item, parentNode) {
 			var record = parentNode ? parentNode : {};
-			
+
 			for (let index = 0 ; index < item.children.length ; index++) {
 				var property = item.children[index];
-				var propertyName = property.nodeName.toLowerCase();			
-				
+				var propertyName = property.nodeName.toLowerCase();
+
 				if (property.children.length === 0) {
 					record[propertyName] = property.textContent;
 				} else {
@@ -1443,14 +1443,14 @@
 					} else {
 						record[propertyName] = {};
 						_getRecordXML(records, property, record[propertyName]);
-					}	
-				}				
-			}	
+					}
+				}
+			}
 			if (!angular.isDefined(parentNode)) {
 				records.push(record);
 			}
 		};
-		
+
 
 		/**
 		 *
@@ -1458,17 +1458,17 @@
 		 */
 		var _xmlToJson = function(controller, xml) {
 			var xmlData = $(xml);
-			var items = xmlData.find(controller.options.restConfig.data).find(controller.options.restConfig.dataItems);		
+			var items = xmlData.find(controller.options.restConfig.data).find(controller.options.restConfig.dataItems);
 			var records = [];
 			for (let index = 0 ; index < items.length ; index++) {
 				_getRecordXML(records, items[index]);
 			}
-			
+
 			var jsonReturn = {
 				success: true,
 			};
 			jsonReturn[controller.options.restConfig.data] = records;
-			jsonReturn[controller.options.restConfig.total] = parseInt(xmlData.find(controller.options.restConfig.total).text());		
+			jsonReturn[controller.options.restConfig.total] = parseInt(xmlData.find(controller.options.restConfig.total).text());
 
 			return jsonReturn;
 		};
@@ -1482,13 +1482,13 @@
 
 			$http.get(url)
 				.then(
-					function(response) {		
-						deferred.resolve(response);				
+					function(response) {
+						deferred.resolve(response);
 					},
 					function(response) {
 						deferred.reject(response);
 					}
-				);			
+				);
 
 			return deferred.promise;
 		};
@@ -1502,7 +1502,7 @@
 			if (controller.options.url) {
 				if (!controller.options.data) {
 					controller.bodyViewport.addClass('initilizing-data');
-				}	
+				}
 				let url = controller.options.url;
 
 				if (controller.options.paging) {
@@ -1531,8 +1531,8 @@
 						}
 
 						url += 'filter=' + JSON.stringify(controller.options.filter.model);
-					}	
-				}	
+					}
+				}
 
 				//var loading = controller.wrapper.find('.ui-deni-grid-loading');
 				//loading.css('display', 'block');
@@ -1547,7 +1547,7 @@
 						controller.loading = false;
 
 						var responseData;
-						
+
 						if (controller.options.restConfig.type === 'xml') {
 							responseData = _xmlToJson(controller, response.data);
 						} else {
@@ -1560,12 +1560,12 @@
 								total: responseData.length
 							};
 						}
-						
+
 						//
 						if (controller.options.paging) {
 							//
 							controller.options.paging.dataLength = responseData[controller.options.restConfig.total];
-							
+
 							controller.options.paging.pageCount = Math.ceil(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
 							//
@@ -1586,14 +1586,14 @@
 							controller.paging.find('.label-displaying').html(start + ' - ' + end);
 
 							controller.paging.find('.label-record-count').html(controller.options.paging.dataLength + ' records');
-							
+
 						} else {
 							//
 							controller.options.api.loadData(responseData[controller.options.restConfig.data]);
 							deferred.resolve(responseData[controller.options.restConfig.data]);
 						}
 
-						controller.bodyViewport.removeClass('initilizing-data');					
+						controller.bodyViewport.removeClass('initilizing-data');
 					},
 					function(response) {
 						controller.loading = false;
@@ -1644,7 +1644,7 @@
 
 			//
 			let filterModelKeys = Object.keys(controller.options.filter.model);
-			
+
 			//Load the data
 			if ((controller.options.filter) && (filterModelKeys.length > 0) && (!controller.options.filter.remote)) {
 				let matchFilterFn = function(originalValue, valueToFilter) {
@@ -1665,16 +1665,16 @@
 					} else {
 						if (valueToFilter.oper === '=') {
 							return originalValue.toString().toLowerCase() === valueToFilter.value.toString();
-						} else if (valueToFilter.oper === '~') {	
+						} else if (valueToFilter.oper === '~') {
 							//Case Insensitive Comparation
 							return originalValue.toString().search(new RegExp(valueToFilter.value, 'i')) !== -1;
-						} else if (valueToFilter.oper === '<=') {	
+						} else if (valueToFilter.oper === '<=') {
 							return valueToFilter.value <= originalValue;
-						} else if (valueToFilter.oper === '>=') {	
+						} else if (valueToFilter.oper === '>=') {
 							return valueToFilter.value >= originalValue;
-						} else {		
+						} else {
 							throw new Error('Invalid operator!');
-						}	
+						}
 					}
 				};
 				let columns = controller.options.columns;
@@ -1687,15 +1687,15 @@
 								if (matchFilterFn(value, controller.options.filter.model['*'])) {
 									return true;
 								}
-							}	
-						}	
+							}
+						}
 					} else {
 						let filterOk = false;
 						for (let index = 0 ; index < filterModelKeys.length ; index++) {
 							let valuesToFilterKey = filterModelKeys[index];
 							let valueToFilter = controller.options.filter.model[valuesToFilterKey];
 							let value = eval('record.' + valuesToFilterKey);
-						
+
 							if (value && valueToFilter) {
 								if (matchFilterFn(value, valueToFilter)) {
 									filterOk = true;
@@ -1859,7 +1859,7 @@
 
 			if (controller.options.paging) {
 				_checkDisableButtonsPageNavigation(controller, data, controller.options.paging.currentPage);
-			}	
+			}
 		};
 
 
@@ -2033,7 +2033,7 @@
 		 		return recordsFound;
 		 	} else {
 		 		return recordsFound[0];
-		 	}	
+		 	}
 		};
 
 		/**
@@ -2060,23 +2060,23 @@
 					'*': {
 						key: filterModel,
 						oper: '~',
-						value: filterModel					
+						value: filterModel
 					}
 				});
 			} else {
 				controller.options.filter.model = filterModel;
-			}	
+			}
 
 			//always set to first page
 			if (controller.options.paging) {
 				controller.options.paging.currentPage = 1;
-			}	
+			}
 
 			//remote filter
 			if (controller.options.filter && controller.options.filter.remote) {
 				controller.options.api.reload();
 
-			//local filter			
+			//local filter
 			} else {
 				controller.options.api.loadData(controller.options.alldata);
 			}
@@ -2256,7 +2256,7 @@
 							rowElement.addClass('collapse');
 						} else {
 							rowElement.addClass('expand');
-						}	
+						}
 
 					}
 
@@ -2285,7 +2285,7 @@
 								rowElement.addClass('collapse');
 							} else {
 								rowElement.addClass('expand');
-							}	
+							}
 						}
 						*/
 
@@ -2331,11 +2331,11 @@
 	    		var targetEl = $(event.target);
 	    		var rowElementDblClick = targetEl.closest('.ui-row');
 				var rowIndexDblClick = parseInt(rowElementDblClick.attr('rowindex'));
-				var recordDblClick = controller.options.data[rowIndexDblClick];    		
+				var recordDblClick = controller.options.data[rowIndexDblClick];
 				if (controller.options.listeners.onrowdblclick) {
 					controller.options.listeners.onrowdblclick(recordDblClick, rowElementDblClick, rowIndexDblClick);
 				}
-			});	
+			});
 			////////////////////////////////////////////////////
 			////////////////////////////////////////////////////
 
@@ -2344,11 +2344,11 @@
 		};
 
 		/**
-		 *
+		 * forceRepaint force repaint all visible rows
 		 *
 		 */
-		me.repaint = function(controller) {
-			_repaint(controller, true);
+		me.repaint = function(controller, forceRepaint) {
+			_repaint(controller, forceRepaint);
 		};
 
 		/**
@@ -2361,13 +2361,13 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.repaintSelectedRow = function(controller) {
 			var selectedRowIndex = me.getSelectedRowIndex(controller);
 			me.repaintRow(controller, selectedRowIndex);
-		};	
+		};
 
 
 		/**
@@ -2406,14 +2406,14 @@
 					}
 					controller.options.api.selectRow(rowIndexToSelect, false, false);
 				}
-			}	
+			}
 		};
 
 		/**
 		 *
 		 *
 		 */
-		me.removeSelectedRows = function(controller) {		
+		me.removeSelectedRows = function(controller) {
 			var selectedRowIndexes = me.getSelectedRowIndexes(controller);
 			var decreaseRowIndex = 0;
 			for (let index = 0 ; index < selectedRowIndexes.length ; index++) {
@@ -2467,11 +2467,11 @@
 			if (enabled) {
 				controller.element.removeClass('disabled');
 			} else {
-				controller.element.addClass('disabled');			
+				controller.element.addClass('disabled');
 			}
 		};
 
 
 	}
 
-})();	
+})();

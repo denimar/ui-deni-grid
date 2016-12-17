@@ -186,9 +186,14 @@ ui-deni-grid {
                 display: block;
                 position: relative;
                 /* avoid a blink while it is initilizing the data */
+                /*
+								&.initilizing-data {
+									&::-webkit-scrollbar {
+										background-color: white;
+									}
+								}
+								*/
                 /********************/ }
-                ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport.initilizing-data::-webkit-scrollbar {
-                  background-color: white; }
                 ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container {
                   height: calc(100% - 4px);
                   overflow-x: hidden;
