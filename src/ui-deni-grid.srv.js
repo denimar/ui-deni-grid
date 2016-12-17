@@ -540,14 +540,15 @@
 							target.addClass('active clicked');
 
 							let mousePoint = getPositionDropDownMenuColumns(target.get(0));
-							let dropdownMenuCallbackFunctionFn = function(column, execFilter) {
-								dropdownMenuCallbackFunction(controller, column, execFilter);	
+							let dropdownMenuCallbackFunctionFn = function(column, execSortObj, execFilter) {
+								dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);	
 							};
-							uiDeniGridDropdownService.open(controller, controller.options.sortableColumns, column, mousePoint, dropdownMenuCallbackFunctionFn);							
+							let sortable = (controller.options.sortableColumns && (column.sortable !== false));
+							uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);							
 
 						} else {							
 							if (controller.colsViewport.css('cursor') === 'default') { //prevent conflict with the resizing columns function
-								if (controller.options.sortableColumns) {
+								if ((controller.options.sortableColumns) && (column.sortable !== false)) {
 									let headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
 
 									//Action column should not be ordered
@@ -572,11 +573,14 @@
 
 		};
 
-		var dropdownMenuCallbackFunction = function(controller, column, execFilter) {
-			if (column.filter && execFilter) {
+		var dropdownMenuCallbackFunction = function(controller, column, execSortObj, execFilter) {
+			controller.headerContainer.find('.ui-header-cell-dropdown').removeClass('active clicked');
+
+			if (execSortObj) {
+				controller.options.api.sort(execSortObj);
+			} else if (column.filter && execFilter) {
 				controller.options.api.filter(controller.scope.filterModel);
 			}
-			controller.headerContainer.find('.ui-header-cell-dropdown').removeClass('active clicked');
 		};
 
 		/**
@@ -1638,9 +1642,11 @@
 			//
 			controller.renderedIndexes = [];
 
+			//
+			let filterModelKeys = Object.keys(controller.options.filter.model);
+			
 			//Load the data
-			let remoteFilter = (controller.options.filter && controller.options.filter.remote);
-			if (!remoteFilter) {
+			if ((controller.options.filter) && (filterModelKeys.length > 0) && (!controller.options.filter.remote)) {
 				let matchFilterFn = function(originalValue, valueToFilter) {
 
 					//When valueToFilter comes from a multi select filter value, enter in this if
@@ -1672,7 +1678,6 @@
 					}
 				};
 				let columns = controller.options.columns;
-				let filterModelKeys = Object.keys(controller.options.filter.model);
 				controller.options.data = $filter('filter')(data, function(record, index, array) {
 					if (controller.options.filter.allFields) {
 						for (let colIndex = 0 ; colIndex < columns.length ; colIndex++) {

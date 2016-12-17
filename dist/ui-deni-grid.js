@@ -81,38 +81,38 @@
          * Directive's template
          *
          */
-								$templateCache.put('ui-deni-grid-dropdown-item.view.html', '<div class="ui-deni-grid-dropdown-item-container" ng-class="{\'separator\' : ctrl.menuItem.separator}">\n' + '	<div class="ui-deni-grid-dropdown-item-inner" ng-class="{\'separator\' : ctrl.menuItem.separator}">\n' + '		<div class="ui-deni-grid-dropdown-item-center-container">\n' + '			<div class="ui-deni-grid-dropdown-item-center-inner">\n' + '				<div class="ui-deni-grid-dropdown-item-center-image-checkbox">	\n' + '				<img src="{{ctrl.menuItem.icon}}">\n' + '				</div>\n' + '			</div>\n' + '		</div>\n' + '		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(ctrl.menuItem)">\n' + '		</div>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('ui-deni-grid-dropdown-item.view.html', '<div class="ui-deni-grid-dropdown-item-container unselectable" ng-class="{\'separator\' : ctrl.menuItem.separator}" ng-click="ctrl.menuItem.click()">\n' + '	<div class="ui-deni-grid-dropdown-item-inner" >\n' + '		<div class="ui-deni-grid-dropdown-item-center-container">\n' + '			<div class="ui-deni-grid-dropdown-item-center-inner">\n' + '				<div class="ui-deni-grid-dropdown-item-center-image-checkbox">	\n' + '				<img src="{{ctrl.menuItem.icon}}">\n' + '				</div>\n' + '			</div>\n' + '		</div>\n' + '		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(ctrl.menuItem)">\n' + '		</div>\n' + '	</div>\n' + '</div>');
 
 								/**
          * template: date-filter.template.html
          * Used by menu items which will show filters type "date"
          *
          */
-								$templateCache.put('date-filter.template.html', '<div class="filter-field-type-date-container">\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption"><=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" />\n' + '	</div>\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption">>=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" />\n' + '	</div>\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption">=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-date-button-container">\n' + '		<button class="filter-field-type-date-button">Filter</button>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('date-filter.template.html', '<div class="filter-field-type-date-container">\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption">>=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" />\n' + '	</div>\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption"><=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" />\n' + '	</div>\n' + '	<div class="filter-field-type-date-row">\n' + '		<span class="filter-field-type-date-caption">=</span>\n' + '		<input class="filter-field-type-date" type="text" onfocus="(this.type=\'date\')" onblur="(this.type=\'text\')" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-date-button-container">\n' + '		<button class="filter-field-type-date-button">Filter</button>\n' + '	</div>\n' + '</div>');
 
 								/**
          * template: datetime-filter.template.html
          * Used by menu items which will show filters type "datetime"
          *
          */
-								$templateCache.put('datetime-filter.template.html', '<div class="filter-field-type-datetime-container">\n' + '	<div class="filter-field-type-datetime-row">\n' + '		<span class="filter-field-type-datetime-caption"><=</span>\n' + '		<input class="filter-field-type-datetime" type="datetime-local" />\n' + '	</div>\n' + '	<div class="filter-field-type-datetime-row">\n' + '		<span class="filter-field-type-datetime-caption">>=</span>\n' + '		<input class="filter-field-type-datetime" type="datetime-local" />\n' + '	</div>\n' + '	<div class="filter-field-type-datetime-button-container">\n' + '		<button class="filter-field-type-datetime-button">Filter</button>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('datetime-filter.template.html', '<div class="filter-field-type-datetime-container">\n' + '	<div class="filter-field-type-datetime-row">\n' + '		<span class="filter-field-type-datetime-caption">>=</span>\n' + '		<input class="filter-field-type-datetime" type="datetime-local" />\n' + '	</div>\n' + '	<div class="filter-field-type-datetime-row">\n' + '		<span class="filter-field-type-datetime-caption"><=</span>\n' + '		<input class="filter-field-type-datetime" type="datetime-local" />\n' + '	</div>\n' + '	<div class="filter-field-type-datetime-button-container">\n' + '		<button class="filter-field-type-datetime-button">Filter</button>\n' + '	</div>\n' + '</div>');
 
 								/**
          * template: float-filter.template.html
          * Used by menu items which will show filters type "float"
          *
          */
-								$templateCache.put('float-filter.template.html', '<div class="filter-field-type-float-container">\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption"><=</span>\n' + '		<input class="filter-field-type-float" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption">>=</span>\n' + '		<input class="filter-field-type-float" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption">=</span>\n' + '		<input class="filter-field-type-float" type="number" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-float-button-container">\n' + '		<button class="filter-field-type-float-button">Filter</button>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('float-filter.template.html', '<div class="filter-field-type-float-container">\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption">>=</span>\n' + '		<input class="filter-field-type-float" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption"><=</span>\n' + '		<input class="filter-field-type-float" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-float-row">\n' + '		<span class="filter-field-type-float-caption">=</span>\n' + '		<input class="filter-field-type-float" type="number" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-float-button-container">\n' + '		<button class="filter-field-type-float-button">Filter</button>\n' + '	</div>\n' + '</div>');
 
 								/**
          * template: integer-filter.template.html
          * Used by menu items which will show filters type "integer"
          *
          */
-								$templateCache.put('integer-filter.template.html', '<div class="filter-field-type-integer-container">\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption"><=</span>\n' + '		<input class="filter-field-type-integer" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption">>=</span>\n' + '		<input class="filter-field-type-integer" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption">=</span>\n' + '		<input class="filter-field-type-integer" type="number" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-button-container">\n' + '		<button class="filter-field-type-integer-button">Filter</button>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('integer-filter.template.html', '<div class="filter-field-type-integer-container">\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption">>=</span>\n' + '		<input class="filter-field-type-integer" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption"><=</span>\n' + '		<input class="filter-field-type-integer" type="number" />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-row">\n' + '		<span class="filter-field-type-integer-caption">=</span>\n' + '		<input class="filter-field-type-integer" type="number" autofocus />\n' + '	</div>\n' + '	<div class="filter-field-type-integer-button-container">\n' + '		<button class="filter-field-type-integer-button">Filter</button>\n' + '	</div>\n' + '</div>');
 
 								/**
-         * template: multiselect-filter.template.html 
+         * template: multiselect-filter.template.html
          * Used by menu items which will show filters type "multiselect"
          *
          */
@@ -155,6 +155,7 @@
 		vm.scope = null;
 		vm.controller = null;
 		vm.callbackFunction = null;
+		vm.sortable = false;
 		vm.containerElm = null; //element itself
 		vm.column = null; //column inside which is going to put the dropdown menu
 
@@ -169,12 +170,12 @@
 
 			//
 			if (container.length === 0) {
-				vm.close(false);
+				vm.close(null, false);
 			}
 		};
 
 		var _execFilter = function _execFilter() {
-			vm.close(true);
+			vm.close(null, true);
 		};
 
 		var _updateValuesFromFilterModel = function _updateValuesFromFilterModel() {
@@ -364,24 +365,36 @@
 			}
 		};
 
-		var _loadDropdownItems = function _loadDropdownItems(parentController, sortableColumns, column, targetEl) {
+		var _loadDropdownItems = function _loadDropdownItems(parentController, sortable, column, targetEl) {
 			vm.controller.items = [];
 			var checkPosition = function checkPosition() {
 				_checkRightPosition();
 				_checkBottomPosition(targetEl);
 			};
 
-			if (sortableColumns) {
+			if (sortable && column.sortable !== false) {
 				vm.controller.items.push({
 					name: 'mniSortAsc',
 					caption: 'Sort Ascending',
-					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAACkxOTE5SnM5KUJSY1Jje1prezFSlDFalDlalEprlEJrtUprtVJ7rVJzvVp7vVJzxlJ7xnuMpXOMtXOUvXuUtWOExnuU1oQxIYQ5KZQ5OYxCOZRCQpRKUpRSWpxjY5xja5xzc6Vze5xrhJx7lKV7hKWEnLWEnK2MpbWUrbWcrbWttZSlxpStxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAQABAAAAh+AP8JhCCwYMECBv9dWMAi4T8WACoYjOAggUMBAAIYZPDvQEKIAABMEPjAAYUEDQwakBCRgECOAj0mBFDQAoIW/xIcUDDToU+BNAuaIIGCBAgVPQuWEOhhg8OgBk9gWPHUYYcPPqEKHOE0q8EUHJD+E5FUoIYBIT5kCFH258+AADs='
+					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAACkxOTE5SnM5KUJSY1Jje1prezFSlDFalDlalEprlEJrtUprtVJ7rVJzvVp7vVJzxlJ7xnuMpXOMtXOUvXuUtWOExnuU1oQxIYQ5KZQ5OYxCOZRCQpRKUpRSWpxjY5xja5xzc6Vze5xrhJx7lKV7hKWEnLWEnK2MpbWUrbWcrbWttZSlxpStxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAQABAAAAh+AP8JhCCwYMECBv9dWMAi4T8WACoYjOAggUMBAAIYZPDvQEKIAABMEPjAAYUEDQwakBCRgECOAj0mBFDQAoIW/xIcUDDToU+BNAuaIIGCBAgVPQuWEOhhg8OgBk9gWPHUYYcPPqEKHOE0q8EUHJD+E5FUoIYBIT5kCFH258+AADs=',
+					click: function click() {
+						vm.close({
+							name: column.name,
+							direction: 'ASC'
+						}, false);
+					}
 				});
 
 				vm.controller.items.push({
 					name: 'mniSortDesc',
 					caption: 'Sort Descending',
-					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAAAD/ACkxOTE5SjFCczFKhDlKezlSe0JSY0JapUpajEpjpVJje1JrnFJzrVpre1pztWN7tWuMvXM5KXOMtXuMpXuUtYQxIYQ5KYxCOYycxpQ5OZRCOZRCQpRKUpRSWpSlxpStxpStzpxjY5xja5xrhJxzc5x7lJy11qVze6V7hKV7lKWEnK2Mpa3G57WEnLWUrbWcrbWttbXG572lrb3G1r3W98bG3s7O3s7e79be9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEAAAEALAAAAAAQABAAAAh/AAOwONHiBIkYARImBKAwgIqEHzI0XDgxwIsLMioynOhhRMUAGxWWkPgxZAAYHRAGSDHR5IYJJkZgMNHyo02TCheUrCghgQaNFR00MNDwQQUAFhA01EmgYQgAUCkohNCAgoEGDQcAELBUYVOFIJAqjFAARAADBBQ0ZGCzbcKAAAA7'
+					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAAAD/ACkxOTE5SjFCczFKhDlKezlSe0JSY0JapUpajEpjpVJje1JrnFJzrVpre1pztWN7tWuMvXM5KXOMtXuMpXuUtYQxIYQ5KYxCOYycxpQ5OZRCOZRCQpRKUpRSWpSlxpStxpStzpxjY5xja5xrhJxzc5x7lJy11qVze6V7hKV7lKWEnK2Mpa3G57WEnLWUrbWcrbWttbXG572lrb3G1r3W98bG3s7O3s7e79be9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEAAAEALAAAAAAQABAAAAh/AAOwONHiBIkYARImBKAwgIqEHzI0XDgxwIsLMioynOhhRMUAGxWWkPgxZAAYHRAGSDHR5IYJJkZgMNHyo02TCheUrCghgQaNFR00MNDwQQUAFhA01EmgYQgAUCkohNCAgoEGDQcAELBUYVOFIJAqjFAARAADBBQ0ZGCzbcKAAAA7',
+					click: function click() {
+						vm.close({
+							name: column.name,
+							direction: 'DESC'
+						}, false);
+					}
 				});
 			}
 
@@ -412,10 +425,11 @@
 			});
 		};
 
-		vm.open = function (parentController, sortableColumns, column, mousePoint, callbackFunction) {
+		vm.open = function (parentController, sortable, column, mousePoint, callbackFunction) {
 			vm.scope = parentController.scope;
 			vm.column = column;
 			vm.callbackFunction = callbackFunction;
+			vm.sortable = sortable;
 
 			var targetEl = $(event.target);
 			var mousePointOpen = mousePoint || {
@@ -435,14 +449,14 @@
 			bodyElm.append(vm.containerElm);
 			$compile(vm.containerElm)(vm.scope);
 
+			//
+			vm.containerElm.css('visibility', 'visible');
+
+			//
+			_loadDropdownItems(parentController, sortable, column, targetEl);
+
 			if (column.filter) {
 				$timeout(function () {
-					//
-					vm.containerElm.css('visibility', 'visible');
-
-					//
-					_loadDropdownItems(parentController, sortableColumns, column, targetEl);
-
 					//
 					_whenVisible(vm.containerElm, 'button').then(function (filterButton) {
 						filterButton.click(_execFilter);
@@ -608,15 +622,21 @@
 			return returnObj;
 		};
 
-		vm.close = function (execFilter) {
-			angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
-
-			if (vm.callbackFunction) {
-				vm.callbackFunction(vm.column, execFilter);
+		vm.close = function (execSortObj, execFilter) {
+			//
+			if (!execSortObj && vm.column.filter) {
+				//does any filter was changed? 
+				angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
 			}
 
+			//
 			vm.containerElm.remove();
 			$(document).off('mousedown', _documentMousedown);
+
+			if (vm.callbackFunction) {
+				//
+				vm.callbackFunction(vm.column, execSortObj, execFilter);
+			}
 		};
 
 		/*
@@ -3622,8 +3642,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				vm.options.api.loadData(vm.options.data);
 			} else if (vm.options.url && vm.options.autoLoad) {
 				vm.options.api.load();
-				_checkSize(vm);
 			}
+			_checkSize(vm, uiDeniGridUtilSrv);
 		});
 	}
 
@@ -3631,7 +3651,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   * 
   *
   */
-	function _checkSize(controller) {
+	function _checkSize(controller, uiDeniGridUtilSrv) {
 		controller.scope.$watch(function () {
 			return {
 				width: controller.element.width(),
@@ -3639,6 +3659,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			};
 		}, function (newValue, oldValue) {
 			if (newValue !== oldValue) {
+				uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
 				controller.options.api.repaint();
 			}
 		}, //listener 
@@ -4547,14 +4568,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							target.addClass('active clicked');
 
 							var mousePoint = getPositionDropDownMenuColumns(target.get(0));
-							var dropdownMenuCallbackFunctionFn = function dropdownMenuCallbackFunctionFn(column, execFilter) {
-								dropdownMenuCallbackFunction(controller, column, execFilter);
+							var dropdownMenuCallbackFunctionFn = function dropdownMenuCallbackFunctionFn(column, execSortObj, execFilter) {
+								dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);
 							};
-							uiDeniGridDropdownService.open(controller, controller.options.sortableColumns, column, mousePoint, dropdownMenuCallbackFunctionFn);
+							var sortable = controller.options.sortableColumns && column.sortable !== false;
+							uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);
 						} else {
 							if (controller.colsViewport.css('cursor') === 'default') {
 								//prevent conflict with the resizing columns function
-								if (controller.options.sortableColumns) {
+								if (controller.options.sortableColumns && column.sortable !== false) {
 									var headerContainerColumn = $(event.target.closest('.ui-header-container-column'));
 
 									//Action column should not be ordered
@@ -4577,11 +4599,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 		};
 
-		var dropdownMenuCallbackFunction = function dropdownMenuCallbackFunction(controller, column, execFilter) {
-			if (column.filter && execFilter) {
+		var dropdownMenuCallbackFunction = function dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter) {
+			controller.headerContainer.find('.ui-header-cell-dropdown').removeClass('active clicked');
+
+			if (execSortObj) {
+				controller.options.api.sort(execSortObj);
+			} else if (column.filter && execFilter) {
 				controller.options.api.filter(controller.scope.filterModel);
 			}
-			controller.headerContainer.find('.ui-header-cell-dropdown').removeClass('active clicked');
 		};
 
 		/**
@@ -5627,9 +5652,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			//
 			controller.renderedIndexes = [];
 
+			//
+			var filterModelKeys = Object.keys(controller.options.filter.model);
+
 			//Load the data
-			var remoteFilter = controller.options.filter && controller.options.filter.remote;
-			if (!remoteFilter) {
+			if (controller.options.filter && filterModelKeys.length > 0 && !controller.options.filter.remote) {
 				(function () {
 					var matchFilterFn = function matchFilterFn(originalValue, valueToFilter) {
 
@@ -5662,7 +5689,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						}
 					};
 					var columns = controller.options.columns;
-					var filterModelKeys = Object.keys(controller.options.filter.model);
 					controller.options.data = $filter('filter')(data, function (record, index, array) {
 						if (controller.options.filter.allFields) {
 							for (var colIndex = 0; colIndex < columns.length; colIndex++) {

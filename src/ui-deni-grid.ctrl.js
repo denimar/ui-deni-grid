@@ -200,8 +200,8 @@
 				vm.options.api.loadData(vm.options.data);
 			} else if ((vm.options.url) && (vm.options.autoLoad)) {
 				vm.options.api.load();
-				_checkSize(vm);
 			}
+			_checkSize(vm, uiDeniGridUtilSrv);			
 		});
 
 	}
@@ -210,7 +210,7 @@
 	 * 
 	 *
 	 */
-	function _checkSize(controller) {
+	function _checkSize(controller, uiDeniGridUtilSrv) {
 		controller.scope.$watch(
 		    function () { 
 		        return {
@@ -220,6 +220,7 @@
 		   },
 		   function (newValue, oldValue) {
 		   		if (newValue !== oldValue) {
+		   			uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
 		   			controller.options.api.repaint();
 		   		}	
 		   }, //listener 

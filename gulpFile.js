@@ -1,4 +1,5 @@
 process.env.DIST_FOLDER = './dist';
+process.env.RELOAD_PORT = 35730;
 
 //third-party modules
 var gulp = require('gulp');
@@ -12,16 +13,16 @@ var serve = require('./gulp/serve');
 var watch = require('./gulp/watch');
 
 //Taks which are part of the "dist" task
-gulp.task('sass', sass);	
-//gulp.task('html', html);	
-gulp.task('scripts', scripts);	
+gulp.task('sass', sass);
+//gulp.task('html', html);
+gulp.task('scripts', scripts);
 gulp.task('dist', dist);
 
 //Serve the application
-gulp.task('serve', serve);	
+gulp.task('serve', serve);
 
 //Watch for changes in: sass, html, scripts and images
-gulp.task('watch', watch);	
+gulp.task('watch', watch);
 
 // Default Task
 gulp.task('default', ['dist', 'serve', 'watch']);

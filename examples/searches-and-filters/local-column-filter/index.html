@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../../../dist/ui-deni-grid.min.css">
+</head>
+
+<style>
+
+	body {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+
+	.div-container {
+		width: 600px;
+		height: 400px;
+	}
+
+	#deniGrid {
+		height: 100%;
+		width: 100%;
+		position: relative;
+	}
+
+</style>
+
+<body ng-app="myApp">
+
+	<section ng-controller="ExampleCtrl as ctrl">
+		<div class="div-container">
+			<ui-deni-grid id="deniGrid" options="gridOptions"></ui-deni-grid>
+		</div>
+	</section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+
+	<script src="../../../dist/ui-deni-grid.js"></script>
+
+	<script src="script.js"></script>
+</body>
+</html>

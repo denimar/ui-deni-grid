@@ -12,6 +12,7 @@
 		vm.scope = null;
 		vm.controller = null;
 		vm.callbackFunction = null;
+		vm.sortable = false;
 		vm.containerElm = null; //element itself
 		vm.column = null; //column inside which is going to put the dropdown menu
 
@@ -26,12 +27,12 @@
 
 			//
 			if (container.length === 0) {
-				vm.close(false);
+				vm.close(null, false);
 			}
 		};
 
 		var _execFilter = function() {
-			vm.close(true);
+			vm.close(null, true);
 		};
 
 		var _updateValuesFromFilterModel = function() {
@@ -221,26 +222,38 @@
 			}
 		};
 
-		let _loadDropdownItems = function(parentController, sortableColumns, column, targetEl)  {
+		let _loadDropdownItems = function(parentController, sortable, column, targetEl)  {
 			vm.controller.items = [];
 			let checkPosition = function() {
 				_checkRightPosition();
 				_checkBottomPosition(targetEl);			
 			};
 
-			if (sortableColumns) {
+			if (sortable && (column.sortable !== false)) {
 				vm.controller.items.push({
 					name: 'mniSortAsc',
 					caption: 'Sort Ascending',
-					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAACkxOTE5SnM5KUJSY1Jje1prezFSlDFalDlalEprlEJrtUprtVJ7rVJzvVp7vVJzxlJ7xnuMpXOMtXOUvXuUtWOExnuU1oQxIYQ5KZQ5OYxCOZRCQpRKUpRSWpxjY5xja5xzc6Vze5xrhJx7lKV7hKWEnLWEnK2MpbWUrbWcrbWttZSlxpStxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAQABAAAAh+AP8JhCCwYMECBv9dWMAi4T8WACoYjOAggUMBAAIYZPDvQEKIAABMEPjAAYUEDQwakBCRgECOAj0mBFDQAoIW/xIcUDDToU+BNAuaIIGCBAgVPQuWEOhhg8OgBk9gWPHUYYcPPqEKHOE0q8EUHJD+E5FUoIYBIT5kCFH258+AADs='
+					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAACkxOTE5SnM5KUJSY1Jje1prezFSlDFalDlalEprlEJrtUprtVJ7rVJzvVp7vVJzxlJ7xnuMpXOMtXOUvXuUtWOExnuU1oQxIYQ5KZQ5OYxCOZRCQpRKUpRSWpxjY5xja5xzc6Vze5xrhJx7lKV7hKWEnLWEnK2MpbWUrbWcrbWttZSlxpStxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAQABAAAAh+AP8JhCCwYMECBv9dWMAi4T8WACoYjOAggUMBAAIYZPDvQEKIAABMEPjAAYUEDQwakBCRgECOAj0mBFDQAoIW/xIcUDDToU+BNAuaIIGCBAgVPQuWEOhhg8OgBk9gWPHUYYcPPqEKHOE0q8EUHJD+E5FUoIYBIT5kCFH258+AADs=',
+					click: function() {
+						vm.close({
+							name: column.name,
+							direction: 'ASC'
+						}, false);
+					}					
 				});
 
 				vm.controller.items.push({
 					name: 'mniSortDesc',
 					caption: 'Sort Descending',
-					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAAAD/ACkxOTE5SjFCczFKhDlKezlSe0JSY0JapUpajEpjpVJje1JrnFJzrVpre1pztWN7tWuMvXM5KXOMtXuMpXuUtYQxIYQ5KYxCOYycxpQ5OZRCOZRCQpRKUpRSWpSlxpStxpStzpxjY5xja5xrhJxzc5x7lJy11qVze6V7hKV7lKWEnK2Mpa3G57WEnLWUrbWcrbWttbXG572lrb3G1r3W98bG3s7O3s7e79be9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEAAAEALAAAAAAQABAAAAh/AAOwONHiBIkYARImBKAwgIqEHzI0XDgxwIsLMioynOhhRMUAGxWWkPgxZAAYHRAGSDHR5IYJJkZgMNHyo02TCheUrCghgQaNFR00MNDwQQUAFhA01EmgYQgAUCkohNCAgoEGDQcAELBUYVOFIJAqjFAARAADBBQ0ZGCzbcKAAAA7'
+					icon: 'data:image/gif;base64,R0lGODlhEAAQAPcAAAAAAAD/ACkxOTE5SjFCczFKhDlKezlSe0JSY0JapUpajEpjpVJje1JrnFJzrVpre1pztWN7tWuMvXM5KXOMtXuMpXuUtYQxIYQ5KYxCOYycxpQ5OZRCOZRCQpRKUpRSWpSlxpStxpStzpxjY5xja5xrhJxzc5x7lJy11qVze6V7hKV7lKWEnK2Mpa3G57WEnLWUrbWcrbWttbXG572lrb3G1r3W98bG3s7O3s7e79be9////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEAAAEALAAAAAAQABAAAAh/AAOwONHiBIkYARImBKAwgIqEHzI0XDgxwIsLMioynOhhRMUAGxWWkPgxZAAYHRAGSDHR5IYJJkZgMNHyo02TCheUrCghgQaNFR00MNDwQQUAFhA01EmgYQgAUCkohNCAgoEGDQcAELBUYVOFIJAqjFAARAADBBQ0ZGCzbcKAAAA7',
+					click: function() {
+						vm.close({
+							name: column.name,
+							direction: 'DESC'
+						}, false);
+					}					
 				});
-			}
+			}	
 
 			if (column.filter) {
 				_getTemplateFilterDropdownMenuItem(parentController, column.filter, column)
@@ -270,10 +283,11 @@
 			});	
 		};
 
-		vm.open = function(parentController, sortableColumns, column, mousePoint, callbackFunction) {
+		vm.open = function(parentController, sortable, column, mousePoint, callbackFunction) {
 			vm.scope = parentController.scope;
 			vm.column = column;
 			vm.callbackFunction = callbackFunction;
+			vm.sortable = sortable;
 
 			let targetEl = $(event.target);
 			let mousePointOpen = mousePoint || {
@@ -293,14 +307,14 @@
 			bodyElm.append(vm.containerElm);
 			$compile(vm.containerElm)(vm.scope);
 
+			//
+			vm.containerElm.css('visibility', 'visible');
+
+			//
+			_loadDropdownItems(parentController, sortable, column, targetEl);							
+
 			if (column.filter) {
 				$timeout(function() {
-					//
-					vm.containerElm.css('visibility', 'visible');
-
-					//
-					_loadDropdownItems(parentController, sortableColumns, column, targetEl);							
-
 					//
 					_whenVisible(vm.containerElm, 'button')
 						.then(function(filterButton) {
@@ -471,15 +485,21 @@
 			return returnObj;
 		};
 
-		vm.close = function(execFilter) {
-			angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
+		vm.close = function(execSortObj, execFilter) {
+			//
+			if ((!execSortObj) && (vm.column.filter)) {
+				//does any filter was changed? 
+				angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
+			}	
 
-			if (vm.callbackFunction) {
-				vm.callbackFunction(vm.column, execFilter);
-			}
-
+			//
 			vm.containerElm.remove();
 			$(document).off('mousedown', _documentMousedown);			
+
+			if (vm.callbackFunction) {
+				//
+				vm.callbackFunction(vm.column, execSortObj, execFilter);
+			}
 		};
 
 		/*

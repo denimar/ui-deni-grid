@@ -9,10 +9,10 @@ var path = require('path');
 function compileSass(sassFile, targetFileName) {
 
     gulp.src([
-    		'./src/ui-deni-grid.scss', 
+    		'./src/ui-deni-grid.scss',
     		'./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.scss',
     		'./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.scss',
-    		'./src/components/ui-deni-grid-dropdown-item/templates/filters/*.scss'    		
+    		'./src/components/ui-deni-grid-dropdown-item/templates/filters/*.scss'
     	])
     	.pipe(sass().on("error", function(error) {
 			var pos = error.file.lastIndexOf('/');
@@ -26,19 +26,19 @@ function compileSass(sassFile, targetFileName) {
 				icon: path.join(__dirname, 'error.png')
 			}).write({});
 		}))
-		
+
         .pipe(concat('ui-deni-grid.scss'))
-        .pipe(rename('ui-deni-grid.css'))        
-        .pipe(gulp.dest(process.env.DIST_FOLDER))        
+        .pipe(rename('ui-deni-grid.css'))
+        .pipe(gulp.dest(process.env.DIST_FOLDER))
         .pipe(sass({outputStyle: 'compressed'}))
-        .pipe(rename('ui-deni-grid.min.css'))        
+        .pipe(rename('ui-deni-grid.min.css'))
         .pipe(gulp.dest(process.env.DIST_FOLDER))
 		.pipe((notify({
 	        title: 'Sass successfully!',
 	        message: 'file: <%= file.relative %>',
 			icon: path.join(__dirname, 'successfully.png')
 		})))
-        .pipe(livereload());	
+        .pipe(livereload(process.env.RELOAD_PORT));	
 }
 
 module.exports = function() {

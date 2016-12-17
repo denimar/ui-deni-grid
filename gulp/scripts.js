@@ -19,34 +19,34 @@ module.exports = function() {
 		//////////////////////////////////////////////////////////////////////
 		// Files which are part of the project
 		// note: It was used "gulp-add-src" to put the files in order
-		//////////////////////////////////////////////////////////////////////  
+		//////////////////////////////////////////////////////////////////////
 
 		//dropdown item component
 		//.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown-item.module.js'))
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.service.js'))      		
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.controller.js'))      		
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.directive.js'))      				
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.service.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.controller.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.directive.js'))
 		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.run.js'))
 
 		//dropdown component
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.module.js'))      
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.service.js'))      		
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.controller.js'))  
-		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.run.js'))		
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.module.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.service.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.controller.js'))
+		.pipe(addsrc.append('./src/components/ui-deni-grid-dropdown/ui-deni-grid-dropdown.run.js'))
 
 		//ui-deni-grid itself
 		.pipe(addsrc.append('./src/ui-deni-grid.mdl.js'))
-		.pipe(addsrc.append('./src/ui-deni-grid.con.js'))      
-		.pipe(addsrc.append('./src/ui-deni-grid.js'))				
-		.pipe(addsrc.append('./src/ui-deni-grid-util.srv.js')) //Kind of Privates Methods, Variables, Constants...)    
+		.pipe(addsrc.append('./src/ui-deni-grid.con.js'))
+		.pipe(addsrc.append('./src/ui-deni-grid.js'))
+		.pipe(addsrc.append('./src/ui-deni-grid-util.srv.js')) //Kind of Privates Methods, Variables, Constants...)
 		.pipe(addsrc.append('./src/ui-deni-grid-events.service.js')) //All internal events are there
-		.pipe(addsrc.append('./src/ui-deni-grid.ctrl.js'))  
-		.pipe(addsrc.append('./src/ui-deni-grid.srv.js'))    
-		.pipe(addsrc.append('./src/ui-deni-grid.run.js'))      		
+		.pipe(addsrc.append('./src/ui-deni-grid.ctrl.js'))
+		.pipe(addsrc.append('./src/ui-deni-grid.srv.js'))
+		.pipe(addsrc.append('./src/ui-deni-grid.run.js'))
 		//////////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////////  
+		//////////////////////////////////////////////////////////////////////
 
-		//	
+		//
 		.pipe(jshint('.jshintrc'))
 
 		// Concatenate all files into a one
@@ -55,7 +55,7 @@ module.exports = function() {
 		//
 	    .pipe(notify(function (file) {
 			if (file.jshint.success) {
-	        	// Don't show something if success 
+	        	// Don't show something if success
 	        	return false;
 			}
 
@@ -67,17 +67,17 @@ module.exports = function() {
 
 
 			var pos = file.relative.lastIndexOf('\\');
-			var fileName = file.relative.substr(pos + 1);			
+			var fileName = file.relative.substr(pos + 1);
 
 			return {
 				title: fileName,
 				message: errors,
 		        sound: 'Frog',
 				icon: path.join(__dirname, 'error.png')
-			}	
-	    }))		
+			}
+	    }))
 
-		.pipe(babel())	    
+		.pipe(babel())
 
 		// Concatenate all files into a one
 		.pipe(concat(process.env.DIST_FOLDER + '/ui-deni-grid.js'))
@@ -98,7 +98,7 @@ module.exports = function() {
 				title: 'Scripts (Error)',
 		        sound: 'Frog',
 				icon: path.join(__dirname, 'error.png')
-			}	
+			}
 
 		}))) // notice the error event here
 
@@ -110,6 +110,6 @@ module.exports = function() {
 			icon: path.join(__dirname, 'successfully.png'),
 			sound: null
 		})))
-		.pipe(livereload());
+		.pipe(livereload(process.env.RELOAD_PORT));
 
 }
