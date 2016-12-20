@@ -37,89 +37,102 @@
 
 		var _updateValuesFromFilterModel = function() {
 			var fieldToFilter = vm.column.filter.field || vm.column.name;
+			vm.scope.filterModel = vm.scope.filterModel || {};
 			var fieldValue = vm.scope.filterModel[fieldToFilter];
-			
+
 			if (fieldValue) {
-				//integer
-				if (vm.column.filter.type === 'integer') {
-					let inputs = vm.containerElm.find('input[type=number]');
-					let inputLessThan = inputs.get(0);
-					let inputGreaterThan = inputs.get(1);
-					let inputEquals = inputs.get(2);
-					
-					angular.forEach(fieldValue, function(filterValueInt) {
-						if (filterValueInt.oper === '<=') {
-							inputLessThan.value = filterValueInt.key;	
-						} else if (filterValueInt.oper === '>=') {
-							inputGreaterThan.value = filterValueInt.key;	
-						} else if (filterValueInt.oper === '=') {
-							inputEquals.value = filterValueInt.key;	
-						}
-					});
+				if (vm.column.filter.renderer) {
+					//is there filter.setValuesInputs ?
+					if (!angular.isDefined(vm.column.filter.setValuesInputs)) {
+						throw new Error('When you define "filter.renderer" you must define "filter.setValuesInputs" as well.');
+					}
+					//is it a function ?
+					if (!angular.isFunction(vm.column.filter.setValuesInputs)) {
+						throw new Error('"filter.setValuesInputs" must be a function.');
+					}
+					vm.column.filter.setValuesInputs(vm.containerElm, vm.scope.filterModel);
 
-				//float
-				} else if (vm.column.filter.type === 'float') {
-					//TODO: missing implementation
-
-				//string	
-				} else if (vm.column.filter.type === 'string') {
-					let input = vm.containerElm.find('input[type=text]');
-					input.val(fieldValue.key);
-
-				//date	
-				} else if (vm.column.filter.type === 'date') {
-					//TODO: missing implementation
-
-				//date and time	
-				} else if (vm.column.filter.type === 'datetime') {
-					let inputs = vm.containerElm.find('input');
-					let inputLessThan = inputs.get(0);
-					let inputGreaterThan = inputs.get(1);
-					
-					angular.forEach(fieldValue, function(filterValueDatetime) {
-						//let dateObj = new Date(filterValueDatetime.key);
-						//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
-
-						if (filterValueDatetime.oper === '<=') {
-							inputLessThan.value = filterValueDatetime.key;	
-						} else if (filterValueDatetime.oper === '>=') {
-							inputGreaterThan.value = filterValueDatetime.key;	
-						}
-					});
-
-				//boolean	
-				} else if (vm.column.filter.type === 'boolean') {
-					//TODO: missing implementation
-
-				//select (radio)	
-				} else if (vm.column.filter.type === 'select') {
-
-						var radiobox = vm.containerElm.find('input[type=radio][value=' + fieldValue.key + ']');
-						if (radiobox.length > 0) {
-							radiobox.prop('checked', true);
-						}
-					
-				//multi select (checkbox)	
-				} else if (vm.column.filter.type === 'multiSelect') {
-					angular.forEach(fieldValue, function(valueToSet) {
-						var checkbox = vm.containerElm.find('input[type=checkbox][value=' + valueToSet.key + ']');
-						if (checkbox.length > 0) {
-							checkbox.prop('checked', true);
-						}
-					});
-
-					//
 				} else {
-					throw new Error('Filter type invalid!');
-				}	
+					//integer
+					if (vm.column.filter.type === 'integer') {
+						let inputs = vm.containerElm.find('input[type=number]');
+						let inputLessThan = inputs.get(0);
+						let inputGreaterThan = inputs.get(1);
+						let inputEquals = inputs.get(2);
 
+						angular.forEach(fieldValue, function(filterValueInt) {
+							if (filterValueInt.oper === '<=') {
+								inputLessThan.value = filterValueInt.key;
+							} else if (filterValueInt.oper === '>=') {
+								inputGreaterThan.value = filterValueInt.key;
+							} else if (filterValueInt.oper === '=') {
+								inputEquals.value = filterValueInt.key;
+							}
+						});
+
+					//float
+					} else if (vm.column.filter.type === 'float') {
+						//TODO: missing implementation
+
+					//string
+					} else if (vm.column.filter.type === 'string') {
+						let input = vm.containerElm.find('input[type=text]');
+						input.val(fieldValue.key);
+
+					//date
+					} else if (vm.column.filter.type === 'date') {
+						//TODO: missing implementation
+
+					//date and time
+					} else if (vm.column.filter.type === 'datetime') {
+						let inputs = vm.containerElm.find('input');
+						let inputLessThan = inputs.get(0);
+						let inputGreaterThan = inputs.get(1);
+
+						angular.forEach(fieldValue, function(filterValueDatetime) {
+							//let dateObj = new Date(filterValueDatetime.key);
+							//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
+
+							if (filterValueDatetime.oper === '<=') {
+								inputLessThan.value = filterValueDatetime.key;
+							} else if (filterValueDatetime.oper === '>=') {
+								inputGreaterThan.value = filterValueDatetime.key;
+							}
+						});
+
+					//boolean
+					} else if (vm.column.filter.type === 'boolean') {
+						//TODO: missing implementation
+
+					//select (radio)
+					} else if (vm.column.filter.type === 'select') {
+
+							var radiobox = vm.containerElm.find('input[type=radio][value=' + fieldValue.key + ']');
+							if (radiobox.length > 0) {
+								radiobox.prop('checked', true);
+							}
+
+					//multi select (checkbox)
+					} else if (vm.column.filter.type === 'multiSelect') {
+						angular.forEach(fieldValue, function(valueToSet) {
+							var checkbox = vm.containerElm.find('input[type=checkbox][value=' + valueToSet.key + ']');
+							if (checkbox.length > 0) {
+								checkbox.prop('checked', true);
+							}
+						});
+
+						//
+					} else {
+						throw new Error('Filter type invalid!');
+					}
+				}
 			}
 		};
 
 		var _whenVisible = function(element, selector) {
 			let deferred = $q.defer();
 			let numberOfAttempts = 0;
-			let maxAttempts = 10;			
+			let maxAttempts = 10;
 			let interval = 50;
 
 			let intervalPromise = $interval(function() {
@@ -153,7 +166,7 @@
 
 			let template = angular.element(html);
 			let linkFn = $compile(template);
-			let elem = linkFn(controller.scope); 
+			let elem = linkFn(controller.scope);
 
 			controller.scope.items = items;
 
@@ -162,9 +175,9 @@
 					deferred.resolve(elem.get(0).outerHTML);
 				});
 
-			return deferred.promise;			
-		};	
-	
+			return deferred.promise;
+		};
+
 
 		var _getTemplateFilterDropdownMenuItem = function(controller, filter, column) {
 			//integer
@@ -175,27 +188,27 @@
 			} else if (filter.type === 'float') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'float-filter.template.html');
 
-			//string	
+			//string
 			} else if (filter.type === 'string') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'string-filter.template.html');
 
-			//date	
+			//date
 			} else if (filter.type === 'date') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'date-filter.template.html');
 
-			//date and time	
+			//date and time
 			} else if (filter.type === 'datetime') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'datetime-filter.template.html');
 
-			//boolean	
+			//boolean
 			} else if (filter.type === 'boolean') {
 				//
 
-			//select (radio)	
+			//select (radio)
 			} else if (filter.type === 'select') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'select-filter.template.html', filter.items);
 
-			//multi select (checkbox)	
+			//multi select (checkbox)
 			} else if (filter.type === 'multiSelect') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'multiselect-filter.template.html', filter.items);
 			}
@@ -222,11 +235,11 @@
 			}
 		};
 
-		let _loadDropdownItems = function(parentController, sortable, column, targetEl)  {
+		let _loadDropdownItems = function(gridController, sortable, column, targetEl)  {
 			vm.controller.items = [];
 			let checkPosition = function() {
 				_checkRightPosition();
-				_checkBottomPosition(targetEl);			
+				_checkBottomPosition(targetEl);
 			};
 
 			if (sortable && (column.sortable !== false)) {
@@ -239,7 +252,7 @@
 							name: column.name,
 							direction: 'ASC'
 						}, false);
-					}					
+					}
 				});
 
 				vm.controller.items.push({
@@ -251,40 +264,55 @@
 							name: column.name,
 							direction: 'DESC'
 						}, false);
-					}					
+					}
 				});
-			}	
+			}
 
 			if (column.filter) {
-				_getTemplateFilterDropdownMenuItem(parentController, column.filter, column)
-					.then(function(templateHtml) {
+				let createMenuItemFilter = function(templateHtml) {
+					console.log(vm.scope.filterModel);
+
+					let itemFilterConfig = {
+						name: 'mniFilter',
+						caption: 'Filter',
+						column: column,
+						icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
+						separator: vm.controller.items.length > 0,
+						filter: column.filter,
+						filterModel: vm.scope.filterModel
+					};
+					if (templateHtml) {
+						itemFilterConfig.template = templateHtml;
+					}
+					vm.controller.items.push(itemFilterConfig);
+
+					$timeout(function() {
 						//
-						vm.controller.items.push({
-							name: 'mniFilter',
-							caption: 'Filter',
-							icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
-							separator: vm.controller.items.length > 0,
-							template: templateHtml
-						});
+						checkPosition();
 
-						$timeout(function() {
-							//
-							checkPosition();
-
-							//
-							_updateValuesFromFilterModel();
-						});	
+						//
+						_updateValuesFromFilterModel();
 					});
+				};
+
+				if (column.filter.renderer)	 {
+					createMenuItemFilter();
+				} else {
+					_getTemplateFilterDropdownMenuItem(gridController, column.filter, column)
+						.then(function(templateHtml) {
+							createMenuItemFilter(templateHtml);
+						});
+				}
 			}
 
 			$timeout(function() {
 				//
-				checkPosition();		
-			});	
+				checkPosition();
+			});
 		};
 
-		vm.open = function(parentController, sortable, column, mousePoint, callbackFunction) {
-			vm.scope = parentController.scope;
+		vm.open = function(gridController, sortable, column, mousePoint, callbackFunction) {
+			vm.scope = gridController.scope;
 			vm.column = column;
 			vm.callbackFunction = callbackFunction;
 			vm.sortable = sortable;
@@ -292,7 +320,7 @@
 			let targetEl = $(event.target);
 			let mousePointOpen = mousePoint || {
 				y: event.clientY,
-				x: event.clientX								
+				x: event.clientX
 			};
 			let html = $templateCache.get('ui-deni-grid-dropdown.view.html');
 			vm.containerElm = angular.element(html);
@@ -311,7 +339,7 @@
 			vm.containerElm.css('visibility', 'visible');
 
 			//
-			_loadDropdownItems(parentController, sortable, column, targetEl);							
+			_loadDropdownItems(gridController, sortable, column, targetEl);
 
 			if (column.filter) {
 				$timeout(function() {
@@ -321,7 +349,7 @@
 							filterButton.click(_execFilter);
 						});
 
-					let selector;	
+					let selector;
 					if ((column.filter.type === 'date') || (column.filter.type === 'datetime')) {
 						//
 						selector = 'input:first';
@@ -339,13 +367,13 @@
 								//
 								inputs.keydown(vm.inputsKeydown);
 							});
-					}		
+					}
 
 				});
-			}	
+			}
 
 			$(document).mousedown(_documentMousedown);
-		};	
+		};
 
 		var _getFilterModelChanged = function(filterModel) {
 			var value = {};
@@ -364,7 +392,7 @@
 						key: inputLessThan.valueAsNumber,
 						value: inputLessThan.valueAsNumber,
 						oper: '<='
-					});	
+					});
 				}
 
 				//>=
@@ -373,7 +401,7 @@
 						key: inputGreaterThan.valueAsNumber,
 						value: inputGreaterThan.valueAsNumber,
 						oper: '>='
-					});	
+					});
 				}
 
 				//=
@@ -382,7 +410,7 @@
 						key: inputEquals.valueAsNumber,
 						value: inputEquals.valueAsNumber,
 						oper: '='
-					});	
+					});
 				}
 
 
@@ -390,20 +418,20 @@
 			} else if (vm.column.filter.type === 'float') {
 				//TODO: missing implementation
 
-			//string	
+			//string
 			} else if (vm.column.filter.type === 'string') {
 				let input = vm.containerElm.find('input[type=text]');
 				value = {
 					key: input.val(),
 					value: input.val(),
 					oper: '~'
-				};	
+				};
 
-			//date	
+			//date
 			} else if (vm.column.filter.type === 'date') {
 				//TODO: missing implementation
 
-			//date and time	
+			//date and time
 			} else if (vm.column.filter.type === 'datetime') {
 				let inputs = vm.containerElm.find('input');
 				let inputLessThan = inputs.get(0);
@@ -416,7 +444,7 @@
 						key: inputLessThan.value,
 						value: inputLessThan.value,
 						oper: '<='
-					});	
+					});
 				}
 
 				//>=
@@ -425,14 +453,14 @@
 						key: inputGreaterThan.value,
 						value: inputGreaterThan.value,
 						oper: '>='
-					});	
+					});
 				}
 
-			//boolean	
+			//boolean
 			} else if (vm.column.filter.type === 'boolean') {
 				//TODO: missing implementation
 
-			//select (radio)	
+			//select (radio)
 			} else if (vm.column.filter.type === 'select') {
 				let selectRadioButton = vm.containerElm.find('input[type=radio]:checked');
 				value = {
@@ -442,7 +470,7 @@
 				};
 
 
-			//multi select (checkbox)	
+			//multi select (checkbox)
 			} else if (vm.column.filter.type === 'multiSelect') {
 				let checkboxes = vm.containerElm.find('input[type=checkbox]:checked');
 				value = [];
@@ -452,13 +480,13 @@
 						key: checkbox.value,
 						value: checkbox.nextElementSibling.innerText,
 						oper: '='
-					});	
+					});
 				});
 
 				//
 			} else {
 				throw new Error('Filter type invalid!');
-			}	
+			}
 
 			var returnObj = {};
 			var filterFieldName = vm.column.filter.field || vm.column.name;
@@ -480,26 +508,46 @@
 				if (keysFilter.indexOf(filterFieldName) !== -1) {
 					delete filterModel[filterFieldName];
 				}
-			}	
+			}
 
 			return returnObj;
 		};
 
 		vm.close = function(execSortObj, execFilter) {
+
 			//
 			if ((!execSortObj) && (vm.column.filter)) {
-				//does any filter was changed? 
-				angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
-			}	
+				let itemFilterModel;
+
+				//
+				if (vm.column.filter && vm.column.filter.renderer) {
+					//is there filter.getFilterModel ?
+					if (!angular.isDefined(vm.column.filter.getFilterModel)) {
+						throw new Error('When you define "filter.renderer" you must define "filter.getFilterModel" as well.');
+					}
+					//is it a function ?
+					if (!angular.isFunction(vm.column.filter.getFilterModel)) {
+						throw new Error('"filter.getFilterModel" must be a function.');
+					}
+					itemFilterModel = vm.column.filter.getFilterModel(vm.containerElm);
+				//
+				} else {
+					itemFilterModel = _getFilterModelChanged(vm.scope.filterModel)
+				}
+
+				//does any filter was changed?
+				angular.extend(vm.scope.filterModel, itemFilterModel);
+			}
 
 			//
 			vm.containerElm.remove();
-			$(document).off('mousedown', _documentMousedown);			
+			$(document).off('mousedown', _documentMousedown);
 
 			if (vm.callbackFunction) {
 				//
 				vm.callbackFunction(vm.column, execSortObj, execFilter);
 			}
+
 		};
 
 		/*
@@ -514,9 +562,9 @@
 				_execFilter();
 			}
 			event.stopPropagation();
-		};	
+		};
 
 	}
 
 
-})();		
+})();

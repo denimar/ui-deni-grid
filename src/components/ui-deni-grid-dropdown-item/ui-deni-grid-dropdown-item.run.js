@@ -24,7 +24,7 @@
 				'			</div>\n' +
 				'		</div>\n' +
 
-				'		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(ctrl.menuItem)">\n' +
+				'		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(this, ctrl.menuItem)">\n' +
 				'		</div>\n' +
 
 				'	</div>\n' +

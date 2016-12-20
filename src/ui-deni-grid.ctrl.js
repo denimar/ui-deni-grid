@@ -220,7 +220,8 @@
 		   },
 		   function (newValue, oldValue) {
 		   		if (newValue !== oldValue) {
-						if (controller.options.data) {
+						let isInvisible = ((controller.element.css('display') === 'none') || (controller.element.css('visibility') === 'hidden'));
+						if ((!isInvisible) && (controller.options.data)) {
 		   				uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
 		   				controller.options.api.repaint();
 						}

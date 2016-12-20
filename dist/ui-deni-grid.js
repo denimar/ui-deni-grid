@@ -18,13 +18,23 @@
 
 	angular.module('uiDeniGridDropdownItemModule').service('uiDeniGridDropdownItemService', uiDeniGridDropdownItemService);
 
+	uiDeniGridDropdownItemService.$inject = ['$sce'];
+
 	function uiDeniGridDropdownItemService($sce) {
 
 		var vm = this;
 
-		vm.rendererItem = function (item) {
-			var htmlItem = item.template || '<span class="ui-deni-grid-dropdown-item-caption-text">' + item.caption + '</span>';
-			return $sce.trustAsHtml(htmlItem);
+		vm.rendererItem = function (scope, item) {
+			if (item.filter && item.filter.renderer) {
+				if (scope.ctrl.elementItemCaption.children().length === 0) {
+					item.filter.renderer(scope.ctrl.elementItemCaption);
+					item.filter.setValuesInputs(scope.ctrl.elementItemCaption, item.filterModel);
+				}
+				return '';
+			} else {
+				var htmlItem = item.template || '<span class="ui-deni-grid-dropdown-item-caption-text">' + item.caption + '</span>';
+				return $sce.trustAsHtml(htmlItem);
+			}
 		};
 
 		vm.filterCheckboxChange = function (checkFilter) {
@@ -64,7 +74,11 @@
 			controller: 'uiDeniGridDropdownItemController',
 			controllerAs: 'ctrl',
 			//templateUrl: './src/components/ui-deni-grid-dropdown-item/ui-deni-grid-dropdown-item.view.html'
-			template: $templateCache.get('ui-deni-grid-dropdown-item.view.html')
+			template: $templateCache.get('ui-deni-grid-dropdown-item.view.html'),
+			link: function link(scope, element, attrs) {
+				scope.ctrl.element = element;
+				scope.ctrl.elementItemCaption = element.find('.ui-deni-grid-dropdown-item-caption');
+			}
 		};
 	}
 })();
@@ -81,7 +95,7 @@
          * Directive's template
          *
          */
-								$templateCache.put('ui-deni-grid-dropdown-item.view.html', '<div class="ui-deni-grid-dropdown-item-container unselectable" ng-class="{\'separator\' : ctrl.menuItem.separator}" ng-click="ctrl.menuItem.click()">\n' + '	<div class="ui-deni-grid-dropdown-item-inner" >\n' + '		<div class="ui-deni-grid-dropdown-item-center-container">\n' + '			<div class="ui-deni-grid-dropdown-item-center-inner">\n' + '				<div class="ui-deni-grid-dropdown-item-center-image-checkbox">	\n' + '				<img src="{{ctrl.menuItem.icon}}">\n' + '				</div>\n' + '			</div>\n' + '		</div>\n' + '		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(ctrl.menuItem)">\n' + '		</div>\n' + '	</div>\n' + '</div>');
+								$templateCache.put('ui-deni-grid-dropdown-item.view.html', '<div class="ui-deni-grid-dropdown-item-container unselectable" ng-class="{\'separator\' : ctrl.menuItem.separator}" ng-click="ctrl.menuItem.click()">\n' + '	<div class="ui-deni-grid-dropdown-item-inner" >\n' + '		<div class="ui-deni-grid-dropdown-item-center-container">\n' + '			<div class="ui-deni-grid-dropdown-item-center-inner">\n' + '				<div class="ui-deni-grid-dropdown-item-center-image-checkbox">	\n' + '				<img src="{{ctrl.menuItem.icon}}">\n' + '				</div>\n' + '			</div>\n' + '		</div>\n' + '		<div class="ui-deni-grid-dropdown-item-caption" ng-bind-html="ctrl.rendererItem(this, ctrl.menuItem)">\n' + '		</div>\n' + '	</div>\n' + '</div>');
 
 								/**
          * template: date-filter.template.html
@@ -180,84 +194,97 @@
 
 		var _updateValuesFromFilterModel = function _updateValuesFromFilterModel() {
 			var fieldToFilter = vm.column.filter.field || vm.column.name;
+			vm.scope.filterModel = vm.scope.filterModel || {};
 			var fieldValue = vm.scope.filterModel[fieldToFilter];
 
 			if (fieldValue) {
-				//integer
-				if (vm.column.filter.type === 'integer') {
-					(function () {
-						var inputs = vm.containerElm.find('input[type=number]');
-						var inputLessThan = inputs.get(0);
-						var inputGreaterThan = inputs.get(1);
-						var inputEquals = inputs.get(2);
-
-						angular.forEach(fieldValue, function (filterValueInt) {
-							if (filterValueInt.oper === '<=') {
-								inputLessThan.value = filterValueInt.key;
-							} else if (filterValueInt.oper === '>=') {
-								inputGreaterThan.value = filterValueInt.key;
-							} else if (filterValueInt.oper === '=') {
-								inputEquals.value = filterValueInt.key;
-							}
-						});
-
-						//float
-					})();
-				} else if (vm.column.filter.type === 'float') {
-					//TODO: missing implementation
-
-					//string	
-				} else if (vm.column.filter.type === 'string') {
-					var input = vm.containerElm.find('input[type=text]');
-					input.val(fieldValue.key);
-
-					//date	
-				} else if (vm.column.filter.type === 'date') {
-					//TODO: missing implementation
-
-					//date and time	
-				} else if (vm.column.filter.type === 'datetime') {
-					(function () {
-						var inputs = vm.containerElm.find('input');
-						var inputLessThan = inputs.get(0);
-						var inputGreaterThan = inputs.get(1);
-
-						angular.forEach(fieldValue, function (filterValueDatetime) {
-							//let dateObj = new Date(filterValueDatetime.key);
-							//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
-
-							if (filterValueDatetime.oper === '<=') {
-								inputLessThan.value = filterValueDatetime.key;
-							} else if (filterValueDatetime.oper === '>=') {
-								inputGreaterThan.value = filterValueDatetime.key;
-							}
-						});
-
-						//boolean	
-					})();
-				} else if (vm.column.filter.type === 'boolean') {
-					//TODO: missing implementation
-
-					//select (radio)	
-				} else if (vm.column.filter.type === 'select') {
-
-					var radiobox = vm.containerElm.find('input[type=radio][value=' + fieldValue.key + ']');
-					if (radiobox.length > 0) {
-						radiobox.prop('checked', true);
+				if (vm.column.filter.renderer) {
+					//is there filter.setValuesInputs ?
+					if (!angular.isDefined(vm.column.filter.setValuesInputs)) {
+						throw new Error('When you define "filter.renderer" you must define "filter.setValuesInputs" as well.');
 					}
-
-					//multi select (checkbox)	
-				} else if (vm.column.filter.type === 'multiSelect') {
-					angular.forEach(fieldValue, function (valueToSet) {
-						var checkbox = vm.containerElm.find('input[type=checkbox][value=' + valueToSet.key + ']');
-						if (checkbox.length > 0) {
-							checkbox.prop('checked', true);
-						}
-					});
-
-					//
+					//is it a function ?
+					if (!angular.isFunction(vm.column.filter.setValuesInputs)) {
+						throw new Error('"filter.setValuesInputs" must be a function.');
+					}
+					vm.column.filter.setValuesInputs(vm.containerElm, vm.scope.filterModel);
 				} else {
-					throw new Error('Filter type invalid!');
+					//integer
+					if (vm.column.filter.type === 'integer') {
+						(function () {
+							var inputs = vm.containerElm.find('input[type=number]');
+							var inputLessThan = inputs.get(0);
+							var inputGreaterThan = inputs.get(1);
+							var inputEquals = inputs.get(2);
+
+							angular.forEach(fieldValue, function (filterValueInt) {
+								if (filterValueInt.oper === '<=') {
+									inputLessThan.value = filterValueInt.key;
+								} else if (filterValueInt.oper === '>=') {
+									inputGreaterThan.value = filterValueInt.key;
+								} else if (filterValueInt.oper === '=') {
+									inputEquals.value = filterValueInt.key;
+								}
+							});
+
+							//float
+						})();
+					} else if (vm.column.filter.type === 'float') {
+						//TODO: missing implementation
+
+						//string
+					} else if (vm.column.filter.type === 'string') {
+						var input = vm.containerElm.find('input[type=text]');
+						input.val(fieldValue.key);
+
+						//date
+					} else if (vm.column.filter.type === 'date') {
+						//TODO: missing implementation
+
+						//date and time
+					} else if (vm.column.filter.type === 'datetime') {
+						(function () {
+							var inputs = vm.containerElm.find('input');
+							var inputLessThan = inputs.get(0);
+							var inputGreaterThan = inputs.get(1);
+
+							angular.forEach(fieldValue, function (filterValueDatetime) {
+								//let dateObj = new Date(filterValueDatetime.key);
+								//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
+
+								if (filterValueDatetime.oper === '<=') {
+									inputLessThan.value = filterValueDatetime.key;
+								} else if (filterValueDatetime.oper === '>=') {
+									inputGreaterThan.value = filterValueDatetime.key;
+								}
+							});
+
+							//boolean
+						})();
+					} else if (vm.column.filter.type === 'boolean') {
+						//TODO: missing implementation
+
+						//select (radio)
+					} else if (vm.column.filter.type === 'select') {
+
+						var radiobox = vm.containerElm.find('input[type=radio][value=' + fieldValue.key + ']');
+						if (radiobox.length > 0) {
+							radiobox.prop('checked', true);
+						}
+
+						//multi select (checkbox)
+					} else if (vm.column.filter.type === 'multiSelect') {
+						angular.forEach(fieldValue, function (valueToSet) {
+							var checkbox = vm.containerElm.find('input[type=checkbox][value=' + valueToSet.key + ']');
+							if (checkbox.length > 0) {
+								checkbox.prop('checked', true);
+							}
+						});
+
+						//
+					} else {
+						throw new Error('Filter type invalid!');
+					}
 				}
 			}
 		};
@@ -318,27 +345,27 @@
 			} else if (filter.type === 'float') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'float-filter.template.html');
 
-				//string	
+				//string
 			} else if (filter.type === 'string') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'string-filter.template.html');
 
-				//date	
+				//date
 			} else if (filter.type === 'date') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'date-filter.template.html');
 
-				//date and time	
+				//date and time
 			} else if (filter.type === 'datetime') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'datetime-filter.template.html');
 
-				//boolean	
+				//boolean
 			} else if (filter.type === 'boolean') {
 				//
 
-				//select (radio)	
+				//select (radio)
 			} else if (filter.type === 'select') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'select-filter.template.html', filter.items);
 
-				//multi select (checkbox)	
+				//multi select (checkbox)
 			} else if (filter.type === 'multiSelect') {
 				return _getTemplateFilterDropdownMenuItemByFileName(controller, 'multiselect-filter.template.html', filter.items);
 			}
@@ -365,7 +392,7 @@
 			}
 		};
 
-		var _loadDropdownItems = function _loadDropdownItems(parentController, sortable, column, targetEl) {
+		var _loadDropdownItems = function _loadDropdownItems(gridController, sortable, column, targetEl) {
 			vm.controller.items = [];
 			var checkPosition = function checkPosition() {
 				_checkRightPosition();
@@ -399,24 +426,41 @@
 			}
 
 			if (column.filter) {
-				_getTemplateFilterDropdownMenuItem(parentController, column.filter, column).then(function (templateHtml) {
-					//
-					vm.controller.items.push({
-						name: 'mniFilter',
-						caption: 'Filter',
-						icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
-						separator: vm.controller.items.length > 0,
-						template: templateHtml
-					});
+				(function () {
+					var createMenuItemFilter = function createMenuItemFilter(templateHtml) {
+						console.log(vm.scope.filterModel);
 
-					$timeout(function () {
-						//
-						checkPosition();
+						var itemFilterConfig = {
+							name: 'mniFilter',
+							caption: 'Filter',
+							column: column,
+							icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
+							separator: vm.controller.items.length > 0,
+							filter: column.filter,
+							filterModel: vm.scope.filterModel
+						};
+						if (templateHtml) {
+							itemFilterConfig.template = templateHtml;
+						}
+						vm.controller.items.push(itemFilterConfig);
 
-						//
-						_updateValuesFromFilterModel();
-					});
-				});
+						$timeout(function () {
+							//
+							checkPosition();
+
+							//
+							_updateValuesFromFilterModel();
+						});
+					};
+
+					if (column.filter.renderer) {
+						createMenuItemFilter();
+					} else {
+						_getTemplateFilterDropdownMenuItem(gridController, column.filter, column).then(function (templateHtml) {
+							createMenuItemFilter(templateHtml);
+						});
+					}
+				})();
 			}
 
 			$timeout(function () {
@@ -425,8 +469,8 @@
 			});
 		};
 
-		vm.open = function (parentController, sortable, column, mousePoint, callbackFunction) {
-			vm.scope = parentController.scope;
+		vm.open = function (gridController, sortable, column, mousePoint, callbackFunction) {
+			vm.scope = gridController.scope;
 			vm.column = column;
 			vm.callbackFunction = callbackFunction;
 			vm.sortable = sortable;
@@ -453,7 +497,7 @@
 			vm.containerElm.css('visibility', 'visible');
 
 			//
-			_loadDropdownItems(parentController, sortable, column, targetEl);
+			_loadDropdownItems(gridController, sortable, column, targetEl);
 
 			if (column.filter) {
 				$timeout(function () {
@@ -528,7 +572,7 @@
 			} else if (vm.column.filter.type === 'float') {
 				//TODO: missing implementation
 
-				//string	
+				//string
 			} else if (vm.column.filter.type === 'string') {
 				var input = vm.containerElm.find('input[type=text]');
 				value = {
@@ -537,11 +581,11 @@
 					oper: '~'
 				};
 
-				//date	
+				//date
 			} else if (vm.column.filter.type === 'date') {
 				//TODO: missing implementation
 
-				//date and time	
+				//date and time
 			} else if (vm.column.filter.type === 'datetime') {
 				var _inputs = vm.containerElm.find('input');
 				var _inputLessThan = _inputs.get(0);
@@ -566,11 +610,11 @@
 					});
 				}
 
-				//boolean	
+				//boolean
 			} else if (vm.column.filter.type === 'boolean') {
 				//TODO: missing implementation
 
-				//select (radio)	
+				//select (radio)
 			} else if (vm.column.filter.type === 'select') {
 				var selectRadioButton = vm.containerElm.find('input[type=radio]:checked');
 				value = {
@@ -579,7 +623,7 @@
 					oper: '='
 				};
 
-				//multi select (checkbox)	
+				//multi select (checkbox)
 			} else if (vm.column.filter.type === 'multiSelect') {
 				var checkboxes = vm.containerElm.find('input[type=checkbox]:checked');
 				value = [];
@@ -623,10 +667,29 @@
 		};
 
 		vm.close = function (execSortObj, execFilter) {
+
 			//
 			if (!execSortObj && vm.column.filter) {
-				//does any filter was changed? 
-				angular.extend(vm.scope.filterModel, _getFilterModelChanged(vm.scope.filterModel));
+				var itemFilterModel = void 0;
+
+				//
+				if (vm.column.filter && vm.column.filter.renderer) {
+					//is there filter.getFilterModel ?
+					if (!angular.isDefined(vm.column.filter.getFilterModel)) {
+						throw new Error('When you define "filter.renderer" you must define "filter.getFilterModel" as well.');
+					}
+					//is it a function ?
+					if (!angular.isFunction(vm.column.filter.getFilterModel)) {
+						throw new Error('"filter.getFilterModel" must be a function.');
+					}
+					itemFilterModel = vm.column.filter.getFilterModel(vm.containerElm);
+					//
+				} else {
+					itemFilterModel = _getFilterModelChanged(vm.scope.filterModel);
+				}
+
+				//does any filter was changed?
+				angular.extend(vm.scope.filterModel, itemFilterModel);
 			}
 
 			//
@@ -3659,7 +3722,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			};
 		}, function (newValue, oldValue) {
 			if (newValue !== oldValue) {
-				if (controller.options.data) {
+				var isInvisible = controller.element.css('display') === 'none' || controller.element.css('visibility') === 'hidden';
+				if (!isInvisible && controller.options.data) {
 					uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
 					controller.options.api.repaint();
 				}
@@ -4143,7 +4207,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			//
 			if (anyColumnInPercentage) {
-				controller.headerViewport.css('width', 'calc(100% - 17px)');
+				//controller.headerViewport.css('width', 'calc(100% - 17px)');
+				var scrollbarWidth = controller.bodyViewport.get(0).offsetWidth - controller.bodyViewport.get(0).scrollWidth;
+				controller.headerViewport.css('width', 'calc(100% - ' + scrollbarWidth + 'px)');
 				controller.headerContainer.css('width', '100%');
 			}
 

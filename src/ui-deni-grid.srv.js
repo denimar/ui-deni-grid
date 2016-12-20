@@ -104,7 +104,9 @@
 
 			//
 			if (anyColumnInPercentage) {
-				controller.headerViewport.css('width', 'calc(100% - 17px)');
+				//controller.headerViewport.css('width', 'calc(100% - 17px)');
+				let scrollbarWidth = controller.bodyViewport.get(0).offsetWidth - controller.bodyViewport.get(0).scrollWidth;
+				controller.headerViewport.css('width', 'calc(100% - ' + scrollbarWidth + 'px)');
 				controller.headerContainer.css('width', '100%');
 			}
 
