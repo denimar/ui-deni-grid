@@ -1,4 +1,5 @@
 .index {
+	$link-color: #308bb5;
 	$screen-width: 960px;
 	$aside-width: 200px;
 	overflow-y: hidden;
@@ -12,7 +13,7 @@
 	formatLink: {
 		color: white;
 	}
-	
+
 
 	header {
 	    display: block;
@@ -72,15 +73,15 @@
 						span {
 							margin-right: 5px;
 						}
-					}		
+					}
 
-				}	
+				}
 
 				.auxiliar-buttons {
 				}
 			}
 
-			.header-github-image { 
+			.header-github-image {
 				width: $aside-width;
 
 				div.github-button {
@@ -96,14 +97,14 @@
 						span {
 							margin-right: 5px;
 						}
-					}		
+					}
 
-				}	
+				}
 
 
 			}
 		}
-	}	
+	}
 
 	.content-wrapper {
 
@@ -116,16 +117,16 @@
 				&::-webkit-scrollbar {
 				    width: 8px;
 				}
-				 
+
 				&::-webkit-scrollbar-track {
-				    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+				    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
 				    border-radius: 5px;
 				}
-				 
+
 				&::-webkit-scrollbar-thumb {
 				    border-radius: 5px;
-				    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2); 
-				}			    
+				    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+				}
 
 				.content-text {
 					color: #666666;
@@ -142,13 +143,17 @@
 							padding-right: 0.3em;
 						    margin-left: -2em;
 						    content: "///";
-						    color: #9ddcff;						
+						    color: #9ddcff;
 						}
 					}
 
 					a {
 						text-decoration: none;
-						color: #1F5A75;
+						color: $link-color;
+
+						&:hover {
+							color: lighten($link-color, 20%);
+						}
 					}
 				}
 			}
@@ -157,7 +162,7 @@
 				width: $aside-width;
 				background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
 				padding-top: 20px;
-				padding-left: 15px;	
+				padding-left: 15px;
 
 				.button-zip-tar {
 					color: #1C5169;
@@ -165,16 +170,16 @@
 					margin-left: 0px;
 					border: solid 1px #c3e1ef;
 					margin-bottom: 5px;
-					padding: 4px 20px; 
+					padding: 4px 20px;
 					border-radius: 4px;
 
-					span:first-child {	
+					span:first-child {
 						font-size: 10px;
 					}
 				}
 
 				a {
-					text-decoration: none;				
+					text-decoration: none;
 				}
 
 				.avatar {
@@ -193,7 +198,7 @@
 		margin: 10px 0px 0px 0px;
 		border: solid 1px #9ddcff;
 		font-size: 14px;
-		padding: 8px; 
+		padding: 8px;
 		background-color: #f0f3f4;
 		color: gray;
 		font-family: tahoma;
@@ -206,4 +211,4 @@
 		display: inline-block;
 	}
 
-}	
+}
