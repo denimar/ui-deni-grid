@@ -11,7 +11,6 @@ if (process.env.TRAVIS) {
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['./test/**/*.spec.js'],
-
   /*
   files: [
     './bower_components/angular/angular.js',
