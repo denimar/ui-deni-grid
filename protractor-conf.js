@@ -11,6 +11,7 @@ if (process.env.TRAVIS) {
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['./test/**/*.spec.js'],
+
   /*
   files: [
     './bower_components/angular/angular.js',
@@ -32,21 +33,20 @@ exports.config = {
   */
   // restartBrowserBetweenTests: true,
 
+  /*
   onPrepare: function(){
       var caps = browser.getCapabilities()
   },
 
   multiCapabilities: [
-    /*
-    {
-      browserName: 'firefox',
-      version: '32',
-      platform: 'OS X 10.10',
-      name: "firefox-tests",
-      shardTestFiles: true,
-      maxInstances: 25
-    },
-    */
+    // {
+    //   browserName: 'firefox',
+    //   version: '32',
+    //   platform: 'OS X 10.10',
+    //   name: "firefox-tests",
+    //   shardTestFiles: true,
+    //   maxInstances: 25
+    // },
     {
       browserName: 'chrome',
       version: '41',
@@ -66,5 +66,6 @@ exports.config = {
     }
     printSessionId("Insert Job Name Here");
   }
+  */
 
 };
