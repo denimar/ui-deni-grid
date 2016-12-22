@@ -1,4 +1,17 @@
 if (process.env.TRAVIS) {
+
+console.log('----------------------------');
+process.env.SAUCE_USERNAME
+console.log('----------------------------');
+console.log('----------------------------');
+process.env.SAUCE_ACCESS_KEY
+console.log('----------------------------');
+console.log('----------------------------');
+process.env.TRAVIS_JOB_NUMBER
+console.log('----------------------------');
+process.env.TRAVIS_BUILD_NUMBER
+console.log('----------------------------');
+  
   config.sauceUser = process.env.SAUCE_USERNAME;
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
   config.capabilities = {
