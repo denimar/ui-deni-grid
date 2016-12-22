@@ -1,12 +1,13 @@
 language: node_js
 node_js:
     - "0.10"
-script: node_modules/karma/bin/karma start karma.conf.js --single-run
+script: protractor protracto-conf.js
 before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
 env:
   global:
   - SAUCE_USERNAME=denimar
+  - secure=dm90460
 before_script:
     - npm install
