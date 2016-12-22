@@ -61,6 +61,11 @@ var config = {
 
 if (process.env.TRAVIS) {
 
+  process.env.SAUCE_USERNAME='denimar';
+  process.env.SAUCE_ACCESS_KEY='6bda91d2-ca2c-4ea0-bf43-4c2a891118f9';
+  process.env.TRAVIS_JOB_NUMBER='654';
+  process.env.TRAVIS_BUILD_NUMBER='12';
+
   console.log('----------------------------');
   process.env.SAUCE_USERNAME
   console.log('----------------------------');
