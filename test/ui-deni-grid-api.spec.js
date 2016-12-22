@@ -16,7 +16,7 @@ describe('ui-deni-grid API', function() {
         expect(json.id).toEqual(4);
         expect(json.eyeColor).toEqual('brown');
         expect(json.name).toEqual('Reba Dickinson');
-        expect(json.gender).toEqual('female');
+        //expect(json.gender).toEqual('female');
         //expect(json.age).toEqual(28);
       });
   });
