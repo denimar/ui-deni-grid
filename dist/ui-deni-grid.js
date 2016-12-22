@@ -766,7 +766,7 @@
 
 			'use strict';
 
-			angular.module('ui-deni-grid').constant('uiDeniGridConstants', {
+			angular.module('ui-deni-grid').constant('uiDeniGridConstant', {
 						//
 						FIXED_COL_INDICATOR_WIDTH: '25px',
 
@@ -809,7 +809,7 @@
 
 	angular.module('ui-deni-grid').directive('uiDeniGrid', uiDeniGrid);
 
-	function uiDeniGrid($templateCache, uiDeniGridSrv) {
+	function uiDeniGrid($templateCache, uiDeniGridService) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -818,7 +818,7 @@
 			replace: false,
 			bindToController: true,
 			controllerAs: 'ctrl',
-			controller: 'uiDeniGridCtrl',
+			controller: 'uiDeniGridController',
 			template: $templateCache.get('ui-deni-grid')
 		};
 	}
@@ -834,9 +834,9 @@
   *
   */
 
-	angular.module('ui-deni-grid').service('uiDeniGridUtilSrv', uiDeniGridUtilSrv);
+	angular.module('ui-deni-grid').service('uiDeniGridHelperService', uiDeniGridHelperService);
 
-	function uiDeniGridUtilSrv($filter, uiDeniGridConstants) {
+	function uiDeniGridHelperService($filter, uiDeniGridConstant) {
 
 		var me = this;
 
@@ -848,7 +848,7 @@
    *		-int or integer: Trunc a float number to show only its integer value.
    *		-float: Like currency, but without dollar sign
   	 *		-lowercase: Format a string to lower case.
-  	 *		-uppercase: Format a string to upper case.		
+  	 *		-uppercase: Format a string to upper case.
    */
 		me.getFormatedValue = function (value, format) {
 			var lowerFormat = format.toLowerCase();
@@ -880,7 +880,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.setInputEditorDivCell = function (controller, record, column, divCellElement) {
@@ -984,7 +984,7 @@
 					var rowElement = divCellElementKeyDown.closest('.ui-row');
 
 					//
-					controller.options.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
+					controller.element.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
 
 					//not confirmed
 				} else {
@@ -1029,7 +1029,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.getRealColumnWidth = function (controller, colWidth, clientWidthParent) {
@@ -1064,7 +1064,7 @@
 			}
 		};
 
-		/**	
+		/**
    *
    *
    */
@@ -1079,7 +1079,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.adjustColumnWidtsAccordingColumnHeader = function (controller, headerContainerColumn, colIndex) {
@@ -1093,7 +1093,7 @@
 			//
 			var newWidth = headerContainerColumn.css('width');
 			if (headerContainerColumn.is('.ui-header-container-column.last-subcolumn')) {
-				//plus border width 
+				//plus border width
 				newWidth = 'calc(' + newWidth + ' + 2px)';
 			}
 			bodyContainer.find('.ui-cell[colIndex=' + colIndex + ']').css('width', newWidth);
@@ -1108,7 +1108,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.adjustAllColumnWidtsAccordingColumnHeader = function (controller) {
@@ -1147,7 +1147,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.setDefaultOptions = function (controller) {
@@ -1156,14 +1156,14 @@
 
 			/**
     *
-    * 
+    *
     *
     */
 			opt.api = {};
 
 			/**
     *
-    * 
+    *
     *
     */
 			opt.listeners = {};
@@ -1171,7 +1171,7 @@
 			/**
     *
     * 'cell' or 'row' (default = 'row')
-    * 
+    *
     *
     */
 			opt.selType = 'row';
@@ -1179,7 +1179,7 @@
 			/**
     *
     * (default = true)
-    * 
+    *
     *
     */
 			opt.colLines = true;
@@ -1187,7 +1187,7 @@
 			/**
     *
     * (default = true)
-    * 
+    *
     *
     */
 			opt.rowLines = true;
@@ -1202,19 +1202,19 @@
     * @opt {String} [columnHeaderHeight='25px']
     *
     */
-			opt.columnHeaderHeight = uiDeniGridConstants.DEFAULT_COLUMN_HEADER_HEIGHT;
+			opt.columnHeaderHeight = uiDeniGridConstant.DEFAULT_COLUMN_HEADER_HEIGHT;
 
 			/**
     * @opt {String} [columnFooterRowHeight='22px']
     *
     */
-			opt.columnFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_ROW_FOOTER_HEIGHT;
+			opt.columnFooterRowHeight = uiDeniGridConstant.DEFAULT_COLUMN_ROW_FOOTER_HEIGHT;
 
 			/**
     * @opt {String} [columnGroupingFooterRowHeight='18px']
     *
     */
-			opt.columnGroupingFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
+			opt.columnGroupingFooterRowHeight = uiDeniGridConstant.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
 
 			/**
     * @opt {Boolean} [enableGrouping=true]
@@ -1232,7 +1232,7 @@
     * @opt {Object}
     *
     */
-			opt.filter = uiDeniGridConstants.DEFAULT_FILTER_OPTIONS;
+			opt.filter = uiDeniGridConstant.DEFAULT_FILTER_OPTIONS;
 
 			/**
     * @opt {Boolean} [hideHeader=false]
@@ -1244,7 +1244,7 @@
     * @opt {String} [rowHeight='22px']
     *
     */
-			opt.rowHeight = uiDeniGridConstants.DEFAULT_ROW_HEIGHT;
+			opt.rowHeight = uiDeniGridConstant.DEFAULT_ROW_HEIGHT;
 
 			/**
     * @opt {Boolean} [multiSelect=false]
@@ -1261,7 +1261,7 @@
 			/**
     * @opt {Array|Object|String} [sorters=null]
    *
-   * 	It is a very flexible config and might be filled this way 
+   * 	It is a very flexible config and might be filled this way
    *
    * 	(string):
    *
@@ -1269,20 +1269,20 @@
    *
    *	or (json):
    *
-   * 		{name: 'city', direction: 'ASC'} or	 
+   * 		{name: 'city', direction: 'ASC'} or
    *
    *	or (function):
-   *	
+   *
    *		function(rec1, rec2) {
    *			if (rec1.age == rec2.age) return 0;
    *			return rec1.age < rec2.age ? -1 : 1;
-   *		});	 
+   *		});
    *
    *	or even (array):
    *
    * 		[
-   *			'city', 
-   *			{name: 'age', direction: 'DESC'}, 
+   *			'city',
+   *			{name: 'age', direction: 'DESC'},
    *			function(rec1, rec2) {
    *				if (rec1.age == rec2.age) return 0;
    *				return rec1.age < rec2.age ? -1 : 1;
@@ -1347,7 +1347,7 @@
 
 			////////////////////////////////////////////////////////////////////////////////////////
 			// fixedCols
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 			if (controller.options.fixedCols) {
 
 				//
@@ -1355,15 +1355,15 @@
 					var fixedColsWidth = 0;
 					//
 					if (controller.options.fixedCols.indicator) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_INDICATOR_WIDTH.replace('px', ''));
 					}
 					//
 					if (controller.options.fixedCols.rowNumber) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_ROWNUMBER_WIDTH.replace('px', ''));
 					}
 					//
 					if (controller.options.fixedCols.checkbox) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_CHECKBOX_WIDTH.replace('px', ''));
 					}
 
 					//
@@ -1427,7 +1427,7 @@
 				controller.options.fixedCols.width = getFixedColsWidth(fixedColumns);
 			}
 			////////////////////////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 
 			//Paging
 			if (controller.options.paging) {
@@ -1442,7 +1442,7 @@
 
 			////////////////////////////////////////////////////////////////////////////////////////
 			//restConfig
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 			var restConfig = controller.options.restConfig;
 			var restConfigDefaults = {
 				type: 'json',
@@ -1459,11 +1459,11 @@
 			}
 			controller.options.restConfig = restConfig;
 			////////////////////////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.ckeckInitialValueFilter = function (controller, columns) {
@@ -1487,7 +1487,7 @@
 						} else if (column.filter.type === 'float') {
 							//TODO: missing implementation
 
-							//string	
+							//string
 						} else if (column.filter.type === 'string') {
 							value = {
 								key: initialValue.toString(),
@@ -1495,11 +1495,11 @@
 								oper: '~'
 							};
 
-							//date	
+							//date
 						} else if (column.filter.type === 'date') {
 							//TODO: missing implementation
 
-							//date and time	
+							//date and time
 						} else if (column.filter.type === 'datetime') {
 							//Transform the initValue in a array
 							var initialValueArray = initialValue;
@@ -1527,15 +1527,15 @@
 								});
 							}
 
-							//boolean	
+							//boolean
 						} else if (column.filter.type === 'boolean') {
 							//TODO: missing implementation
 
-							//select (radio)	
+							//select (radio)
 						} else if (column.filter.type === 'select') {
 							//TODO: missing implementation
 
-							//multi select (checkbox)	
+							//multi select (checkbox)
 						} else if (column.filter.type === 'multiSelect') {
 							//Transform the initValue in a array
 							var _initialValueArray = initialValue;
@@ -1564,7 +1564,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.remakeHeightBodyViewportWrapper = function (controller) {
@@ -1579,7 +1579,7 @@
 
 			//Paging?
 			if (controller.options.paging) {
-				controller.container.css('height', 'calc(100% - ' + uiDeniGridConstants.PAGING_HEIGHT + ')');
+				controller.container.css('height', 'calc(100% - ' + uiDeniGridConstant.PAGING_HEIGHT + ')');
 			}
 
 			//Showing footer?
@@ -1592,7 +1592,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.hasColumnFooter = function (controller) {
@@ -1611,7 +1611,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.getColumnHeaderLevels = function (controller, columns) {
@@ -1661,7 +1661,7 @@
 		};
 
 		/**
-   * It is not the same as getColumnFooterNumber	
+   * It is not the same as getColumnFooterNumber
    *
    */
 		me.getColumnFooterRowsNumber = function (controller, groupingFooter) {
@@ -1689,14 +1689,14 @@
 										if (footer.grouping !== false) {
 											lenght++;
 										}
-										//	
+										//
 									} else {
 										//
 										if (footer.grid !== false) {
 											lenght++;
 										}
 									}
-									//	
+									//
 								} else {
 									lenght++;
 								}
@@ -1714,7 +1714,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.createColumnFooters = function (controller, footerContainer, columns, gridFooter) {
@@ -1796,7 +1796,7 @@
 
 								//
 								//footerCellElement.attr('footerColIndex', footerColIndex);
-								//footerCellInnerElement.attr('footerColIndex', footerColIndex);	
+								//footerCellInnerElement.attr('footerColIndex', footerColIndex);
 								footerColIndex++;
 
 								//
@@ -1811,7 +1811,7 @@
 					}
 
 					footerContainer.append(footerRowElement);
-				} //loop over footers	
+				} //loop over footers
 
 				//
 				if (columnFooterRowsNumber > 0) {
@@ -1835,7 +1835,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.renderColumnFooters = function (controller, footerContainer, columns, data, gridFooter) {
@@ -1881,7 +1881,7 @@
 
 						//
 						if (angular.isDefined(footer)) {
-							//Should this footer be showed in grid?	
+							//Should this footer be showed in grid?
 							var showInGrid = footer.grid !== false;
 							//Should this footer be showed in groupin?
 							var showInGrouping = footer.grouping !== false;
@@ -1897,7 +1897,7 @@
 
 								//
 								if (angular.isString(footer)) {
-									//	
+									//
 									if (defaultFunctionsNames.indexOf(footer.toLowerCase()) === -1) {
 										footer = {
 											text: footer
@@ -1908,7 +1908,7 @@
 											fn: footer.toLowerCase()
 										};
 									}
-									//	
+									//
 								} else if (angular.isFunction(footer)) {
 									footer = {
 										fn: footer
@@ -1929,11 +1929,11 @@
 								if (angular.isDefined(footerFn)) {
 									var value;
 
-									// Custom Function	
+									// Custom Function
 									if (angular.isFunction(footerFn)) {
 										value = footerFn(data, column.name);
 
-										// Default Function	
+										// Default Function
 									} else if (angular.isString(footerFn)) {
 
 										if (defaultFunctionsNames.indexOf(footerFn.toLowerCase()) === -1) {
@@ -1942,7 +1942,7 @@
 											var defaultFunction = footerFn.toUpperCase();
 											footer.text = footer.text || footerFn.toLowerCase() + ' : ';
 
-											// AVG	
+											// AVG
 											if (defaultFunction === 'AVG') {
 												value = me.defaultFunctions.avg(data, column.name);
 
@@ -2019,7 +2019,7 @@
 											footer.text = footer.textRenderer(textElement, footer.text);
 										}
 										///////////////////////////////////////////////////////////////
-										///////////////////////////////////////////////////////////////									
+										///////////////////////////////////////////////////////////////
 									}
 
 									//
@@ -2058,7 +2058,7 @@
 			buttonFirst.addClass('disabled');
 			paging.append(buttonFirst);
 			buttonFirst.click(function (event) {
-				controller.options.api.setPageNumber(1);
+				controller.element.api.setPageNumber(1);
 			});
 
 			//Previous Page Button
@@ -2068,7 +2068,7 @@
 			buttonPrev.addClass('disabled');
 			paging.append(buttonPrev);
 			buttonPrev.click(function (event) {
-				controller.options.api.setPageNumber(controller.options.api.getPageNumber() - 1);
+				controller.element.api.setPageNumber(controller.element.api.getPageNumber() - 1);
 			});
 
 			//
@@ -2097,7 +2097,7 @@
 					} else if (pageNumber > controller.options.paging.pageCount) {
 						pageNumber = controller.options.paging.pageCount;
 					}
-					controller.options.api.setPageNumber(pageNumber);
+					controller.element.api.setPageNumber(pageNumber);
 					$(event.target).select();
 				}
 			});
@@ -2125,7 +2125,7 @@
 			buttonNext.addClass('disabled');
 			paging.append(buttonNext);
 			buttonNext.click(function (event) {
-				controller.options.api.setPageNumber(controller.options.api.getPageNumber() + 1);
+				controller.element.api.setPageNumber(controller.element.api.getPageNumber() + 1);
 			});
 
 			//
@@ -2135,7 +2135,7 @@
 			buttonLast.addClass('disabled');
 			paging.append(buttonLast);
 			buttonLast.click(function (event) {
-				controller.options.api.setPageNumber(controller.options.paging.pageCount);
+				controller.element.api.setPageNumber(controller.options.paging.pageCount);
 			});
 
 			//
@@ -2149,7 +2149,7 @@
 			refreshButton.addClass('button-refresh');
 			paging.append(refreshButton);
 			refreshButton.click(function (event) {
-				controller.options.api.reload();
+				controller.element.api.reload();
 			});
 
 			//
@@ -2208,7 +2208,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.defaultFunctions = {
@@ -2265,7 +2265,7 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.rowDetailsExpand = function (controller, rowElement, record, rowIndex) {
@@ -2275,11 +2275,11 @@
 
 			rowElement.addClass('row-detail-expanded');
 			controller.managerRendererItems.insertRowDefailtBox(rowIndex);
-			controller.options.api.repaint();
+			controller.element.api.repaint();
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.rowDetailsCollapse = function (controller, rowElement, record, rowIndex) {
@@ -2289,7 +2289,7 @@
 
 			rowElement.removeClass('row-detail-expanded');
 			controller.managerRendererItems.removeRowDetailtBox(rowIndex);
-			controller.options.api.repaint();
+			controller.element.api.repaint();
 		};
 
 		var _removeElementsBelow = function _removeElementsBelow(controller, rowElementGroup, childrenSize, rowIndex, factor) {
@@ -2301,13 +2301,13 @@
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.groupExpand = function (controller, rowElement, record, rowIndex) {
 
 			var groupIndex = rowElement.attr('groupIndex');
-			//Row Detail is a grouping		
+			//Row Detail is a grouping
 			if (angular.isDefined(groupIndex)) {
 				groupIndex = parseInt(groupIndex);
 
@@ -2323,24 +2323,24 @@
 
 				//
 				controller.managerRendererItems.insertChildrenGroup(groupIndex, childrenIndexes);
-				controller.options.api.repaint();
+				controller.element.api.repaint();
 			}
 		};
 
 		/**
-   *	
+   *
    *
    */
 		me.groupCollapse = function (controller, rowElement, record, rowIndex) {
 
 			var groupIndex = rowElement.attr('groupIndex');
-			//Row Detail is a grouping		
+			//Row Detail is a grouping
 			if (angular.isDefined(groupIndex)) {
 				groupIndex = parseInt(groupIndex);
 
 				//
 				controller.managerRendererItems.removeAllChildrenGroup(groupIndex);
-				controller.options.api.repaint();
+				controller.element.api.repaint();
 			}
 		};
 
@@ -2393,7 +2393,7 @@
 		/**
    * Below is a example in which is necessary the prepareForNestedJson function
   *	 {
-     *   	name: 'Alisha', 
+     *   	name: 'Alisha',
      *   	address: {
      *   		city: 'Welch'
      *		}
@@ -2496,7 +2496,7 @@
 				var top = 0;
 
 				//
-				if (controller.options.api.isGrouped()) {
+				if (controller.element.api.isGrouped()) {
 					for (var _index3 = 0; _index3 < controller.options.dataGroup.length; _index3++) {
 
 						//
@@ -2528,9 +2528,9 @@
 							top += rowHeight;
 						}
 					}
-					//	
+					//
 				} else {
-					//It might have more than one record by row whe is configured 'cardView' property 
+					//It might have more than one record by row whe is configured 'cardView' property
 					var recordsByRow = angular.isDefined(controller.options.cardView) ? controller.options.cardView.numberOfColumns : 1;
 
 					//for (let index = 0 ; index < controller.options.data.length ; index++) {
@@ -2622,7 +2622,7 @@
 
 							mng.items.splice(index + 1, 0, {
 								top: top,
-								height: rowHeight, //elementRowDefailBox.height(), //TODO: <<--								
+								height: rowHeight, //elementRowDefailBox.height(), //TODO: <<--
 								rowIndex: rowIndex,
 								rowDetails: true
 								//rowElement: elementRowDefailBox,
@@ -2863,7 +2863,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	angular.module('ui-deni-grid').service('uiDeniGridEventsService', uiDeniGridEventsService);
 
-	function uiDeniGridEventsService($compile, uiDeniGridUtilSrv, uiDeniGridConstants) {
+	function uiDeniGridEventsService($compile, uiDeniGridHelperService, uiDeniGridConstant) {
 		var vm = this;
 		vm.controller = null;
 
@@ -2942,8 +2942,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							var _rowElement = _divCell.closest('.ui-row');
 							var rowIndex = parseInt(_rowElement.attr('rowindex'));
 
-							if (rowIndex !== vm.controller.options.api.getSelectedRowIndex()) {
-								vm.controller.options.api.selectRow(rowIndex);
+							if (rowIndex !== vm.controller.element.api.getSelectedRowIndex()) {
+								vm.controller.element.api.selectRow(rowIndex);
 							}
 
 							//selType = 'cell'
@@ -2954,7 +2954,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							var _rowElement2 = _divCell2.closest('.ui-row');
 							var _rowIndex = parseInt(_rowElement2.attr('rowindex'));
 
-							vm.controller.options.api.selectCell(_rowIndex, colIndex);
+							vm.controller.element.api.selectCell(_rowIndex, colIndex);
 						}
 					}
 				});
@@ -2965,14 +2965,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					if (targetEl.is('.ui-cell-inner')) {
 						var _divCell3 = $(event.currentTarget);
 						var colIndex = parseInt(_divCell3.attr('colIndex'));
-						var columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+						var columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
 						var column = columns[colIndex];
 
 						if (column.editor) {
 							var _rowElement3 = _divCell3.closest('.ui-row');
 							var rowIndex = parseInt(_rowElement3.attr('rowindex'));
 							var record = vm.controller.options.data[rowIndex];
-							uiDeniGridUtilSrv.setInputEditorDivCell(vm.controller, record, column, _divCell3);
+							uiDeniGridHelperService.setInputEditorDivCell(vm.controller, record, column, _divCell3);
 						}
 					}
 				});
@@ -3075,7 +3075,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    	var divCell = _createDivCell(controller, rowElement);
    	rowElement.css('width', '100%');
    	divCell.css('width', '100%');
-   	valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
+   	valueToRender = uiDeniGridHelperService.applyTemplateValues(getTemplateCardView, record);
    	divCell.html(valueToRender);
    */
 
@@ -3085,13 +3085,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var divCell = _createDivCell(rowElement);
 				rowElement.css('width', '100%');
 				divCell.css('width', '100%');
-				var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(vm.controller.options.rowTemplate, record);
+				var valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.rowTemplate, record);
 				divCell.html(valueToRender);
 
 				//Row Detail - Grouping or other type of row details
 			} else if (rowElement.is('.row-detail')) {
 				(function () {
-					//uiDeniGridUtilSrv.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
+					//uiDeniGridHelperService.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
 
 					//
 					var divCell = _createDivCell(rowElement);
@@ -3113,9 +3113,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						rowElement.toggleClass('expand collapse');
 
 						if (spanCellInner.is('.collapse')) {
-							uiDeniGridUtilSrv.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
+							uiDeniGridHelperService.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
 						} else {
-							uiDeniGridUtilSrv.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
+							uiDeniGridHelperService.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
 						}
 						//}
 					});
@@ -3123,7 +3123,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					var valueToRender = void 0;
 					if (vm.controller.options.grouping.template) {
 						var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-						valueToRender = uiDeniGridUtilSrv.applyTemplateValues(vm.controller.options.grouping.template, record, { count: totalRowsInGroup });
+						valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.grouping.template, record, { count: totalRowsInGroup });
 					}
 
 					spanCellInner.html(valueToRender);
@@ -3136,16 +3136,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var records = vm.controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
 
 				//
-				uiDeniGridUtilSrv.createColumnFooters(vm.controller, rowElement, columns, false);
+				uiDeniGridHelperService.createColumnFooters(vm.controller, rowElement, columns, false);
 				//
-				uiDeniGridUtilSrv.renderColumnFooters(vm.controller, rowElement, columns, records, false);
+				uiDeniGridHelperService.renderColumnFooters(vm.controller, rowElement, columns, records, false);
 
 				// (Common Row)
 			} else {
 				//rowElement.css('width', '100%');
 
 				var isRowSelected = rowElement.is('.selected');
-				var _columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+				var _columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
 				var colIndex = 0;
 
 				var _loop = function _loop(index) {
@@ -3158,7 +3158,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//if has checkbox
 							if (vm.controller.options.fixedCols.checkbox) {
 								var divCellIndicator = _createDivCell(fixedRowElement);
-								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH);
+								divCellIndicator.css('width', uiDeniGridConstant.FIXED_COL_CHECKBOX_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
 								var spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('checkbox');
@@ -3174,7 +3174,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//if has indicator
 							if (vm.controller.options.fixedCols.indicator) {
 								var _divCellIndicator = _createDivCell(fixedRowElement);
-								_divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH);
+								_divCellIndicator.css('width', uiDeniGridConstant.FIXED_COL_INDICATOR_WIDTH);
 								_divCellIndicator.addClass('auxiliar-fixed-column');
 								var _spanCellIndicatorInner = _createDivCellInner(_divCellIndicator);
 								_spanCellIndicatorInner.addClass('indicator');
@@ -3184,7 +3184,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//if has row number
 							if (vm.controller.options.fixedCols.rowNumber) {
 								var divCellRowNumber = _createDivCell(fixedRowElement);
-								divCellRowNumber.css('width', uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH);
+								divCellRowNumber.css('width', uiDeniGridConstant.FIXED_COL_ROWNUMBER_WIDTH);
 								divCellRowNumber.addClass('auxiliar-fixed-column');
 								var spanCellRowNumberInner = _createDivCellInner(divCellRowNumber);
 								spanCellRowNumberInner.addClass('rownumber');
@@ -3201,7 +3201,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					var divCell = void 0;
 
 					//if fixed column?
-					if (uiDeniGridUtilSrv.isFixedColumn(vm.controller, column.name)) {
+					if (uiDeniGridHelperService.isFixedColumn(vm.controller, column.name)) {
 						divCell = _createDivCell(fixedRowElement);
 					} else {
 						divCell = _createDivCell(rowElement);
@@ -3290,9 +3290,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 										var target = $(event.target);
 
 										if (target.is('.collapse')) {
-											uiDeniGridUtilSrv.rowDetailsCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
+											uiDeniGridHelperService.rowDetailsCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
 										} else {
-											uiDeniGridUtilSrv.rowDetailsExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
+											uiDeniGridHelperService.rowDetailsExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
 										}
 									}
 								});
@@ -3307,7 +3307,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						}));
 
 						//Margin First column inside of grouping
-						if (index === 0 && vm.controller.options.api.isGrouped()) {
+						if (index === 0 && vm.controller.element.api.isGrouped()) {
 							divCell.css('padding-left', '20px');
 						}
 
@@ -3325,7 +3325,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						formattedValue = value;
 
 						if (angular.isDefined(column.format)) {
-							formattedValue = uiDeniGridUtilSrv.getFormatedValue(value, column.format);
+							formattedValue = uiDeniGridHelperService.getFormatedValue(value, column.format);
 						}
 
 						rendererRealcedCellsFn = function rendererRealcedCellsFn(valuesToField, allFields, realceStyle) {
@@ -3369,11 +3369,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		/* ---- WARNING ---- TODO: try to implement use this event
   vm.onafterexpand = function(records, options, elementGroupRow, lastInsertedDivRow) {
   	if (records.length > 0) {
-  		let rowIndex = vm.controller.options.api.resolveRowIndex(records[0]);
+  		let rowIndex = vm.controller.element.api.resolveRowIndex(records[0]);
   		me.selectRow(vm.controller, rowIndex);
   	}
   			//Are there footer?
-  	if (uiDeniGridUtilSrv.hasColumnFooter(vm.controller)) {
+  	if (uiDeniGridHelperService.hasColumnFooter(vm.controller)) {
   				let footerDivContainer = elementGroupRow.prop('footer');
   		if (angular.isDefined(footerDivContainer)) {
   			footerDivContainer.css('display', 'block');
@@ -3384,7 +3384,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   					//Used to collapse
   			elementGroupRow.prop('footer', footerDivContainer);
   					footerDivContainer.insertAfter(lastInsertedDivRow);
-  					uiDeniGridUtilSrv.renderColumnFooters(footerDivContainer, vm.controller.footerContainer, vm.controller.options.columns, records, vm.controller);
+  					uiDeniGridHelperService.renderColumnFooters(footerDivContainer, vm.controller.footerContainer, vm.controller.options.columns, records, vm.controller);
   		}
   	}
   };
@@ -3393,7 +3393,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		vm.onafterrepaint = function (viewController) {
 			/*
    vm.controller.clientWidth;
-   		var columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+   		var columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
    //Any column was specified in percentage? TODO: create a function to get this
    var anyColumnInPercentage = false;
    for (var colIndex = 0 ; colIndex < vm.controller.options.columns.length ; colIndex++) {
@@ -3404,7 +3404,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    }
    */
 
-			uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(vm.controller);
+			uiDeniGridHelperService.adjustAllColumnWidtsAccordingColumnHeader(vm.controller);
 		};
 
 		vm.bodyViewportScroll = function (event) {
@@ -3447,7 +3447,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						vm.controller.headerContainer.css('left', left);
 
 						//Are there footer?
-						if (uiDeniGridUtilSrv.hasColumnFooter(vm.controller)) {
+						if (uiDeniGridHelperService.hasColumnFooter(vm.controller)) {
 							//
 							vm.controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
 							//vm.controller.footerDivContainer.css('left', left);
@@ -3456,7 +3456,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 
 			//
-			vm.controller.options.api.repaint();
+			vm.controller.element.api.repaint();
 		};
 
 		/*
@@ -3492,7 +3492,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     	controller.headerContainer.css('left', left);
     	
   //Are there footer?
-  if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
+  if (uiDeniGridHelperService.hasColumnFooter(controller)) {
      	//
   controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
   //controller.footerDivContainer.css('left', left);
@@ -3500,7 +3500,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
   }
   //
-  controller.options.api.repaint();
+  controller.element.api.repaint();
   });		
   */
 	} //end service
@@ -3509,599 +3509,599 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 (function () {
 
-	'use strict';
+  'use strict';
 
-	angular.module('ui-deni-grid').controller('uiDeniGridCtrl', uiDeniGridCtrl);
+  angular.module('ui-deni-grid').controller('uiDeniGridController', uiDeniGridController);
 
-	function uiDeniGridCtrl($scope, $element, $timeout, uiDeniGridSrv, uiDeniGridUtilSrv, uiDeniGridConstants, uiDeniGridEventsService) {
-		var vm = this;
-		vm.scope = $scope;
-		vm.enabled = true;
-		vm.checkedRecords = [];
-		vm.searchInfo = null;
+  function uiDeniGridController($scope, $element, $timeout, uiDeniGridService, uiDeniGridHelperService, uiDeniGridConstant, uiDeniGridEventsService, uiDeniGridApiService) {
+    var vm = this;
+    vm.scope = $scope;
+    vm.enabled = true;
+    vm.checkedRecords = [];
+    vm.searchInfo = null;
 
-		//
-		vm.loading = false;
+    //
+    vm.loading = false;
 
-		//
-		vm.element = $element;
+    //
+    vm.element = $element;
 
-		//
-		vm.wrapper = vm.element.find('.ui-deni-grid-wrapper');
-		vm.viewport = vm.wrapper.find('.ui-deni-grid-viewport');
-		vm.container = vm.viewport.find('.ui-deni-grid-container');
+    //
+    vm.wrapper = vm.element.find('.ui-deni-grid-wrapper');
+    vm.viewport = vm.wrapper.find('.ui-deni-grid-viewport');
+    vm.container = vm.viewport.find('.ui-deni-grid-container');
 
-		// *************************************************************************
-		// VARIABLE COLUMNS
-		// *************************************************************************
-		vm.colsViewportWrapper = vm.container.find('.ui-variable-cols-viewport-wrapper');
-		vm.colsViewport = vm.colsViewportWrapper.find('.ui-viewport');
-		vm.colsContainer = vm.colsViewport.find('.ui-container');
+    // *************************************************************************
+    // VARIABLE COLUMNS
+    // *************************************************************************
+    vm.colsViewportWrapper = vm.container.find('.ui-variable-cols-viewport-wrapper');
+    vm.colsViewport = vm.colsViewportWrapper.find('.ui-viewport');
+    vm.colsContainer = vm.colsViewport.find('.ui-container');
 
-		// header
-		vm.headerViewportWrapper = vm.colsContainer.find('.ui-header-viewport-wrapper');
-		vm.headerViewport = vm.headerViewportWrapper.find('.ui-header-viewport');
-		vm.headerContainer = vm.headerViewport.find('.ui-header-container');
-		// body
-		vm.bodyViewportWrapper = vm.colsContainer.find('.ui-body-viewport-wrapper');
-		vm.bodyViewport = vm.bodyViewportWrapper.find('.ui-body-viewport');
-		vm.bodyContainer = vm.bodyViewport.find('.ui-body-container');
-		//footer
-		vm.footerViewportWrapper = vm.colsContainer.find('.ui-footer-viewport-wrapper');
-		vm.footerViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
-		vm.footerContainer = vm.footerViewport.find('.ui-footer-container');
-		// *************************************************************************
-		// *************************************************************************
+    // header
+    vm.headerViewportWrapper = vm.colsContainer.find('.ui-header-viewport-wrapper');
+    vm.headerViewport = vm.headerViewportWrapper.find('.ui-header-viewport');
+    vm.headerContainer = vm.headerViewport.find('.ui-header-container');
+    // body
+    vm.bodyViewportWrapper = vm.colsContainer.find('.ui-body-viewport-wrapper');
+    vm.bodyViewport = vm.bodyViewportWrapper.find('.ui-body-viewport');
+    vm.bodyContainer = vm.bodyViewport.find('.ui-body-container');
+    //footer
+    vm.footerViewportWrapper = vm.colsContainer.find('.ui-footer-viewport-wrapper');
+    vm.footerViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
+    vm.footerContainer = vm.footerViewport.find('.ui-footer-container');
+    // *************************************************************************
+    // *************************************************************************
 
-		// *************************************************************************
-		// FIXED COLUMNS
-		// *************************************************************************
-		vm.fixedColsViewportWrapper = vm.container.find('.ui-fixed-cols-viewport-wrapper');
-		vm.fixedColsViewport = vm.fixedColsViewportWrapper.find('.ui-viewport');
-		vm.fixedColsContainer = vm.fixedColsViewport.find('.ui-container');
+    // *************************************************************************
+    // FIXED COLUMNS
+    // *************************************************************************
+    vm.fixedColsViewportWrapper = vm.container.find('.ui-fixed-cols-viewport-wrapper');
+    vm.fixedColsViewport = vm.fixedColsViewportWrapper.find('.ui-viewport');
+    vm.fixedColsContainer = vm.fixedColsViewport.find('.ui-container');
 
-		// header
-		vm.fixedColsHeaderViewportWrapper = vm.fixedColsContainer.find('.ui-header-viewport-wrapper');
-		vm.fixedColsHeaderViewport = vm.fixedColsHeaderViewportWrapper.find('.ui-header-viewport');
-		vm.fixedColsHeaderContainer = vm.fixedColsHeaderViewport.find('.ui-header-container');
-		// body
-		vm.fixedColsBodyViewportWrapper = vm.fixedColsContainer.find('.ui-body-viewport-wrapper');
-		vm.fixedColsBodyViewport = vm.fixedColsBodyViewportWrapper.find('.ui-body-viewport');
-		vm.fixedColsBodyContainer = vm.fixedColsBodyViewport.find('.ui-body-container');
-		// footer
-		vm.fixedColsFooterViewportWrapper = vm.fixedColsContainer.find('.ui-footer-viewport-wrapper');
-		vm.fixedColsFooterViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
-		vm.fixedColsFooterContainer = vm.footerViewport.find('.ui-footer-container');
-		// *************************************************************************
-		// *************************************************************************
+    // header
+    vm.fixedColsHeaderViewportWrapper = vm.fixedColsContainer.find('.ui-header-viewport-wrapper');
+    vm.fixedColsHeaderViewport = vm.fixedColsHeaderViewportWrapper.find('.ui-header-viewport');
+    vm.fixedColsHeaderContainer = vm.fixedColsHeaderViewport.find('.ui-header-container');
+    // body
+    vm.fixedColsBodyViewportWrapper = vm.fixedColsContainer.find('.ui-body-viewport-wrapper');
+    vm.fixedColsBodyViewport = vm.fixedColsBodyViewportWrapper.find('.ui-body-viewport');
+    vm.fixedColsBodyContainer = vm.fixedColsBodyViewport.find('.ui-body-container');
+    // footer
+    vm.fixedColsFooterViewportWrapper = vm.fixedColsContainer.find('.ui-footer-viewport-wrapper');
+    vm.fixedColsFooterViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
+    vm.fixedColsFooterContainer = vm.footerViewport.find('.ui-footer-container');
+    // *************************************************************************
+    // *************************************************************************
 
-		//Set the controller to the service of the events. Always there'll be one controller to eache uiDeniGridEventsService
-		uiDeniGridEventsService.setController(vm);
+    //Set the controller to the service of the events. Always there'll be one controller to eache uiDeniGridEventsService
+    uiDeniGridEventsService.setController(vm);
 
-		var currentHeight = vm.element.css('height');
-		/*
-  $timeout(function() {
-  	if (vm.element.css('height') != currentHeight) {
-  		currentHeight = vm.element.css('height');
-  		vm.wrapper.css('height', currentHeight);
-  		vm.element.css('height', currentHeight);
-  	}
-  }, 2000);
-  */
-
-		//Paging
-		vm.paging = vm.viewport.find('.ui-deni-grid-paging');
-
-		//Set the default options
-		uiDeniGridUtilSrv.setDefaultOptions(vm, vm.options);
-
-		//
-		uiDeniGridUtilSrv.ckeckInitialValueFilter(vm, vm.options.columns);
-
-		//
-		vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
-
-		//Inherit API from ui-deni-view and create some new APIs too
-		vm.options.api = _getApi(vm, uiDeniGridSrv);
-
-		vm.element.show(function (event) {
-			///////////////////////////////////////////////////////////////////////////
-			//FIXED COLUMNS ///////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-			if (vm.options.fixedCols) {
-				//
-				vm.fixedColsViewportWrapper.css('width', vm.options.fixedCols.width + 'px');
-				//
-				vm.colsViewportWrapper.css('width', 'calc(100% - ' + vm.fixedColsViewportWrapper.css('width') + ')');
-			} else {
-				//
-				vm.fixedColsViewportWrapper.css('display', 'none');
-				//
-				vm.colsViewportWrapper.css('width', '100%');
-			}
-			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-
-			///
-			vm.clientWidth = uiDeniGridUtilSrv.getClientWidthDeniGrid(vm);
-
-			///////////////////////////////////////////////////////////////////////////
-			//COLUMN HEADERS //////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-			if (vm.options.hideHeaders) {
-				//
-				vm.headerViewportWrapper.css('display', 'none');
-				vm.fixedColsHeaderViewportWrapper.css('display', 'none');
-			} else {
-				//columnHeaderLevels has a numer greater than one when it has a grouped column headers.
-				vm.columnHeaderLevels = uiDeniGridUtilSrv.getColumnHeaderLevels(vm, vm.options.columns);
-
-				if (vm.columnHeaderLevels > 1) {
-					//realPercentageWidth cause effect only when there are more then one level of columns
-					uiDeniGridUtilSrv.setRealPercentageWidths(vm.options.columns, '100%');
-				}
-
-				//
-				uiDeniGridSrv.createColumnHeaders(vm, vm.options.columns);
-				uiDeniGridSrv.createColumnHeadersEvents(vm);
-
-				//the height of the column headers varies when there is grouped column headers (Just in this case)
-				vm.headerViewportWrapper.css('height', 'calc(' + vm.options.columnHeaderHeight + ' * ' + vm.columnHeaderLevels + ')');
-				vm.fixedColsHeaderViewportWrapper.css('height', 'calc(' + vm.options.columnHeaderHeight + ' * ' + vm.columnHeaderLevels + ')');
-			}
-			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-
-			///////////////////////////////////////////////////////////////////////////
-			//GRID FOOTER /////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-			if (vm.options.colLines) {
-				vm.headerContainer.find('.ui-header-container-column').css('border-right', 'solid 1px silver');
-			}
-
-			//How many column footer rows is there in the grid (footer.grid different from false)
-			vm.columnFooterRowsNumberGrid = uiDeniGridUtilSrv.getColumnFooterRowsNumber(vm);
-			//How many grouping footer rows is there in the grid (footer.grouping different from false)
-			vm.columnFooterRowsNumberGrouping = uiDeniGridUtilSrv.getColumnFooterRowsNumber(vm, true);
-			//
-			vm.columnFooterNumber = uiDeniGridUtilSrv.getColumnFooterNumber(vm);
-
-			//Should show the footer?
-			if (uiDeniGridUtilSrv.hasColumnFooter(vm) && vm.columnFooterRowsNumberGrid > 0) {
-				//
-				uiDeniGridUtilSrv.createColumnFooters(vm, vm.footerContainer, vm.options.columns, true);
-				//How many footers?
-				var columnFooterRowsNumber = vm.footerContainer.find('.ui-footer-row').length;
-				//There is no need to add paadding when a footerRowTemplate was set
-				var padding = angular.isDefined(vm.options.footerRowTemplate) ? '0px' : '2px';
-				vm.footerViewportWrapper.css({
-					'padding-top': padding
-				});
-			} else {
-				//
-				vm.footerViewportWrapper.css('display', 'none');
-				vm.fixedColsFooterViewportWrapper.css('display', 'none');
-			}
-			///////////////////////////////////////////////////////////////////////////
-			///////////////////////////////////////////////////////////////////////////
-
-			//Paging
-			if (vm.options.paging) {
-				vm.paging.css('height', uiDeniGridConstants.PAGING_HEIGHT);
-				uiDeniGridUtilSrv.createPagingItems(vm, vm.paging, vm.options.paging);
-			}
-
-			vm.searchInfo = null; //hold values for render the field values (realce)
-			vm.searching = false;
-			vm.resizing = false;
-
-			//This guy manages which items the grid should render
-			vm.managerRendererItems = new uiDeniGridUtilSrv.ManagerRendererItems(vm);
-
-			//
-			uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(vm);
-
-			if (vm.options.data) {
-				vm.options.api.loadData(vm.options.data);
-			} else if (vm.options.url && vm.options.autoLoad) {
-				vm.options.api.load();
-			}
-			_checkSize(vm, uiDeniGridUtilSrv);
-		});
-	}
-
-	/*
-  *
-  *
-  */
-	function _checkSize(controller, uiDeniGridUtilSrv) {
-		controller.scope.$watch(function () {
-			return {
-				width: controller.element.width(),
-				height: controller.element.height()
-			};
-		}, function (newValue, oldValue) {
-			if (newValue !== oldValue) {
-				var isInvisible = controller.element.css('display') === 'none' || controller.element.css('visibility') === 'hidden';
-				if (!isInvisible && controller.options.data) {
-					uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
-					controller.options.api.repaint();
-				}
-			}
-		}, //listener
-		true //deep watch
-		);
-
-		angular.element(window).on("resize", function () {
-			controller.scope.$apply();
-		});
-	}
-
-	function _getApi(controller, uiDeniGridSrv) {
-
-		return {
-			/**
-    *
-    *
+    var currentHeight = vm.element.css('height');
+    /*
+    $timeout(function() {
+    	if (vm.element.css('height') != currentHeight) {
+    		currentHeight = vm.element.css('height');
+    		vm.wrapper.css('height', currentHeight);
+    		vm.element.css('height', currentHeight);
+    	}
+    }, 2000);
     */
-			clearSelections: function clearSelections() {
-				uiDeniGridSrv.clearSelections(controller);
-			},
 
-			/**
-    *
-    *
-    */
-			find: function find(valuesToFind, opts) {
-				return uiDeniGridSrv.find(controller, valuesToFind, opts);
-			},
+    //Paging
+    vm.paging = vm.viewport.find('.ui-deni-grid-paging');
 
-			/**
-    *
-    *
-    */
-			findFirst: function findFirst(valuesToFind, opts) {
-				return uiDeniGridSrv.findFirst(controller, valuesToFind, opts);
-			},
+    //Set the default options
+    uiDeniGridHelperService.setDefaultOptions(vm, vm.options);
 
-			/**
-    *
-    *
-    */
-			findKey: function findKey(keyValue, opts) {
-				return uiDeniGridSrv.findKey(controller, keyValue, opts);
-			},
+    //
+    uiDeniGridHelperService.ckeckInitialValueFilter(vm, vm.options.columns);
 
-			/**
-    *
-    *
-    */
-			findLast: function findLast(valuesToFind, opts) {
-				return uiDeniGridSrv.findLast(controller, valuesToFind, opts);
-			},
+    //
+    vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
 
-			/**
-    *
-    *
-    */
-			findNext: function findNext(valuesToFind, opts) {
-				return uiDeniGridSrv.findNext(controller, valuesToFind, opts);
-			},
+    //Implement the ui-deni-grid's API
+    uiDeniGridApiService.implementApi(vm, vm.element, uiDeniGridService);
 
-			/**
-    *
-    *
-    */
-			findPrevious: function findPrevious(valuesToFind, opts) {
-				return uiDeniGridSrv.findPrevious(controller, valuesToFind, opts);
-			},
+    vm.element.show(function (event) {
+      ///////////////////////////////////////////////////////////////////////////
+      //FIXED COLUMNS ///////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
+      if (vm.options.fixedCols) {
+        //
+        vm.fixedColsViewportWrapper.css('width', vm.options.fixedCols.width + 'px');
+        //
+        vm.colsViewportWrapper.css('width', 'calc(100% - ' + vm.fixedColsViewportWrapper.css('width') + ')');
+      } else {
+        //
+        vm.fixedColsViewportWrapper.css('display', 'none');
+        //
+        vm.colsViewportWrapper.css('width', '100%');
+      }
+      ///////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
 
-			/**
-    *
-    *
-    */
-			filter: function filter(filterModel, opts) {
-				return uiDeniGridSrv.filter(controller, filterModel, opts);
-			},
+      ///
+      vm.clientWidth = uiDeniGridHelperService.getClientWidthDeniGrid(vm);
 
-			/**
-    *
-    *
+      ///////////////////////////////////////////////////////////////////////////
+      //COLUMN HEADERS //////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
+      if (vm.options.hideHeaders) {
+        //
+        vm.headerViewportWrapper.css('display', 'none');
+        vm.fixedColsHeaderViewportWrapper.css('display', 'none');
+      } else {
+        //columnHeaderLevels has a numer greater than one when it has a grouped column headers.
+        vm.columnHeaderLevels = uiDeniGridHelperService.getColumnHeaderLevels(vm, vm.options.columns);
+
+        if (vm.columnHeaderLevels > 1) {
+          //realPercentageWidth cause effect only when there are more then one level of columns
+          uiDeniGridHelperService.setRealPercentageWidths(vm.options.columns, '100%');
+        }
+
+        //
+        uiDeniGridService.createColumnHeaders(vm, vm.options.columns);
+        uiDeniGridService.createColumnHeadersEvents(vm);
+
+        //the height of the column headers varies when there is grouped column headers (Just in this case)
+        vm.headerViewportWrapper.css('height', 'calc(' + vm.options.columnHeaderHeight + ' * ' + vm.columnHeaderLevels + ')');
+        vm.fixedColsHeaderViewportWrapper.css('height', 'calc(' + vm.options.columnHeaderHeight + ' * ' + vm.columnHeaderLevels + ')');
+      }
+      ///////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
+
+      ///////////////////////////////////////////////////////////////////////////
+      //GRID FOOTER /////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
+      if (vm.options.colLines) {
+        vm.headerContainer.find('.ui-header-container-column').css('border-right', 'solid 1px silver');
+      }
+
+      //How many column footer rows is there in the grid (footer.grid different from false)
+      vm.columnFooterRowsNumberGrid = uiDeniGridHelperService.getColumnFooterRowsNumber(vm);
+      //How many grouping footer rows is there in the grid (footer.grouping different from false)
+      vm.columnFooterRowsNumberGrouping = uiDeniGridHelperService.getColumnFooterRowsNumber(vm, true);
+      //
+      vm.columnFooterNumber = uiDeniGridHelperService.getColumnFooterNumber(vm);
+
+      //Should show the footer?
+      if (uiDeniGridHelperService.hasColumnFooter(vm) && vm.columnFooterRowsNumberGrid > 0) {
+        //
+        uiDeniGridHelperService.createColumnFooters(vm, vm.footerContainer, vm.options.columns, true);
+        //How many footers?
+        var columnFooterRowsNumber = vm.footerContainer.find('.ui-footer-row').length;
+        //There is no need to add paadding when a footerRowTemplate was set
+        var padding = angular.isDefined(vm.options.footerRowTemplate) ? '0px' : '2px';
+        vm.footerViewportWrapper.css({
+          'padding-top': padding
+        });
+      } else {
+        //
+        vm.footerViewportWrapper.css('display', 'none');
+        vm.fixedColsFooterViewportWrapper.css('display', 'none');
+      }
+      ///////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////
+
+      //Paging
+      if (vm.options.paging) {
+        vm.paging.css('height', uiDeniGridConstant.PAGING_HEIGHT);
+        uiDeniGridHelperService.createPagingItems(vm, vm.paging, vm.options.paging);
+      }
+
+      vm.searchInfo = null; //hold values for render the field values (realce)
+      vm.searching = false;
+      vm.resizing = false;
+
+      //This guy manages which items the grid should render
+      vm.managerRendererItems = new uiDeniGridHelperService.ManagerRendererItems(vm);
+
+      //
+      uiDeniGridHelperService.remakeHeightBodyViewportWrapper(vm);
+
+      if (vm.options.data) {
+        vm.element.api.loadData(vm.options.data);
+      } else if (vm.options.url && vm.options.autoLoad) {
+        vm.element.api.load();
+      }
+      _checkSize(vm, uiDeniGridHelperService);
+    });
+  }
+
+  /*
+   *
+   *
    */
-			getChangedRecords: function getChangedRecords() {
-				return uiDeniGridSrv.getChangedRecords(controller);
-			},
+  function _checkSize(controller, uiDeniGridHelperService) {
+    controller.scope.$watch(function () {
+      return {
+        width: controller.element.width(),
+        height: controller.element.height()
+      };
+    }, function (newValue, oldValue) {
+      if (newValue !== oldValue) {
+        var isInvisible = controller.element.css('display') === 'none' || controller.element.css('visibility') === 'hidden';
+        if (!isInvisible && controller.options.data) {
+          uiDeniGridHelperService.adjustAllColumnWidtsAccordingColumnHeader(controller);
+          controller.element.api.repaint();
+        }
+      }
+    }, //listener
+    true //deep watch
+    );
 
-			/**
-    *
-    *
-   */
-			getColumn: function getColumn(fieldName) {
-				return uiDeniGridSrv.getColumn(controller, fieldName);
-			},
+    angular.element(window).on('resize', function () {
+      controller.scope.$apply();
+    });
+  }
 
-			/**
-    *
-    *
-    */
-			getEnabled: function getEnabled(enabled) {
-				return controller.enabled;
-			},
+  function _getApi(controller, uiDeniGridService) {
 
-			/**
-    *
-    *
-    */
-			getPageNumber: function getPageNumber() {
-				return uiDeniGridSrv.getPageNumber(controller);
-			},
+    return {
+      /**
+       *
+       *
+       */
+      clearSelections: function clearSelections() {
+        uiDeniGridService.clearSelections(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			getRowHeight: function getRowHeight() {
-				return uiDeniGridSrv.getRowIndex(controller);
-			},
+      /**
+       *
+       *
+       */
+      find: function find(valuesToFind, opts) {
+        return uiDeniGridService.find(controller, valuesToFind, opts);
+      },
 
-			/**
-    *
-    *
-   */
-			getRowIndex: function getRowIndex(record) {
-				return uiDeniGridSrv.getRowIndex(controller, record);
-			},
+      /**
+       *
+       *
+       */
+      findFirst: function findFirst(valuesToFind, opts) {
+        return uiDeniGridService.findFirst(controller, valuesToFind, opts);
+      },
 
-			/**
-    *
-    *
-   */
-			getSelectedRow: function getSelectedRow() {
-				return uiDeniGridSrv.getSelectedRow(controller);
-			},
+      /**
+       *
+       *
+       */
+      findKey: function findKey(keyValue, opts) {
+        return uiDeniGridService.findKey(controller, keyValue, opts);
+      },
 
-			/**
-    *
-    *
-   */
-			getSelectedRowIndex: function getSelectedRowIndex() {
-				return uiDeniGridSrv.getSelectedRowIndex(controller);
-			},
+      /**
+       *
+       *
+       */
+      findLast: function findLast(valuesToFind, opts) {
+        return uiDeniGridService.findLast(controller, valuesToFind, opts);
+      },
 
-			/**
-    *
-    *
-    */
-			isEnableGrouping: function isEnableGrouping() {
-				return uiDeniGridSrv.isEnableGrouping(controller);
-			},
+      /**
+       *
+       *
+       */
+      findNext: function findNext(valuesToFind, opts) {
+        return uiDeniGridService.findNext(controller, valuesToFind, opts);
+      },
 
-			/**
-    *
-    *
-    */
-			isGrouped: function isGrouped() {
-				return uiDeniGridSrv.isGrouped(controller);
-			},
+      /**
+       *
+       *
+       */
+      findPrevious: function findPrevious(valuesToFind, opts) {
+        return uiDeniGridService.findPrevious(controller, valuesToFind, opts);
+      },
 
-			/**
-    *
-    *
-   */
-			isRowSelected: function isRowSelected(row) {
-				return uiDeniGridSrv.isRowSelected(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      filter: function filter(filterModel, opts) {
+        return uiDeniGridService.filter(controller, filterModel, opts);
+      },
 
-			/**
-    * @param row {Element|Integer} Can be the rowIndex or a jquery element row
-    *
-    */
-			isRowVisible: function isRowVisible(row) {
-				return uiDeniGridSrv.isRowVisible(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      getChangedRecords: function getChangedRecords() {
+        return uiDeniGridService.getChangedRecords(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			load: function load() {
-				uiDeniGridSrv.load(controller);
-			},
+      /**
+       *
+       *
+       */
+      getColumn: function getColumn(fieldName) {
+        return uiDeniGridService.getColumn(controller, fieldName);
+      },
 
-			/**
-    *
-    *
-    */
-			loadData: function loadData(data) {
-				uiDeniGridSrv.loadData(controller, data);
-			},
+      /**
+       *
+       *
+       */
+      getEnabled: function getEnabled(enabled) {
+        return controller.enabled;
+      },
 
-			/**
-    *
-    *
-   */
-			isHideHeaders: function isHideHeaders() {
-				return uiDeniGridSrv.isHideHeaders(controller);
-			},
+      /**
+       *
+       *
+       */
+      getPageNumber: function getPageNumber() {
+        return uiDeniGridService.getPageNumber(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			reload: function reload() {
-				return uiDeniGridSrv.reload(controller);
-			},
+      /**
+       *
+       *
+       */
+      getRowHeight: function getRowHeight() {
+        return uiDeniGridService.getRowIndex(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			removeRow: function removeRow(row) {
-				uiDeniGridSrv.removeRow(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      getRowIndex: function getRowIndex(record) {
+        return uiDeniGridService.getRowIndex(controller, record);
+      },
 
-			/**
-    *
-    *
-    */
-			removeSelectedRows: function removeSelectedRows() {
-				uiDeniGridSrv.removeSelectedRows(controller);
-			},
+      /**
+       *
+       *
+       */
+      getSelectedRow: function getSelectedRow() {
+        return uiDeniGridService.getSelectedRow(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			resolveRowElement: function resolveRowElement(row) {
-				return uiDeniGridSrv.resolveRowElement(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      getSelectedRowIndex: function getSelectedRowIndex() {
+        return uiDeniGridService.getSelectedRowIndex(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			resolveRowIndex: function resolveRowIndex(row) {
-				return uiDeniGridSrv.resolveRowIndex(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      isEnableGrouping: function isEnableGrouping() {
+        return uiDeniGridService.isEnableGrouping(controller);
+      },
 
-			/**
-    * forceRepaint force repaint all visible rows
-    *
-    */
-			repaint: function repaint(forceRepaint) {
-				uiDeniGridSrv.repaint(controller, forceRepaint);
-			},
+      /**
+       *
+       *
+       */
+      isGrouped: function isGrouped() {
+        return uiDeniGridService.isGrouped(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			repaintRow: function repaintRow(row) {
-				return uiDeniGridSrv.repaintRow(controller, row);
-			},
+      /**
+       *
+       *
+       */
+      isRowSelected: function isRowSelected(row) {
+        return uiDeniGridService.isRowSelected(controller, row);
+      },
 
-			/**
-    *
-    *
-    */
-			repaintSelectedRow: function repaintSelectedRow() {
-				return uiDeniGridSrv.repaintSelectedRow(controller);
-			},
+      /**
+       * @param row {Element|Integer} Can be the rowIndex or a jquery element row
+       *
+       */
+      isRowVisible: function isRowVisible(row) {
+        return uiDeniGridService.isRowVisible(controller, row);
+      },
 
-			/**
-    *
-    *
-    */
-			setDisableGrouping: function setDisableGrouping() {
-				uiDeniGridSrv.setDisableGrouping(controller);
-			},
+      /**
+       *
+       *
+       */
+      load: function load() {
+        uiDeniGridService.load(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			setEnableGrouping: function setEnableGrouping() {
-				uiDeniGridSrv.setEnableGrouping(controller);
-			},
+      /**
+       *
+       *
+       */
+      loadData: function loadData(data) {
+        uiDeniGridService.loadData(controller, data);
+      },
 
-			/**
-    *
-    *
-   */
-			setHideHeaders: function setHideHeaders(hideHeaders) {
-				return uiDeniGridSrv.setHideHeaders(controller, hideHeaders);
-			},
+      /**
+       *
+       *
+       */
+      isHideHeaders: function isHideHeaders() {
+        return uiDeniGridService.isHideHeaders(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			selectAll: function selectAll() {
-				uiDeniGridSrv.selectAll(controller);
-			},
+      /**
+       *
+       *
+       */
+      reload: function reload() {
+        return uiDeniGridService.reload(controller);
+      },
 
-			/**
-    *
-    *
-    */
-			setEnabled: function setEnabled(enabled) {
-				uiDeniGridSrv.setEnabled(controller, enabled);
-			},
+      /**
+       *
+       *
+       */
+      removeRow: function removeRow(row) {
+        uiDeniGridService.removeRow(controller, row);
+      },
 
-			/**
-    *
-    *
-   */
-			selectRow: function selectRow(row, preventSelecionChange, scrollIntoView) {
-				uiDeniGridSrv.selectRow(controller, row, preventSelecionChange, scrollIntoView);
-			},
+      /**
+       *
+       *
+       */
+      removeSelectedRows: function removeSelectedRows() {
+        uiDeniGridService.removeSelectedRows(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			selectCell: function selectCell(row, col, preventSelecionChange, scrollIntoView) {
-				uiDeniGridSrv.selectRow(controller, row, col, preventSelecionChange, scrollIntoView);
-			},
+      /**
+       *
+       *
+       */
+      resolveRowElement: function resolveRowElement(row) {
+        return uiDeniGridService.resolveRowElement(controller, row);
+      },
 
-			/**
-    *
-    *
-    */
-			setPageNumber: function setPageNumber(pageNumber) {
-				uiDeniGridSrv.setPageNumber(controller, pageNumber);
-			},
+      /**
+       *
+       *
+       */
+      resolveRowIndex: function resolveRowIndex(row) {
+        return uiDeniGridService.resolveRowIndex(controller, row);
+      },
 
-			/**
-    *
-    *
-    */
-			setRowHeight: function setRowHeight(rowHeight) {
-				uiDeniGridSrv.setRowHeight(controller, rowHeight);
-			},
+      /**
+       * forceRepaint force repaint all visible rows
+       *
+       */
+      repaint: function repaint(forceRepaint) {
+        uiDeniGridService.repaint(controller, forceRepaint);
+      },
 
-			/**
-    *
-    *
-    */
-			setToogleGrouping: function setToogleGrouping() {
-				uiDeniGridSrv.setToogleGrouping(controller);
-			},
+      /**
+       *
+       *
+       */
+      repaintRow: function repaintRow(row) {
+        return uiDeniGridService.repaintRow(controller, row);
+      },
 
-			/**
-    *
-    * holdSelection {boolean} true is default
-   */
-			sort: function sort(sorters, holdSelection) {
-				controller.options.sorters = uiDeniGridSrv.sort(controller, sorters, holdSelection);
-				return controller.options.sorters;
-			},
+      /**
+       *
+       *
+       */
+      repaintSelectedRow: function repaintSelectedRow() {
+        return uiDeniGridService.repaintSelectedRow(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			updateSelectedRow: function updateSelectedRow(json) {
-				uiDeniGridSrv.updateSelectedRow(controller, json);
-			},
+      /**
+       *
+       *
+       */
+      setDisableGrouping: function setDisableGrouping() {
+        uiDeniGridService.setDisableGrouping(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			updateCell: function updateCell(rowIndex, colIndex, value) {
-				uiDeniGridSrv.updateCell(controller, rowIndex, colIndex, value);
-			},
+      /**
+       *
+       *
+       */
+      setEnableGrouping: function setEnableGrouping() {
+        uiDeniGridService.setEnableGrouping(controller);
+      },
 
-			/**
-    *
-    *
-   */
-			updateSelectedCell: function updateSelectedCell(value) {
-				uiDeniGridSrv.updateSelectedCell(controller, value);
-			}
-		};
-	}
+      /**
+       *
+       *
+       */
+      setHideHeaders: function setHideHeaders(hideHeaders) {
+        return uiDeniGridService.setHideHeaders(controller, hideHeaders);
+      },
+
+      /**
+       *
+       *
+       */
+      selectAll: function selectAll() {
+        uiDeniGridService.selectAll(controller);
+      },
+
+      /**
+       *
+       *
+       */
+      setEnabled: function setEnabled(enabled) {
+        uiDeniGridService.setEnabled(controller, enabled);
+      },
+
+      /**
+       *
+       *
+       */
+      selectRow: function selectRow(row, preventSelecionChange, scrollIntoView) {
+        uiDeniGridService.selectRow(controller, row, preventSelecionChange, scrollIntoView);
+      },
+
+      /**
+       *
+       *
+       */
+      selectCell: function selectCell(row, col, preventSelecionChange, scrollIntoView) {
+        uiDeniGridService.selectRow(controller, row, col, preventSelecionChange, scrollIntoView);
+      },
+
+      /**
+       *
+       *
+       */
+      setPageNumber: function setPageNumber(pageNumber) {
+        uiDeniGridService.setPageNumber(controller, pageNumber);
+      },
+
+      /**
+       *
+       *
+       */
+      setRowHeight: function setRowHeight(rowHeight) {
+        uiDeniGridService.setRowHeight(controller, rowHeight);
+      },
+
+      /**
+       *
+       *
+       */
+      setToogleGrouping: function setToogleGrouping() {
+        uiDeniGridService.setToogleGrouping(controller);
+      },
+
+      /**
+       *
+       * holdSelection {boolean} true is default
+       */
+      sort: function sort(sorters, holdSelection) {
+        controller.options.sorters = uiDeniGridService.sort(controller, sorters, holdSelection);
+        return controller.options.sorters;
+      },
+
+      /**
+       *
+       *
+       */
+      updateSelectedRow: function updateSelectedRow(json) {
+        uiDeniGridService.updateSelectedRow(controller, json);
+      },
+
+      /**
+       *
+       *
+       */
+      updateCell: function updateCell(rowIndex, colIndex, value) {
+        uiDeniGridService.updateCell(controller, rowIndex, colIndex, value);
+      },
+
+      /**
+       *
+       *
+       */
+      updateSelectedCell: function updateSelectedCell(value) {
+        uiDeniGridService.updateSelectedCell(controller, value);
+      }
+    };
+  }
 })();
 'use strict';
 
@@ -4109,9 +4109,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 	'use strict';
 
-	angular.module('ui-deni-grid').service('uiDeniGridSrv', uiDeniGridSrv);
+	angular.module('ui-deni-grid').service('uiDeniGridService', uiDeniGridService);
 
-	function uiDeniGridSrv($compile, $timeout, $q, $http, $filter, uiDeniGridUtilSrv, uiDeniGridConstants, uiDeniGridDropdownService, uiDeniGridEventsService) {
+	function uiDeniGridService($compile, $timeout, $q, $http, $filter, uiDeniGridHelperService, uiDeniGridConstant, uiDeniGridDropdownService, uiDeniGridEventsService) {
 		var me = this;
 
 		/**
@@ -4164,7 +4164,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//Row Number?
 				if (controller.options.fixedCols.rowNumber) {
 					columns.splice(0, 0, {
-						width: uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH,
+						width: uiDeniGridConstant.FIXED_COL_ROWNUMBER_WIDTH,
 						isFixedColumn: true
 					});
 				}
@@ -4172,7 +4172,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//Indicator?
 				if (controller.options.fixedCols.indicator) {
 					columns.splice(0, 0, {
-						width: uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH,
+						width: uiDeniGridConstant.FIXED_COL_INDICATOR_WIDTH,
 						isFixedColumn: true
 					});
 				}
@@ -4180,7 +4180,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//CheckBox?
 				if (controller.options.fixedCols.checkbox) {
 					columns.splice(0, 0, {
-						width: uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH,
+						width: uiDeniGridConstant.FIXED_COL_CHECKBOX_WIDTH,
 						isFixedColumn: true,
 						isCheckbox: true
 					});
@@ -4192,7 +4192,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			//
 			var clientWidthParent = headerContainerColumnRow ? headerContainerColumnRow.width() : controller.clientWidth;
 			//
-			//var columnHeaderLevels = uiDeniGridUtilSrv.getColumnHeaderLevels(me, me.options.columns);
+			//var columnHeaderLevels = uiDeniGridHelperService.getColumnHeaderLevels(me, me.options.columns);
 			//
 			var currentLevel = level || 1;
 
@@ -4226,7 +4226,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//if (anyColumnInPercentage) {
 				divHeaderContainerColumn.css('width', column.width);
 				//} else {
-				//divHeaderContainerColumn.css('width', uiDeniGridUtilSrv.getRealColumnWidth(controller, column.width, clientWidthParent));
+				//divHeaderContainerColumn.css('width', uiDeniGridHelperService.getRealColumnWidth(controller, column.width, clientWidthParent));
 				//}
 
 				divHeaderContainerColumn.addClass('ui-header-container-column');
@@ -4304,7 +4304,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				} else {
 
 					//fixed column?
-					if (column.isFixedColumn || uiDeniGridUtilSrv.isFixedColumn(controller, column.name)) {
+					if (column.isFixedColumn || uiDeniGridHelperService.isFixedColumn(controller, column.name)) {
 						controller.fixedColsHeaderContainer.append(divHeaderContainerColumn);
 					} else {
 						controller.headerContainer.append(divHeaderContainerColumn);
@@ -4481,7 +4481,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//
 							var borderWidth = 1;
 							lastSubcolumn.width(lastSubcolumnWidth + difference + borderWidth);
-							//uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, lastSubcolumn, lastSubcolumn.attr('colindex'));
+							//uiDeniGridHelperService.adjustColumnWidtsAccordingColumnHeader(controller, lastSubcolumn, lastSubcolumn.attr('colindex'));
 							//
 							//adjustChildrenColumnsWidths($headerContainerColumnResizing, newWidth);
 
@@ -4493,7 +4493,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//var headerContainerColumns = $headerContainerColumnResizing.find('.ui-header-container-column');
 							//for (let index = 0 ; index < headerContainerColumns.length ; index++) {
 							//	var headerContainerColumn = $(headerContainerColumns.get(index));
-							//	uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, headerContainerColumn.attr('colindex'));
+							//	uiDeniGridHelperService.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, headerContainerColumn.attr('colindex'));
 							//}
 							///////////////////////////////////////////////////////////////////////////////////////////
 							///////////////////////////////////////////////////////////////////////////////////////////
@@ -4504,10 +4504,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 							//
 							$headerContainerColumnResizing.width(newWidth);
 							//
-							//uiDeniGridUtilSrv.adjustColumnWidtsAccordingColumnHeader(controller, $headerContainerColumnResizing, $headerContainerColumnResizing.attr('colindex'));
+							//uiDeniGridHelperService.adjustColumnWidtsAccordingColumnHeader(controller, $headerContainerColumnResizing, $headerContainerColumnResizing.attr('colindex'));
 						}
 
-						uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(controller);
+						uiDeniGridHelperService.adjustAllColumnWidtsAccordingColumnHeader(controller);
 					}
 
 					setResizingOff();
@@ -4656,7 +4656,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 										}
 
 										if (!headerContainerColumn.is('.has-subcolumns')) {
-											controller.options.api.sort({ name: headerCell.attr('name'), direction: direction });
+											controller.element.api.sort({ name: headerCell.attr('name'), direction: direction });
 										}
 									}
 								}
@@ -4671,9 +4671,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			controller.headerContainer.find('.ui-header-cell-dropdown').removeClass('active clicked');
 
 			if (execSortObj) {
-				controller.options.api.sort(execSortObj);
+				controller.element.api.sort(execSortObj);
 			} else if (column.filter && execFilter) {
-				controller.options.api.filter(controller.scope.filterModel);
+				controller.element.api.filter(controller.scope.filterModel);
 			}
 		};
 
@@ -4799,7 +4799,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				var divCell = $(rowTableRowCardView.insertCell());
 				divCell.css('width', colWidth);
 				if (record) {
-					var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.cardView.template, record);
+					var valueToRender = uiDeniGridHelperService.applyTemplateValues(controller.options.cardView.template, record);
 					divCell.html(valueToRender);
 					divCell.prop('record', record);
 
@@ -4956,7 +4956,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			var sortersArray;
 
 			//GROUPING
-			if (controller.options.api.isGrouped()) {
+			if (controller.element.api.isGrouped()) {
 				sortersArray = _sort(controller, sorters);
 
 				//
@@ -4966,8 +4966,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					var rowIndex = parseInt(rowElementGroupExpanded.attr('rowindex'));
 					var record = controller.options.data[rowIndex];
 
-					uiDeniGridUtilSrv.groupCollapse(controller, rowElementGroupExpanded, record, rowIndex);
-					uiDeniGridUtilSrv.groupExpand(controller, rowElementGroupExpanded, record, rowIndex);
+					uiDeniGridHelperService.groupCollapse(controller, rowElementGroupExpanded, record, rowIndex);
+					uiDeniGridHelperService.groupExpand(controller, rowElementGroupExpanded, record, rowIndex);
 				});
 
 				//ROW DETAIL
@@ -4984,14 +4984,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				sortersArray = _sort(controller, sorters);
 
 				//
-				controller.options.api.loadData(controller.options.data);
+				controller.element.api.loadData(controller.options.data);
 
 				for (var index = 0; index < recordsToExpand.length; index++) {
 					var record = recordsToExpand[index];
-					var rowIndex = controller.options.api.resolveRowIndex(record);
-					var rowElement = controller.options.api.resolveRowElement(rowIndex);
+					var rowIndex = controller.element.api.resolveRowIndex(record);
+					var rowElement = controller.element.api.resolveRowElement(rowIndex);
 
-					uiDeniGridUtilSrv.rowDetailsExpand(controller, rowElement, record, rowIndex);
+					uiDeniGridHelperService.rowDetailsExpand(controller, rowElement, record, rowIndex);
 				}
 				_repaint(controller);
 
@@ -5000,7 +5000,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				sortersArray = _sort(controller, sorters);
 
 				//
-				controller.options.api.loadData(controller.options.data);
+				controller.element.api.loadData(controller.options.data);
 			}
 
 			for (var _index3 = 0; _index3 < sortersArray.length; _index3++) {
@@ -5015,7 +5015,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 
 			//Call ui-deni-view method sort
-			//controller.options.api.sort(sortersArray);
+			//controller.element.api.sort(sortersArray);
 
 			if (recordToHold) {
 				me.selectRow(controller, recordToHold);
@@ -5117,7 +5117,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    *
    */
 		me.isRowSelected = function (controller, row) {
-			var rowElement = controller.options.api.resolveRowElement(row);
+			var rowElement = controller.element.api.resolveRowElement(row);
 			return rowElement.is('.selected');
 		};
 
@@ -5170,16 +5170,16 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					var rowIndex;
 
 					//
-					if (controller.options.api.isGrouped()) {
+					if (controller.element.api.isGrouped()) {
 						//
-						rowIndex = controller.options.api.resolveRowIndex(row);
+						rowIndex = controller.element.api.resolveRowIndex(row);
 						//
 					} else {
-						rowIndex = controller.options.api.resolveRowIndex(row);
+						rowIndex = controller.element.api.resolveRowIndex(row);
 					}
 
 					//
-					//var rowElement = controller.options.api.resolveRowElement(row);
+					//var rowElement = controller.element.api.resolveRowElement(row);
 
 					//
 					scrollIntoView = scrollIntoView === false ? false : true;
@@ -5192,7 +5192,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					//
 					var scrollIntoViewFn = function scrollIntoViewFn(rowElementToScroll) {
 						if (scrollIntoView) {
-							//if (!controller.options.api.isRowVisible(rowElementToScroll)) {
+							//if (!controller.element.api.isRowVisible(rowElementToScroll)) {
 							//	rowElementToScroll.get(0).scrollIntoView(false);
 							//}
 						}
@@ -5205,7 +5205,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					} else {
 						controller.rowIndex = rowIndex;
 
-						if (controller.options.api.isGrouped()) {
+						if (controller.element.api.isGrouped()) {
 							var itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 							if (!itemRow) {
 								var groupIndex = controller.options.data[rowIndex].groupIndex;
@@ -5213,7 +5213,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 								controller.colsViewport.scrollTop(groupInfo.top);
 								_repaint(controller);
 								var record = controller.options.data[rowIndex];
-								uiDeniGridUtilSrv.groupExpand(controller, groupInfo.rowElement, record, rowIndex);
+								uiDeniGridHelperService.groupExpand(controller, groupInfo.rowElement, record, rowIndex);
 								itemRow = controller.managerRendererItems.getInfoRow(rowIndex);
 							}
 
@@ -5235,7 +5235,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//
 				if (controller.rowIndex !== undefined && !controller.options.multiSelect) {
 					//remove all selections
-					controller.options.api.clearSelections();
+					controller.element.api.clearSelections();
 				}
 
 				//
@@ -5287,7 +5287,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				scrollIntoView = scrollIntoView === false ? false : true;
 
 				//
-				var rowElement = controller.options.api.resolveRowElement(row);
+				var rowElement = controller.element.api.resolveRowElement(row);
 				//
 				if (row.length === 0) {
 					throw new Error('selectCell: row passed in a wrong way!');
@@ -5301,13 +5301,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				if (!controller.options.multiSelect) {
 					//remove all selections
-					controller.options.api.clearSelections();
+					controller.element.api.clearSelections();
 				}
 
 				divCell.addClass('selected');
 
 				//
-				var rowIndex = controller.options.api.resolveRowIndex(row);
+				var rowIndex = controller.element.api.resolveRowIndex(row);
 				controller.rowIndex = rowIndex;
 				controller.colIndex = colIndex;
 			}
@@ -5337,7 +5337,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				throw 'You have to select a record';
 			} else {
 				//
-				var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(json);
+				var fieldsNotNested = uiDeniGridHelperService.prepareForNestedJson(json);
 				//
 				var keyFieldsToChange = Object.keys(fieldsNotNested);
 				//
@@ -5368,7 +5368,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    *
   */
 		me.updateCell = function (controller, rowIndex, colIndex, value) {
-			var rowElement = controller.options.api.resolveRowElement(rowIndex);
+			var rowElement = controller.element.api.resolveRowElement(rowIndex);
 			var divCell = rowElement.find('.ui-cell[colIndex=' + colIndex + ']');
 			var spanCellInner = divCell.find('.ui-cell-inner');
 			spanCellInner.html(value);
@@ -5651,7 +5651,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						controller.options.paging.pageCount = Math.ceil(controller.options.paging.dataLength / controller.options.paging.pageSize);
 
 						//
-						controller.options.api.loadData(responseData[controller.options.restConfig.data]);
+						controller.element.api.loadData(responseData[controller.options.restConfig.data]);
 						deferred.resolve(responseData[controller.options.restConfig.data]);
 
 						//
@@ -5670,7 +5670,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 						controller.paging.find('.label-record-count').html(controller.options.paging.dataLength + ' records');
 					} else {
 						//
-						controller.options.api.loadData(responseData[controller.options.restConfig.data]);
+						controller.element.api.loadData(responseData[controller.options.restConfig.data]);
 						deferred.resolve(responseData[controller.options.restConfig.data]);
 					}
 
@@ -5710,11 +5710,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			///////////////////////////////////////////////////////////////////////////
 
 			//Are there footer?
-			if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
+			if (uiDeniGridHelperService.hasColumnFooter(controller)) {
 				//
-				uiDeniGridUtilSrv.renderColumnFooters(controller, controller.footerContainer, controller.options.columns, data, true);
+				uiDeniGridHelperService.renderColumnFooters(controller, controller.footerContainer, controller.options.columns, data, true);
 				//
-				uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
+				uiDeniGridHelperService.remakeHeightBodyViewportWrapper(controller);
 			}
 
 			//
@@ -5814,7 +5814,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			//
 			//
 			// GROUPING
-			if (controller.options.api.isGrouped()) {
+			if (controller.element.api.isGrouped()) {
 				var expressionToGroup = controller.options.grouping.expr;
 
 				var getEvalFieldValue = function getEvalFieldValue(record, fieldName) {
@@ -5827,7 +5827,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					return eval(evalStr);
 				};
 
-				var fieldsNotNested = uiDeniGridUtilSrv.prepareForNestedJson(controller.options.data[0]);
+				var fieldsNotNested = uiDeniGridHelperService.prepareForNestedJson(controller.options.data[0]);
 				var fields = Object.keys(fieldsNotNested);
 
 				var functionToEvaluate;
@@ -5852,7 +5852,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
     */
 
-				//controller.options.api.sort(sortGroupingFn);
+				//controller.element.api.sort(sortGroupingFn);
 				controller.options.data = $filter('orderBy')(controller.options.data, expressionToGroup);
 
 				//Add a fixed sorter to a group
@@ -5915,10 +5915,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			//
 			_repaint(controller);
 
-			uiDeniGridUtilSrv.remakeHeightBodyViewportWrapper(controller);
+			uiDeniGridHelperService.remakeHeightBodyViewportWrapper(controller);
 
 			if (controller.options.data.length > 0) {
-				controller.options.api.selectRow(0, false, false);
+				controller.element.api.selectRow(0, false, false);
 			}
 
 			///////////////////////////////////////////////////////////////////////////
@@ -5970,7 +5970,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			var recordsFound = [];
 			var breakParentLoop = false;
 
-			var newJson = uiDeniGridUtilSrv.prepareForNestedJson(valuesToFind);
+			var newJson = uiDeniGridHelperService.prepareForNestedJson(valuesToFind);
 			keys = Object.keys(newJson);
 			////////////////////////////////////////////////////////////////////////////////
 			////////////////////////////////////////////////////////////////////////////////
@@ -6071,13 +6071,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				};
 
 				var selectAndRemoveRendered = function selectAndRemoveRendered(record, preventSelectionChange, scrollIntoView) {
-					controller.options.api.selectRow(record, preventSelectionChange, scrollIntoView);
-					var rowElement = controller.options.api.resolveRowElement(record);
+					controller.element.api.selectRow(record, preventSelectionChange, scrollIntoView);
+					var rowElement = controller.element.api.resolveRowElement(record);
 					rowElement.attr('rendered', false);
 				};
 
 				//remove all selections
-				controller.options.api.clearSelections();
+				controller.element.api.clearSelections();
 				if (Array.isArray(recordsFound)) {
 					//multiSelect
 					if (controller.options.multiSelect) {
@@ -6148,11 +6148,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			//remote filter
 			if (controller.options.filter && controller.options.filter.remote) {
-				controller.options.api.reload();
+				controller.element.api.reload();
 
 				//local filter
 			} else {
-				controller.options.api.loadData(controller.options.alldata);
+				controller.element.api.loadData(controller.options.alldata);
 			}
 		};
 
@@ -6283,20 +6283,20 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					rowDetailsBox.addClass('row-detail-box');
 					rowElement.append(rowDetailsBox);
 
-					rowElementParent = controller.options.api.resolveRowElement(itemToRender.rowIndex);
+					rowElementParent = controller.element.api.resolveRowElement(itemToRender.rowIndex);
 
 					rowElement.css('height', itemToRender.height + 'px');
 					rowElement.css('top', itemToRender.top + 'px');
 					rowElement.insertAfter(rowElementParent);
 
 					rowElement.click(function () {
-						controller.options.api.selectRow(rowElementParent);
+						controller.element.api.selectRow(rowElementParent);
 					});
 
 					itemToRender.rowElement = rowElement;
 
 					if (controller.options.rowDetails.template) {
-						var valueToRender = uiDeniGridUtilSrv.applyTemplateValues(controller.options.rowDetails.template, record);
+						var valueToRender = uiDeniGridHelperService.applyTemplateValues(controller.options.rowDetails.template, record);
 						itemToRender.rowElement.html(valueToRender);
 					} else if (controller.options.rowDetails.renderer) {
 						controller.options.rowDetails.renderer(itemToRender.rowElements, record);
@@ -6424,7 +6424,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    *
    */
 		me.repaintRow = function (controller, row) {
-			var rowIndex = controller.options.api.resolveRowIndex(row);
+			var rowIndex = controller.element.api.resolveRowIndex(row);
 			_repaintRow(controller, rowIndex, true, true);
 		};
 
@@ -6457,8 +6457,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    *
    */
 		me.removeRow = function (controller, row) {
-			var rowIndexToDelete = controller.options.api.resolveRowIndex(row);
-			var currentRowIndex = controller.options.api.getSelectedRowIndex();
+			var rowIndexToDelete = controller.element.api.resolveRowIndex(row);
+			var currentRowIndex = controller.element.api.getSelectedRowIndex();
 			var deletingCurrentRow = rowIndexToDelete === currentRowIndex;
 
 			controller.managerRendererItems.removeRow(controller, rowIndexToDelete);
@@ -6471,7 +6471,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 					if (rowIndexToSelect > rowIndexToDelete) {
 						rowIndexToSelect--;
 					}
-					controller.options.api.selectRow(rowIndexToSelect, false, false);
+					controller.element.api.selectRow(rowIndexToSelect, false, false);
 				}
 			}
 		};
@@ -6546,6 +6546,395 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 		};
 	}
+})();
+'use strict';
+
+(function () {
+
+  'use strict';
+
+  angular.module('ui-deni-grid').service('uiDeniGridApiService', uiDeniGridApiService);
+
+  uiDeniGridApiService.$inject = ['uiDeniGridService'];
+
+  function uiDeniGridApiService(uiDeniGridService) {
+    var vm = this;
+
+    function _getApi(controller, uiDeniGridService) {
+
+      return {
+
+        /**
+         *
+         *
+         */
+        clearSelections: function clearSelections() {
+          uiDeniGridService.clearSelections(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        find: function find(valuesToFind, opts) {
+          return uiDeniGridService.find(controller, valuesToFind, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        findFirst: function findFirst(valuesToFind, opts) {
+          return uiDeniGridService.findFirst(controller, valuesToFind, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        findKey: function findKey(keyValue, opts) {
+          return uiDeniGridService.findKey(controller, keyValue, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        findLast: function findLast(valuesToFind, opts) {
+          return uiDeniGridService.findLast(controller, valuesToFind, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        findNext: function findNext(valuesToFind, opts) {
+          return uiDeniGridService.findNext(controller, valuesToFind, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        findPrevious: function findPrevious(valuesToFind, opts) {
+          return uiDeniGridService.findPrevious(controller, valuesToFind, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        filter: function filter(filterModel, opts) {
+          return uiDeniGridService.filter(controller, filterModel, opts);
+        },
+
+        /**
+         *
+         *
+         */
+        getChangedRecords: function getChangedRecords() {
+          return uiDeniGridService.getChangedRecords(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        getColumn: function getColumn(fieldName) {
+          return uiDeniGridService.getColumn(controller, fieldName);
+        },
+
+        /**
+         *
+         *
+         */
+        getEnabled: function getEnabled(enabled) {
+          return controller.enabled;
+        },
+
+        /**
+         *
+         *
+         */
+        getPageNumber: function getPageNumber() {
+          return uiDeniGridService.getPageNumber(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        getRowHeight: function getRowHeight() {
+          return uiDeniGridService.getRowIndex(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        getRowIndex: function getRowIndex(record) {
+          return uiDeniGridService.getRowIndex(controller, record);
+        },
+
+        /**
+         *
+         *
+         */
+        getSelectedRow: function getSelectedRow() {
+          return uiDeniGridService.getSelectedRow(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        getSelectedRowIndex: function getSelectedRowIndex() {
+          return uiDeniGridService.getSelectedRowIndex(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        isEnableGrouping: function isEnableGrouping() {
+          return uiDeniGridService.isEnableGrouping(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        isGrouped: function isGrouped() {
+          return uiDeniGridService.isGrouped(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        isRowSelected: function isRowSelected(row) {
+          return uiDeniGridService.isRowSelected(controller, row);
+        },
+
+        /**
+         * @param row {Element|Integer} Can be the rowIndex or a jquery element row
+         *
+         */
+        isRowVisible: function isRowVisible(row) {
+          return uiDeniGridService.isRowVisible(controller, row);
+        },
+
+        /**
+         *
+         *
+         */
+        load: function load() {
+          uiDeniGridService.load(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        loadData: function loadData(data) {
+          uiDeniGridService.loadData(controller, data);
+        },
+
+        /**
+         *
+         *
+         */
+        isHideHeaders: function isHideHeaders() {
+          return uiDeniGridService.isHideHeaders(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        reload: function reload() {
+          return uiDeniGridService.reload(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        removeRow: function removeRow(row) {
+          uiDeniGridService.removeRow(controller, row);
+        },
+
+        /**
+         *
+         *
+         */
+        removeSelectedRows: function removeSelectedRows() {
+          uiDeniGridService.removeSelectedRows(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        resolveRowElement: function resolveRowElement(row) {
+          return uiDeniGridService.resolveRowElement(controller, row);
+        },
+
+        /**
+         *
+         *
+         */
+        resolveRowIndex: function resolveRowIndex(row) {
+          return uiDeniGridService.resolveRowIndex(controller, row);
+        },
+
+        /**
+         * forceRepaint force repaint all visible rows
+         *
+         */
+        repaint: function repaint(forceRepaint) {
+          uiDeniGridService.repaint(controller, forceRepaint);
+        },
+
+        /**
+         *
+         *
+         */
+        repaintRow: function repaintRow(row) {
+          return uiDeniGridService.repaintRow(controller, row);
+        },
+
+        /**
+         *
+         *
+         */
+        repaintSelectedRow: function repaintSelectedRow() {
+          return uiDeniGridService.repaintSelectedRow(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        setDisableGrouping: function setDisableGrouping() {
+          uiDeniGridService.setDisableGrouping(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        setEnableGrouping: function setEnableGrouping() {
+          uiDeniGridService.setEnableGrouping(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        setHideHeaders: function setHideHeaders(hideHeaders) {
+          return uiDeniGridService.setHideHeaders(controller, hideHeaders);
+        },
+
+        /**
+         *
+         *
+         */
+        selectAll: function selectAll() {
+          uiDeniGridService.selectAll(controller);
+        },
+
+        /**
+         *
+         *
+         */
+        setEnabled: function setEnabled(enabled) {
+          uiDeniGridService.setEnabled(controller, enabled);
+        },
+
+        /**
+         *
+         *
+         */
+        selectRow: function selectRow(row, preventSelecionChange, scrollIntoView) {
+          uiDeniGridService.selectRow(controller, row, preventSelecionChange, scrollIntoView);
+        },
+
+        /**
+         *
+         *
+         */
+        selectCell: function selectCell(row, col, preventSelecionChange, scrollIntoView) {
+          uiDeniGridService.selectRow(controller, row, col, preventSelecionChange, scrollIntoView);
+        },
+
+        /**
+         *
+         *
+         */
+        setPageNumber: function setPageNumber(pageNumber) {
+          uiDeniGridService.setPageNumber(controller, pageNumber);
+        },
+
+        /**
+         *
+         *
+         */
+        setRowHeight: function setRowHeight(rowHeight) {
+          uiDeniGridService.setRowHeight(controller, rowHeight);
+        },
+
+        /**
+         *
+         *
+         */
+        setToogleGrouping: function setToogleGrouping() {
+          uiDeniGridService.setToogleGrouping(controller);
+        },
+
+        /**
+         *
+         * holdSelection {boolean} true is default
+         */
+        sort: function sort(sorters, holdSelection) {
+          controller.options.sorters = uiDeniGridService.sort(controller, sorters, holdSelection);
+          return controller.options.sorters;
+        },
+
+        /**
+         *
+         *
+         */
+        updateSelectedRow: function updateSelectedRow(json) {
+          uiDeniGridService.updateSelectedRow(controller, json);
+        },
+
+        /**
+         *
+         *
+         */
+        updateCell: function updateCell(rowIndex, colIndex, value) {
+          uiDeniGridService.updateCell(controller, rowIndex, colIndex, value);
+        },
+
+        /**
+         *
+         *
+         */
+        updateSelectedCell: function updateSelectedCell(value) {
+          uiDeniGridService.updateSelectedCell(controller, value);
+        }
+      };
+    }
+
+    //
+    vm.implementApi = function (controller, element, uiDeniGridService) {
+
+      element.each(function () {
+        angular.element(this).init.prototype.api = _getApi(controller, uiDeniGridService);
+      });
+    };
+  }
 })();
 'use strict';
 

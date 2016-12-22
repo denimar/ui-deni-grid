@@ -6,7 +6,7 @@
 		.module('ui-deni-grid')
 		.directive('uiDeniGrid', uiDeniGrid);
 
-	function uiDeniGrid($templateCache, uiDeniGridSrv) {
+	function uiDeniGrid($templateCache, uiDeniGridService) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -15,9 +15,9 @@
 			replace: false,
 			bindToController: true,
 			controllerAs: 'ctrl',
-			controller: 'uiDeniGridCtrl',
+			controller: 'uiDeniGridController',
 			template: $templateCache.get('ui-deni-grid')
-		}
-	}	
+		};
+	}
 
-})();	
+})();

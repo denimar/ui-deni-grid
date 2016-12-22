@@ -13,7 +13,7 @@
 		.module('ui-deni-grid')
 		.service('uiDeniGridEventsService', uiDeniGridEventsService);
 
-	function uiDeniGridEventsService($compile, uiDeniGridUtilSrv, uiDeniGridConstants) {
+	function uiDeniGridEventsService($compile, uiDeniGridHelperService, uiDeniGridConstant) {
 		let vm = this;
 		vm.controller = null;
 
@@ -93,8 +93,8 @@
 							let rowElement = divCell.closest('.ui-row');
 							let rowIndex = parseInt(rowElement.attr('rowindex'));
 
-							if (rowIndex !== vm.controller.options.api.getSelectedRowIndex()) {
-								vm.controller.options.api.selectRow(rowIndex);
+							if (rowIndex !== vm.controller.element.api.getSelectedRowIndex()) {
+								vm.controller.element.api.selectRow(rowIndex);
 							}	
 
 						//selType = 'cell'
@@ -105,7 +105,7 @@
 							let rowElement = divCell.closest('.ui-row');
 							let rowIndex = parseInt(rowElement.attr('rowindex'));
 
-							vm.controller.options.api.selectCell(rowIndex, colIndex);
+							vm.controller.element.api.selectCell(rowIndex, colIndex);
 						}
 
 					}
@@ -117,14 +117,14 @@
 		    		if (targetEl.is('.ui-cell-inner')) {
 			    		let divCell = $(event.currentTarget);
 			    		let colIndex = parseInt(divCell.attr('colIndex'));
-						let columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+						let columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
 						let column = columns[colIndex];
 
 						if (column.editor) {
 							let rowElement = divCell.closest('.ui-row');
 							let rowIndex = parseInt(rowElement.attr('rowindex'));
 							let record = vm.controller.options.data[rowIndex];
-							uiDeniGridUtilSrv.setInputEditorDivCell(vm.controller, record, column, divCell);
+							uiDeniGridHelperService.setInputEditorDivCell(vm.controller, record, column, divCell);
 						}
 					}	
 		    	});
@@ -225,7 +225,7 @@
 				var divCell = _createDivCell(controller, rowElement);
 				rowElement.css('width', '100%');
 				divCell.css('width', '100%');
-				valueToRender = uiDeniGridUtilSrv.applyTemplateValues(getTemplateCardView, record);
+				valueToRender = uiDeniGridHelperService.applyTemplateValues(getTemplateCardView, record);
 				divCell.html(valueToRender);
 			*/
 
@@ -235,12 +235,12 @@
 				let divCell = _createDivCell(rowElement);
 				rowElement.css('width', '100%');
 				divCell.css('width', '100%');
-				let valueToRender = uiDeniGridUtilSrv.applyTemplateValues(vm.controller.options.rowTemplate, record);
+				let valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.rowTemplate, record);
 				divCell.html(valueToRender);
 
 			//Row Detail - Grouping or other type of row details
 			} else if (rowElement.is('.row-detail')) {
-				//uiDeniGridUtilSrv.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
+				//uiDeniGridHelperService.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
 
 				//
 				let divCell = _createDivCell(rowElement);
@@ -262,9 +262,9 @@
 				 		rowElement.toggleClass('expand collapse');
 
 				 		if (spanCellInner.is('.collapse')) {
-				 			uiDeniGridUtilSrv.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
+				 			uiDeniGridHelperService.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
 				 		} else {
-				 			uiDeniGridUtilSrv.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
+				 			uiDeniGridHelperService.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
 				 		}
 				 	//}
 				});
@@ -272,7 +272,7 @@
 				let valueToRender;
 				if (vm.controller.options.grouping.template) {
 					let totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-					valueToRender = uiDeniGridUtilSrv.applyTemplateValues(vm.controller.options.grouping.template, record, {count: totalRowsInGroup});
+					valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.grouping.template, record, {count: totalRowsInGroup});
 				}
 
 				spanCellInner.html(valueToRender);
@@ -284,16 +284,16 @@
 				let records = vm.controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
 
 				//
-				uiDeniGridUtilSrv.createColumnFooters(vm.controller, rowElement, columns, false);
+				uiDeniGridHelperService.createColumnFooters(vm.controller, rowElement, columns, false);
 				//
-				uiDeniGridUtilSrv.renderColumnFooters(vm.controller, rowElement, columns, records, false);
+				uiDeniGridHelperService.renderColumnFooters(vm.controller, rowElement, columns, records, false);
 
 			// (Common Row)
 			} else {
 				//rowElement.css('width', '100%');
 
 				let isRowSelected = rowElement.is('.selected');
-				let columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+				let columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
 				let colIndex = 0;
 				for (let index = 0 ; index < columns.length ; index++) {
 
@@ -305,7 +305,7 @@
 							//if has checkbox
 							if (vm.controller.options.fixedCols.checkbox) {
 								let divCellIndicator = _createDivCell(fixedRowElement);
-								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH);
+								divCellIndicator.css('width', uiDeniGridConstant.FIXED_COL_CHECKBOX_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
 								let spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('checkbox');
@@ -321,7 +321,7 @@
 							//if has indicator
 							if (vm.controller.options.fixedCols.indicator) {
 								let divCellIndicator = _createDivCell(fixedRowElement);
-								divCellIndicator.css('width', uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH);
+								divCellIndicator.css('width', uiDeniGridConstant.FIXED_COL_INDICATOR_WIDTH);
 								divCellIndicator.addClass('auxiliar-fixed-column');
 								let spanCellIndicatorInner = _createDivCellInner(divCellIndicator);
 								spanCellIndicatorInner.addClass('indicator');
@@ -331,7 +331,7 @@
 							//if has row number
 							if (vm.controller.options.fixedCols.rowNumber) {
 								let divCellRowNumber = _createDivCell(fixedRowElement);
-								divCellRowNumber.css('width', uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH);
+								divCellRowNumber.css('width', uiDeniGridConstant.FIXED_COL_ROWNUMBER_WIDTH);
 								divCellRowNumber.addClass('auxiliar-fixed-column');
 								let spanCellRowNumberInner = _createDivCellInner(divCellRowNumber);
 								spanCellRowNumberInner.addClass('rownumber');
@@ -349,7 +349,7 @@
 					let divCell;
 
 					//if fixed column?
-					if (uiDeniGridUtilSrv.isFixedColumn(vm.controller, column.name)) {
+					if (uiDeniGridHelperService.isFixedColumn(vm.controller, column.name)) {
 						divCell = _createDivCell(fixedRowElement);
 					} else {
 						divCell = _createDivCell(rowElement);
@@ -437,9 +437,9 @@
 								 		var target = $(event.target);
 
 								 		if (target.is('.collapse')) {
-								 			uiDeniGridUtilSrv.rowDetailsCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
+								 			uiDeniGridHelperService.rowDetailsCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
 								 		} else {
-								 			uiDeniGridUtilSrv.rowDetailsExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
+								 			uiDeniGridHelperService.rowDetailsExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
 								 		}
 								 	}
 								});
@@ -454,7 +454,7 @@
 						}));
 
 						//Margin First column inside of grouping
-						if ((index === 0) && (vm.controller.options.api.isGrouped())) {
+						if ((index === 0) && (vm.controller.element.api.isGrouped())) {
 							divCell.css('padding-left', '20px');
 						}
 
@@ -471,7 +471,7 @@
 
 						var formattedValue = value;
 						if (angular.isDefined(column.format)) {
-							formattedValue = uiDeniGridUtilSrv.getFormatedValue(value, column.format);
+							formattedValue = uiDeniGridHelperService.getFormatedValue(value, column.format);
 						}
 
 						var rendererRealcedCellsFn = function(valuesToField, allFields, realceStyle) {
@@ -505,12 +505,12 @@
 		/* ---- WARNING ---- TODO: try to implement use this event
 		vm.onafterexpand = function(records, options, elementGroupRow, lastInsertedDivRow) {
 			if (records.length > 0) {
-				let rowIndex = vm.controller.options.api.resolveRowIndex(records[0]);
+				let rowIndex = vm.controller.element.api.resolveRowIndex(records[0]);
 				me.selectRow(vm.controller, rowIndex);
 			}
 
 			//Are there footer?
-			if (uiDeniGridUtilSrv.hasColumnFooter(vm.controller)) {
+			if (uiDeniGridHelperService.hasColumnFooter(vm.controller)) {
 
 				let footerDivContainer = elementGroupRow.prop('footer');
 				if (angular.isDefined(footerDivContainer)) {
@@ -525,7 +525,7 @@
 
 					footerDivContainer.insertAfter(lastInsertedDivRow);
 
-					uiDeniGridUtilSrv.renderColumnFooters(footerDivContainer, vm.controller.footerContainer, vm.controller.options.columns, records, vm.controller);
+					uiDeniGridHelperService.renderColumnFooters(footerDivContainer, vm.controller.footerContainer, vm.controller.options.columns, records, vm.controller);
 				}
 			}
 		};
@@ -535,7 +535,7 @@
 			/*
 			vm.controller.clientWidth;
 
-			var columns = uiDeniGridUtilSrv.getColumns(vm.controller, vm.controller.options.columns);
+			var columns = uiDeniGridHelperService.getColumns(vm.controller, vm.controller.options.columns);
 			//Any column was specified in percentage? TODO: create a function to get this
 			var anyColumnInPercentage = false;
 			for (var colIndex = 0 ; colIndex < vm.controller.options.columns.length ; colIndex++) {
@@ -547,7 +547,7 @@
 			*/
 
 			
-			uiDeniGridUtilSrv.adjustAllColumnWidtsAccordingColumnHeader(vm.controller);
+			uiDeniGridHelperService.adjustAllColumnWidtsAccordingColumnHeader(vm.controller);
         };
         
         vm.bodyViewportScroll = function(event) {
@@ -589,7 +589,7 @@
 		        	vm.controller.headerContainer.css('left', left);
 		        	
 					//Are there footer?
-					if (uiDeniGridUtilSrv.hasColumnFooter(vm.controller)) {
+					if (uiDeniGridHelperService.hasColumnFooter(vm.controller)) {
 			        	//
 						vm.controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
 						//vm.controller.footerDivContainer.css('left', left);
@@ -598,7 +598,7 @@
 		    }
 
 		    //
-			vm.controller.options.api.repaint();
+			vm.controller.element.api.repaint();
         };		
 
         /*
@@ -642,7 +642,7 @@
 		        	controller.headerContainer.css('left', left);
 		        	
 					//Are there footer?
-					if (uiDeniGridUtilSrv.hasColumnFooter(controller)) {
+					if (uiDeniGridHelperService.hasColumnFooter(controller)) {
 			        	//
 						controller.footerDivContainer.find('.ui-deni-grid-footer').css('left', left);
 						//controller.footerDivContainer.css('left', left);
@@ -651,7 +651,7 @@
 		    }
 
 		    //
-			controller.options.api.repaint();
+			controller.element.api.repaint();
         });		
         */
 

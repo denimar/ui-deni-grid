@@ -9,10 +9,10 @@
 
 	angular
 		.module('ui-deni-grid')
-		.service('uiDeniGridUtilSrv', uiDeniGridUtilSrv);
+		.service('uiDeniGridHelperService', uiDeniGridHelperService);
 
 
-	function uiDeniGridUtilSrv($filter, uiDeniGridConstants) {
+	function uiDeniGridHelperService($filter, uiDeniGridConstant) {
 
 		var me = this;
 
@@ -24,7 +24,7 @@
 		 *		-int or integer: Trunc a float number to show only its integer value.
 		 *		-float: Like currency, but without dollar sign
 	 	 *		-lowercase: Format a string to lower case.
-	 	 *		-uppercase: Format a string to upper case.		
+	 	 *		-uppercase: Format a string to upper case.
 		 */
 		me.getFormatedValue = function(value, format) {
 			var lowerFormat = format.toLowerCase();
@@ -56,7 +56,7 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		 me.setInputEditorDivCell = function(controller, record, column, divCellElement) {
@@ -70,19 +70,19 @@
 				/////////////////////////////////////////////////////////
 
 		 		//if the editor value is a boolean.. (ex.: editor: true)
-		 		if (editor === true) { 
+		 		if (editor === true) {
 					editor = {
 						type: 'text'
 					};
 
 				//if the editor is a string... (ex.: editor: 'date')
-		 		} else if (angular.isString(editor)) { 
+		 		} else if (angular.isString(editor)) {
 					editor = {
 						type: editor
 					};
-		 		} else if (!angular.isObject(editor)) { 
+		 		} else if (!angular.isObject(editor)) {
 		 			throw new Error ('"setInputEditorDivCell : " Property "editor" was set in a wrong way!');
-		 		}	
+		 		}
 
 		 		/////////////////////////////////////////////////////////
 
@@ -100,7 +100,7 @@
 					}
 		 		} else {
 					input = $(document.createElement('input'));
-				}	
+				}
 
 			 	//
 		 		var properties = Object.keys(column.editor);
@@ -108,7 +108,7 @@
 		 			var property = properties[index];
 		 			if (property !== 'items') { //used just for the select input
 		 				input.attr(property, column.editor[property]);
-		 			}	
+		 			}
 		 		}
 
 			 	return input;
@@ -121,7 +121,7 @@
 	 		//
 	 		var inputEditor = createEditor();
 	 		inputEditor.css('font-size', spanCellInner.css('font-size'));
-	 		inputEditor.css('font-family', spanCellInner.css('font-familly')); 		
+	 		inputEditor.css('font-family', spanCellInner.css('font-familly'));
 	 		inputEditor.addClass('ui-cell-input-editor');
 
 	 		//
@@ -147,7 +147,7 @@
 		 		spanCellInnerKeyDown.addClass('ui-cell-inner');
 
 		 		//confirming?
-				if (confirm) { 					
+				if (confirm) {
 					var newValue = inputEditorKeyDown.val();
 
 					//
@@ -157,12 +157,12 @@
 			 		divCellElementKeyDown.append(spanCellInnerKeyDown);
 
 					var rowElement = divCellElementKeyDown.closest('.ui-row');
-					
+
 					//
-					controller.options.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
+					controller.element.api.updateCell(rowElement.attr('rowindex'), divCellElementKeyDown.attr('colindex'), newValue);
 
 				//not confirmed
-				} else { 
+				} else {
 					//
 					var oldValueKeyDown = inputEditorKeyDown.attr('oldValue');
 
@@ -182,24 +182,24 @@
 	 		//KeyDown (input)
 			inputEditor.keydown(function(event) {
 				//ESCAPE or RETURN pressed
-				if ((event.keyCode === 27) || (event.keyCode === 13)) { 
+				if ((event.keyCode === 27) || (event.keyCode === 13)) {
 
 					//ESCAPE pressed
-					if (event.keyCode === 27) { 
+					if (event.keyCode === 27) {
 						resolveInputEditor($(event.target), false);
 
 					//RETURN pressed
-					} else if (event.keyCode === 13) { 
+					} else if (event.keyCode === 13) {
 						resolveInputEditor($(event.target), true);
 					}
-			 	}	
+			 	}
 
 			});
 
 	 		//FocusOut (input)
 			inputEditor.focusout(function(event) {
 				resolveInputEditor($(event.target), false);
-			});	
+			});
 
 
 			//
@@ -209,7 +209,7 @@
 
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.getRealColumnWidth = function(controller, colWidth, clientWidthParent) {
@@ -222,7 +222,7 @@
 				realColWidth = realColWidth.replace('%', '');
 				realColWidth = clientWidth * realColWidth / 100;
 				realColWidth = realColWidth + 'px';
-			}	
+			}
 
 			return realColWidth;
 		};
@@ -237,15 +237,15 @@
 					var percentageWidthValue = parseFloat(columns[index].width.replace('%', ''));
 					columns[index].realPercentageWidth = (percentageMasterValue * percentageWidthValue / 100) + '%';
 				}
-				var columnChildren = columns[index].columns;			
+				var columnChildren = columns[index].columns;
 				if ((columnChildren) && (columnChildren.length > 0)) {
 					me.setRealPercentageWidths(columnChildren, columns[index].width);
-				}	
+				}
 			}
 		};
 
 
-		/**	
+		/**
 		 *
 		 *
 		 */
@@ -254,13 +254,13 @@
 			//
 			var scroolBarWidth = controller.bodyViewport.get(0).offsetWidth - controller.bodyViewport.get(0).clientWidth;
 			//
-			var containerWidth = controller.colsContainer.width() - scroolBarWidth;	
+			var containerWidth = controller.colsContainer.width() - scroolBarWidth;
 
 			return containerWidth;
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.adjustColumnWidtsAccordingColumnHeader = function(controller, headerContainerColumn, colIndex) {
@@ -274,8 +274,8 @@
 			//
 			var newWidth = headerContainerColumn.css('width');
 			if (headerContainerColumn.is('.ui-header-container-column.last-subcolumn')) {
-				//plus border width 
-				newWidth = 'calc(' + newWidth + ' + 2px)'; 
+				//plus border width
+				newWidth = 'calc(' + newWidth + ' + 2px)';
 			}
 			bodyContainer.find('.ui-cell[colIndex=' + colIndex + ']').css('width', newWidth);
 
@@ -285,11 +285,11 @@
 				//var lastCellInTheFirstRow = firstRowCells[firstRowCells.length - 1];
 				//bodyContainer.width(lastCellInTheFirstRow.offsetLeft + lastCellInTheFirstRow.offsetWidth);
 				bodyContainer.width(headerContainer.width());
-			}	
+			}
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.adjustAllColumnWidtsAccordingColumnHeader = function(controller) {
@@ -325,56 +325,56 @@
 				me.adjustColumnWidtsAccordingColumnHeader(controller, headerContainerColumn, colIndex);
 				colIndex++;
 			}
-		};	
+		};
 
 
 
 		/**
-		 *	
 		 *
-		 */	 
+		 *
+		 */
 		me.setDefaultOptions = function(controller) {
-			
+
 			var opt = {};
 
 			/**
 			 *
-			 * 
 			 *
-			 */ 
-			opt.api = {}; 
+			 *
+			 */
+			opt.api = {};
 
 			/**
 			 *
-			 * 
 			 *
-			 */ 
+			 *
+			 */
 			opt.listeners = {};
 
 			/**
 			 *
 			 * 'cell' or 'row' (default = 'row')
-			 * 
 			 *
-			 */ 
+			 *
+			 */
 	        opt.selType = 'row';
-			
+
 			/**
 			 *
 			 * (default = true)
-			 * 
 			 *
-			 */ 
+			 *
+			 */
 	        opt.colLines = true;
 
 			/**
 			 *
 			 * (default = true)
-			 * 
 			 *
-			 */ 
+			 *
+			 */
 	        opt.rowLines = true;
-			
+
 			/**
 			 * @opt {Boolean} [autoLoad=true]
 			 *
@@ -385,20 +385,20 @@
 			 * @opt {String} [columnHeaderHeight='25px']
 			 *
 			 */
-			opt.columnHeaderHeight = uiDeniGridConstants.DEFAULT_COLUMN_HEADER_HEIGHT;
+			opt.columnHeaderHeight = uiDeniGridConstant.DEFAULT_COLUMN_HEADER_HEIGHT;
 
 
 			/**
 			 * @opt {String} [columnFooterRowHeight='22px']
 			 *
 			 */
-			opt.columnFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_ROW_FOOTER_HEIGHT;
+			opt.columnFooterRowHeight = uiDeniGridConstant.DEFAULT_COLUMN_ROW_FOOTER_HEIGHT;
 
 			/**
 			 * @opt {String} [columnGroupingFooterRowHeight='18px']
 			 *
 			 */
-			opt.columnGroupingFooterRowHeight = uiDeniGridConstants.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
+			opt.columnGroupingFooterRowHeight = uiDeniGridConstant.DEFAULT_COLUMN_GROUPING_ROW_FOOTER_HEIGHT;
 
 			/**
 			 * @opt {Boolean} [enableGrouping=true]
@@ -416,7 +416,7 @@
 			 * @opt {Object}
 			 *
 			 */
-			opt.filter = uiDeniGridConstants.DEFAULT_FILTER_OPTIONS;
+			opt.filter = uiDeniGridConstant.DEFAULT_FILTER_OPTIONS;
 
 			/**
 			 * @opt {Boolean} [hideHeader=false]
@@ -428,7 +428,7 @@
 			 * @opt {String} [rowHeight='22px']
 			 *
 			 */
-			opt.rowHeight = uiDeniGridConstants.DEFAULT_ROW_HEIGHT;
+			opt.rowHeight = uiDeniGridConstant.DEFAULT_ROW_HEIGHT;
 
 			/**
 			 * @opt {Boolean} [multiSelect=false]
@@ -446,7 +446,7 @@
 		    /**
 		     * @opt {Array|Object|String} [sorters=null]
 			 *
-			 * 	It is a very flexible config and might be filled this way 
+			 * 	It is a very flexible config and might be filled this way
 			 *
 			 * 	(string):
 			 *
@@ -454,20 +454,20 @@
 			 *
 			 *	or (json):
 			 *
-			 * 		{name: 'city', direction: 'ASC'} or	 
+			 * 		{name: 'city', direction: 'ASC'} or
 			 *
 			 *	or (function):
-			 *	
+			 *
 			 *		function(rec1, rec2) {
 			 *			if (rec1.age == rec2.age) return 0;
 			 *			return rec1.age < rec2.age ? -1 : 1;
-			 *		});	 
+			 *		});
 			 *
 			 *	or even (array):
 			 *
 			 * 		[
-			 *			'city', 
-			 *			{name: 'age', direction: 'DESC'}, 
+			 *			'city',
+			 *			{name: 'age', direction: 'DESC'},
 			 *			function(rec1, rec2) {
 			 *				if (rec1.age == rec2.age) return 0;
 			 *				return rec1.age < rec2.age ? -1 : 1;
@@ -502,7 +502,7 @@
 			//CardView
 			if (controller.options.cardView) {
 				controller.options.rowHeight = controller.options.cardView.rowHeight || '150px';
-			}	
+			}
 			//Avoid a error when is passed a integer value
 			controller.options.rowHeight = controller.options.rowHeight.toString();
 
@@ -523,19 +523,19 @@
 				//
 				if (!((angular.isObject(controller.options.grouping)) && (!(angular.isArray(controller.options.grouping))))) {
 					throw new Error('"loadData": param "grouping" passed in a wrong way');
-				}	
+				}
 
 				//
 				var defaultTemplate = '<b>{' + controller.options.grouping.expr + '}</b> ({count})';
 				//
 				controller.options.grouping.template = controller.options.grouping.template || defaultTemplate;
-			}	
+			}
 			/////////////////////////////////////////////////////
 
 
 			////////////////////////////////////////////////////////////////////////////////////////
 			// fixedCols
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 			if (controller.options.fixedCols) {
 
 				//
@@ -543,23 +543,23 @@
 					var fixedColsWidth = 0;
 					//
 					if (controller.options.fixedCols.indicator) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_INDICATOR_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_INDICATOR_WIDTH.replace('px', ''));
 					}
 					//
 					if (controller.options.fixedCols.rowNumber) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_ROWNUMBER_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_ROWNUMBER_WIDTH.replace('px', ''));
 					}
 					//
 					if (controller.options.fixedCols.checkbox) {
-						fixedColsWidth += parseFloat(uiDeniGridConstants.FIXED_COL_CHECKBOX_WIDTH.replace('px', ''));
+						fixedColsWidth += parseFloat(uiDeniGridConstant.FIXED_COL_CHECKBOX_WIDTH.replace('px', ''));
 					}
 
 					//
 					if (controller.options.fixedCols.columns) {
 						for (let index = 0 ; index < fixedColumns.length ; index++) {
 							fixedColsWidth += parseFloat(me.getRealColumnWidth(controller, fixedColumns[index].width).replace('px', ''));
-						}	
-					}	
+						}
+					}
 
 					return fixedColsWidth;
 				};
@@ -595,7 +595,7 @@
 
 							//confirms the existence of the column
 							var found = false;
-							for (var fieldIndex = 0 ; fieldIndex < controller.options.columns.length ; fieldIndex++) {						
+							for (var fieldIndex = 0 ; fieldIndex < controller.options.columns.length ; fieldIndex++) {
 								var field = controller.options.columns[fieldIndex];
 
 								if (field.name === fixedColumns[index]) {
@@ -608,16 +608,16 @@
 								throw new Error('"setInitialDefaultOptions" : "fixedCols.columns" -> column "' + fixedColumns[index] + '" not found!');
 							}
 
-						}						
-					} else {	
+						}
+					} else {
 						throw new Error('"setInitialDefaultOptions" : "fixedCols.columns" property was set in a wrong way!');
 					}
-				}	
+				}
 
 				controller.options.fixedCols.width = getFixedColsWidth(fixedColumns);
-			}	
+			}
 			////////////////////////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 
 			//Paging
 			if (controller.options.paging) {
@@ -629,17 +629,17 @@
 				controller.options.paging.pageSize = controller.options.paging.pageSize || 50;
 				controller.options.paging.currentPage = controller.options.paging.currentPage || 1;
 			}
-			
+
 			////////////////////////////////////////////////////////////////////////////////////////
 			//restConfig
-			////////////////////////////////////////////////////////////////////////////////////////		
+			////////////////////////////////////////////////////////////////////////////////////////
 			var restConfig = controller.options.restConfig;
 			var restConfigDefaults = {
 				type: 'json',
 				data: 'data',
 				total: 'total',
 				start: 'start',
-				limit: 'limit'			
+				limit: 'limit'
 			};
 
 			if (restConfig) {
@@ -649,20 +649,20 @@
 			}
 			controller.options.restConfig = restConfig;
 			////////////////////////////////////////////////////////////////////////////////////////
-			////////////////////////////////////////////////////////////////////////////////////////		
-			
+			////////////////////////////////////////////////////////////////////////////////////////
+
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.ckeckInitialValueFilter = function(controller, columns) {
-			
+
 			angular.forEach(columns, function(column) {
 				if ((column.filter) && (column.filter.initialValue)) {
 					let initialValue = column.filter.initialValue;
-					
+
 					if (angular.isFunction(initialValue)) {
 						initialValue = initialValue();
 					}
@@ -672,24 +672,24 @@
 					//integer
 					if (column.filter.type === 'integer') {
 						//TODO: missing implementation
-					
+
 					//float
 					} else if (column.filter.type === 'float') {
 						//TODO: missing implementation
 
-					//string	
+					//string
 					} else if (column.filter.type === 'string') {
 						value = {
 							key: initialValue.toString(),
 							value: initialValue.toString(),
 							oper: '~'
-						};	
+						};
 
-					//date	
+					//date
 					} else if (column.filter.type === 'date') {
 						//TODO: missing implementation
 
-					//date and time	
+					//date and time
 					} else if (column.filter.type === 'datetime') {
 						//Transform the initValue in a array
 						let initialValueArray = initialValue;
@@ -705,8 +705,8 @@
 								key: initialValueArray[0],
 								value: initialValueArray[0],
 								oper: '<='
-							});	
-						}	
+							});
+						}
 
 						if (initialValueArray.length > 1) {
 							//>=
@@ -714,19 +714,19 @@
 								key: initialValueArray[1],
 								value: initialValueArray[1],
 								oper: '>='
-							});	
-						}	
+							});
+						}
 
 
-					//boolean	
+					//boolean
 					} else if (column.filter.type === 'boolean') {
 						//TODO: missing implementation
 
-					//select (radio)	
+					//select (radio)
 					} else if (column.filter.type === 'select') {
 						//TODO: missing implementation
 
-					//multi select (checkbox)	
+					//multi select (checkbox)
 					} else if (column.filter.type === 'multiSelect') {
 						//Transform the initValue in a array
 						let initialValueArray = initialValue;
@@ -749,18 +749,18 @@
 					}
 
 					controller.options.filter.model[column.filter.field || column.name] = value;
-				}		
+				}
 			});
 
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.remakeHeightBodyViewportWrapper = function(controller) {
 			var paddingfooterDivContainerWidth = 3;
-			
+
 			var otherDivsheight = 0;
 
 			//Showing column header?
@@ -770,7 +770,7 @@
 
 			//Paging?
 			if (controller.options.paging) {
-				controller.container.css('height', 'calc(100% - ' +  uiDeniGridConstants.PAGING_HEIGHT + ')');
+				controller.container.css('height', 'calc(100% - ' +  uiDeniGridConstant.PAGING_HEIGHT + ')');
 			}
 
 			//Showing footer?
@@ -783,7 +783,7 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.hasColumnFooter = function(controller) {
@@ -796,14 +796,14 @@
 						return true;
 					}
 				}
-			}	
+			}
 
 			return false;
 		};
 
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.getColumnHeaderLevels = function(controller, columns) {
@@ -815,12 +815,12 @@
 				if (column.columns) {
 					//
 					levelsChild = me.getColumnHeaderLevels(controller, column.columns);
-					
+
 					if (levelsChild > greaterLevelChild) {
 						greaterLevelChild = levelsChild;
 					}
-				}	
-			}	
+				}
+			}
 
 
 			return 1 + greaterLevelChild;
@@ -842,21 +842,21 @@
 					var column = controller.options.columns[index];
 					//
 					if (column.footer) {
-						var lenght = angular.isArray(column.footer) ? column.footer.length : 1;				
+						var lenght = angular.isArray(column.footer) ? column.footer.length : 1;
 						//
 						if (lenght > columnFooterNumber) {
 							columnFooterNumber = lenght;
 						}
-					}	
-				}	
-			}	
+					}
+				}
+			}
 
 			return columnFooterNumber;
 
 		};
 
 		/**
-		 * It is not the same as getColumnFooterNumber	
+		 * It is not the same as getColumnFooterNumber
 		 *
 		 */
 		me.getColumnFooterRowsNumber = function(controller, groupingFooter) {
@@ -870,7 +870,7 @@
 					var column = controller.options.columns[index];
 					//
 					if (column.footer) {
-						var lenght = 1;				
+						var lenght = 1;
 						//
 						if (angular.isArray(column.footer)) {
 							lenght = 0;
@@ -879,19 +879,19 @@
 								//
 								if (angular.isObject(footer)) {
 									//
-									if (groupingFooter) {	
+									if (groupingFooter) {
 										//
 										if (footer.grouping !== false) {
 											lenght++;
 										}
-									//	
+									//
 									} else {
 										//
 										if (footer.grid !== false) {
 											lenght++;
 										}
 									}
-								//	
+								//
 								} else {
 									lenght++;
 								}
@@ -901,21 +901,21 @@
 						if (lenght > columnFooterRowsNumber) {
 							columnFooterRowsNumber = lenght;
 						}
-					}	
-				}	
-			}	
+					}
+				}
+			}
 
 			return columnFooterRowsNumber;
 		};
 
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.createColumnFooters = function(controller, footerContainer, columns, gridFooter) {
 			//There is no need to add cells when a footerRowTemplate was set
-			if (!angular.isDefined(controller.options.footerTemplate)) {		
+			if (!angular.isDefined(controller.options.footerTemplate)) {
 				var rowClass;
 				var cellClass;
 				var cellInnerClass;
@@ -924,12 +924,12 @@
 				if (gridFooter) {
 					rowClass = 'ui-footer-row';
 					cellClass = 'ui-footer-cell';
-					cellInnerClass = 'ui-footer-cell-inner';			
+					cellInnerClass = 'ui-footer-cell-inner';
 				//Group Footer
 				} else {
 					rowClass = 'ui-grouping-footer-row';
 					cellClass = 'ui-grouping-footer-cell';
-					cellInnerClass = 'ui-grouping-footer-cell-inner';			
+					cellInnerClass = 'ui-grouping-footer-cell-inner';
 				}
 
 				//
@@ -950,7 +950,7 @@
 					footerRowElement.addClass(rowClass);
 
 					//
-					footerRowElement.attr('index', footerIndex);			
+					footerRowElement.attr('index', footerIndex);
 
 					//There is no need to add cells when a footerRowTemplate was set
 					if (!angular.isDefined(controller.options.footerRowTemplate)) {
@@ -963,7 +963,7 @@
 						//loop over columns
 						for (let index = 0 ; index < columns.length ; index++) {
 							var column = columns[index];
-							
+
 							//
 							footerCellElement = $(document.createElement('div'));
 							//
@@ -988,12 +988,12 @@
 								//
 								footerCellInnerElement = $(document.createElement('span'));
 								//
-								footerCellInnerElement.addClass(cellInnerClass);					
+								footerCellInnerElement.addClass(cellInnerClass);
 
 								//
 								//footerCellElement.attr('footerColIndex', footerColIndex);
-								//footerCellInnerElement.attr('footerColIndex', footerColIndex);	
-								footerColIndex++;	
+								//footerCellInnerElement.attr('footerColIndex', footerColIndex);
+								footerColIndex++;
 
 								//
 								footerCellElement.append(footerCellInnerElement);
@@ -1005,11 +1005,11 @@
 							}
 
 						} //loop over columns (end)
-					}	
+					}
 
-					footerContainer.append(footerRowElement);			
+					footerContainer.append(footerRowElement);
 
-				} //loop over footers	
+				} //loop over footers
 
 				//
 				if (columnFooterRowsNumber > 0) {
@@ -1020,20 +1020,20 @@
 						var footerRows = footerContainer.find('.' + rowClass);
 						var firstRow = $(footerRows.get(0));
 						firstRow.find('.' + cellClass).addClass('first-row');
-						var lastRow = $(footerRows.get(footerRows.length - 1));			
-						lastRow.find('.' + cellClass).addClass('last-row');			
+						var lastRow = $(footerRows.get(footerRows.length - 1));
+						lastRow.find('.' + cellClass).addClass('last-row');
 
 						//
 						var colsLength = firstRow.find('.' + cellClass).length;
 						footerContainer.find('.' + cellClass  + '[footerColIndex=0]').addClass('first-col');
-						footerContainer.find('.' + cellClass + '[footerColIndex=' + (colsLength-1) + ']').addClass('last-col');			
+						footerContainer.find('.' + cellClass + '[footerColIndex=' + (colsLength-1) + ']').addClass('last-col');
 					//}
 				}
-			}	
+			}
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.renderColumnFooters = function(controller, footerContainer, columns, data, gridFooter) {
@@ -1045,12 +1045,12 @@
 			if (gridFooter) {
 				rowClass = 'ui-footer-row';
 				cellClass = 'ui-footer-cell';
-				cellInnerClass = 'ui-footer-cell-inner';			
+				cellInnerClass = 'ui-footer-cell-inner';
 			//Group Footer
 			} else {
 				rowClass = 'ui-grouping-footer-row';
 				cellClass = 'ui-grouping-footer-cell';
-				cellInnerClass = 'ui-grouping-footer-cell-inner';			
+				cellInnerClass = 'ui-grouping-footer-cell-inner';
 			}
 
 			//
@@ -1066,11 +1066,11 @@
 				//if hasn't a footerTemplate
 				if (!angular.isDefined(controller.options.footerTemplate)) {
 					footerRow = $(footerContainer.find('.' + rowClass)[footerRowIndex]);
-				}	
+				}
 
 				//
 				for (var columnIndex = 0 ; columnIndex < columns.length ; columnIndex++) {
-					var column = columns[columnIndex];				
+					var column = columns[columnIndex];
 
 					//
 					if (column.footer) {
@@ -1079,7 +1079,7 @@
 
 						//
 						if (angular.isDefined(footer)) {
-							//Should this footer be showed in grid?	
+							//Should this footer be showed in grid?
 							var showInGrid = footer.grid !== false;
 							//Should this footer be showed in groupin?
 							var showInGrouping = footer.grouping !== false;
@@ -1095,25 +1095,25 @@
 
 								//
 								if (angular.isString(footer)) {
-									//	
+									//
 									if (defaultFunctionsNames.indexOf(footer.toLowerCase()) === -1) {
 										footer = {
 											text: footer
-										};	
+										};
 									//
 									} else {
 										footer = {
 											fn: footer.toLowerCase()
 										};
 									}
-								//	
+								//
 								} else if (angular.isFunction(footer)) {
 									footer = {
 										fn: footer
 									};
-								}	
+								}
 
-								
+
 								footerRow = $(footerContainer.find('.' + rowClass)[visibleFooterRowIndex]);
 
 								//
@@ -1129,20 +1129,20 @@
 								if (angular.isDefined(footerFn)) {
 									var value;
 
-									// Custom Function	
+									// Custom Function
 									if (angular.isFunction(footerFn)) {
 										value = footerFn(data, column.name);
 
-									// Default Function	
+									// Default Function
 									} else if (angular.isString(footerFn)) {
 
 										if (defaultFunctionsNames.indexOf(footerFn.toLowerCase()) === -1) {
 											throw new Error('"renderColumnFooters" : "' + footerFn + '" is not a default function!');
-										} else {	
+										} else {
 											var defaultFunction = footerFn.toUpperCase();
 											footer.text = (footer.text || footerFn.toLowerCase() + ' : ');
 
-											// AVG	
+											// AVG
 											if (defaultFunction === 'AVG') {
 												value = me.defaultFunctions.avg(data, column.name);
 
@@ -1161,10 +1161,10 @@
 											// SUM
 											} else if (defaultFunction === 'SUM') {
 												value = me.defaultFunctions.sum(data, column.name);
-												
+
 											}
 										}
-											
+
 									} else {
 										throw new Error('"renderColumnFooters" : "fn" param passed in a wrong way!');
 									}
@@ -1173,7 +1173,7 @@
 									var format = footer.format || column.format;
 									if (angular.isDefined(format)) {
 										value = me.getFormatedValue(value, format);
-									}	
+									}
 
 									//footerTemplate
 									if (angular.isDefined(controller.options.footerTemplate)) {
@@ -1184,7 +1184,7 @@
 									} else if (angular.isDefined(controller.options.footerRowTemplate)) {
 										recordToFooterRowTemplate[column.name + '.text'] = footer.text;
 										recordToFooterRowTemplate[column.name + '.value'] = value;
-									} else {	
+									} else {
 										//
 										if (angular.isDefined(footer.align)) {
 											divFooterCell.css('text-align', footer.align);
@@ -1221,8 +1221,8 @@
 											footer.text = footer.textRenderer(textElement, footer.text);
 										}
 										///////////////////////////////////////////////////////////////
-										///////////////////////////////////////////////////////////////									
-									}	
+										///////////////////////////////////////////////////////////////
+									}
 
 								//
 								} else if (angular.isDefined(footer.text)) {
@@ -1232,10 +1232,10 @@
 								}
 
 								visibleFooterRowIndex++;
-							}					
-		
+							}
+
 						}
-					}			
+					}
 
 				}
 
@@ -1244,14 +1244,14 @@
 					let valueToRender = me.applyTemplateValues(controller.options.footerRowTemplate, recordToFooterRowTemplate);
 					footerRow.html(valueToRender);
 					footerRow.css('width', '100%');
-				}	
+				}
 			}
 
 			//footerTemplate
 			if (angular.isDefined(controller.options.footerTemplate)) {
 				let valueToRender = me.applyTemplateValues(controller.options.footerTemplate, recordToFooterTemplate);
 				footerContainer.html(valueToRender);
-			}	
+			}
 
 		};
 
@@ -1263,7 +1263,7 @@
 			buttonFirst.addClass('disabled');
 			paging.append(buttonFirst);
 			buttonFirst.click(function(event) {
-				controller.options.api.setPageNumber(1);
+				controller.element.api.setPageNumber(1);
 			});
 
 			//Previous Page Button
@@ -1273,7 +1273,7 @@
 			buttonPrev.addClass('disabled');
 			paging.append(buttonPrev);
 			buttonPrev.click(function(event) {
-				controller.options.api.setPageNumber(controller.options.api.getPageNumber() - 1);
+				controller.element.api.setPageNumber(controller.element.api.getPageNumber() - 1);
 			});
 
 			//
@@ -1296,14 +1296,14 @@
 			inputPageNumber.keydown(function(event) {
 				if (event.keyCode === 13) { //Return
 					var pageNumber = parseInt($(event.target).val());
-					if (pageNumber < 1) {				
+					if (pageNumber < 1) {
 						pageNumber = 1;
 					} else if (pageNumber > controller.options.paging.pageCount) {
 						pageNumber = controller.options.paging.pageCount;
 					}
-					controller.options.api.setPageNumber(pageNumber);
-					$(event.target).select();							
-				}	
+					controller.element.api.setPageNumber(pageNumber);
+					$(event.target).select();
+				}
 			});
 
 			//
@@ -1326,10 +1326,10 @@
 			var buttonNext = $(document.createElement('span'));
 			buttonNext.addClass('button');
 			buttonNext.addClass('button-next');
-			buttonNext.addClass('disabled');		
+			buttonNext.addClass('disabled');
 			paging.append(buttonNext);
 			buttonNext.click(function(event) {
-				controller.options.api.setPageNumber(controller.options.api.getPageNumber() + 1);
+				controller.element.api.setPageNumber(controller.element.api.getPageNumber() + 1);
 			});
 
 			//
@@ -1339,7 +1339,7 @@
 			buttonLast.addClass('disabled');
 			paging.append(buttonLast);
 			buttonLast.click(function(event) {
-				controller.options.api.setPageNumber(controller.options.paging.pageCount);
+				controller.element.api.setPageNumber(controller.options.paging.pageCount);
 			});
 
 			//
@@ -1353,7 +1353,7 @@
 			refreshButton.addClass('button-refresh');
 			paging.append(refreshButton);
 			refreshButton.click(function(event) {
-				controller.options.api.reload();
+				controller.element.api.reload();
 			});
 
 			//
@@ -1391,15 +1391,15 @@
 						var additionalButton = $(document.createElement('span'));
 						additionalButton.addClass('button');
 						additionalButton.addClass('button-additional');
-						additionalButton.addClass('disabled');			
+						additionalButton.addClass('disabled');
 						additionalButton.html(buttonConfig.text);
 						paging.append(additionalButton);
 						additionalButton.get(0).onclick = buttonConfig.click;
 					});
 				} else {
 					console.log('"buttons" property must be a array.');
-				}	
-			}	
+				}
+			}
 
 			//
 			paging.find('.button').mouseenter(function(event) {
@@ -1414,7 +1414,7 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.defaultFunctions = {
@@ -1431,7 +1431,7 @@
 
 			//MAX
 			max: function(data, columnName) {
-				var maxValue = Number.MIN_VALUE;			
+				var maxValue = Number.MIN_VALUE;
 				for (var recIndex = 0 ; recIndex < data.length ; recIndex++) {
 					let record = data[recIndex];
 					let value = record[columnName];
@@ -1459,7 +1459,7 @@
 
 			//SUM
 			sum: function(data, columnName) {
-				var sumValue = 0;			
+				var sumValue = 0;
 				for (var recIndex = 0 ; recIndex < data.length ; recIndex++) {
 					let record = data[recIndex];
 					sumValue += record[columnName];
@@ -1471,31 +1471,31 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
-		me.rowDetailsExpand = function(controller, rowElement, record, rowIndex) {	
+		me.rowDetailsExpand = function(controller, rowElement, record, rowIndex) {
 			var spinnerCell = rowElement.find('.ui-cell-inner.row-detail');
-			spinnerCell.removeClass('expand');		
-			spinnerCell.addClass('collapse');		
+			spinnerCell.removeClass('expand');
+			spinnerCell.addClass('collapse');
 
 			rowElement.addClass('row-detail-expanded');
 			controller.managerRendererItems.insertRowDefailtBox(rowIndex);
-			controller.options.api.repaint();
-		};	
+			controller.element.api.repaint();
+		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
-		me.rowDetailsCollapse = function(controller, rowElement, record, rowIndex) {	
+		me.rowDetailsCollapse = function(controller, rowElement, record, rowIndex) {
 			var spinnerCell = rowElement.find('.ui-cell-inner.row-detail');
 			spinnerCell.removeClass('collapse');
-			spinnerCell.addClass('expand');		
+			spinnerCell.addClass('expand');
 
-			rowElement.removeClass('row-detail-expanded');		
+			rowElement.removeClass('row-detail-expanded');
 			controller.managerRendererItems.removeRowDetailtBox(rowIndex);
-			controller.options.api.repaint();		
+			controller.element.api.repaint();
 		};
 
 
@@ -1508,13 +1508,13 @@
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.groupExpand = function(controller, rowElement, record, rowIndex) {
 
-			var groupIndex = rowElement.attr('groupIndex');	
-			//Row Detail is a grouping		
+			var groupIndex = rowElement.attr('groupIndex');
+			//Row Detail is a grouping
 			if (angular.isDefined(groupIndex)) {
 				groupIndex = parseInt(groupIndex);
 
@@ -1530,24 +1530,24 @@
 
 				//
 				controller.managerRendererItems.insertChildrenGroup(groupIndex, childrenIndexes);
-				controller.options.api.repaint();
+				controller.element.api.repaint();
 			}
 		};
 
 		/**
-		 *	
+		 *
 		 *
 		 */
 		me.groupCollapse = function(controller, rowElement, record, rowIndex) {
-			
+
 			var groupIndex = rowElement.attr('groupIndex');
-			//Row Detail is a grouping		
+			//Row Detail is a grouping
 			if (angular.isDefined(groupIndex)) {
 				groupIndex = parseInt(groupIndex);
-				
+
 				//
 				controller.managerRendererItems.removeAllChildrenGroup(groupIndex);
-				controller.options.api.repaint();
+				controller.element.api.repaint();
 			}
 		};
 
@@ -1562,8 +1562,8 @@
 					transformedValue = valueToTransform;
 				} else {
 					transformedValue.push(valueToTransform);
-				}				
-			}	
+				}
+			}
 			return transformedValue;
 		};
 
@@ -1601,7 +1601,7 @@
 	 	/**
 	 	 * Below is a example in which is necessary the prepareForNestedJson function
 		 *	 {
-	     *   	name: 'Alisha', 
+	     *   	name: 'Alisha',
 	     *   	address: {
 	     *   		city: 'Welch'
 	     *		}
@@ -1614,15 +1614,15 @@
 				for(var key in json){
 					if (!json.hasOwnProperty(key)) {
 						continue;
-					}	
+					}
 					if (!angular.isObject(json[key])) {
-		    			root[index + key + suffix] = json[key];						
+		    			root[index + key + suffix] = json[key];
 					}
 		    		if (toString.call(json[key]) === '[object Array]' ) {
 		    			tree(json[key], index + key + suffix + '[');
 		    		} else if(toString.call(json[key]) === '[object Object]') {
-		    			tree(json[key], index + key + suffix + '.');   
-		    		}	
+		    			tree(json[key], index + key + suffix + '.');
+		    		}
 		   		}
 		 	};
 
@@ -1651,7 +1651,7 @@
 
 			return columns;
 	    };
-		
+
 
 		/**
 		 *
@@ -1680,9 +1680,9 @@
 	            var regexp = new RegExp('\\{' + (i - 1).toString() + '\\}', 'gi');
 	            formatted = formatted.replace(regexp, arguments[i]);
 	        }
-	        return formatted;        
+	        return formatted;
 	    };
-		
+
 		/**
 		 * This guy manages which items the grid should render
 		 *
@@ -1705,13 +1705,13 @@
 				var top = 0;
 
 				//
-				if (controller.options.api.isGrouped()) {
+				if (controller.element.api.isGrouped()) {
 					for (let index = 0 ; index < controller.options.dataGroup.length ; index++) {
 
 						//
 						mng.items.push({
 							top: top,
-							height: mng.rowHeight,						
+							height: mng.rowHeight,
 							rowIndex: controller.options.dataGroup[index].rowIndex,
 							groupIndex: index,
 							children: controller.options.dataGroup[index].children
@@ -1737,15 +1737,15 @@
 							top += rowHeight;
 						}
 					}
-				//	
+				//
 				} else {
-					//It might have more than one record by row whe is configured 'cardView' property 
+					//It might have more than one record by row whe is configured 'cardView' property
 					var recordsByRow = angular.isDefined(controller.options.cardView) ? controller.options.cardView.numberOfColumns : 1;
-					
+
 					//for (let index = 0 ; index < controller.options.data.length ; index++) {
-					var index = 0;	
-					while (index < controller.options.data.length) {	
-					
+					var index = 0;
+					while (index < controller.options.data.length) {
+
 						for (let indexRecord = 0 ; indexRecord < recordsByRow ; indexRecord++) {
 							mng.items.push({
 								top: top,
@@ -1764,10 +1764,10 @@
 									rowDetails: true
 								});
 								top += rowHeight;
-							}	
-							
+							}
+
 							index++;
-						}	
+						}
 					}
 				}
 			};
@@ -1791,24 +1791,24 @@
 						if (item.rowIndex === rowIndex) {
 							found = true;
 							top = item.top;
-							mng.items.splice(index, 1);						
+							mng.items.splice(index, 1);
 							if (item.rendered) {
 								item.rowElement.remove();
 							}
 							controller.options.data.splice(rowIndex, 1);
 							index--;
 						}
-					}	
+					}
 				}
 
 				var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
 				controller.bodyContainer.height(rowsContainerHeight);
 				controller.fixedColsBodyContainer.height(rowsContainerHeight);
-			};	
+			};
 
 			//
 			mng.insertRowDefailtBox = function(rowIndex) {
-				
+
 				var found = false;
 				var top;
 				for (let index = 0 ; index < mng.items.length ; index++) {
@@ -1831,7 +1831,7 @@
 
 							mng.items.splice(index + 1, 0, {
 								top: top,
-								height: rowHeight, //elementRowDefailBox.height(), //TODO: <<--								
+								height: rowHeight, //elementRowDefailBox.height(), //TODO: <<--
 								rowIndex: rowIndex,
 								rowDetails: true
 								//rowElement: elementRowDefailBox,
@@ -1840,7 +1840,7 @@
 							index++;
 							top += rowHeight;
 						}
-					}	
+					}
 				}
 
 				var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
@@ -1850,7 +1850,7 @@
 
 			//
 			mng.removeRowDetailtBox = function(rowIndex) {
-				
+
 				var found = false;
 				var top;
 				for (let index = 0 ; index < mng.items.length ; index++) {
@@ -1873,17 +1873,17 @@
 							//remove the row detail box
 							mng.items.splice(index+1, 1);
 						}
-					}	
+					}
 				}
 
 				var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
 				controller.bodyContainer.height(rowsContainerHeight);
-				controller.fixedColsBodyContainer.height(rowsContainerHeight);				
+				controller.fixedColsBodyContainer.height(rowsContainerHeight);
 			};
 
 			//
 			mng.insertChildrenGroup = function(groupIndex, childrenIndexes) {
-				
+
 				var found = false;
 				var top;
 				for (let index = 0 ; index < mng.items.length ; index++) {
@@ -1904,7 +1904,7 @@
 							for (var recIndex = 0 ; recIndex < childrenIndexes.length ; recIndex++) {
 								mng.items.splice(index + 1 + recIndex, 0, {
 									top: top,
-									height: mng.rowHeight,								
+									height: mng.rowHeight,
 									rowIndex: childrenIndexes[recIndex],
 									groupIndex: groupIndex,
 									indexInsideGroup: recIndex
@@ -1913,7 +1913,7 @@
 							}
 							index += childrenIndexes.length;
 						}
-					}	
+					}
 				}
 
 				var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
@@ -1923,7 +1923,7 @@
 
 			//
 			mng.removeAllChildrenGroup = function(groupIndex) {
-				
+
 				var found = false;
 				var top;
 				for (let index = 0 ; index < mng.items.length ; index++) {
@@ -1944,18 +1944,18 @@
 								var childItem = mng.items[index];
 								if (childItem.footerContainer) {
 									break;
-								} else {	
+								} else {
 									if (childItem.rendered) {
 										childItem.rowElement.remove();
 										//childItem.rendered = false;
 									}
 									mng.items.splice(index, 1);
-								}	
+								}
 							}
-							index--;						
+							index--;
 							top = item.top + item.height;
 						}
-					}	
+					}
 				}
 
 				var rowsContainerHeight = mng.items[mng.items.length - 1].top + mng.rowHeight;
@@ -1972,7 +1972,7 @@
 
 				//
 				var scrollTop = controller.bodyViewport.scrollTop();
-				var scrollBottom = scrollTop + controller.bodyViewport.height();			
+				var scrollBottom = scrollTop + controller.bodyViewport.height();
 
 				for (let index = 0 ; index < mng.items.length ; index++) {
 					var item = mng.items[index];
@@ -1989,7 +1989,7 @@
 				for (let index = 0 ; index < mng.items.length ; index++) {
 					var item = mng.items[index];
 					if (item.rendered) {
-						if (visibleRows.indexOf(item) === -1) {					
+						if (visibleRows.indexOf(item) === -1) {
 
 							//
 							if (!item.footerContainer) {
@@ -2005,8 +2005,8 @@
 								//
 								item.rendered = false;
 								item.rowElement = undefined;
-							}	
-						}	
+							}
+						}
 					}
 				}
 			};

@@ -4,7 +4,7 @@
 
 	angular
 		.module('ui-deni-grid')
-		.constant('uiDeniGridConstants', {
+		.constant('uiDeniGridConstant', {
 			//
 			FIXED_COL_INDICATOR_WIDTH: '25px',
 
@@ -28,7 +28,7 @@
 
 			//
 			PAGING_HEIGHT: '26px',
-			
+
 			//
 			DEFAULT_FILTER_OPTIONS: {
 				remote: false,
@@ -36,7 +36,7 @@
 				realce: 'background-color:#ffffb3;color:black;padding:1px;',
 				model: {} //save the fields and values to filter
 			}
-			
+
 		});
 
-})();	
+})();

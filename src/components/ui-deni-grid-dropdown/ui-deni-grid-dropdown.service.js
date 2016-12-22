@@ -532,7 +532,7 @@
 					itemFilterModel = vm.column.filter.getFilterModel(vm.containerElm);
 				//
 				} else {
-					itemFilterModel = _getFilterModelChanged(vm.scope.filterModel)
+					itemFilterModel = _getFilterModelChanged(vm.scope.filterModel);
 				}
 
 				//does any filter was changed?

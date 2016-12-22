@@ -4,23 +4,20 @@ var webserver = require('gulp-webserver');
 module.exports = function() {
 
 	gulp.src([
-			'./',
-			//'./examples/searches-and-filters/column-filter/basic-config/',
-			'./examples/searches-and-filters/local-column-filter/',
-			'./src/components/ui-deni-grid-dropdown/',
-			'./src/components/ui-deni-grid-dropdown-item/templates/filters/',
+			'./dist/',
+			'./'
 		])
 
 		.pipe(webserver({
 			//livereload: true,
-			//directoryListing: true,
+			directoryListing: true,
 			//fallback: 'index.html',
 			//fallback: './examples/searches-and-filters/column-filter/basic-config/index.html',
-			fallback: './examples/searches-and-filters/local-column-filter/index.html',
+			//fallback: './examples/searches-and-filters/local-column-filter/index.html',
 			open: true,
 			port: 3001,
-			//open: 'http://localhost:3000/ui-deni-grid'
-	    }));
+			open: 'http://localhost:3001/examples/api-usage/index.html'
+		}));
 
 }
 
