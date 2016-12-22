@@ -1,6 +1,7 @@
 describe('ui-deni-grid API', function() {
 
   beforeEach(function() {
+    //browser.get('http://localhost:3001/examples/api-usage/index.html');
     browser.get('https://denimar.github.io/ui-deni-grid/examples/usability/api-usage/');
   });
 
@@ -16,6 +17,7 @@ describe('ui-deni-grid API', function() {
         expect(json.eyeColor).toEqual('brown');
         expect(json.name).toEqual('Reba Dickinson');
         expect(json.gender).toEqual('female');
+        expect(json.age).toEqual(28);
       });
   });
 
