@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../../../dist/ui-deni-grid.min.css">
+</head>
+
+<style>
+
+	body {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
+
+	#deniGrid {
+		height: 700px;
+		width: 600px;
+		position: relative;
+    display: inline-block;
+	}
+
+  .buttons-container {
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 4px;
+		background-color: #f2f2f2;
+		border: solid 1px #cccccc;
+		padding: 10px;
+		font-family: arial,tahoma;
+		font-size: 12px;
+	}
+	.buttons-container .title {
+			background-color: #004080;
+			color: #e6eeff;
+			margin-bottom: 4px;
+			padding: 4px;
+			font-weight: bold;
+	}
+
+	.buttons-container button {
+		display: block;
+		margin-bottom: 2px;
+	}
+	label {
+		font-family: arial,tahoma;
+		font-size: 12px;
+	}
+	textarea {
+		width: 350px;
+		height: 290px;
+		display: block;
+	}
+
+
+</style>
+
+<body ng-app="myApp">
+
+	<section ng-controller="ExampleCtrl as ctrl">
+
+		<div>
+			<ui-deni-grid id="deniGrid" options="ctrl.gridOptions"></ui-deni-grid>
+      <div class="buttons-container">
+        <div class="title">Click on the buttons and see the results</div>
+
+        <button id="btnLoad" ng-click="ctrl.load()"><b>load :</b> load data</button>
+        <button ng-click="ctrl.reload()"><b>reload :</b> reload data</button>
+        <hr />
+        <button id="btnSelectThirdRow" ng-click="ctrl.selectThirdRow()"><b>selectRow :</b> select third row</button>
+        <button id="btnGetSelectedRow" ng-click="ctrl.getSelectedRow()"><b>getSelectedRow :</b> get selected row</button>
+        <hr />
+
+        <hr />
+
+        <label>
+          Results:
+          <textarea id="memResults"></textarea>
+        </label>
+      </div>
+		</div>
+	</section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+
+	<script src="../../../dist/ui-deni-grid.js"></script>
+
+	<script src="script.js"></script>
+</body>
+</html>
