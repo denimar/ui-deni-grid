@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+  - stable
+before_script:
+    - npm install -g protractor
+    - webdriver-manager update
+    - webdriver-manager start
+script:
+  - protractor protractor-conf.js
+after_success:
+  - npm run report-coverage
+before_install:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+env:
+  global:
+    - SAUCE_USERNAME=denimar
+    - SAUCE_ACCESS_KEY=6bda91d2-ca2c-4ea0-bf43-4c2a891118f9
+addons:
+  sauce_connect: true
