@@ -8,8 +8,11 @@ exports.config = {
   specs: ['test/*spec.js'],
 
   onPrepare: function(){
-      var caps = browser.getCapabilities()
-      console.log(caps);
+    browser.getCapabilities().then(function(capability) {
+      console.log('******************************');
+      console.log(capability);
+      console.log('******************************');
+    });
   },
 
   // multiCapabilities: [
