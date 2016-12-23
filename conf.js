@@ -1,7 +1,7 @@
 // conf.js
 exports.config = {
-  sauceUser: 'denimar',
-  sauceKey: '6bda91d2-ca2c-4ea0-bf43-4c2a891118f9',
+  sauceUser: 'denimarmoraes',
+  sauceKey: 'd6a4e55a-a8e1-4aee-bc17-0d4d690f07b5',
 
   //seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
   specs: ['test/*spec.js'],
@@ -35,6 +35,6 @@ exports.config = {
         console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
       });
     }
-    printSessionId("ui-deni-grid test");
+    printSessionId("ui-deni-grid");
   }
 }

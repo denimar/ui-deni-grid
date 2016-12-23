@@ -111,7 +111,7 @@ if (process.env.TRAVIS) {
   process.env.SAUCE_USERNAME='denimarmoraes';
   process.env.SAUCE_ACCESS_KEY='d6a4e55a-a8e1-4aee-bc17-0d4d690f07b5';
   process.env.TRAVIS_JOB_NUMBER='654';
-  process.env.TRAVIS_BUILD_NUMBER='12';
+  process.env.TRAVIS_BUILD_NUMBER='13';
 
   config.sauceUser = process.env.SAUCE_USERNAME;
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
