@@ -70,7 +70,7 @@ exports.config = {
     {
       'name': 'Mac10/Chrome',
       'browserName': 'chrome',
-      'os': 'macOS 10'
+      'platform': 'Mac 10.8'
     }
   ],
 
