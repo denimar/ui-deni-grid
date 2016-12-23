@@ -27,6 +27,7 @@ exports.config = {
     },
     {
       'name': 'Firefox',
+      'os': 'Windows 7',
       'browserName': 'firefox'
     },
     // { DOESN'T WORK
@@ -59,13 +60,18 @@ exports.config = {
       'browserName': 'internet explorer',
       'version': '11.0'
     },
-    */
     {
-      'name': 'MicrosoftEdge/Windows 10',
+      'name': 'Win10/Edge14',
       'os': 'Windows 10',
       'browserName': 'MicrosoftEdge',
       'version': '14'
     },
+    */
+    {
+      'name': 'Mac10/Chrome',
+      'browserName': 'chrome',
+      'os': 'macOS 10'
+    }
   ],
 
   // multiCapabilities: [{
