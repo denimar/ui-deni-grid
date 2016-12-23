@@ -5,3 +5,5 @@ env:
   global:
     - SAUCE_USERNAME=ui-deni-grid
     - SAUCE_ACCESS_KEY=6b220e08-e488-43c0-982d-b76e0e4b9170
+after_success:
+  - git commit -a -m "Committed by Travis-CI build number: $TRAVIS_JOB_ID"
