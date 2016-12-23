@@ -28,22 +28,9 @@ exports.config = {
     maxInstances: 25
   }],
 
-  onComplete: function(par1, par2, par3) {
+  onComplete: function() {
 
-    console.log('-----------------------');
-    console.log('par1 : ' + par1);
-    console.log('par2 : ' + par2);
-    console.log('par3 : ' + par3);
-    console.log('-----------------------');
-
-    var printSessionId = function(jobName){
       browser.getSession().then(function(session, par4, par5, par6) {
-        console.log('-----------------------');
-        console.log('par4 : ' + par4);
-        console.log('par5 : ' + par5);
-        console.log('par6 : ' + par6);
-        console.log('-----------------------');
-
         var caps = session.caps_.caps_;
         var webdriverId = caps.webdriver.remote.sessionid;
         var platform = caps.platform;
@@ -58,7 +45,6 @@ exports.config = {
         console.log('Browser version : ' + browserVersion);
         console.log('-----------------------');
       });
-    }
-    printSessionId("ui-deni-grid");
+
   }
 }
