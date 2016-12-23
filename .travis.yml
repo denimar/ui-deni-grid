@@ -1,9 +1,8 @@
+sudo: false
 language: node_js
 node_js:
-- '7.0'
-env:
-  global:
-    - SAUCE_USERNAME=ui-deni-grid
-    - SAUCE_ACCESS_KEY=6b220e08-e488-43c0-982d-b76e0e4b9170
+  - stable
+script:
+  - npm test
 after_success:
-  - npm run coveralls
+  - npm run report-coverage
