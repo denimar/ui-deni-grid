@@ -19,8 +19,10 @@ exports.config = {
       // Linux if you don't specify an OS
       'name': 'Linux / Chrome',
       'browserName': 'chrome',
-      //'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      //'build': process.env.TRAVIS_BUILD_NUMBER
+    },  
+    {
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER
     },
     //
     // {
