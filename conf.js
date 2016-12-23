@@ -68,9 +68,9 @@ exports.config = {
     },
     */
     {
-      'name': 'Mac10/Chrome',
-      'browserName': 'chrome',
-      'platform': 'Mac 10.8'
+      'name': 'Android 5.1',
+      //'browserName': 'chrome',
+      'platform': 'Android 5.1'
     }
   ],
 
