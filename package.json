@@ -5,7 +5,7 @@
   "main": "gulpFile.js",
   "scripts": {
     "test": "./node_modules/.bin/protractor conf.js"
-  },,
+  },
   "keywords": [
     "ui-deni-grid"
   ],
