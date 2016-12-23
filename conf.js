@@ -17,14 +17,6 @@ exports.config = {
       'build': process.env.TRAVIS_BUILD_NUMBER
     },
     {
-      // by default, these first two browsers will come up in
-      // Linux if you don't specify an OS
-      'name': 'Linux / Opera',
-      'browserName': 'opera',
-      //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
-      'build': process.env.TRAVIS_BUILD_NUMBER
-    },
-    {
       'name': 'Linux / Firefox',
       'browserName': 'firefox',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
@@ -47,6 +39,22 @@ exports.config = {
       'platform': 'Windows 7',
       'browserName': 'internet explorer',
       'version': '9.0',
+      //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
+      'build': process.env.TRAVIS_BUILD_NUMBER
+    },
+    {
+      'name': 'Win7 / Opera 11',
+      'platform': 'Windows 7',
+      'browserName': 'opera',
+      'version': '11',
+      //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
+      'build': process.env.TRAVIS_BUILD_NUMBER
+    },
+    {
+      'name': 'Win7 / Opera 12',
+      'platform': 'Windows 7',
+      'browserName': 'opera',
+      'version': '12',      
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER
     },
