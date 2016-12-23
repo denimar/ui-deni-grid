@@ -10,7 +10,9 @@ exports.config = {
   onPrepare: function(){
     browser.getCapabilities().then(function(capability) {
       console.log('******************************');
-      console.log(capability);
+      console.log(capability.caps_.platform);
+      console.log(capability.caps_.browserName);
+      console.log(capability.caps_.version);
       console.log('******************************');
     });
   },
