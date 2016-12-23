@@ -7,18 +7,6 @@ exports.config = {
 
   specs: ['test/*spec.js'],
 
-  onPrepare: function(){
-    browser.getCapabilities().then(function(capability) {
-      console.log('******************************');
-      console.log(capability.caps_.platform);
-      console.log(capability.caps_.browserName);
-      console.log(capability.caps_.version);
-      console.log('******************************');
-      console.log(capability);
-      console.log('******************************');
-    });
-  },
-
   multiCapabilities: [
     {
       // by default, these first two browsers will come up in
@@ -27,7 +15,7 @@ exports.config = {
       'browserName': 'chrome'
     },
     {
-      'name': 'Firefox',
+      'name': 'Linux / Firefox',
       'browserName': 'firefox'
     },
     // { DOESN'T WORK
@@ -81,20 +69,5 @@ exports.config = {
 
   ],
 
-  // multiCapabilities: [{
-  //   browserName: 'firefox',
-  //   version: '32',
-  //   platform: 'OS X 10.10',
-  //   name: "firefox-tests",
-  //   shardTestFiles: true,
-  //   maxInstances: 25
-  // }, {
-  //   browserName: 'chrome',
-  //   version: '41',
-  //   platform: 'Windows 7',
-  //   name: "chrome-tests",
-  //   shardTestFiles: true,
-  //   maxInstances: 25
-  // }]
 
 }
