@@ -8,10 +8,8 @@ exports.config = {
   specs: ['test/*spec.js'],
 
   onPrepare: function(){
-      //var caps = browser.getCapabilities()
-      DesiredCapabilities caps = DesiredCapabilities.edge();
-      caps.setCapability("platform", "Windows 10");
-      caps.setCapability("version", "14.14393");      
+      var caps = browser.getCapabilities()
+      console.log(caps);
   },
 
   // multiCapabilities: [
