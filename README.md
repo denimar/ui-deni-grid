@@ -1,7 +1,5 @@
 # ui-deni-grid
 
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/nggrid.svg)](https://saucelabs.com/u/nggrid)
-
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/ui-deni-grid.svg)](https://saucelabs.com/u/ui-deni-grid)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/ui-deni-grid.svg)](https://saucelabs.com/u/ui-deni-grid)
