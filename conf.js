@@ -24,7 +24,7 @@ exports.config = {
       browser.getSession().then(function(session) {
 
         console.log('SauceOnDemandSessionID : ' + session.getId());
-        console.log('caps : ' + session.caps_.caps_);        
+        console.log('webDriver : ' + session.caps_.caps_.webdriver);        
 
         /*
         var caps = session.caps_.caps_;
