@@ -108,8 +108,8 @@ var config = {
 
 if (process.env.TRAVIS) {
 
-  process.env.SAUCE_USERNAME='denimarmoraes';
-  process.env.SAUCE_ACCESS_KEY='d6a4e55a-a8e1-4aee-bc17-0d4d690f07b5';
+  process.env.SAUCE_USERNAME='ui-deni-grid';
+  process.env.SAUCE_ACCESS_KEY='6b220e08-e488-43c0-982d-b76e0e4b9170';
   process.env.TRAVIS_JOB_NUMBER='654';
   process.env.TRAVIS_BUILD_NUMBER='13';
 

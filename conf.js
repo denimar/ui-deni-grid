@@ -1,7 +1,7 @@
 // conf.js
 exports.config = {
-  sauceUser: 'denimarmoraes',
-  sauceKey: 'd6a4e55a-a8e1-4aee-bc17-0d4d690f07b5',
+  sauceUser: 'ui-deni-grid',
+  sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
 
   //seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
   specs: ['test/*spec.js'],
