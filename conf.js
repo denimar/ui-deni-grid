@@ -43,10 +43,10 @@ exports.config = {
       'build': process.env.TRAVIS_BUILD_NUMBER
     },
     {
-      'name': 'Linux / Opera 12.15',
-      'platform': 'Linux',
-      'browserName': 'opera',
-      'version': '12.15',
+      'name': 'Win7 / Safari',
+      'platform': 'Windows 7',
+      'browserName': 'safari',
+      'version': '5',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER
     },
