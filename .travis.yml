@@ -3,5 +3,5 @@ node_js:
 - '7.0'
 env:
   global:
-    - SAUCE_USERNAME=denimar
-    - SAUCE_ACCESS_KEY=6bda91d2-ca2c-4ea0-bf43-4c2a891118f9
+    - SAUCE_USERNAME=denimarmoraes
+    - SAUCE_ACCESS_KEY=d6a4e55a-a8e1-4aee-bc17-0d4d690f07b5
