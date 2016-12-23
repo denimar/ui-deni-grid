@@ -27,7 +27,7 @@ exports.config = {
     browser.getSession().then(function(session) {
 
 
-      console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
+      console.log('SauceOnDemandSessionID=' + session.getId());
       console.log('-----------------------');
       console.log(session.caps_.caps_.webdriver.remote.sessionid);
       console.log('-----------------------');
