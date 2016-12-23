@@ -18,7 +18,6 @@ exports.config = {
   },
 
   multiCapabilities: [
-    /*
     {
       // by default, these first two browsers will come up in
       // Linux if you don't specify an OS
@@ -66,12 +65,17 @@ exports.config = {
       'browserName': 'MicrosoftEdge',
       'version': '14'
     },
-    */
     {
-      'name': 'Android 5.1',
-      //'browserName': 'chrome',
-      'platform': 'Android 5.1'
+      'name': 'Mac 10.8 / Chrome',
+      'browserName': 'chrome',
+      'platform': 'Mac 10.8'
     }
+    {
+      'name': 'Mac 10.8 / firefox',
+      'browserName': 'firefox',
+      'platform': 'Mac 10.8'
+    }
+
   ],
 
   // multiCapabilities: [{
