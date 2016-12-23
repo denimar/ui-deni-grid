@@ -33,6 +33,9 @@ exports.config = {
     var printSessionId = function(jobName){
       browser.getSession().then(function(session) {
         console.log('SauceOnDemandSessionID=' + session.getId() + ' job-name=' + jobName);
+        console.log('-----------------------');
+        console.log(session);
+        console.log('-----------------------');
       });
     }
     printSessionId("ui-deni-grid");

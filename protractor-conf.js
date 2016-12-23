@@ -106,20 +106,4 @@ var config = {
 
 };
 
-if (process.env.TRAVIS) {
-
-  process.env.SAUCE_USERNAME='ui-deni-grid';
-  process.env.SAUCE_ACCESS_KEY='6b220e08-e488-43c0-982d-b76e0e4b9170';
-  process.env.TRAVIS_JOB_NUMBER='654';
-  process.env.TRAVIS_BUILD_NUMBER='13';
-
-  config.sauceUser = process.env.SAUCE_USERNAME;
-  config.sauceKey = process.env.SAUCE_ACCESS_KEY;
-  config.capabilities = {
-    'browserName': 'chrome',
-    'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-    'build': process.env.TRAVIS_BUILD_NUMBER
-  };
-}
-
 exports.config = config;
