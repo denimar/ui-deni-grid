@@ -1,3 +1,9 @@
+console.log('--------------------------------------');
+console.log('--------------------------------------');
+console.log(process.env);
+console.log('--------------------------------------');
+console.log('--------------------------------------');
+
 // conf.js
 exports.config = {
   sauceUser: 'ui-deni-grid',
@@ -13,8 +19,8 @@ exports.config = {
       // Linux if you don't specify an OS
       'name': 'Linux / Chrome',
       'browserName': 'chrome',
-      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
-      'build': process.env.TRAVIS_BUILD_NUMBER
+      //'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
+      //'build': process.env.TRAVIS_BUILD_NUMBER
     },
     //
     // {
