@@ -108,22 +108,10 @@ var config = {
 
 if (process.env.TRAVIS) {
 
-  process.env.SAUCE_USERNAME='denimar';
-  process.env.SAUCE_ACCESS_KEY='6bda91d2-ca2c-4ea0-bf43-4c2a891118f9';
+  process.env.SAUCE_USERNAME='denimarmoraes';
+  process.env.SAUCE_ACCESS_KEY='d6a4e55a-a8e1-4aee-bc17-0d4d690f07b5';
   process.env.TRAVIS_JOB_NUMBER='654';
   process.env.TRAVIS_BUILD_NUMBER='12';
-
-  console.log('----------------------------');
-  process.env.SAUCE_USERNAME
-  console.log('----------------------------');
-  console.log('----------------------------');
-  process.env.SAUCE_ACCESS_KEY
-  console.log('----------------------------');
-  console.log('----------------------------');
-  process.env.TRAVIS_JOB_NUMBER
-  console.log('----------------------------');
-  process.env.TRAVIS_BUILD_NUMBER
-  console.log('----------------------------');
 
   config.sauceUser = process.env.SAUCE_USERNAME;
   config.sauceKey = process.env.SAUCE_ACCESS_KEY;
