@@ -21,7 +21,11 @@ exports.config = {
 
   onComplete: function() {
 
-      browser.getSession().then(function(session, par4, par5, par6) {
+      browser.getSession().then(function(session) {
+
+        console.log('SauceOnDemandSessionID : ' + session.getId());
+        console.log('caps : ' + session.caps_.caps_);        
+
         /*
         var caps = session.caps_.caps_;
         var webdriverId = caps.webdriver.remote.sessionid;
