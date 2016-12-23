@@ -2,16 +2,7 @@
 exports.config = {
   sauceUser: 'ui-deni-grid',
   sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
-
-  //seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
   specs: ['test/*spec.js'],
-
-  // restartBrowserBetweenTests: true,
-
-  onPrepare: function(){
-      var caps = browser.getCapabilities()
-  },
-
   multiCapabilities: [{
     browserName: 'firefox',
     version: '32',
@@ -31,6 +22,7 @@ exports.config = {
   onComplete: function() {
 
       browser.getSession().then(function(session, par4, par5, par6) {
+        /*
         var caps = session.caps_.caps_;
         var webdriverId = caps.webdriver.remote.sessionid;
         var platform = caps.platform;
@@ -44,6 +36,7 @@ exports.config = {
         console.log('Browser name : ' + browserName);
         console.log('Browser version : ' + browserVersion);
         console.log('-----------------------');
+        */
       });
 
   }
