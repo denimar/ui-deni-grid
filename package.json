@@ -5,7 +5,8 @@
   "main": "gulpFile.js",
   "scripts": {
     "test": "./node_modules/.bin/protractor conf.js",
-    "test-ci": "./node_modules/.bin/protractor conf.js"
+    "test-ci": "./node_modules/.bin/protractor conf.js",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info && gulp coveralls && rm -rf ./coverage"
   },
   "keywords": [
     "ui-deni-grid"
