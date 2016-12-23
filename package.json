@@ -4,11 +4,9 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "nyc ./node_modules/.bin/ava -v",
+    "test": "./node_modules/.bin/protractor conf.js",
     "test-ci": "./node_modules/.bin/protractor conf.js",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info && gulp coveralls && rm -rf ./coverage",
-    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "standard": "standard index.js"
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info && gulp coveralls && rm -rf ./coverage"
   },
   "keywords": [
     "ui-deni-grid"
@@ -41,9 +39,7 @@
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
     "protractor": "2.1.0",
-    "through2": "^2.0.3",
-    "nyc": "^10.0.0",
-    "standard": "^8.4.0"
+    "through2": "^2.0.3"
   },
   "dependencies": {
     "events": "^1.1.1",
@@ -53,10 +49,5 @@
     "gulp-sass": "^2.3.2",
     "map-stream": "0.0.6",
     "path": "^0.12.7"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run standard"
-    }
   }
 }
