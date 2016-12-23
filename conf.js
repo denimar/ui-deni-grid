@@ -7,40 +7,52 @@ exports.config = {
 
   specs: ['test/*spec.js'],
 
-  multiCapabilities: [{
+  multiCapabilities: [
+    {
       // by default, these first two browsers will come up in
       // Linux if you don't specify an OS
       'name': 'Chrome',
       'browserName': 'chrome'
-  }, {
+    },
+    {
       'name': 'Firefox',
       'browserName': 'firefox'
-  }, {
+    },
+    /*  DOESN'T WORK
+    {
       'name': 'Win XP/IE8',
       'os': 'Windows XP',
       'browserName': 'internet explorer',
       'version': '8.0'
-  }, {
+    },
+    */
+    /*  DOESN'T WORK
+    {
       'name': 'Win7/IE8',
       'os': 'Windows 7',
       'browserName': 'internet explorer',
       'version': '8.0'
-  }, {
+    },
+    */
+    {
       'name': 'Win7/IE9',
       'os': 'Windows 7',
       'browserName': 'internet explorer',
       'version': '9.0'
-  }, {
+    },
+    {
       'name': 'Win8/IE10',
       'os': 'Windows 8',
       'browserName': 'internet explorer',
       'version': '10.0'
-  }, {
+    },
+    {
       'name': 'Win8.1/IE11',
       'os': 'Windows 8.1',
       'browserName': 'internet explorer',
       'version': '11.0'
-  }],
+    }
+  ],
 
   // multiCapabilities: [{
   //   browserName: 'firefox',
