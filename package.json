@@ -4,9 +4,7 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "./node_modules/.bin/protractor conf.js",
-    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
-    "standard": "standard index.js"
+    "test": "./node_modules/.bin/protractor conf.js"
   },,
   "keywords": [
     "ui-deni-grid"
@@ -34,9 +32,7 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "nyc": "^10.0.0",
-    "protractor": "^4.0.14",
-    "standard": "^8.4.0"
+    "protractor": "2.1.0"
   },
   "dependencies": {
     "events": "^1.1.1",
@@ -46,10 +42,5 @@
     "gulp-sass": "^2.3.2",
     "map-stream": "0.0.6",
     "path": "^0.12.7"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run standard"
-    }
   }
 }
