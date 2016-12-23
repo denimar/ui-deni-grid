@@ -18,6 +18,7 @@ exports.config = {
   },
 
   multiCapabilities: [
+    /*
     {
       // by default, these first two browsers will come up in
       // Linux if you don't specify an OS
@@ -57,7 +58,14 @@ exports.config = {
       'os': 'Windows 8.1',
       'browserName': 'internet explorer',
       'version': '11.0'
-    }
+    },
+    */
+    {
+      'name': 'MicrosoftEdge/Windows 10',
+      'os': 'Windows 10',
+      'browserName': 'MicrosoftEdge',
+      'version': '14'
+    },
   ],
 
   // multiCapabilities: [{
