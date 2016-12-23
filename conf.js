@@ -14,6 +14,8 @@ exports.config = {
       console.log(capability.caps_.browserName);
       console.log(capability.caps_.version);
       console.log('******************************');
+      console.log(capability);      
+      console.log('******************************');
     });
   },
 
@@ -69,7 +71,7 @@ exports.config = {
       'name': 'Mac 10.8 / Chrome',
       'browserName': 'chrome',
       'platform': 'Mac 10.8'
-    }
+    },
     {
       'name': 'Mac 10.8 / firefox',
       'browserName': 'firefox',
