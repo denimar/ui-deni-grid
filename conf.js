@@ -2,7 +2,6 @@
 exports.config = {
   sauceUser: 'ui-deni-grid',
   sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
-  sauceLabs.build
 
   //seleniumAddress: 'http://ondemand.saucelabs.com:80/wd/hub',
 
