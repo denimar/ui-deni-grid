@@ -91,7 +91,7 @@ exports.config = {
   ],
 
   plugins : [{
-    path: '../../node_modules/protractor-istanbul-plugin'
+    path: './node_modules/protractor-istanbul-plugin'
   }]
 
 }
