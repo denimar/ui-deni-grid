@@ -4,8 +4,8 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "./node_modules/.bin/protractor conf.js",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+    "test": "./node_modules/.bin/protractor protractor-conf.js",
+    "test-ci": "./node_modules/.bin/protractor protractor-conf-ci.js"
   },
   "keywords": [
     "ui-deni-grid"
@@ -13,21 +13,14 @@
   "author": "Denimar de Moraes",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.16.0",
     "babel-preset-es2015": "^6.18.0",
-    "co-exec": "^1.0",
-    "codecov": "^1.0.1",
     "del": "^2.2.2",
-    "ghooks": "^1.2.4",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-bower": "0.0.13",
     "gulp-concat": "^2.6.0",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-istanbul": "^1.1.1",
     "gulp-jshint": "^2.0.1",
     "gulp-livereload": "^3.8.1",
-    "gulp-mocha": "^3.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-serve": "^1.4.0",
@@ -36,17 +29,13 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "istanbul": "^0.4.5",
-    "protractor": "2.1.0",
-    "protractor-istanbul-plugin": "^2.0.0"
+    "protractor": "2.1.0"
   },
   "dependencies": {
     "events": "^1.1.1",
     "gulp-babel": "^6.1.2",
     "gulp-if": "^2.0.1",
     "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.3.2",
-    "map-stream": "0.0.6",
     "path": "^0.12.7"
   }
 }

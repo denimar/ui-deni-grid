@@ -16,7 +16,8 @@ module.exports = function() {
 			//fallback: './examples/searches-and-filters/local-column-filter/index.html',
 			open: true,
 			port: 3001,
-			open: 'http://localhost:3001/examples/api-usage/index.html'
+			//open: 'http://localhost:3001/examples/api-usage/index.html'
+			open: 'http://localhost:3001/examples/usability/api-usage/index.html'
 		}));
 
 }

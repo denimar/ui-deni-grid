@@ -23,3 +23,6 @@ gulp.task('serve', serve);
 
 //Watch for changes in: sass, html, scripts and images
 gulp.task('watch', watch);
+
+// Default Task
+gulp.task('default', ['dist', 'serve', 'watch']);
