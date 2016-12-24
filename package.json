@@ -4,8 +4,7 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "./node_modules/.bin/protractor conf.js",
-    //"test": "istanbul cover node_modules\jasmine\bin\jasmine.js"
+    "test": "./node_modules/.bin/protractor conf.js"
   },
   "keywords": [
     "ui-deni-grid"
