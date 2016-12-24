@@ -5,5 +5,5 @@ node_js:
 install:
   - npm install -g codecov 
 script:
-  - istanbul cover node_modules\jasmine\bin\jasmine.js
+  - npm istanbul cover node_modules\jasmine\bin\jasmine.js
   - codecov
