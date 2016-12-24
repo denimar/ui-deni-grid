@@ -3,7 +3,6 @@ process.env.RELOAD_PORT = 35730;
 
 //third-party modules
 var gulp = require('gulp');
-var coveralls = require('./index.js');
 
 //own modules
 var sass = require('./gulp/sass');
@@ -24,8 +23,3 @@ gulp.task('serve', serve);
 
 //Watch for changes in: sass, html, scripts and images
 gulp.task('watch', watch);
-
-gulp.task('coveralls', function() {
-  return gulp.src('./coverage/lcov.info')
-    .pipe(coveralls());
-});
