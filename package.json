@@ -4,8 +4,8 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "./node_modules/.bin/protractor conf.js",
-    "test-ci": "./node_modules/.bin/protractor conf.js"
+    //"test": "./node_modules/.bin/protractor conf.js",
+    "test": "istanbul cover node_modules/mocha/bin/_mocha && codecov"
   },
   "keywords": [
     "ui-deni-grid"
@@ -37,7 +37,8 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "protractor": "2.1.0"
+    "protractor": "2.1.0",
+    "istanbul": "^0.3.2",
   },
   "dependencies": {
     "events": "^1.1.1",
