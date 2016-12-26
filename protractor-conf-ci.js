@@ -16,6 +16,7 @@ exports.config = {
   },
 
   maxInstances: 4,
+  maxSessions: 4,
 
   multiCapabilities: [
     {
