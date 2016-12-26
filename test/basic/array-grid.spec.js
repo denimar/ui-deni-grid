@@ -3,7 +3,7 @@ var testHelper = require('../util/test-helper');
 describe('ui-deni-grid - basic / array-grid', function() {
 
   const GRID_HEIGHT = 400;
-  const GRID_WIDTH = 800;
+  const GRID_WIDTH = 900;
   const DEFAULT_COLUMN_HEADER_HEIGHT = 25;
   const DEFAULT_ROW_HEIGHT = 22;
 
