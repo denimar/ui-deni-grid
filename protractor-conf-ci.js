@@ -3,8 +3,10 @@ exports.config = {
   sauceUser: 'ui-deni-grid',
   sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
 
-  specs: ['test/*spec.js'],
-
+  specs: ['test/**/*.spec.js'],
+  onPrepare: () => {
+    browser.driver.manage().window().maximize();
+  },
   multiCapabilities: [
     {
       // by default, these first two browsers will come up in
