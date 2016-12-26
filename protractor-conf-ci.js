@@ -42,14 +42,14 @@ exports.config = {
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER
     },
-    {
-      'name': 'Win7 / Safari',
-      'platform': 'Windows 7',
-      'browserName': 'safari',
-      'version': '5',
-      //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
-      'build': process.env.TRAVIS_BUILD_NUMBER
-    },
+    // { DOESN'T WORK
+    //   'name': 'Win7 / Safari',
+    //   'platform': 'Windows 7',
+    //   'browserName': 'safari',
+    //   'version': '5',
+    //   //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
+    //   'build': process.env.TRAVIS_BUILD_NUMBER
+    // },
     {
       'name': 'Win8 / IE10',
       'platform': 'Windows 8',

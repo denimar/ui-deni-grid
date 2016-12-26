@@ -2,7 +2,7 @@ var testHelper = require('../util/test-helper');
 
 describe('ui-deni-grid - basic / array-grid', function() {
 
-  const GRID_HEIGHT = 600;
+  const GRID_HEIGHT = 400;
   const GRID_WIDTH = 800;
   const DEFAULT_COLUMN_HEADER_HEIGHT = 25;
   const DEFAULT_ROW_HEIGHT = 22;
@@ -77,7 +77,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
       gridElements.uiBodyContainer.getAttribute('offsetTop'),
       gridElements.uiFirstRow.getAttribute('offsetLeft'),
       gridElements.uiFirstRow.getAttribute('offsetTop'),
-      gridElements.uiBodyContainer.getSize(),
+      gridElements.uiBodyContainer.getAttribute('offsetWidth'),
       testHelper.getSumHeadersColumnsWidth(),
       testHelper.getSumFirstRowColumnsWidth(),
     ]);
@@ -88,7 +88,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
       var uiBodyContainerOffsetTop = results[6];
       var uiFirstRowOffsetLeft = results[7];
       var uiFirstRowOffsetTop = results[8];
-      var uiBodyContainerSize = results[9];
+      var uiBodyContainerSize = parseInt(results[9]);
       var getSumHeadersColumnsWidth = results[10];
       var getSumFirstRowColumnsWidth = results[11];
 
@@ -104,10 +104,10 @@ describe('ui-deni-grid - basic / array-grid', function() {
       expect(uiFirstRowOffsetTop).toEqual('0');
 
       //check the header columns widths (the sum of them must be igual uiBodyContainerSize.width)
-      expect(getSumHeadersColumnsWidth).toEqual(uiBodyContainerSize.width);
+      expect(getSumHeadersColumnsWidth).toEqual(uiBodyContainerSize);
 
       //check the first row columns widths (the sum of them must be igual uiBodyContainerSize.width)
-      expect(getSumFirstRowColumnsWidth).toEqual(uiBodyContainerSize.width);
+      expect(getSumFirstRowColumnsWidth).toEqual(uiBodyContainerSize);
 
     });
   });
