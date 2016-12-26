@@ -15,8 +15,8 @@ exports.config = {
     defaultTimeoutInterval: 30000
   },
 
-  maxInstances: 4,
-  maxSessions: 4,
+  maxInstances: 1,
+  maxSessions: 5,
 
   multiCapabilities: [
     {
