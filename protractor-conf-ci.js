@@ -9,6 +9,12 @@ exports.config = {
   onPrepare: () => {
     browser.driver.manage().window().maximize();
   },
+
+  jasmineNodeOpts: {
+    showColors: true,
+    defaultTimeoutInterval: 30000
+  },
+  
   multiCapabilities: [
     {
       // by default, these first two browsers will come up in
