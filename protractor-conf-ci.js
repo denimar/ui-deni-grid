@@ -12,14 +12,14 @@ exports.config = {
 
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 360000
+    //defaultTimeoutInterval: 360000
     isVerbose: true
   },
 
   maxInstances: 5,
   maxSessions: 5,
-  restartBrowserBetweenTests: true,
-  allScriptsTimeout: 20000,
+  //restartBrowserBetweenTests: true,
+  //allScriptsTimeout: 20000,
 
   multiCapabilities: [
     {
