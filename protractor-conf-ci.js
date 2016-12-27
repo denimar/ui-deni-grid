@@ -51,7 +51,10 @@ exports.config = {
       'browserName': 'internet explorer',
       'version': '9.0',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
-      'build': process.env.TRAVIS_BUILD_NUMBER
+      'build': process.env.TRAVIS_BUILD_NUMBER,
+      'ie.forceCreateProcessApi': true,
+      'ie.browserCommandLineSwitches': "-private",
+      'ie.ensureCleanSession': "true"      
     },
     // { DOESN'T WORK
     //   'name': 'Win7 / Safari',
