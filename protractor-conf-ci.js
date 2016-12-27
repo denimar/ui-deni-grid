@@ -19,6 +19,7 @@ exports.config = {
 
   maxInstances: 1,
   maxSessions: 5,
+  restartBrowserBetweenTests: true,
 
   multiCapabilities: [
     {
