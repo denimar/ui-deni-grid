@@ -11,7 +11,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
   var initPromises = [];
 
   beforeEach(function() {
-    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');    
+    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');
     testHelper.init();
     gridElements = testHelper.getGridElements();
     initPromises = [
@@ -22,53 +22,53 @@ describe('ui-deni-grid - basic / array-grid', function() {
   });
 
 
-  it('should check the measurements of the inner elements', function() {
-    var promises = initPromises.concat([
-      gridElements.uiHeaderViewportWrapper.getSize(),
-      gridElements.uiBodyViewportWrapper.getSize(),
-      gridElements.uiBodyViewport.getSize(),
-      gridElements.uiBodyContainer.getSize(),
-    ]);
-
-    protractor.promise.all(promises).then(function(results) {
-      var basicInfosGrid = results[2];
-      var uiHeaderViewportWrapperSize = results[3];
-      var uiBodyViewportWrapperSize = results[4];
-      var uiBodyViewportSize = results[5];
-      var uiBodyContainerSize = results[6];
-
-      expect(uiHeaderViewportWrapperSize.width).toEqual(GRID_WIDTH);
-      expect(uiHeaderViewportWrapperSize.height).toEqual(DEFAULT_COLUMN_HEADER_HEIGHT);
-
-      expect(uiBodyViewportWrapperSize.width).toEqual(GRID_WIDTH);
-      expect(uiBodyViewportWrapperSize.height).toEqual(GRID_HEIGHT - DEFAULT_COLUMN_HEADER_HEIGHT + 1);
-
-      expect(uiBodyViewportSize.width).toEqual(uiBodyViewportWrapperSize.width);
-      expect(uiBodyViewportSize.height).toEqual(uiBodyViewportWrapperSize.height);
-
-      expect(uiBodyContainerSize.width).toEqual(uiBodyViewportWrapperSize.width - basicInfosGrid.verticalScrollWidth);
-      expect(uiBodyContainerSize.height).toEqual(DEFAULT_ROW_HEIGHT * 5 + 2); //5=Lines Count, 2=borders
-    });
-  });
-
-  // it('should confers the quantity of the inner elements', function() {
+  // it('should check the measurements of the inner elements', function() {
   //   var promises = initPromises.concat([
-  //     gridElements.uiRow.count(),
-  //     gridElements.uiCell.count()
+  //     gridElements.uiHeaderViewportWrapper.getSize(),
+  //     gridElements.uiBodyViewportWrapper.getSize(),
+  //     gridElements.uiBodyViewport.getSize(),
+  //     gridElements.uiBodyContainer.getSize(),
   //   ]);
   //
   //   protractor.promise.all(promises).then(function(results) {
-  //     var uiRowCount = results[3];
-  //     var uiCellCount = results[4];
+  //     var basicInfosGrid = results[2];
+  //     var uiHeaderViewportWrapperSize = results[3];
+  //     var uiBodyViewportWrapperSize = results[4];
+  //     var uiBodyViewportSize = results[5];
+  //     var uiBodyContainerSize = results[6];
   //
-  //     //rowCount
-  //     expect(uiRowCount).toEqual(5);
+  //     expect(uiHeaderViewportWrapperSize.width).toEqual(GRID_WIDTH);
+  //     expect(uiHeaderViewportWrapperSize.height).toEqual(DEFAULT_COLUMN_HEADER_HEIGHT);
   //
-  //     //cellCount
-  //     expect(uiCellCount).toEqual(15);
+  //     expect(uiBodyViewportWrapperSize.width).toEqual(GRID_WIDTH);
+  //     expect(uiBodyViewportWrapperSize.height).toEqual(GRID_HEIGHT - DEFAULT_COLUMN_HEADER_HEIGHT + 1);
   //
+  //     expect(uiBodyViewportSize.width).toEqual(uiBodyViewportWrapperSize.width);
+  //     expect(uiBodyViewportSize.height).toEqual(uiBodyViewportWrapperSize.height);
+  //
+  //     expect(uiBodyContainerSize.width).toEqual(uiBodyViewportWrapperSize.width - basicInfosGrid.verticalScrollWidth);
+  //     expect(uiBodyContainerSize.height).toEqual(DEFAULT_ROW_HEIGHT * 5 + 2); //5=Lines Count, 2=borders
   //   });
   // });
+
+  it('should confers the quantity of the inner elements', function() {
+    var promises = initPromises.concat([
+      gridElements.uiRow.count(),
+      gridElements.uiCell.count()
+    ]);
+
+    protractor.promise.all(promises).then(function(results) {
+      var uiRowCount = results[3];
+      var uiCellCount = results[4];
+
+      //rowCount
+      expect(uiRowCount).toEqual(5);
+
+      //cellCount
+      expect(uiCellCount).toEqual(15);
+
+    });
+  });
   //
   // it('should check other attributes', function() {
   //
