@@ -11,7 +11,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
   var initPromises = [];
 
   beforeEach(function() {
-    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');
+    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/', 9999999);
     testHelper.init();
     gridElements = testHelper.getGridElements();
     initPromises = [

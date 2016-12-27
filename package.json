@@ -35,7 +35,6 @@
     "gulp-babel": "^6.1.2",
     "gulp-if": "^2.0.1",
     "gulp-notify": "^2.2.0",
-    "path": "^0.12.7",
-    "protractor": "^4.0.14"
+    "path": "^0.12.7"
   }
 }

@@ -15,6 +15,9 @@ exports.config = {
     'version': '11'
   },
 
+  maxInstances: 1,
+  maxSessions: 1,
+
   onPrepare: () => {
     browser.driver.manage().window().maximize();
   },
