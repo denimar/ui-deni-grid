@@ -54,11 +54,11 @@ exports.config = {
       'version': '9.0',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER,
-      'nativeEvents': 0,
-      'unexpectedAlertBehaviour': 'accept',
+      //'nativeEvents': 0,
+      //'unexpectedAlertBehaviour': 'accept',
       'ignoreProtectedModeSettings': true,
-      'disable-popup-blocking': true,
-      'enablePersistentHover': true
+      //'disable-popup-blocking': true,
+      //'enablePersistentHover': true
       //'ie.browserCommandLineSwitches': "-private",
       //'ie.ensureCleanSession': 'true',
       //'seleniumAddress': 'http://10.0.1.XXX:4444/wd/hub'
