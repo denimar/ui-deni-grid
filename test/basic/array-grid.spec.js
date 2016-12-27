@@ -11,6 +11,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
   var initPromises = [];
 
   beforeEach(function() {
+    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');    
     testHelper.init();
     gridElements = testHelper.getGridElements();
     initPromises = [
@@ -22,7 +23,6 @@ describe('ui-deni-grid - basic / array-grid', function() {
 
 
   it('should check the measurements of the inner elements', function() {
-    browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');
     var promises = initPromises.concat([
       gridElements.uiHeaderViewportWrapper.getSize(),
       gridElements.uiBodyViewportWrapper.getSize(),
