@@ -52,10 +52,12 @@ exports.config = {
       'version': '9.0',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER,
-      'ie.forceCreateProcessApi': true,
-      'ie.browserCommandLineSwitches': "-private",
-      'ie.ensureCleanSession': 'true',
-      'seleniumAddress': 'http://10.0.1.XXX:4444/wd/hub'
+      'acceptSslCerts': true,
+      'trustAllSSLCertificates': true,
+      //'ie.forceCreateProcessApi': true,
+      //'ie.browserCommandLineSwitches': "-private",
+      //'ie.ensureCleanSession': 'true',
+      //'seleniumAddress': 'http://10.0.1.XXX:4444/wd/hub'
     },
     // { DOESN'T WORK
     //   'name': 'Win7 / Safari',
