@@ -12,7 +12,8 @@ exports.config = {
 
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 99990000
+    defaultTimeoutInterval: 99990000,
+    includeStackTrace: true
   },
 
   maxInstances: 1,
@@ -52,8 +53,6 @@ exports.config = {
       'version': '9.0',
       //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
       'build': process.env.TRAVIS_BUILD_NUMBER,
-      'acceptSslCerts': true,
-      'trustAllSSLCertificates': true,
       //'ie.forceCreateProcessApi': true,
       //'ie.browserCommandLineSwitches': "-private",
       //'ie.ensureCleanSession': 'true',
