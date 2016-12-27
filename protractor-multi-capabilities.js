@@ -3,7 +3,9 @@ var BROWSER_FIREFOX = 'firefox';
 var BROWSER_SAFARI = 'safari';
 var BROWSER_IE = 'internet explorer';
 
+var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS10 = 'Windows 10';
+
 
 var capabilities = [
   {

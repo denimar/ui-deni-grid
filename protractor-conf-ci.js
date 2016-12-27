@@ -3,18 +3,29 @@ var BROWSER_FIREFOX = 'firefox';
 var BROWSER_SAFARI = 'safari';
 var BROWSER_IE = 'internet explorer';
 
+var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS10 = 'Windows 10';
 
 var capabilities = [
   {
-      'os': PLATFORM_WINDOWS10,
+      'platform': PLATFORM_WINDOWS8,
       'browsers': [
         {
           'name': BROWSER_CHROME,
-          'version': 'latest'
+          'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
   },
+  {
+      'platform': PLATFORM_WINDOWS10,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        }
+      ]
+  },
+
   /*
   {
       'name': 'Windows 8.1'
@@ -35,6 +46,33 @@ var capabilities = [
 ];
 
 function _getMultiCapabilities() {
+  var capabilities = [];
+
+  for (var capabilitiesIndex = 0 ; capabilitiesIndex < capabilities.length ; capabilitiesIndex++) {
+    var capability = capabilities[capabilitiesIndex];
+
+    for (var browserIndex = 0 ; browserIndex < capability.browsers.length ; browserIndex++) {
+      var browser = capability.browsers[browserIndex];
+
+      for (var browserVersionIndex = 0 ; browserVersionIndex < browser.versions.length ; browserVersionIndex++) {
+
+        capabilities.push({
+          'name': capability.platform + ' / ' + browser.name,
+          'platform': capability.platform,
+          'browserName': browser.name,
+          'build': process.env.TRAVIS_BUILD_NUMBER,
+          'version': browser.versions[browserVersionIndex]
+        });
+
+      }
+
+    }
+
+  }
+
+  return capabilities;
+
+  /*
   return [
     {
       'name': 'Windows 10 / Chrome',
@@ -51,6 +89,7 @@ function _getMultiCapabilities() {
       'version': 'latest-1'
     }
   ];
+  */
 }
 
 exports.config = {
