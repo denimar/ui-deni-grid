@@ -70,7 +70,14 @@ describe('ui-deni-grid - basic / array-grid', function() {
     });
   });
 
-  it('should check other attributes', function() {
+  iit('should check other attributes', function() {
+
+///////////////////////////////
+///////////////////////////////
+//browser.pause();
+///////////////////////////////
+///////////////////////////////
+
     var promises = initPromises.concat([
       testHelper.selectGridRow(3),
       testHelper.getSelectedRowIndex(),
@@ -90,8 +97,8 @@ describe('ui-deni-grid - basic / array-grid', function() {
       var uiFirstRowOffsetLeft = results[7];
       var uiFirstRowOffsetTop = results[8];
       var uiBodyContainerSize = parseInt(results[9]);
-      var getSumHeadersColumnsWidth = results[10];
-      var getSumFirstRowColumnsWidth = results[11];
+      var sumHeadersColumnsWidth = results[10];
+      var sumFirstRowColumnsWidth = results[11];
 
       // //rowIndex
       expect(selectedRowIndex).toEqual(3);
@@ -104,11 +111,19 @@ describe('ui-deni-grid - basic / array-grid', function() {
       expect(uiFirstRowOffsetLeft).toEqual('0');
       expect(uiFirstRowOffsetTop).toEqual('0');
 
+
+      // INFORMATION:
+      // In order to verify the column widts, as we can see below, I had to consider that sometimes we set
+      // the column width in percentage values and when we sum those values be aware to face at least two problems: 1)rounding 2)IE issues
+      // To resolve the problem mentioned above, I put a "tolerable" value.
+
       //check the header columns widths (the sum of them must be igual uiBodyContainerSize.width)
-      expect(getSumHeadersColumnsWidth).toEqual(uiBodyContainerSize);
+      var tolerableValueSumHeaderColumnWidths = ((sumHeadersColumnsWidth >= uiBodyContainerSize-1) && (sumHeadersColumnsWidth <= uiBodyContainerSize+1));
+      expect(tolerableValueSumHeaderColumnWidths).toEqual(true);
 
       //check the first row columns widths (the sum of them must be igual uiBodyContainerSize.width)
-      expect(getSumFirstRowColumnsWidth).toEqual(uiBodyContainerSize);
+      var tolerableValueSumColumnWidths = ((sumFirstRowColumnsWidth >= uiBodyContainerSize-1) && (sumFirstRowColumnsWidth <= uiBodyContainerSize+1));
+      expect(tolerableValueSumColumnWidths).toEqual(true);
 
     });
   });
