@@ -3,8 +3,17 @@ var BROWSER_FIREFOX = 'firefox';
 var BROWSER_SAFARI = 'safari';
 var BROWSER_IE = 'internet explorer';
 
+var LINUX = 'Linux';
+var PLATFORM_WINDOWSXP = 'Windows XP';
+var PLATFORM_WINDOWS7 = 'Windows 7';
 var PLATFORM_WINDOWS8 = 'Windows 8';
+var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
+//    "name": "macOS Sierra"
+ //   "name": "OS X El Capitan"
+ //   "name": "OS X Yosemite"
+ //   "name": "OS X Mavericks"
+ //   "name": "OS X Mountain Lion"
 
 var capabilities = [
   {
@@ -46,7 +55,7 @@ var capabilities = [
 ];
 
 function _getMultiCapabilities() {
-  var capabilities = [];
+  var multiCapabilities = [];
 
   for (var capabilitiesIndex = 0 ; capabilitiesIndex < capabilities.length ; capabilitiesIndex++) {
     var capability = capabilities[capabilitiesIndex];
@@ -56,7 +65,7 @@ function _getMultiCapabilities() {
 
       for (var browserVersionIndex = 0 ; browserVersionIndex < browser.versions.length ; browserVersionIndex++) {
 
-        capabilities.push({
+        multiCapabilities.push({
           'name': capability.platform + ' / ' + browser.name,
           'platform': capability.platform,
           'browserName': browser.name,
@@ -70,7 +79,7 @@ function _getMultiCapabilities() {
 
   }
 
-  return capabilities;
+  return multiCapabilities;
 
   /*
   return [
