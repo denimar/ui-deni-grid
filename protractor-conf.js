@@ -8,14 +8,12 @@ exports.config = {
     './bower_components/jquery/dist/jquery.min.js'
   ],
 
-  /*
   seleniumArgs: ['-Dwebdriver.ie.driver=C:\Denimar\IEDriverServer.exe'],
   capabilities: {
     'browserName': 'internet explorer',
     'platform': 'Windows 10',
     'version': '11'
   },
-  */
 
   onPrepare: () => {
     browser.driver.manage().window().maximize();
@@ -23,7 +21,7 @@ exports.config = {
 
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 9990000
   },
 
   //shardTestFiles: true,
