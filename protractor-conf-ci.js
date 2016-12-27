@@ -11,15 +11,15 @@ exports.config = {
   },
 
   jasmineNodeOpts: {
-    isVerbose: true,
     showColors: true,
-    defaultTimeoutInterval: 99990000,
-    includeStackTrace: true
+    defaultTimeoutInterval: 100000,
+    isVerbose: true
   },
 
   maxInstances: 1,
   maxSessions: 5,
   restartBrowserBetweenTests: true,
+  allScriptsTimeout: 20000,
 
   multiCapabilities: [
     {
