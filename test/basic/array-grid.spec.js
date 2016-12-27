@@ -66,9 +66,9 @@ describe('ui-deni-grid - basic / array-grid', function() {
 
       //cellCount
       expect(uiCellCount).toEqual(15);
-
     });
-  }, 920000);
+
+  });
   //
   // it('should check other attributes', function() {
   //
