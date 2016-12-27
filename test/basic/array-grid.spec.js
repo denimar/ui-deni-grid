@@ -70,7 +70,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
     });
   });
 
-  iit('should check other attributes', function() {
+  it('should check other attributes', function() {
 
 ///////////////////////////////
 ///////////////////////////////
