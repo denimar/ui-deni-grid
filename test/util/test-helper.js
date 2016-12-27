@@ -49,9 +49,9 @@ function _resizeWidthGrid(width) {
   return new Promise(function(success) {
     browser.executeScript('angular.element("#deniGrid").width(' + width + ');').then(function(){
       browser.executeScript('angular.element("#deniGrid").api.repaint();').then(function() {
-        browser.sleep(2000).then(function() {
+        //browser.sleep(2000).then(function() {
           success();
-        });
+        //});
       });
     });
   });
@@ -61,9 +61,9 @@ function _resizeHeightGrid(height) {
   return new Promise(function(success) {
     browser.executeScript('angular.element("#deniGrid").height(' + height + ');').then(function(){
       browser.executeScript('angular.element("#deniGrid").api.repaint();').then(function(){
-        browser.sleep(2000).then(function() {
+        //browser.sleep(2000).then(function() {
           success();
-        });
+        //});
       });
     });
   });
