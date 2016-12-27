@@ -37,13 +37,15 @@ var capabilities = [
 function _getMultiCapabilities() {
   return [
     {
-      'name': 'Linux / Chrome',
+      'name': 'Windows 10 / Chrome',
+      'platform': PLATFORM_WINDOWS10,
       'browserName': 'chrome',
       'build': process.env.TRAVIS_BUILD_NUMBER,
       'version': 'latest'
     },
     {
-      'name': 'Linux / Chrome',
+      'name': 'Windows 10 / Chrome',
+      'platform': PLATFORM_WINDOWS10,
       'browserName': 'chrome',
       'build': process.env.TRAVIS_BUILD_NUMBER,
       'version': 'latest-1'
