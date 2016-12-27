@@ -11,6 +11,17 @@ describe('ui-deni-grid - basic / array-grid', function() {
   var initPromises = [];
 
   beforeEach(function() {
+    browser.getCapabilities().then(function(caps) {
+      // Internet Explorer does not accept data URLs, which are the default
+      // reset URL for Protractor.
+      // Safari accepts data urls, but SafariDriver fails after one is used.
+      var browserName = caps.get('browserName');
+      console.log('********* BROWSER NAME: ' + browserName);
+      if (browserName === 'internet explorer' || browserName === 'safari') {
+        browser.resetUrl = 'about:blank';
+      }
+    });
+
     browser.get('https://denimar.github.io/ui-deni-grid/examples/basic/array-grid/');
     testHelper.init();
     gridElements = testHelper.getGridElements();
@@ -20,6 +31,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
       testHelper.getBasicInfosGrid(),
     ];
   });
+
 
   it('should check the measurements of the inner elements', function() {
     var promises = initPromises.concat([

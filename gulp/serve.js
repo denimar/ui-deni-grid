@@ -17,7 +17,7 @@ module.exports = function() {
 			open: true,
 			port: 3001,
 			//open: 'http://localhost:3001/examples/api-usage/index.html'
-			open: 'http://localhost:3001/examples/usability/api-usage/index.html'
+			open: 'http://localhost:3001/examples/basic/array-grid/index.html'
 		}));
 
 }
