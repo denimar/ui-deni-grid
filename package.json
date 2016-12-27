@@ -29,7 +29,7 @@
     "gulp-uglifycss": "^1.0.6",
     "gulp-util": "^3.0.7",
     "gulp-webserver": "^0.9.1",
-    "protractor": "2.1.0"
+    "protractor": "4.0.14"
   },
   "dependencies": {
     "events": "^1.1.1",

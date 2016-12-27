@@ -18,7 +18,7 @@ exports.config = {
   maxInstances: 1,
   maxSessions: 5,
 
-  allScriptsTimeout: 991000,
+  allScriptsTimeout: 990000,
 
   multiCapabilities: [
     {
