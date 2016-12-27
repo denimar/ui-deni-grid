@@ -54,7 +54,8 @@ exports.config = {
       'build': process.env.TRAVIS_BUILD_NUMBER,
       'ie.forceCreateProcessApi': true,
       'ie.browserCommandLineSwitches': "-private",
-      'ie.ensureCleanSession': "true"      
+      'ie.ensureCleanSession': 'true',
+      'seleniumAddress': 'http://10.0.1.XXX:4444/wd/hub'
     },
     // { DOESN'T WORK
     //   'name': 'Win7 / Safari',
