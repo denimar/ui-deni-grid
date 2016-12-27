@@ -48,22 +48,14 @@ exports.config = {
     //   'browserName': 'internet explorer',
     //   'version': '8.0'
     // },
-    {
-      'name': 'Win7 / IE9',
-      'platform': 'Windows 7',
-      'browserName': 'internet explorer',
-      'version': '9.0',
-      //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
-      'build': process.env.TRAVIS_BUILD_NUMBER,
-      //'nativeEvents': 0,
-      //'unexpectedAlertBehaviour': 'accept',
-      'ignoreProtectedModeSettings': true,
-      //'disable-popup-blocking': true,
-      //'enablePersistentHover': true
-      //'ie.browserCommandLineSwitches': "-private",
-      //'ie.ensureCleanSession': 'true',
-      //'seleniumAddress': 'http://10.0.1.XXX:4444/wd/hub'
-    },
+    // { DOESN'T WORK -- THIS VERSION IS NOT SUPPORTED BY PROTRACTOR (https://github.com/angular/protractor/issues/1540)
+    //   'name': 'Win7 / IE9',
+    //   'platform': 'Windows 7',
+    //   'browserName': 'internet explorer',
+    //   'version': '9.0',
+    //   //'build': 'TRAVIS #' + process.env.TRAVIS_BUILD_NUMBER + ' (' + process.env.TRAVIS_BUILD_ID + ')'
+    //   'build': process.env.TRAVIS_BUILD_NUMBER,
+    // },
     // { DOESN'T WORK
     //   'name': 'Win7 / Safari',
     //   'platform': 'Windows 7',
