@@ -18,9 +18,6 @@ exports.config = {
   maxInstances: 1,
   maxSessions: 5,
 
-  allScriptsTimeout: 990000,
-  getPageTimeout: 990000,
-
   multiCapabilities: [
     {
       // by default, these first two browsers will come up in
