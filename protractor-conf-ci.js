@@ -16,7 +16,7 @@ exports.config = {
     isVerbose: true
   },
 
-  maxInstances: 1,
+  maxInstances: 5,
   maxSessions: 5,
   restartBrowserBetweenTests: true,
   allScriptsTimeout: 20000,
