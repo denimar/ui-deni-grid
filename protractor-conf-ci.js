@@ -41,6 +41,12 @@ function _getMultiCapabilities() {
       'browserName': 'chrome',
       'build': process.env.TRAVIS_BUILD_NUMBER,
       'version': 'latest'
+    },
+    {
+      'name': 'Linux / Chrome',
+      'browserName': 'chrome',
+      'build': process.env.TRAVIS_BUILD_NUMBER,
+      'version': 'latest-1'
     }
   ];
 }
