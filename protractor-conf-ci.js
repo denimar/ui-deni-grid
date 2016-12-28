@@ -2,6 +2,7 @@ var BROWSER_CHROME = 'chrome';
 var BROWSER_FIREFOX = 'firefox';
 var BROWSER_SAFARI = 'safari';
 var BROWSER_IE = 'internet explorer';
+var BROWSER_OPERA = 'opera';
 
 var LINUX = 'Linux';
 var PLATFORM_WINDOWSXP = 'Windows XP';
@@ -21,19 +22,15 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'versions': ['48.0', '47.0', '46.0']
         },
         {
           'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'versions': ['45.0', '44.0']
         },
         {
-          'name': BROWSER_SAFARI,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        },
-        {
-          'name': BROWSER_IE,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'name': BROWSER_OPERA,
+          'versions': ['12.15']
         }
       ]
   },
@@ -42,84 +39,75 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'versions': ['49.0', '48.0', '47.0']
         },
         {
           'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        }
-      ]
-  },
-  {
-      'platform': PLATFORM_WINDOWS7,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'versions': ['45.0', '44.0']
         },
         {
-          'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        }
-      ]
-  },
-  {
-      'platform': PLATFORM_WINDOWS8,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'name': BROWSER_IE,
+          'versions': ['8.0', '7.0', '6.0']
         },
         {
-          'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
+          'name': BROWSER_OPERA,
+          'versions': ['12.12', '12.64']
         }
       ]
   },
-  {
-      'platform': PLATFORM_WINDOWS8_1,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        },
-        {
-          'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        }
-      ]
-  },
-  {
-      'platform': PLATFORM_WINDOWS10,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        },
-        {
-          'name': BROWSER_FIREFOX,
-          'versions': ['latest', 'latest-1', 'latest-2']
-        }
-      ]
-  },
-
-  /*
-  {
-      'name': 'Windows 8.1'
-  },
-  {
-      'name': 'Windows 8'
-  },
-  {
-      'name': 'Windows 7'
-  },
-  {
-      'name': 'Windows XP'
-  },
-  {
-      'name': 'Linux'
-  }
-  */
+  // {
+  //     'platform': PLATFORM_WINDOWS7,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['latest', 'latest-1', 'latest-2']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['50.0', '49.0']
+  //       }
+  //     ]
+  // },
+  // {
+  //     'platform': PLATFORM_WINDOWS8,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['latest', 'latest-1', 'latest-2']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['50.0', '49.0']
+  //       }
+  //     ]
+  // },
+  // {
+  //     'platform': PLATFORM_WINDOWS8_1,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['latest', 'latest-1', 'latest-2']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['50.0', '49.0']
+  //       }
+  //     ]
+  // },
+  // {
+  //     'platform': PLATFORM_WINDOWS10,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['latest', 'latest-1', 'latest-2']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['50.0', '49.0']
+  //       }
+  //     ]
+  // },
+  //
 ];
 
 function _getMultiCapabilities() {
