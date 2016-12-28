@@ -114,64 +114,10 @@ var capabilities = [
         },
         {
           'name': BROWSER_IE,
-          'versions': ['latest', 'latest-1']
+          'versions': ['11']
         }
       ]
   },
-
-  // {
-  //     'platform': PLATFORM_WINDOWS7,
-  //     'browsers': [
-  //       {
-  //         'name': BROWSER_CHROME,
-  //         'versions': ['latest', 'latest-1', 'latest-2']
-  //       },
-  //       {
-  //         'name': BROWSER_FIREFOX,
-  //         'versions': ['50.0', '49.0']
-  //       }
-  //     ]
-  // },
-  // {
-  //     'platform': PLATFORM_WINDOWS8,
-  //     'browsers': [
-  //       {
-  //         'name': BROWSER_CHROME,
-  //         'versions': ['latest', 'latest-1', 'latest-2']
-  //       },
-  //       {
-  //         'name': BROWSER_FIREFOX,
-  //         'versions': ['50.0', '49.0']
-  //       }
-  //     ]
-  // },
-  // {
-  //     'platform': PLATFORM_WINDOWS8_1,
-  //     'browsers': [
-  //       {
-  //         'name': BROWSER_CHROME,
-  //         'versions': ['latest', 'latest-1', 'latest-2']
-  //       },
-  //       {
-  //         'name': BROWSER_FIREFOX,
-  //         'versions': ['50.0', '49.0']
-  //       }
-  //     ]
-  // },
-  // {
-  //     'platform': PLATFORM_WINDOWS10,
-  //     'browsers': [
-  //       {
-  //         'name': BROWSER_CHROME,
-  //         'versions': ['latest', 'latest-1', 'latest-2']
-  //       },
-  //       {
-  //         'name': BROWSER_FIREFOX,
-  //         'versions': ['50.0', '49.0']
-  //       }
-  //     ]
-  // },
-  //
 ];
 
 function _getMultiCapabilities() {
@@ -198,6 +144,10 @@ function _getMultiCapabilities() {
     }
 
   }
+
+  multiCapabilities.push({
+    'browserName': 'safari'
+  });
 
   return multiCapabilities;
 }
