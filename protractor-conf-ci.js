@@ -9,7 +9,7 @@ var PLATFORM_WINDOWS7 = 'Windows 7';
 var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
-//    "name": "macOS Sierra"
+var PLATFORM_MACOS_SIERRA = 'macOS Sierra';
  //   "name": "OS X El Capitan"
  //   "name": "OS X Yosemite"
  //   "name": "OS X Mavericks"
@@ -17,7 +17,43 @@ var PLATFORM_WINDOWS10 = 'Windows 10';
 
 var capabilities = [
   {
+      'platform': LINUX,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        }
+      ]
+  },
+  {
+      'platform': PLATFORM_WINDOWSXP,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        }
+      ]
+  },
+  {
+      'platform': PLATFORM_WINDOWS7,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        }
+      ]
+  },
+  {
       'platform': PLATFORM_WINDOWS8,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        }
+      ]
+  },
+  {
+      'platform': PLATFORM_WINDOWS8_1,
       'browsers': [
         {
           'name': BROWSER_CHROME,
@@ -34,7 +70,15 @@ var capabilities = [
         }
       ]
   },
-
+  {
+      'platform': PLATFORM_MACOS_SIERRA,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1']
+        }
+      ]
+  }
   /*
   {
       'name': 'Windows 8.1'
