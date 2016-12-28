@@ -10,10 +10,10 @@ var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
 var PLATFORM_MACOS_SIERRA = 'macOS Sierra';
- //   "name": "OS X El Capitan"
- //   "name": "OS X Yosemite"
- //   "name": "OS X Mavericks"
- //   "name": "OS X Mountain Lion"
+var PLATFORM_OS_EL_CAPITAN = 'OS X El Capitan';
+var PLATFORM_OS_YOSEMITE = 'OS X Yosemite';
+var PLATFORM_OS_MAVERICKS = 'OS X Mavericks';
+var PLATFORM_OS_MOUNTAIN_LION = 'OS X Mountain Lion';
 
 var capabilities = [
   {
@@ -21,6 +21,18 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_SAFARI,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_IE,
           'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
@@ -31,6 +43,10 @@ var capabilities = [
         {
           'name': BROWSER_CHROME,
           'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
   },
@@ -39,6 +55,10 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
           'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
@@ -49,6 +69,10 @@ var capabilities = [
         {
           'name': BROWSER_CHROME,
           'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
   },
@@ -57,6 +81,10 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_CHROME,
+          'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
           'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
@@ -67,18 +95,14 @@ var capabilities = [
         {
           'name': BROWSER_CHROME,
           'versions': ['latest', 'latest-1', 'latest-2']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['latest', 'latest-1', 'latest-2']
         }
       ]
   },
-  {
-      'platform': PLATFORM_MACOS_SIERRA,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['latest', 'latest-1']
-        }
-      ]
-  }
+
   /*
   {
       'name': 'Windows 8.1'
