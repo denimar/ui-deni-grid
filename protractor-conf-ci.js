@@ -27,6 +27,10 @@ var capabilities = [
         {
           'name': BROWSER_FIREFOX,
           'versions': ['45.0', '44.0']
+        },
+        {
+          'name': BROWSER_OPERA,
+          'versions': ['latest']
         }
       ]
   },
@@ -170,8 +174,8 @@ exports.config = {
     isVerbose: true
   },
 
-  maxInstances: 4,
-  maxSessions: 4,
+  maxInstances: 1,
+  maxSessions: 5,
   //restartBrowserBetweenTests: true,
   //allScriptsTimeout: 20000,
 
