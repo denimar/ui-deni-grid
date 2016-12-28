@@ -123,7 +123,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
 
       //check the first row columns widths (the sum of them must be igual uiBodyContainerSize.width)
       var tolerableValueSumColumnWidths = ((sumFirstRowColumnsWidth >= uiBodyContainerSize-1) && (sumFirstRowColumnsWidth <= uiBodyContainerSize+1));
-      //expect(tolerableValueSumColumnWidths).toEqual(true);
+      expect(tolerableValueSumColumnWidths).toEqual(true);
 
     });
   });

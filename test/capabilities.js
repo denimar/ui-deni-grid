@@ -93,7 +93,7 @@ var capabilities = [
         },
         {
           'name': BROWSER_FIREFOX,
-          'versions': ['50.0', '49.0']
+          'versions': ['46.0', '45.0']
         },
         {
           'name': BROWSER_IE,
