@@ -17,7 +17,7 @@ var PLATFORM_WINDOWS7 = 'Windows 7';
 var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
-var PLATFORM_MACOS_SIERRA = 'macOS Sierra';
+var PLATFORM_MACOS_SIERRA = 'macOS 10.12';
 var PLATFORM_OS_EL_CAPITAN = 'OS X El Capitan';
 var PLATFORM_OS_YOSEMITE = 'OS X Yosemite';
 var PLATFORM_OS_MAVERICKS = 'OS X Mavericks';
@@ -123,7 +123,7 @@ var capabilities = [
       'browsers': [
         {
           'name': BROWSER_SAFARI,
-          'versions': ['latest']
+          'versions': ['10.0']
         }
       ]
   },
