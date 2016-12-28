@@ -84,24 +84,40 @@ var capabilities = [
   //       }
   //     ]
   // },
+  // {
+  //     'platform': PLATFORM_WINDOWS8_1,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['55.0', '54']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['46.0', '45.0']
+  //       },
+  //       {
+  //         'name': BROWSER_IE,
+  //         'versions': ['11']
+  //       }
+  //     ]
+  // },
   {
-      'platform': PLATFORM_WINDOWS8_1,
+      'platform': PLATFORM_WINDOWS10,
       'browsers': [
         {
           'name': BROWSER_CHROME,
-          'versions': ['55.0', '54']
+          'versions': ['latest', 'latest-1']
         },
         {
           'name': BROWSER_FIREFOX,
-          'versions': ['46.0', '45.0']
+          'versions': ['latest', 'latest-1']
         },
         {
           'name': BROWSER_IE,
-          'versions': ['11']
+          'versions': ['latest', 'latest-1']
         }
       ]
   },
-
 
   // {
   //     'platform': PLATFORM_WINDOWS7,
