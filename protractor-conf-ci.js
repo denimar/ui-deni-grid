@@ -41,12 +41,29 @@ var capabilities = [
           'name': BROWSER_FIREFOX,
           'versions': ['45.0', '44.0']
         },
-        {
-          'name': BROWSER_IE,
-          'versions': ['9']
-        },
       ]
   },
+  {
+      'platform': PLATFORM_WINDOWS7,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['49.0', '48.0', '47.0']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['45.0', '44.0']
+        },
+        {
+          'name': BROWSER_IE,
+          'versions': ['10', '9']
+        }
+      ]
+  },
+
+
+
+
   // {
   //     'platform': PLATFORM_WINDOWS7,
   //     'browsers': [
