@@ -6,7 +6,7 @@ build:
     tests:
         override:
             -
-                command: 'istanbul cover --report clover test.js'
+                command: 'istanbul cover --report clover test/basic/*.spec.js'
                 coverage:
                     file: 'coverage/clover.xml'
                     format: 'clover'
