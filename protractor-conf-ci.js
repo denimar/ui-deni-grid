@@ -17,23 +17,19 @@ var PLATFORM_OS_MAVERICKS = 'OS X Mavericks';
 var PLATFORM_OS_MOUNTAIN_LION = 'OS X Mountain Lion';
 
 var capabilities = [
-  {
-      'platform': LINUX,
-      'browsers': [
-        {
-          'name': BROWSER_CHROME,
-          'versions': ['48.0', '47.0', '46.0']
-        },
-        {
-          'name': BROWSER_FIREFOX,
-          'versions': ['45.0', '44.0']
-        },
-        {
-          'name': BROWSER_OPERA,
-          'versions': ['latest']
-        }
-      ]
-  },
+  // {
+  //     'platform': LINUX,
+  //     'browsers': [
+  //       {
+  //         'name': BROWSER_CHROME,
+  //         'versions': ['48.0', '47.0', '46.0']
+  //       },
+  //       {
+  //         'name': BROWSER_FIREFOX,
+  //         'versions': ['45.0', '44.0']
+  //       },
+  //     ]
+  // },
   {
       'platform': PLATFORM_WINDOWSXP,
       'browsers': [
@@ -47,7 +43,7 @@ var capabilities = [
         },
         {
           'name': BROWSER_IE,
-          'versions': ['11', '10']
+          'versions': ['8', '7']
         },
         {
           'name': BROWSER_OPERA,
