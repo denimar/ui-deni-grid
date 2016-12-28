@@ -30,7 +30,7 @@ var capabilities = [
         },
         {
           'name': BROWSER_OPERA,
-          'versions': ['12.15']
+          'versions': ['12']
         }
       ]
   },
@@ -47,11 +47,11 @@ var capabilities = [
         },
         {
           'name': BROWSER_IE,
-          'versions': ['8.0', '7.0', '6.0']
+          'versions': ['11', '10']
         },
         {
           'name': BROWSER_OPERA,
-          'versions': ['12.12', '12.64']
+          'versions': ['12', '11']
         }
       ]
   },
