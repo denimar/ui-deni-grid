@@ -122,7 +122,8 @@ var capabilities = [
       'platform': PLATFORM_MACOS_SIERRA,
       'browsers': [
         {
-          'name': BROWSER_SAFARI
+          'name': BROWSER_SAFARI,
+          'versions': ['latest']
         }
       ]
   },
