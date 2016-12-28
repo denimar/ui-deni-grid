@@ -27,34 +27,30 @@ var capabilities = [
         {
           'name': BROWSER_FIREFOX,
           'versions': ['45.0', '44.0']
-        },
-        {
-          'name': BROWSER_OPERA,
-          'versions': ['12']
         }
       ]
   },
-  // {
-  //     'platform': PLATFORM_WINDOWSXP,
-  //     'browsers': [
-  //       {
-  //         'name': BROWSER_CHROME,
-  //         'versions': ['49.0', '48.0', '47.0']
-  //       },
-  //       {
-  //         'name': BROWSER_FIREFOX,
-  //         'versions': ['45.0', '44.0']
-  //       },
-  //       {
-  //         'name': BROWSER_IE,
-  //         'versions': ['11', '10']
-  //       },
-  //       {
-  //         'name': BROWSER_OPERA,
-  //         'versions': ['12', '11']
-  //       }
-  //     ]
-  // },
+  {
+      'platform': PLATFORM_WINDOWSXP,
+      'browsers': [
+        {
+          'name': BROWSER_CHROME,
+          'versions': ['49.0', '48.0', '47.0']
+        },
+        {
+          'name': BROWSER_FIREFOX,
+          'versions': ['45.0', '44.0']
+        },
+        {
+          'name': BROWSER_IE,
+          'versions': ['11', '10']
+        },
+        {
+          'name': BROWSER_OPERA,
+          'versions': ['12', '11']
+        }
+      ]
+  },
   // {
   //     'platform': PLATFORM_WINDOWS7,
   //     'browsers': [
