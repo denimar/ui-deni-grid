@@ -18,7 +18,7 @@ var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
 var PLATFORM_MACOS_SIERRA = 'macOS 10.12';
-var PLATFORM_OS_EL_CAPITAN = 'OS X El Capitan';
+var PLATFORM_OS_EL_CAPITAN = 'OS X 10.11';
 var PLATFORM_OS_YOSEMITE = 'OS X Yosemite';
 var PLATFORM_OS_MAVERICKS = 'OS X Mavericks';
 var PLATFORM_OS_MOUNTAIN_LION = 'OS X Mountain Lion';
@@ -119,7 +119,7 @@ var capabilities = [
       ]
   },
   {
-      'platform': PLATFORM_MACOS_SIERRA,
+      'platform': PLATFORM_OS_EL_CAPITAN,
       'browsers': [
         {
           'name': BROWSER_SAFARI,
