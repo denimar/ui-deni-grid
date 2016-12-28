@@ -146,7 +146,7 @@ function _getMultiCapabilities() {
   }
 
   multiCapabilities.push({
-    'browserName': 'safari'
+    'platform': 'macOS Sierra'
   });
 
   return multiCapabilities;
