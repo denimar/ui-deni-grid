@@ -43,12 +43,8 @@ var capabilities = [
         },
         {
           'name': BROWSER_IE,
-          'versions': ['8', '7']
+          'versions': ['9']
         },
-        {
-          'name': BROWSER_OPERA,
-          'versions': ['12', '11']
-        }
       ]
   },
   // {
