@@ -12,3 +12,5 @@
 # Under Construction
 
 Remota alteração
+
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/denimar/ui-deni-grid/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/denimar/ui-deni-grid/?branch=master)
