@@ -118,6 +118,14 @@ var capabilities = [
         }
       ]
   },
+  {
+      'platform': PLATFORM_MACOS_SIERRA,
+      'browsers': [
+        {
+          'name': BROWSER_SAFARI
+        }
+      ]
+  },
 ];
 
 function _getMultiCapabilities() {
@@ -145,9 +153,6 @@ function _getMultiCapabilities() {
 
   }
 
-  multiCapabilities.push({
-    'platform': 'macOS Sierra'
-  });
 
   return multiCapabilities;
 }
