@@ -10,7 +10,7 @@ describe('Denimar test', function() {
   });
 
   it('Sum value testing', function() {
-    var value = uiDeniGridService.sum(10, 8);
-    expect(value).toEqual(18);
+    var value = uiDeniGridService.sum(20, 5);
+    expect(value).toEqual(25);
   });
 });
