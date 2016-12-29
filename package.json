@@ -4,9 +4,10 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "./node_modules/.bin/protractor test/e2e/protractor-conf.js",
-    "test-ci": "./node_modules/.bin/protractor test/e2e/protractor-conf-ci.js",
-    "test-unit": "./node_modules/.bin/karma start karma.conf.js --single-run"
+    "test-e2e": "./node_modules/.bin/protractor test/e2e/protractor-conf.js",
+    "test-e2e-ci": "./node_modules/.bin/protractor test/e2e/protractor-conf-ci.js",
+    "test-unit": "./node_modules/.bin/karma start karma.conf.js --verbose --junitreport",
+    "test-unit-ci": "./node_modules/.bin/karma start karma.conf.js --single-run --verbose --junitreport"
   },
   "keywords": [
     "ui-deni-grid"
