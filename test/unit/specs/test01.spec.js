@@ -13,6 +13,6 @@ describe('Denimar test', function() {
 
   it('Sum value testing', function() {
     var value = 25; //uiDeniGridService.sum(20, 5);
-    expect(value).toEqual(25);
+    expect(value).toEqual(26);
   });
 });
