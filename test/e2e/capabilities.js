@@ -7,9 +7,9 @@
 
 var BROWSER_CHROME = 'chrome';
 var BROWSER_FIREFOX = 'firefox';
-var BROWSER_SAFARI = 'safari'; //deesn't works
+var BROWSER_SAFARI = 'safari'; //doesn't works at sauce labs
 var BROWSER_IE = 'internet explorer';
-var BROWSER_OPERA = 'opera'; //deesn't tested
+var BROWSER_OPERA = 'opera'; //doesn't works at sauce labs
 
 var LINUX = 'Linux';
 var PLATFORM_WINDOWSXP = 'Windows XP';
@@ -17,11 +17,11 @@ var PLATFORM_WINDOWS7 = 'Windows 7';
 var PLATFORM_WINDOWS8 = 'Windows 8';
 var PLATFORM_WINDOWS8_1 = 'Windows 8.1';
 var PLATFORM_WINDOWS10 = 'Windows 10';
-var PLATFORM_MACOS_SIERRA = 'macOS 10.12'; //deesn't works
-var PLATFORM_OS_EL_CAPITAN = 'OS X 10.11'; //deesn't works
-var PLATFORM_OS_YOSEMITE = 'OS X Yosemite'; //deesn't works
-var PLATFORM_OS_MAVERICKS = 'OS X Mavericks'; //deesn't works
-var PLATFORM_OS_MOUNTAIN_LION = 'OS X Mountain Lion'; //deesn't works
+var PLATFORM_MACOS_SIERRA = 'macOS 10.12'; //doesn't works at sauce labs
+var PLATFORM_OS_EL_CAPITAN = 'OS X 10.11'; //doesn't works at sauce labs
+var PLATFORM_OS_YOSEMITE = 'OS X Yosemite'; //doesn't works at sauce labs
+var PLATFORM_OS_MAVERICKS = 'OS X Mavericks'; //doesn't works at sauce labs
+var PLATFORM_OS_MOUNTAIN_LION = 'OS X Mountain Lion'; //doesn't works at sauce labs
 
 var capabilities = [
   {
