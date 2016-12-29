@@ -1,4 +1,4 @@
-var capabilities = require('capabilities');
+var capabilities = require('./capabilities');
 
 exports.config = {
   sauceUser: 'ui-deni-grid',
