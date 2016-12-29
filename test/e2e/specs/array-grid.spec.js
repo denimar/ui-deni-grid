@@ -1,6 +1,6 @@
-var testHelper = require('../util/test-helper');
+var testHelper = require('../e2e-helper');
 
-describe('ui-deni-grid - basic / array-grid', function() {
+describe('ui-deni-grid - basic', function() {
 
   const GRID_HEIGHT = 400;
   const GRID_WIDTH = 900;
@@ -72,12 +72,6 @@ describe('ui-deni-grid - basic / array-grid', function() {
 
   it('should check other attributes', function() {
 
-///////////////////////////////
-///////////////////////////////
-//browser.pause();
-///////////////////////////////
-///////////////////////////////
-
     var promises = initPromises.concat([
       testHelper.selectGridRow(3),
       testHelper.getSelectedRowIndex(),
@@ -123,7 +117,7 @@ describe('ui-deni-grid - basic / array-grid', function() {
 
       //check the first row columns widths (the sum of them must be igual uiBodyContainerSize.width)
       var tolerableValueSumColumnWidths = ((sumFirstRowColumnsWidth >= uiBodyContainerSize-1) && (sumFirstRowColumnsWidth <= uiBodyContainerSize+1));
-      //expect(tolerableValueSumColumnWidths).toEqual(true);
+      expect(tolerableValueSumColumnWidths).toEqual(true);
 
     });
   });

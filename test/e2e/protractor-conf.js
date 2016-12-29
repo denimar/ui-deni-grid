@@ -1,8 +1,6 @@
-
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  //specs: ['test/**/*.spec.js'],
-  specs: ['test/basic/*.spec.js'],
+  specs: ['specs/*.spec.js'],
 
   files: [
     './bower_components/jquery/dist/jquery.min.js'
@@ -33,4 +31,4 @@ exports.config = {
   //maxInstances: 5,
   //restartBrowserBetweenTests: true
 
-}
+};

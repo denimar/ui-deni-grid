@@ -1,10 +1,10 @@
-var capabilities = require('./test/capabilities');
+var capabilities = require('capabilities');
 
 exports.config = {
   sauceUser: 'ui-deni-grid',
   sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
 
-  specs: ['test/basic/*.spec.js'],
+  specs: ['specs/*.spec.js'],
   //specs: ['test/usability/*.spec.js'],
 
   onPrepare: () => {
