@@ -10,6 +10,10 @@
 		var me = this;
 
 
+    me.sum = function(number1, number2) {
+      return number1 + number2;
+    };
+
 		/**
 		 *
 		 * remove all selections in the grid

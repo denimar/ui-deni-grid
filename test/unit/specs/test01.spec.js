@@ -1,7 +1,16 @@
-describe('sorting the list of users', function() {
-  it('sorts in descending order by default', function() {
-    var users = ['jack', 'igor', 'jeff'];
-    var sorted = sortUsers(users);
-    expect(sorted).toEqual(['jeff', 'jack', 'igor']);
+describe('Denimar test', function() {
+
+  var uiDeniGridService;
+
+  beforeEach(module('ui-deni-grid'));
+  beforeEach(function () {
+      inject(function ($injector) {
+          uiDeniGridService = $injector.get('uiDeniGridService');
+      });
+  });
+
+  it('Sum value testing', function() {
+    var value = uiDeniGridService.sum(10, 8);
+    expect(value).toEqual(18);
   });
 });
