@@ -3,5 +3,4 @@ language: node_js
 node_js:
   - stable
 script:
-  - npm run test-unit  
-  - npm run test-ci
+  - npm run test-unit
