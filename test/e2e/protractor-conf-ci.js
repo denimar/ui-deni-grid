@@ -19,6 +19,18 @@ exports.config = {
 
   maxInstances: 1,
   maxSessions: 5,
+
+  onPrepare: () => {
+    browser.driver.manage().window().maximize();
+
+    return browser.getProcessedConfig().then(function(config) {
+      console.log('########################################################################');
+      console.log('E2E TESTS (Protractor+Jasmine) #########################################');
+      console.log('TRAVIS : ' + process.env.TRAVIS);
+      console.log('########################################################################');
+    });
+  },
+    
   //restartBrowserBetweenTests: true,
   //allScriptsTimeout: 20000,
 

@@ -17,11 +17,14 @@ exports.config = {
   maxSessions: 1,
 
   onPrepare: () => {
-    console.log('########################################################################');
-    console.log('E2E TESTS ##############################################################');
-    console.log('########################################################################');
-
     browser.driver.manage().window().maximize();
+
+    return browser.getProcessedConfig().then(function(config) {
+      console.log('########################################################################');
+      console.log('E2E TESTS (Protractor+Jasmine) #########################################');
+      console.log('TRAVIS : ' + process.env.TRAVIS);
+      console.log('########################################################################');
+    });
   },
 
   jasmineNodeOpts: {
