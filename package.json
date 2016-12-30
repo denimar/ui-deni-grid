@@ -4,15 +4,20 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
+
     "start": "gulp",
     "postinstall": "bower install",
+
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
+
     "pretest-e2e": "npm run update-webdriver",
     "test-e2e": "./node_modules/.bin/protractor test/e2e/protractor-conf.js",
     "test-e2e-ci": "./node_modules/.bin/protractor test/e2e/protractor-conf-ci.js",
+
     "test-unit": "./node_modules/.bin/karma start test/unit/karma.conf.js",
     "test-unit-ci": "./node_modules/.bin/karma start test/unit/karma.conf-ci.js --single-run"
+    
   },
   "keywords": [
     "ui-deni-grid"
@@ -44,6 +49,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
     "karma-tap-pretty-reporter": "^3.0.5",
     "watchify": "^3.8.0"
   },
