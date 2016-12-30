@@ -4114,10 +4114,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	function uiDeniGridService($compile, $timeout, $q, $http, $filter, uiDeniGridHelperService, uiDeniGridConstant, uiDeniGridDropdownService, uiDeniGridEventsService) {
 		var me = this;
 
-		me.sum = function (number1, number2) {
-			return number1 + number2;
-		};
-
 		/**
    *
    * remove all selections in the grid

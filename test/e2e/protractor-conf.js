@@ -6,12 +6,12 @@ exports.config = {
     './bower_components/jquery/dist/jquery.min.js'
   ],
 
-  seleniumArgs: ['-Dwebdriver.ie.driver=C:\Denimar\IEDriverServer.exe'],
-  capabilities: {
-    'browserName': 'internet explorer',
-    'platform': 'Windows 10',
-    'version': '11'
-  },
+  // seleniumArgs: ['-Dwebdriver.ie.driver=C:\Denimar\IEDriverServer.exe'],
+  // capabilities: {
+  //   'browserName': 'internet explorer',
+  //   'platform': 'Windows 10',
+  //   'version': '11'
+  // },
 
   maxInstances: 1,
   maxSessions: 1,
