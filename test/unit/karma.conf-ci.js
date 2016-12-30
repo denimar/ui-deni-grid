@@ -44,7 +44,6 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['narrow', 'jasmine-diff'],
-    //reporters: ['jasmine-diff'],
 
     //reporters: ['narrow', 'jasmine-diff'],
     narrowReporter: {

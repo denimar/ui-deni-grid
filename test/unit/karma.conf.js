@@ -43,10 +43,8 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['kjhtml', 'narrow', 'jasmine-diff'],
-    //reporters: ['jasmine-diff'],
+    reporters: ['narrow', 'jasmine-diff'],
 
-    //reporters: ['narrow', 'jasmine-diff'],
     narrowReporter: {
         showSuccess: true, //Show success testcase, default is false
         stopOnFirstFail : false //Stop running testcase when you failed any testcase, default is false
@@ -81,5 +79,16 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity,
 
-  })
+  });
+
+  if (process.env.TRAVIS) {
+    console.log('********************************************************');
+    console.log('UNIT TESTS *********************************************');
+    console.log('********************************************************');
+    //
+  } else {
+    console.log(config.reporters);
+    config.reporters.unshift('kjhtml');
+  }
+
 }
