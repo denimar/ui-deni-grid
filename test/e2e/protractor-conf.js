@@ -1,7 +1,6 @@
 var capabilities = require('./capabilities');
 
 config = {
-  //seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['specs/*.spec.js'],
 
   files: [
@@ -79,24 +78,19 @@ config = {
 };
 
 if (process.env.TRAVIS) {
-  console.log('------------------');
-  console.log(process.env.TRAVIS);
-  console.log('------------------');
-  if (process.env.TRAVIS) {
-        config.sauceUser = 'ui-deni-grid';
-        config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
+      config.sauceUser = 'ui-deni-grid';
+      config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
 
-        /*
-        *************************************************************************************
-        *  Before set whatever browser here see:
-        *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
-        *************************************************************************************
-        */
-        config.multiCapabilities = capabilities.getMultiCapabilities();
+      /*
+      *************************************************************************************
+      *  Before set whatever browser here see:
+      *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
+      *************************************************************************************
+      */
+      config.multiCapabilities = capabilities.getMultiCapabilities();
 
-  } else {
-    config.seleniumAddress = 'http://localhost:4444/wd/hub';
-  }
+} else {
+  config.seleniumAddress = 'http://localhost:4444/wd/hub';
 }
 
 exports.config = config;

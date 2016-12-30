@@ -95,7 +95,7 @@ describe('ui-deni-grid - basic', function() {
       var sumFirstRowColumnsWidth = results[11];
 
       // //rowIndex
-      expect(selectedRowIndex).toEqual(3);
+      expect(selectedRowIndex).toEqual(4);
 
       //ui-body-container offsetTop and offsetLeft
       expect(uiBodyContainerOffsetLeft).toEqual('0');
