@@ -74,7 +74,7 @@ exports.config = {
     }));
 
     return browser.getProcessedConfig().then(function(config) {
-      if (process.env.TRAVIS) {
+      //if (process.env.TRAVIS) {
         config.sauceUser = 'ui-deni-grid';
         config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
 
@@ -85,7 +85,7 @@ exports.config = {
         *************************************************************************************
         */
         config.multiCapabilities = capabilities.getMultiCapabilities();
-      }
+      //}
     });
 
   }
