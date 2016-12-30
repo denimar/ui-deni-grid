@@ -78,16 +78,20 @@ config = {
 };
 
 if (process.env.TRAVIS) {
-      config.sauceUser = 'ui-deni-grid';
-      config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
+  console.log('########################################################################');
+  console.log('E2E TESTS (Protractor+Jasmine) #########################################');
+  console.log('########################################################################');
+  
+  config.sauceUser = 'ui-deni-grid';
+  config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
 
-      /*
-      *************************************************************************************
-      *  Before set whatever browser here see:
-      *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
-      *************************************************************************************
-      */
-      config.multiCapabilities = capabilities.getMultiCapabilities();
+  /*
+  *************************************************************************************
+  *  Before set whatever browser here see:
+  *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
+  *************************************************************************************
+  */
+  config.multiCapabilities = capabilities.getMultiCapabilities();
 
 } else {
   config.seleniumAddress = 'http://localhost:4444/wd/hub';
