@@ -12,7 +12,7 @@
     "test-e2e": "./node_modules/.bin/protractor test/e2e/protractor-conf.js",
     "test-e2e-ci": "./node_modules/.bin/protractor test/e2e/protractor-conf-ci.js",
     "test-unit": "./node_modules/.bin/karma start test/unit/karma.conf.js",
-    "test-unit-ci": "./node_modules/.bin/karma start test/unit/karma.conf-ci.js --single-run"
+    "test-unit-ci": "./node_modules/.bin/karma start test/unit/karma.conf.js --single-run"
   },
   "keywords": [
     "ui-deni-grid"
