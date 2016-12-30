@@ -81,8 +81,5 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity,
 
-    onPrepare: () => {
-      console.log('Denimar de Mores Here');
-    }
   })
 }
