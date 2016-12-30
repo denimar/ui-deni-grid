@@ -7,3 +7,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 script:
   - npm run test-unit-ci
+  - npm run test-e2e-ci
+branches:
+  only:
+    - master
