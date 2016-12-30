@@ -2,7 +2,7 @@ var capabilities = require('./capabilities');
 
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['specs/array*.spec.js'],
+  specs: ['specs/*.spec.js'],
 
   files: [
     './bower_components/jquery/dist/jquery.min.js'
@@ -18,13 +18,65 @@ exports.config = {
   maxInstances: 1,
   maxSessions: 5,
 
-  onPrepare: () => {
+  // onPrepare: () => {
+  //   browser.driver.manage().window().maximize();
+  //
+  //   return browser.getProcessedConfig().then(function(config) {
+  //     if (process.env.TRAVIS) {
+  //       config.sauceUser = 'ui-deni-grid';
+  //       config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
+  //
+  //       /*
+  //       *************************************************************************************
+  //       *  Before set whatever browser here see:
+  //       *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
+  //       *************************************************************************************
+  //       */
+  //       config.multiCapabilities = capabilities.getMultiCapabilities();
+  //     }
+  //   });
+  // },
+
+  jasmineNodeOpts: {
+    showColors: true,
+    defaultTimeoutInterval: 30000,
+    isVerbose: true,
+    includeStackTrace: true
+  },
+
+  onPrepare: function () {
     browser.driver.manage().window().maximize();
+
+    var SpecReporter = require('jasmine-spec-reporter');
+    jasmine.getEnv().addReporter(new SpecReporter({
+      spec: {
+        displayStacktrace: 'all',      // display stacktrace for each failed assertion, values: (all|specs|summary|none)
+        displaySuccessesSummary: true, // display summary of all successes after execution
+        displayFailuresSummary: true,   // display summary of all failures after execution
+        displayPendingSummary: true,    // display summary of all pending specs after execution
+        displaySuccessfulSpec: true,    // display each successful spec
+        displayFailedSpec: true,        // display each failed spec
+        displayPendingSpec: true,      // display each pending spec
+        displaySpecDuration: true,     // display each spec duration
+        displaySuiteNumber: true,      // display each suite number (hierarchical)
+        colors: {
+            success: 'green',
+            failure: 'red',
+            pending: 'yellow'
+        },
+        prefixes: {
+            success: '✓ ',
+            failure: '✗ ',
+            pending: '* '
+        },
+        customProcessors: []
+      }
+    }));
 
     return browser.getProcessedConfig().then(function(config) {
       if (process.env.TRAVIS) {
-        config.sauceUser: 'ui-deni-grid',
-        config.sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
+        config.sauceUser = 'ui-deni-grid';
+        config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
 
         /*
         *************************************************************************************
@@ -32,17 +84,11 @@ exports.config = {
         *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
         *************************************************************************************
         */
-        config.multiCapabilities: capabilities.getMultiCapabilities()
+        config.multiCapabilities = capabilities.getMultiCapabilities();
       }
     });
-  },
 
-  jasmineNodeOpts: {
-    showColors: true,
-    isVerbose: true,
-    print: true
-    //defaultTimeoutInterval: 9990000
-  },
+  }
 
   //shardTestFiles: true,
   //maxInstances: 5,
