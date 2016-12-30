@@ -13,5 +13,15 @@ describe('ui-deni-grid.service', function() {
     var value = uiDeniGridService.sum(20, 5);
     expect(value).toEqual(25);
   });
-  
+
+  it('Sum value testing 2', function() {
+    var value = uiDeniGridService.sum(15, 1);
+    expect(value).toEqual(16);
+  });
+
+  it('Sum value testing 3', function() {
+    var value = uiDeniGridService.sum(18, 20);
+    expect(value).toEqual(38);
+  });
+
 });
