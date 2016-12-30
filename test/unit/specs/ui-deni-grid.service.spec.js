@@ -9,11 +9,6 @@ describe('ui-deni-grid.service', function() {
     uiDeniGridService = _uiDeniGridService_;
   }));
 
-  it('0000000', function() {
-    var value = uiDeniGridService.sum(20, 5);
-    expect(value).toEqual(25);
-  });
-
   it('aaaaaaaaaaaaa', function() {
     var value = uiDeniGridService.sum(20, 5);
     expect(value).toEqual(25);
