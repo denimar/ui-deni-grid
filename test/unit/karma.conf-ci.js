@@ -43,7 +43,14 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['narrow', 'jasmine-diff'],
+    //reporters: ['jasmine-diff'],
+
+    //reporters: ['narrow', 'jasmine-diff'],
+    narrowReporter: {
+        showSuccess: true, //Show success testcase, default is false
+        stopOnFirstFail : false //Stop running testcase when you failed any testcase, default is false
+    },
     //reporters: ['kjhtml'],
 
     // web server port
