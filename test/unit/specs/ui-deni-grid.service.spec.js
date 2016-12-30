@@ -9,17 +9,32 @@ describe('ui-deni-grid.service', function() {
     uiDeniGridService = _uiDeniGridService_;
   }));
 
-  it('Sum value testing', function() {
+  it('aaaaaaaaaaaaa', function() {
     var value = uiDeniGridService.sum(20, 5);
     expect(value).toEqual(25);
   });
 
-  it('Sum value testing 2', function() {
+  it('bbbbbbbbbbbb', function() {
     var value = uiDeniGridService.sum(15, 1);
     expect(value).toEqual(16);
   });
 
-  it('Sum value testing 3', function() {
+  it('cccccccccccccc', function() {
+    var value = uiDeniGridService.sum(18, 20);
+    expect(value).toEqual(38);
+  });
+
+  it('ddddddddddddd', function() {
+    var value = uiDeniGridService.sum(18, 20);
+    expect(value).toEqual(38);
+  });
+
+  it('eeeeeeeeeeeee', function() {
+    var value = uiDeniGridService.sum(18, 20);
+    expect(value).toEqual(38);
+  });
+
+  it('ffffffffffff', function() {
     var value = uiDeniGridService.sum(18, 20);
     expect(value).toEqual(38);
   });
