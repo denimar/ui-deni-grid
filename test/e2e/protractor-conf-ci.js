@@ -7,10 +7,6 @@ exports.config = {
   specs: ['specs/*.spec.js'],
   //specs: ['test/usability/*.spec.js'],
 
-  onPrepare: () => {
-    browser.driver.manage().window().maximize();
-  },
-
   jasmineNodeOpts: {
     showColors: true,
     //defaultTimeoutInterval: 360000

@@ -3,7 +3,7 @@ var capabilities = require('./capabilities');
 exports.config = {
   sauceUser: 'ui-deni-grid',
   sauceKey: '6b220e08-e488-43c0-982d-b76e0e4b9170',
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+  //seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['specs/*.spec.js'],
 
   files: [
@@ -41,9 +41,9 @@ exports.config = {
 
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    //defaultTimeoutInterval: 360000
     isVerbose: true,
-    includeStackTrace: true
+    print: true
   },
 
   onPrepare: function () {
