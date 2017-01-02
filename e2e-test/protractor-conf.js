@@ -4,7 +4,6 @@ config = {
   specs: ['specs/*.spec.js'],
 
   files: [
-    './bower_components/jquery/dist/jquery.min.js'
   ],
 
   // seleniumArgs: ['-Dwebdriver.ie.driver=C:\Denimar\IEDriverServer.exe'],
@@ -17,28 +16,8 @@ config = {
   maxInstances: 1,
   maxSessions: 5,
 
-  // onPrepare: () => {
-  //   browser.driver.manage().window().maximize();
-  //
-  //   return browser.getProcessedConfig().then(function(config) {
-  //     if (process.env.TRAVIS) {
-  //       config.sauceUser = 'ui-deni-grid';
-  //       config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
-  //
-  //       /*
-  //       *************************************************************************************
-  //       *  Before set whatever browser here see:
-  //       *  http://www.protractortest.org/#/browser-support and https://saucelabs.com/platforms
-  //       *************************************************************************************
-  //       */
-  //       config.multiCapabilities = capabilities.getMultiCapabilities();
-  //     }
-  //   });
-  // },
-
   jasmineNodeOpts: {
     showColors: true,
-    //defaultTimeoutInterval: 360000
     isVerbose: true
   },
 
@@ -81,7 +60,7 @@ if (process.env.TRAVIS) {
   console.log('########################################################################');
   console.log('E2E TESTS (Protractor+Jasmine) #########################################');
   console.log('########################################################################');
-  
+
   config.sauceUser = 'ui-deni-grid';
   config.sauceKey = '6b220e08-e488-43c0-982d-b76e0e4b9170';
 

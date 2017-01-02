@@ -1,8 +1,8 @@
 var gulp = require('gulp');
+var sass = require('./sass.js');
+var scripts = require('./scripts.js');
 
-module.exports = function(args) {
-
-	//tasks inside the gulpFile.js
-	gulp.start('sass', 'scripts');
-
-}
+gulp.task('dist', [
+  'sass',
+  'scripts'
+]);
