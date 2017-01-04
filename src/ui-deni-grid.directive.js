@@ -16,7 +16,10 @@
 			bindToController: true,
 			controllerAs: 'ctrl',
 			controller: 'uiDeniGridController',
-			template: $templateCache.get('ui-deni-grid')
+			template: $templateCache.get('ui-deni-grid'),
+			link: function(scope, element, attrs) {
+        scope.ctrl.show();
+			}
 		};
 	}
 

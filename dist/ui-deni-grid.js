@@ -819,7 +819,10 @@
 			bindToController: true,
 			controllerAs: 'ctrl',
 			controller: 'uiDeniGridController',
-			template: $templateCache.get('ui-deni-grid')
+			template: $templateCache.get('ui-deni-grid'),
+			link: function link(scope, element, attrs) {
+				scope.ctrl.show();
+			}
 		};
 	}
 })();
@@ -3526,85 +3529,85 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     //
     vm.element = $element;
 
-    //
-    vm.wrapper = vm.element.find('.ui-deni-grid-wrapper');
-    vm.viewport = vm.wrapper.find('.ui-deni-grid-viewport');
-    vm.container = vm.viewport.find('.ui-deni-grid-container');
+    vm.show = function () {
+      //
+      vm.wrapper = vm.element.find('.ui-deni-grid-wrapper');
+      vm.viewport = vm.wrapper.find('.ui-deni-grid-viewport');
+      vm.container = vm.viewport.find('.ui-deni-grid-container');
 
-    // *************************************************************************
-    // VARIABLE COLUMNS
-    // *************************************************************************
-    vm.colsViewportWrapper = vm.container.find('.ui-variable-cols-viewport-wrapper');
-    vm.colsViewport = vm.colsViewportWrapper.find('.ui-viewport');
-    vm.colsContainer = vm.colsViewport.find('.ui-container');
+      // *************************************************************************
+      // VARIABLE COLUMNS
+      // *************************************************************************
+      vm.colsViewportWrapper = vm.container.find('.ui-variable-cols-viewport-wrapper');
+      vm.colsViewport = vm.colsViewportWrapper.find('.ui-viewport');
+      vm.colsContainer = vm.colsViewport.find('.ui-container');
 
-    // header
-    vm.headerViewportWrapper = vm.colsContainer.find('.ui-header-viewport-wrapper');
-    vm.headerViewport = vm.headerViewportWrapper.find('.ui-header-viewport');
-    vm.headerContainer = vm.headerViewport.find('.ui-header-container');
-    // body
-    vm.bodyViewportWrapper = vm.colsContainer.find('.ui-body-viewport-wrapper');
-    vm.bodyViewport = vm.bodyViewportWrapper.find('.ui-body-viewport');
-    vm.bodyContainer = vm.bodyViewport.find('.ui-body-container');
-    //footer
-    vm.footerViewportWrapper = vm.colsContainer.find('.ui-footer-viewport-wrapper');
-    vm.footerViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
-    vm.footerContainer = vm.footerViewport.find('.ui-footer-container');
-    // *************************************************************************
-    // *************************************************************************
+      // header
+      vm.headerViewportWrapper = vm.colsContainer.find('.ui-header-viewport-wrapper');
+      vm.headerViewport = vm.headerViewportWrapper.find('.ui-header-viewport');
+      vm.headerContainer = vm.headerViewport.find('.ui-header-container');
+      // body
+      vm.bodyViewportWrapper = vm.colsContainer.find('.ui-body-viewport-wrapper');
+      vm.bodyViewport = vm.bodyViewportWrapper.find('.ui-body-viewport');
+      vm.bodyContainer = vm.bodyViewport.find('.ui-body-container');
+      //footer
+      vm.footerViewportWrapper = vm.colsContainer.find('.ui-footer-viewport-wrapper');
+      vm.footerViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
+      vm.footerContainer = vm.footerViewport.find('.ui-footer-container');
+      // *************************************************************************
+      // *************************************************************************
 
-    // *************************************************************************
-    // FIXED COLUMNS
-    // *************************************************************************
-    vm.fixedColsViewportWrapper = vm.container.find('.ui-fixed-cols-viewport-wrapper');
-    vm.fixedColsViewport = vm.fixedColsViewportWrapper.find('.ui-viewport');
-    vm.fixedColsContainer = vm.fixedColsViewport.find('.ui-container');
+      // *************************************************************************
+      // FIXED COLUMNS
+      // *************************************************************************
+      vm.fixedColsViewportWrapper = vm.container.find('.ui-fixed-cols-viewport-wrapper');
+      vm.fixedColsViewport = vm.fixedColsViewportWrapper.find('.ui-viewport');
+      vm.fixedColsContainer = vm.fixedColsViewport.find('.ui-container');
 
-    // header
-    vm.fixedColsHeaderViewportWrapper = vm.fixedColsContainer.find('.ui-header-viewport-wrapper');
-    vm.fixedColsHeaderViewport = vm.fixedColsHeaderViewportWrapper.find('.ui-header-viewport');
-    vm.fixedColsHeaderContainer = vm.fixedColsHeaderViewport.find('.ui-header-container');
-    // body
-    vm.fixedColsBodyViewportWrapper = vm.fixedColsContainer.find('.ui-body-viewport-wrapper');
-    vm.fixedColsBodyViewport = vm.fixedColsBodyViewportWrapper.find('.ui-body-viewport');
-    vm.fixedColsBodyContainer = vm.fixedColsBodyViewport.find('.ui-body-container');
-    // footer
-    vm.fixedColsFooterViewportWrapper = vm.fixedColsContainer.find('.ui-footer-viewport-wrapper');
-    vm.fixedColsFooterViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
-    vm.fixedColsFooterContainer = vm.footerViewport.find('.ui-footer-container');
-    // *************************************************************************
-    // *************************************************************************
+      // header
+      vm.fixedColsHeaderViewportWrapper = vm.fixedColsContainer.find('.ui-header-viewport-wrapper');
+      vm.fixedColsHeaderViewport = vm.fixedColsHeaderViewportWrapper.find('.ui-header-viewport');
+      vm.fixedColsHeaderContainer = vm.fixedColsHeaderViewport.find('.ui-header-container');
+      // body
+      vm.fixedColsBodyViewportWrapper = vm.fixedColsContainer.find('.ui-body-viewport-wrapper');
+      vm.fixedColsBodyViewport = vm.fixedColsBodyViewportWrapper.find('.ui-body-viewport');
+      vm.fixedColsBodyContainer = vm.fixedColsBodyViewport.find('.ui-body-container');
+      // footer
+      vm.fixedColsFooterViewportWrapper = vm.fixedColsContainer.find('.ui-footer-viewport-wrapper');
+      vm.fixedColsFooterViewport = vm.footerViewportWrapper.find('.ui-footer-viewport');
+      vm.fixedColsFooterContainer = vm.footerViewport.find('.ui-footer-container');
+      // *************************************************************************
+      // *************************************************************************
 
-    //Set the controller to the service of the events. Always there'll be one controller to eache uiDeniGridEventsService
-    uiDeniGridEventsService.setController(vm);
+      //Set the controller to the service of the events. Always there'll be one controller to eache uiDeniGridEventsService
+      uiDeniGridEventsService.setController(vm);
 
-    var currentHeight = vm.element.css('height');
-    /*
-    $timeout(function() {
-    	if (vm.element.css('height') != currentHeight) {
-    		currentHeight = vm.element.css('height');
-    		vm.wrapper.css('height', currentHeight);
-    		vm.element.css('height', currentHeight);
-    	}
-    }, 2000);
-    */
+      var currentHeight = vm.element.css('height');
+      /*
+      $timeout(function() {
+      	if (vm.element.css('height') != currentHeight) {
+      		currentHeight = vm.element.css('height');
+      		vm.wrapper.css('height', currentHeight);
+      		vm.element.css('height', currentHeight);
+      	}
+      }, 2000);
+      */
 
-    //Paging
-    vm.paging = vm.viewport.find('.ui-deni-grid-paging');
+      //Paging
+      vm.paging = vm.viewport.find('.ui-deni-grid-paging');
 
-    //Set the default options
-    uiDeniGridHelperService.setDefaultOptions(vm, vm.options);
+      //Set the default options
+      uiDeniGridHelperService.setDefaultOptions(vm, vm.options);
 
-    //
-    uiDeniGridHelperService.ckeckInitialValueFilter(vm, vm.options.columns);
+      //
+      uiDeniGridHelperService.ckeckInitialValueFilter(vm, vm.options.columns);
 
-    //
-    vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
+      //
+      vm.options.alldata = []; //It is used when I filter the data and there is a need to know the original data
 
-    //Implement the ui-deni-grid's API
-    uiDeniGridApiService.implementApi(vm, vm.element, uiDeniGridService);
+      //Implement the ui-deni-grid's API
+      uiDeniGridApiService.implementApi(vm, vm.element, uiDeniGridService);
 
-    vm.element.show(function (event) {
       ///////////////////////////////////////////////////////////////////////////
       //FIXED COLUMNS ///////////////////////////////////////////////////////////
       ///////////////////////////////////////////////////////////////////////////
@@ -3707,7 +3710,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         vm.element.api.load();
       }
       _checkSize(vm, uiDeniGridHelperService);
-    });
+    };
   }
 
   /*
