@@ -7,6 +7,11 @@
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/ui-deni-grid.svg)](https://saucelabs.com/u/ui-deni-grid)
 
+
+------------------
+[![Build Status](https://saucelabs.com/browser-matrix/ui-deni-grid.svg)](https://saucelabs.com/beta/builds/d53eb3b8302448aa8d442acefd310251)
+------------------
+
 # Under Construction
 
 Remota alteração
