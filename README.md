@@ -10,6 +10,11 @@
 
 ------------------
 [![Build Status](https://saucelabs.com/browser-matrix/ui-deni-grid.svg)](https://saucelabs.com/beta/builds/d53eb3b8302448aa8d442acefd310251)
+
+------------------
+https://saucelabs.com/browser-matrix/ui-deni-grid.svg
+------------------
+<a href="https://saucelabs.com/beta/builds/d53eb3b8302448aa8d442acefd310251"><img src="https://saucelabs.com/browser-matrix/ui-deni-grid.svg" alt="Browser Matrix"></a>
 ------------------
 
 # Under Construction
