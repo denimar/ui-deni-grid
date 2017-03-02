@@ -13,7 +13,7 @@ ui-deni-grid {
     width: 100%;
     height: 100%;
     overflow-y: hidden;
-    font-family: tahoma, arial, verdana, sans-serif;
+    font-family: tahoma, arial, sans-serif, verdana;
     box-sizing: border-box;
     position: relative;
     /* align the text to the right */
