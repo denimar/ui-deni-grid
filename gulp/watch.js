@@ -9,7 +9,7 @@ module.exports = function() {
 		sass();
 	});
 
-  gulp.watch('./src/index.html', function() {
+  gulp.watch(['./src/index.html', './src/api.html'], function() {
 		html();
 	});
 

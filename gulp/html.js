@@ -8,10 +8,10 @@ var livereload = require('gulp-livereload');
 module.exports = function() {
 
 	//Clean out dist/images folder
-	del([process.env.DIST_FOLDER + 'index.html'], {force: true}).then(function() {
+	del([process.env.DIST_FOLDER + 'index.html', process.env.DIST_FOLDER + 'api.html'], {force: true}).then(function() {
 
 		//index.html
-		gulp.src('./src/index.html')
+		gulp.src(['./src/index.html', './src/api.html'])
 			.pipe(gulp.dest(process.env.DIST_FOLDER))
 
 			.pipe((notify({
