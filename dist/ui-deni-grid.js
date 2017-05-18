@@ -4247,8 +4247,11 @@
 				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
 				spanHeaderCellDropdown.text('▼');
 				spanHeaderCellDropdown.mouseenter(function () {
-					var target = $(event.target);
-					target.addClass('active');
+					var hasSubcolumns = $(event.target).closest('.ui-header-cell').is('.has-subcolumns');
+					if (!hasSubcolumns) {
+						var target = $(event.target);
+						target.addClass('active');
+					}
 				});
 				spanHeaderCellDropdown.mouseout(function () {
 					var target = $(event.target);
@@ -4621,14 +4624,16 @@
 						var isDropDownMenu = target.is('.ui-header-cell-dropdown');
 
 						if (isDropDownMenu) {
-							target.addClass('active clicked');
+							if (!headerCell.is('.has-subcolumns')) {
+								target.addClass('active clicked');
 
-							var mousePoint = getPositionDropDownMenuColumns(target.get(0));
-							var dropdownMenuCallbackFunctionFn = function dropdownMenuCallbackFunctionFn(column, execSortObj, execFilter) {
-								dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);
-							};
-							var sortable = controller.options.sortableColumns && column.sortable !== false;
-							uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);
+								var mousePoint = getPositionDropDownMenuColumns(target.get(0));
+								var dropdownMenuCallbackFunctionFn = function dropdownMenuCallbackFunctionFn(column, execSortObj, execFilter) {
+									dropdownMenuCallbackFunction(controller, column, execSortObj, execFilter);
+								};
+								var sortable = controller.options.sortableColumns && column.sortable !== false;
+								uiDeniGridDropdownService.open(controller, sortable, column, mousePoint, dropdownMenuCallbackFunctionFn);
+							}
 						} else {
 							if (controller.colsViewport.css('cursor') === 'default') {
 								//prevent conflict with the resizing columns function
@@ -5306,13 +5311,24 @@
    *
   */
 		me.getColumn = function (controller, fieldName) {
-			for (var index = 0; index < controller.options.columns.length; index++) {
-				if (controller.options.columns[index].name === fieldName) {
-					return controller.options.columns[index];
-				}
-			}
 
-			return null;
+			var _getColumn = function _getColumn(columns, fieldName) {
+				for (var i = 0; i < columns.length; i++) {
+					if (columns[i].columns) {
+						var subColumn = _getColumn(columns[i].columns, fieldName);
+						if (subColumn) {
+							return subColumn;
+						}
+					} else {
+						if (columns[i].name === fieldName) {
+							return columns[i];
+						}
+					}
+				}
+				return null;
+			};
+
+			return _getColumn(controller.options.columns, fieldName);
 		};
 
 		/**

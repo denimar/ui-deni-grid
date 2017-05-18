@@ -179,7 +179,7 @@ ui-deni-grid {
                             cursor: pointer;
                             color: #005580; }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column.last-subcolumn {
-                      border-right-width: 0px; }
+                      border-right-width: 0px !important; }
             ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper {
               overflow-x: hidden;
               overflow-y: hidden;
