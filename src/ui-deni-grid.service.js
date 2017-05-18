@@ -159,6 +159,7 @@
 				//dropdown menu
 				var spanHeaderCellDropdown = $(document.createElement('span'));
 				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
+				spanHeaderCellDropdown.text('▼');
 				spanHeaderCellDropdown.mouseenter(function() {
 					let target = $(event.target);
 					target.addClass('active');

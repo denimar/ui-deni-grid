@@ -211,24 +211,22 @@
 				} else {
 					//integer
 					if (vm.column.filter.type === 'integer') {
-						(function () {
-							var inputs = vm.containerElm.find('input[type=number]');
-							var inputLessThan = inputs.get(0);
-							var inputGreaterThan = inputs.get(1);
-							var inputEquals = inputs.get(2);
+						var inputs = vm.containerElm.find('input[type=number]');
+						var inputLessThan = inputs.get(0);
+						var inputGreaterThan = inputs.get(1);
+						var inputEquals = inputs.get(2);
 
-							angular.forEach(fieldValue, function (filterValueInt) {
-								if (filterValueInt.oper === '<=') {
-									inputLessThan.value = filterValueInt.key;
-								} else if (filterValueInt.oper === '>=') {
-									inputGreaterThan.value = filterValueInt.key;
-								} else if (filterValueInt.oper === '=') {
-									inputEquals.value = filterValueInt.key;
-								}
-							});
+						angular.forEach(fieldValue, function (filterValueInt) {
+							if (filterValueInt.oper === '<=') {
+								inputLessThan.value = filterValueInt.key;
+							} else if (filterValueInt.oper === '>=') {
+								inputGreaterThan.value = filterValueInt.key;
+							} else if (filterValueInt.oper === '=') {
+								inputEquals.value = filterValueInt.key;
+							}
+						});
 
-							//float
-						})();
+						//float
 					} else if (vm.column.filter.type === 'float') {
 						//TODO: missing implementation
 
@@ -243,24 +241,22 @@
 
 						//date and time
 					} else if (vm.column.filter.type === 'datetime') {
-						(function () {
-							var inputs = vm.containerElm.find('input');
-							var inputLessThan = inputs.get(0);
-							var inputGreaterThan = inputs.get(1);
+						var _inputs = vm.containerElm.find('input');
+						var _inputLessThan = _inputs.get(0);
+						var _inputGreaterThan = _inputs.get(1);
 
-							angular.forEach(fieldValue, function (filterValueDatetime) {
-								//let dateObj = new Date(filterValueDatetime.key);
-								//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
+						angular.forEach(fieldValue, function (filterValueDatetime) {
+							//let dateObj = new Date(filterValueDatetime.key);
+							//let formattedDate = $filter('date')(dateObj, 'yyyy-MM-ddTHH:mm');
 
-								if (filterValueDatetime.oper === '<=') {
-									inputLessThan.value = filterValueDatetime.key;
-								} else if (filterValueDatetime.oper === '>=') {
-									inputGreaterThan.value = filterValueDatetime.key;
-								}
-							});
+							if (filterValueDatetime.oper === '<=') {
+								_inputLessThan.value = filterValueDatetime.key;
+							} else if (filterValueDatetime.oper === '>=') {
+								_inputGreaterThan.value = filterValueDatetime.key;
+							}
+						});
 
-							//boolean
-						})();
+						//boolean
 					} else if (vm.column.filter.type === 'boolean') {
 						//TODO: missing implementation
 
@@ -426,41 +422,39 @@
 			}
 
 			if (column.filter) {
-				(function () {
-					var createMenuItemFilter = function createMenuItemFilter(templateHtml) {
-						console.log(vm.scope.filterModel);
+				var createMenuItemFilter = function createMenuItemFilter(templateHtml) {
+					console.log(vm.scope.filterModel);
 
-						var itemFilterConfig = {
-							name: 'mniFilter',
-							caption: 'Filter',
-							column: column,
-							icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
-							separator: vm.controller.items.length > 0,
-							filter: column.filter,
-							filterModel: vm.scope.filterModel
-						};
-						if (templateHtml) {
-							itemFilterConfig.template = templateHtml;
-						}
-						vm.controller.items.push(itemFilterConfig);
-
-						$timeout(function () {
-							//
-							checkPosition();
-
-							//
-							_updateValuesFromFilterModel();
-						});
+					var itemFilterConfig = {
+						name: 'mniFilter',
+						caption: 'Filter',
+						column: column,
+						icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAEZyIDI4IEZlYiAyMDAzIDExOjUxOjUxICswMTAwfOn0bwAAAAd0SU1FB9QHBwgdIKCdDVwAAAAJcEhZcwAACvAAAArwAUKsNJgAAAAEZ0FNQQAAsY8L/GEFAAACdUlEQVR42o1SvW9ScRS9j0ehNIWAIQEpqTg4mA46yOCATYyb6dLRuLB3cfAf6NKtq38AIXERFhMGhYAmBuoAUWiVgqVA+CwfeYB8FZ7nvjy0X4M3ue+X994953fPuVcgxO7urmZ7e/tZLpd73uv1HoqieEev15vm8zlNp1Op3W6Xj46O0slk8iPOD51OZwDYOWOF09PTB4lEwp9KpTYYsLa2Rg6Hg5xOJ5lMJjKbzcq5srJCICefz5fb399/lc/no8APRKvVGvb7/Ru4lVZXV8lgMCjFRqORlpaWSKvVkiAIxP/5u9vtvtXtdp9Eo9EvIGhpUHTW7/cJbZEkSTQcDrlt4m4YyAQ6nY4giRYBGWc4HiHNmnK5/HpnZ6e9vr5O0Eq1Wo0Gg4FSyB1ZLBalGyYNBoO0tbXVCgQC3/B7ipwLeBi8Xu/Lvb29NygS0+k0NRoNms1mNJlMFNJCoUDNZpNGo9E5/HqLb0Xg3iNTIh4zGHgCgB7sj202G8EXstvtiu4LsuRMJvMOHTeBCSO5i76oyhrH4/Hv0Hp/c3PzHnuC26jValGpVKJ6vU7Hx8cRjLGO2k/IAyT7IC8IZOSwWCymlpeXn3o8Hiv7wH4ASBjZYSwW+ynL8oFKUOHOGSjSv5hjElK1Ws1CzgtMQchmswyehEKhMCQcqq0XVAOV0NDlGKPNz5jI1OVyKTsBIyXI6eNfAnnCNRcBVwlYCs9wxCaq4/uNd0lte3Cl/hqBQlKpVMI8AfhB4/F4qN46vaH2kgd/A8Z9jUQiVszbgq37gb3Iq2PrXq0V6Obgvb2rrutt5C9kTB3dfxEsSEy8qTxi9fZrMv4ACcVMYmdxl5oAAAAASUVORK5CYII=',
+						separator: vm.controller.items.length > 0,
+						filter: column.filter,
+						filterModel: vm.scope.filterModel
 					};
-
-					if (column.filter.renderer) {
-						createMenuItemFilter();
-					} else {
-						_getTemplateFilterDropdownMenuItem(gridController, column.filter, column).then(function (templateHtml) {
-							createMenuItemFilter(templateHtml);
-						});
+					if (templateHtml) {
+						itemFilterConfig.template = templateHtml;
 					}
-				})();
+					vm.controller.items.push(itemFilterConfig);
+
+					$timeout(function () {
+						//
+						checkPosition();
+
+						//
+						_updateValuesFromFilterModel();
+					});
+				};
+
+				if (column.filter.renderer) {
+					createMenuItemFilter();
+				} else {
+					_getTemplateFilterDropdownMenuItem(gridController, column.filter, column).then(function (templateHtml) {
+						createMenuItemFilter(templateHtml);
+					});
+				}
 			}
 
 			$timeout(function () {
@@ -587,25 +581,25 @@
 
 				//date and time
 			} else if (vm.column.filter.type === 'datetime') {
-				var _inputs = vm.containerElm.find('input');
-				var _inputLessThan = _inputs.get(0);
-				var _inputGreaterThan = _inputs.get(1);
+				var _inputs2 = vm.containerElm.find('input');
+				var _inputLessThan2 = _inputs2.get(0);
+				var _inputGreaterThan2 = _inputs2.get(1);
 				value = [];
 
 				//<=
-				if (_inputLessThan.value) {
+				if (_inputLessThan2.value) {
 					value.push({
-						key: _inputLessThan.value,
-						value: _inputLessThan.value,
+						key: _inputLessThan2.value,
+						value: _inputLessThan2.value,
 						oper: '<='
 					});
 				}
 
 				//>=
-				if (_inputGreaterThan.value) {
+				if (_inputGreaterThan2.value) {
 					value.push({
-						key: _inputGreaterThan.value,
-						value: _inputGreaterThan.value,
+						key: _inputGreaterThan2.value,
+						value: _inputGreaterThan2.value,
 						oper: '>='
 					});
 				}
@@ -1473,95 +1467,93 @@
 
 			angular.forEach(columns, function (column) {
 				if (column.filter && column.filter.initialValue) {
-					(function () {
-						var initialValue = column.filter.initialValue;
+					var initialValue = column.filter.initialValue;
 
-						if (angular.isFunction(initialValue)) {
-							initialValue = initialValue();
+					if (angular.isFunction(initialValue)) {
+						initialValue = initialValue();
+					}
+
+					var value = {};
+
+					//integer
+					if (column.filter.type === 'integer') {
+						//TODO: missing implementation
+
+						//float
+					} else if (column.filter.type === 'float') {
+						//TODO: missing implementation
+
+						//string
+					} else if (column.filter.type === 'string') {
+						value = {
+							key: initialValue.toString(),
+							value: initialValue.toString(),
+							oper: '~'
+						};
+
+						//date
+					} else if (column.filter.type === 'date') {
+						//TODO: missing implementation
+
+						//date and time
+					} else if (column.filter.type === 'datetime') {
+						//Transform the initValue in a array
+						var initialValueArray = initialValue;
+						if (!angular.isArray(initialValueArray)) {
+							initialValueArray = [initialValue];
 						}
 
-						var value = {};
+						value = [];
 
-						//integer
-						if (column.filter.type === 'integer') {
-							//TODO: missing implementation
-
-							//float
-						} else if (column.filter.type === 'float') {
-							//TODO: missing implementation
-
-							//string
-						} else if (column.filter.type === 'string') {
-							value = {
-								key: initialValue.toString(),
-								value: initialValue.toString(),
-								oper: '~'
-							};
-
-							//date
-						} else if (column.filter.type === 'date') {
-							//TODO: missing implementation
-
-							//date and time
-						} else if (column.filter.type === 'datetime') {
-							//Transform the initValue in a array
-							var initialValueArray = initialValue;
-							if (!angular.isArray(initialValueArray)) {
-								initialValueArray = [initialValue];
-							}
-
-							value = [];
-
-							if (initialValueArray.length > 0) {
-								//<=
-								value.push({
-									key: initialValueArray[0],
-									value: initialValueArray[0],
-									oper: '<='
-								});
-							}
-
-							if (initialValueArray.length > 1) {
-								//>=
-								value.push({
-									key: initialValueArray[1],
-									value: initialValueArray[1],
-									oper: '>='
-								});
-							}
-
-							//boolean
-						} else if (column.filter.type === 'boolean') {
-							//TODO: missing implementation
-
-							//select (radio)
-						} else if (column.filter.type === 'select') {
-							//TODO: missing implementation
-
-							//multi select (checkbox)
-						} else if (column.filter.type === 'multiSelect') {
-							//Transform the initValue in a array
-							var _initialValueArray = initialValue;
-							if (!angular.isArray(_initialValueArray)) {
-								_initialValueArray = [initialValue];
-							}
-
-							value = [];
-							angular.forEach(_initialValueArray, function (initialValueArrayItem) {
-								value.push({
-									key: initialValueArrayItem,
-									value: initialValueArrayItem,
-									oper: '='
-								});
+						if (initialValueArray.length > 0) {
+							//<=
+							value.push({
+								key: initialValueArray[0],
+								value: initialValueArray[0],
+								oper: '<='
 							});
-
-							//
-						} else {
-							throw new Error('Filter type invalid!');
 						}
 
-						controller.options.filter.model[column.filter.field || column.name] = value;
-					})();
+						if (initialValueArray.length > 1) {
+							//>=
+							value.push({
+								key: initialValueArray[1],
+								value: initialValueArray[1],
+								oper: '>='
+							});
+						}
+
+						//boolean
+					} else if (column.filter.type === 'boolean') {
+						//TODO: missing implementation
+
+						//select (radio)
+					} else if (column.filter.type === 'select') {
+						//TODO: missing implementation
+
+						//multi select (checkbox)
+					} else if (column.filter.type === 'multiSelect') {
+						//Transform the initValue in a array
+						var _initialValueArray = initialValue;
+						if (!angular.isArray(_initialValueArray)) {
+							_initialValueArray = [initialValue];
+						}
+
+						value = [];
+						angular.forEach(_initialValueArray, function (initialValueArrayItem) {
+							value.push({
+								key: initialValueArrayItem,
+								value: initialValueArrayItem,
+								oper: '='
+							});
+						});
+
+						//
+					} else {
+						throw new Error('Filter type invalid!');
+					}
+
+					controller.options.filter.model[column.filter.field || column.name] = value;
 				}
 			});
 		};
@@ -2851,8 +2843,6 @@
 })();
 'use strict';
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 /**
  * Put here all internal events
  *
@@ -3021,19 +3011,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				if (tryToRealce) {
 					//enter here when there is a multiselect filter
 					if (angular.isArray(valueToRealceObj)) {
-						var _ret = function () {
-							var realcedReturn = completeValue;
-							angular.forEach(valueToRealceObj, function (valueToRealceObjItem) {
-								var valueToRealceNew = {};
-								valueToRealceNew[column.name] = valueToRealceObjItem;
-								realcedReturn = _rendererRealcedCells(column, allFields, realcedReturn, valueToRealceNew, realceStyle);
-							});
-							return {
-								v: realcedReturn
-							};
-						}();
-
-						if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+						var realcedReturn = completeValue;
+						angular.forEach(valueToRealceObj, function (valueToRealceObjItem) {
+							var valueToRealceNew = {};
+							valueToRealceNew[column.name] = valueToRealceObjItem;
+							realcedReturn = _rendererRealcedCells(column, allFields, realcedReturn, valueToRealceNew, realceStyle);
+						});
+						return realcedReturn;
 					} else {
 						var _getTemplateRealce = function _getTemplateRealce(realcedText) {
 							return '<span style="' + realceStyle + '">' + realcedText + '</span>';
@@ -3093,50 +3077,48 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 				//Row Detail - Grouping or other type of row details
 			} else if (rowElement.is('.row-detail')) {
-				(function () {
-					//uiDeniGridHelperService.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
+				//uiDeniGridHelperService.renderCommonRow(vm.controller, rowElement, record, itemToRender.rowIndex);
 
-					//
-					var divCell = _createDivCell(rowElement);
-					divCell.addClass('row-detail');
+				//
+				var _divCell4 = _createDivCell(rowElement);
+				_divCell4.addClass('row-detail');
 
-					//
-					var spanCellInner = _createDivCellInner(divCell);
-					spanCellInner.addClass('row-detail');
-					if (itemToRender.expanded) {
-						spanCellInner.addClass('collapse');
+				//
+				var spanCellInner = _createDivCellInner(_divCell4);
+				spanCellInner.addClass('row-detail');
+				if (itemToRender.expanded) {
+					spanCellInner.addClass('collapse');
+				} else {
+					spanCellInner.addClass('expand');
+				}
+				spanCellInner.css('cursor', 'pointer');
+
+				spanCellInner.click(function (event) {
+					//if (event.offsetX <= 12) { //:before pseudo element width
+					spanCellInner.toggleClass('expand collapse');
+					rowElement.toggleClass('expand collapse');
+
+					if (spanCellInner.is('.collapse')) {
+						uiDeniGridHelperService.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
 					} else {
-						spanCellInner.addClass('expand');
+						uiDeniGridHelperService.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
 					}
-					spanCellInner.css('cursor', 'pointer');
+					//}
+				});
 
-					spanCellInner.click(function (event) {
-						//if (event.offsetX <= 12) { //:before pseudo element width
-						spanCellInner.toggleClass('expand collapse');
-						rowElement.toggleClass('expand collapse');
+				var _valueToRender = void 0;
+				if (vm.controller.options.grouping.template) {
+					var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
+					_valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.grouping.template, record, { count: totalRowsInGroup });
+				}
 
-						if (spanCellInner.is('.collapse')) {
-							uiDeniGridHelperService.groupExpand(vm.controller, rowElement, record, itemToRender.rowIndex);
-						} else {
-							uiDeniGridHelperService.groupCollapse(vm.controller, rowElement, record, itemToRender.rowIndex);
-						}
-						//}
-					});
+				spanCellInner.html(_valueToRender);
 
-					var valueToRender = void 0;
-					if (vm.controller.options.grouping.template) {
-						var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-						valueToRender = uiDeniGridHelperService.applyTemplateValues(vm.controller.options.grouping.template, record, { count: totalRowsInGroup });
-					}
-
-					spanCellInner.html(valueToRender);
-
-					// Grouping Footer
-				})();
+				// Grouping Footer
 			} else if (rowElement.is('.ui-grouping-footer-container')) {
 				var columns = vm.controller.options.columns;
-				var totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
-				var records = vm.controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + totalRowsInGroup);
+				var _totalRowsInGroup = parseInt(rowElement.attr('children') || 0);
+				var records = vm.controller.options.data.slice(itemToRender.rowIndex, itemToRender.rowIndex + _totalRowsInGroup);
 
 				//
 				uiDeniGridHelperService.createColumnFooters(vm.controller, rowElement, columns, false);
@@ -3216,62 +3198,60 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 					//action column
 					if (column.action) {
-						(function () {
-							spanCellInner.css('text-align', 'center');
-							spanCellInner.addClass('ui-cell-inner-action');
+						spanCellInner.css('text-align', 'center');
+						spanCellInner.addClass('ui-cell-inner-action');
 
-							var iconActionColumn = column.action.mdIcon || column.action.icon;
-							if (angular.isFunction(iconActionColumn)) {
-								iconActionColumn = iconActionColumn(record);
-							}
-							var imgActionColumn = void 0;
-							if (column.action.mdIcon) {
-								//Usa o md-icon do Angular Material
-								var imgActionColumnBtn = $(document.createElement('md-button'));
+						var iconActionColumn = column.action.mdIcon || column.action.icon;
+						if (angular.isFunction(iconActionColumn)) {
+							iconActionColumn = iconActionColumn(record);
+						}
+						var imgActionColumn = void 0;
+						if (column.action.mdIcon) {
+							//Usa o md-icon do Angular Material
+							var imgActionColumnBtn = $(document.createElement('md-button'));
 
-								if (column.action.tooltip) {
-									var imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
-									var textTooltip = void 0;
+							if (column.action.tooltip) {
+								var imgActionColumnBtnTooltip = $(document.createElement('md-tooltip'));
+								var textTooltip = void 0;
 
-									if (angular.isFunction(column.action.tooltip)) {
-										textTooltip = column.action.tooltip(record);
-									} else {
-										textTooltip = column.action.tooltip;
-									}
-									imgActionColumnBtnTooltip.html(textTooltip);
-									imgActionColumnBtn.append(imgActionColumnBtnTooltip);
+								if (angular.isFunction(column.action.tooltip)) {
+									textTooltip = column.action.tooltip(record);
+								} else {
+									textTooltip = column.action.tooltip;
 								}
-
-								imgActionColumn = $(document.createElement('md-icon'));
-								imgActionColumn.addClass('material-icons');
-								imgActionColumn.html(iconActionColumn);
-								imgActionColumnBtn.append(imgActionColumn);
-
-								var imgActionColumnBtnCompiled = $compile(imgActionColumnBtn)(vm.controller.scope);
-								spanCellInner.append(imgActionColumnBtn);
-								imgActionColumnBtn.find('md-icon').prop('column', column);
-
-								imgActionColumnBtn.click(function (event) {
-									var imgAction = $(event.currentTarget).find('md-icon');
-									var colAction = imgAction.prop('column');
-									colAction.action.fn(record, column, imgAction);
-								});
-							} else {
-								imgActionColumn = $(document.createElement('img'));
-								imgActionColumn.attr('src', iconActionColumn);
-								imgActionColumn.attr('title', column.action.tooltip);
-								spanCellInner.append(imgActionColumn);
-								imgActionColumn.prop('column', column);
-
-								imgActionColumn.click(function (event) {
-									var imgAction = $(event.currentTarget);
-									var colAction = imgAction.prop('column');
-									colAction.action.fn(record, column, imgActionColumn);
-								});
-
-								imgActionColumn.css('cursor', 'pointer');
+								imgActionColumnBtnTooltip.html(textTooltip);
+								imgActionColumnBtn.append(imgActionColumnBtnTooltip);
 							}
-						})();
+
+							imgActionColumn = $(document.createElement('md-icon'));
+							imgActionColumn.addClass('material-icons');
+							imgActionColumn.html(iconActionColumn);
+							imgActionColumnBtn.append(imgActionColumn);
+
+							var imgActionColumnBtnCompiled = $compile(imgActionColumnBtn)(vm.controller.scope);
+							spanCellInner.append(imgActionColumnBtn);
+							imgActionColumnBtn.find('md-icon').prop('column', column);
+
+							imgActionColumnBtn.click(function (event) {
+								var imgAction = $(event.currentTarget).find('md-icon');
+								var colAction = imgAction.prop('column');
+								colAction.action.fn(record, column, imgAction);
+							});
+						} else {
+							imgActionColumn = $(document.createElement('img'));
+							imgActionColumn.attr('src', iconActionColumn);
+							imgActionColumn.attr('title', column.action.tooltip);
+							spanCellInner.append(imgActionColumn);
+							imgActionColumn.prop('column', column);
+
+							imgActionColumn.click(function (event) {
+								var imgAction = $(event.currentTarget);
+								var colAction = imgAction.prop('column');
+								colAction.action.fn(record, column, imgActionColumn);
+							});
+
+							imgActionColumn.css('cursor', 'pointer');
+						}
 					} else {
 
 						//
@@ -4265,6 +4245,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				//dropdown menu
 				var spanHeaderCellDropdown = $(document.createElement('span'));
 				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
+				spanHeaderCellDropdown.text('▼');
 				spanHeaderCellDropdown.mouseenter(function () {
 					var target = $(event.target);
 					target.addClass('active');
@@ -5732,70 +5713,68 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			//Load the data
 			if (controller.options.filter && filterModelKeys.length > 0 && !controller.options.filter.remote) {
-				(function () {
-					var matchFilterFn = function matchFilterFn(originalValue, valueToFilter) {
+				var matchFilterFn = function matchFilterFn(originalValue, valueToFilter) {
 
-						//When valueToFilter comes from a multi select filter value, enter in this if
-						if (angular.isArray(valueToFilter)) {
-							var matched = false;
-							for (var index = 0; index < valueToFilter.length; index++) {
-								var valueToFilterItem = valueToFilter[index];
-								if (matchFilterFn(originalValue, valueToFilterItem)) {
-									matched = true;
-								} else {
-									matched = false;
-									break;
-								}
-							}
-							return matched;
-						} else {
-							if (valueToFilter.oper === '=') {
-								return originalValue.toString().toLowerCase() === valueToFilter.value.toString();
-							} else if (valueToFilter.oper === '~') {
-								//Case Insensitive Comparation
-								return originalValue.toString().search(new RegExp(valueToFilter.value, 'i')) !== -1;
-							} else if (valueToFilter.oper === '<=') {
-								return valueToFilter.value <= originalValue;
-							} else if (valueToFilter.oper === '>=') {
-								return valueToFilter.value >= originalValue;
+					//When valueToFilter comes from a multi select filter value, enter in this if
+					if (angular.isArray(valueToFilter)) {
+						var matched = false;
+						for (var index = 0; index < valueToFilter.length; index++) {
+							var valueToFilterItem = valueToFilter[index];
+							if (matchFilterFn(originalValue, valueToFilterItem)) {
+								matched = true;
 							} else {
-								throw new Error('Invalid operator!');
+								matched = false;
+								break;
 							}
 						}
-					};
-					var columns = controller.options.columns;
-					controller.options.data = $filter('filter')(data, function (record, index, array) {
-						if (controller.options.filter.allFields) {
-							for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-								var colName = columns[colIndex].name;
-								var _value = record[colName];
-								if (_value) {
-									if (matchFilterFn(_value, controller.options.filter.model['*'])) {
-										return true;
-									}
-								}
-							}
+						return matched;
+					} else {
+						if (valueToFilter.oper === '=') {
+							return originalValue.toString().toLowerCase() === valueToFilter.value.toString();
+						} else if (valueToFilter.oper === '~') {
+							//Case Insensitive Comparation
+							return originalValue.toString().search(new RegExp(valueToFilter.value, 'i')) !== -1;
+						} else if (valueToFilter.oper === '<=') {
+							return valueToFilter.value <= originalValue;
+						} else if (valueToFilter.oper === '>=') {
+							return valueToFilter.value >= originalValue;
 						} else {
-							var filterOk = false;
-							for (var _index4 = 0; _index4 < filterModelKeys.length; _index4++) {
-								var valuesToFilterKey = filterModelKeys[_index4];
-								var valueToFilter = controller.options.filter.model[valuesToFilterKey];
-								var _value2 = eval('record.' + valuesToFilterKey);
-
-								if (_value2 && valueToFilter) {
-									if (matchFilterFn(_value2, valueToFilter)) {
-										filterOk = true;
-									} else {
-										return false;
-									}
+							throw new Error('Invalid operator!');
+						}
+					}
+				};
+				var columns = controller.options.columns;
+				controller.options.data = $filter('filter')(data, function (record, index, array) {
+					if (controller.options.filter.allFields) {
+						for (var colIndex = 0; colIndex < columns.length; colIndex++) {
+							var colName = columns[colIndex].name;
+							var _value = record[colName];
+							if (_value) {
+								if (matchFilterFn(_value, controller.options.filter.model['*'])) {
+									return true;
 								}
 							}
-							return filterOk;
 						}
+					} else {
+						var filterOk = false;
+						for (var _index4 = 0; _index4 < filterModelKeys.length; _index4++) {
+							var valuesToFilterKey = filterModelKeys[_index4];
+							var valueToFilter = controller.options.filter.model[valuesToFilterKey];
+							var _value2 = eval('record.' + valuesToFilterKey);
 
-						return false;
-					});
-				})();
+							if (_value2 && valueToFilter) {
+								if (matchFilterFn(_value2, valueToFilter)) {
+									filterOk = true;
+								} else {
+									return false;
+								}
+							}
+						}
+						return filterOk;
+					}
+
+					return false;
+				});
 			} else {
 				controller.options.data = data;
 			}
@@ -6276,39 +6255,37 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 			//ROW DETAIL
 			if (itemToRender.rowDetails) {
-				(function () {
-					var rowElementParent = controller.bodyContainer.find('.ui-row[rowIndex=' + itemToRender.rowIndex + ']:not(.row-detail-container)');
-					rowElement.insertAfter(rowElementParent);
+				var rowElementParent = controller.bodyContainer.find('.ui-row[rowIndex=' + itemToRender.rowIndex + ']:not(.row-detail-container)');
+				rowElement.insertAfter(rowElementParent);
 
-					var isSelected = rowElementParent.find('.ui-cell:eq(0)').is('.selected');
-					if (isSelected) {
-						rowElement.addClass('selected');
-					}
-					rowElement.addClass('row-detail-container');
+				var isSelected = rowElementParent.find('.ui-cell:eq(0)').is('.selected');
+				if (isSelected) {
+					rowElement.addClass('selected');
+				}
+				rowElement.addClass('row-detail-container');
 
-					var rowDetailsBox = $(document.createElement('div'));
-					rowDetailsBox.addClass('row-detail-box');
-					rowElement.append(rowDetailsBox);
+				var rowDetailsBox = $(document.createElement('div'));
+				rowDetailsBox.addClass('row-detail-box');
+				rowElement.append(rowDetailsBox);
 
-					rowElementParent = controller.element.api.resolveRowElement(itemToRender.rowIndex);
+				rowElementParent = controller.element.api.resolveRowElement(itemToRender.rowIndex);
 
-					rowElement.css('height', itemToRender.height + 'px');
-					rowElement.css('top', itemToRender.top + 'px');
-					rowElement.insertAfter(rowElementParent);
+				rowElement.css('height', itemToRender.height + 'px');
+				rowElement.css('top', itemToRender.top + 'px');
+				rowElement.insertAfter(rowElementParent);
 
-					rowElement.click(function () {
-						controller.element.api.selectRow(rowElementParent);
-					});
+				rowElement.click(function () {
+					controller.element.api.selectRow(rowElementParent);
+				});
 
-					itemToRender.rowElement = rowElement;
+				itemToRender.rowElement = rowElement;
 
-					if (controller.options.rowDetails.template) {
-						var valueToRender = uiDeniGridHelperService.applyTemplateValues(controller.options.rowDetails.template, record);
-						itemToRender.rowElement.html(valueToRender);
-					} else if (controller.options.rowDetails.renderer) {
-						controller.options.rowDetails.renderer(itemToRender.rowElements, record);
-					}
-				})();
+				if (controller.options.rowDetails.template) {
+					var valueToRender = uiDeniGridHelperService.applyTemplateValues(controller.options.rowDetails.template, record);
+					itemToRender.rowElement.html(valueToRender);
+				} else if (controller.options.rowDetails.renderer) {
+					controller.options.rowDetails.renderer(itemToRender.rowElements, record);
+				}
 			} else {
 				controller.bodyContainer.append(rowElement);
 

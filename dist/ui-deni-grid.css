@@ -164,11 +164,20 @@ ui-deni-grid {
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown {
                           width: 13px;
                           height: 100%;
-                          box-sizing: border-box; }
+                          box-sizing: border-box;
+                          display: flex;
+                          align-items: center;
+                          padding-left: 3px;
+                          color: transparent;
+                          font-size: 10px;
+                          font-weight: bold;
+                          font-family: arial,sans-serif; }
                           ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown.active {
-                            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAYCAYAAADOMhxqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACiSURBVDhPYzx86+d/G1U2hlevPjMQA5igNNFgVAMxgGgNjIwQmmgN//9DaBYIBQHXr59jcCi+CeVhgpfbIlFt0NU1YTjQqw7loQKQODMzE6qGP3/+YdUE4uvrmzH8/fsP0w/ommCKf/36g2kDDCBrgikGgb9//+MOJZAmTU0juGIIQNEADTcCAEkDNGYIACxOwq8Riwb8TsPpaVxg0GlgYAAAySU7QWQh1UAAAAAASUVORK5CYII=");
+                            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAXSURBVBhXYzh86+d/EGBigILhwGBgAABTrgfANG/J7wAAAABJRU5ErkJggg==");
                             background-repeat: no-repeat;
-                            cursor: pointer; }
+                            background-size: 2px 100%;
+                            cursor: pointer;
+                            color: #005580; }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column.last-subcolumn {
                       border-right-width: 0px; }
             ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper {

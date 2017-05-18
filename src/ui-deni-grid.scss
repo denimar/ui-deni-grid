@@ -230,13 +230,22 @@ ui-deni-grid {
 													width: $header-cell-dropdown-width;
 													height: 100%;
 													box-sizing: border-box;
+													display: flex;
+													align-items: center;
+													padding-left: 3px;
+													color: transparent;
+													font-size: 10px;
+													font-weight: bold;
+													font-family: arial,sans-serif;
 
 													&.active {
-														background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAYCAYAAADOMhxqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACiSURBVDhPYzx86+d/G1U2hlevPjMQA5igNNFgVAMxgGgNjIwQmmgN//9DaBYIBQHXr59jcCi+CeVhgpfbIlFt0NU1YTjQqw7loQKQODMzE6qGP3/+YdUE4uvrmzH8/fsP0w/ommCKf/36g2kDDCBrgikGgb9//+MOJZAmTU0juGIIQNEADTcCAEkDNGYIACxOwq8Riwb8TsPpaVxg0GlgYAAAySU7QWQh1UAAAAAASUVORK5CYII=');
+														background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAYCAYAAADQ+yzZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAXSURBVBhXYzh86+d/EGBigILhwGBgAABTrgfANG/J7wAAAABJRU5ErkJggg==');
 														background-repeat: no-repeat;
-														//background-size: 12px 100%;
+														background-size: 2px 100%;
 														cursor: pointer;
+														color: #005580;
 													}
+
 												}
 											}
 										}
