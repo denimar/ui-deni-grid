@@ -5,15 +5,15 @@ angular.module('myApp', ['ui-deni-grid']);
 angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 
     $scope.gridOptions = {
-		url: 'https://api.nytimes.com/svc/news/v3/content/all/all.xml?api-key=8c0e3666087b43589789ee6b15eb5acb',
-        restConfig: {
-            type: 'xml',
-            data: 'results',
-            dataItems: 'news_item',
-            total: 'num_results',
-            start: 'offset',
-            limit: 'limit'
-        },  
+		url: 'https://api.nytimes.com/svc/news/v3/content/all/all.xml?api-key=7a0a0327bf5041c8a4cf40301ac0b1d1',
+    restConfig: {
+      type: 'xml',
+      data: 'results',
+      dataItems: 'news_item',
+      total: 'num_results',
+      start: 'offset',
+      limit: 'limit'
+    },
 		paging: {
 			pageSize: 20
 		},
@@ -43,4 +43,3 @@ angular.module('myApp').controller('ExampleCtrl', function($scope, $http) {
 	  }
 
 });
-
