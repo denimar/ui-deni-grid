@@ -159,15 +159,24 @@
 				//dropdown menu
 				var spanHeaderCellDropdown = $(document.createElement('span'));
 				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
-				spanHeaderCellDropdown.text('▼');
-				spanHeaderCellDropdown.mouseenter(function() {
+
+				var spanHeaderCellDropdownIcon = $(document.createElement('span'));
+				spanHeaderCellDropdownIcon.addClass('dropdown-arrow-down-icon');
+				spanHeaderCellDropdown.append(spanHeaderCellDropdownIcon);
+				//spanHeaderCellDropdown.text('▼');
+
+				var headerCellDropdownMouseEnter = () => {
 					let hasSubcolumns = $(event.target).closest('.ui-header-cell').is('.has-subcolumns');
 					if (!hasSubcolumns) {
-						let target = $(event.target);
+						let target = $(event.target).closest('.ui-header-cell-dropdown');
 						target.addClass('active');
-					}	
-				});
-				spanHeaderCellDropdown.mouseout(function() {
+					}
+				};
+
+				spanHeaderCellDropdown.mouseenter(headerCellDropdownMouseEnter);
+				spanHeaderCellDropdownIcon.mouseenter(headerCellDropdownMouseEnter);
+
+				spanHeaderCellDropdown.mouseout(() => {
 					let target = $(event.target);
 					if (!target.is('.clicked')) {
 						target.removeClass('active');
@@ -542,7 +551,7 @@
 						let headerCell = target.closest('.ui-header-cell');
 						let fieldName = headerCell.attr('name');
 						let column = me.getColumn(controller, fieldName);
-						let isDropDownMenu = target.is('.ui-header-cell-dropdown');
+						let isDropDownMenu = (target.is('.ui-header-cell-dropdown') || target.is('.dropdown-arrow-down-icon'));
 
 
 						if (isDropDownMenu) {

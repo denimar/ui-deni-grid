@@ -232,7 +232,7 @@ ui-deni-grid {
 													box-sizing: border-box;
 													display: flex;
 													align-items: center;
-													padding-left: 3px;
+													padding-left: 2px;
 													color: transparent;
 													font-size: 10px;
 													font-weight: bold;
@@ -244,6 +244,18 @@ ui-deni-grid {
 														background-size: 2px 100%;
 														cursor: pointer;
 														color: #005580;
+
+														.dropdown-arrow-down-icon {
+															display: block;
+														}
+													}
+
+													.dropdown-arrow-down-icon {
+														background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVBhXY3j58hMeBJI+cOAAg/FMTASVfvv2C6YKoMibN1+ghqOpALLfv/8G1Y2mAi6H0I2sAiIHRp9RpNHRy08A9FGeYlV9Om4AAAAASUVORK5CYII=');
+														background-repeat: no-repeat;
+														width: 10px;
+														height: 7px;
+														display: none;
 													}
 
 												}

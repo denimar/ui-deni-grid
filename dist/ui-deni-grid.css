@@ -167,7 +167,7 @@ ui-deni-grid {
                           box-sizing: border-box;
                           display: flex;
                           align-items: center;
-                          padding-left: 3px;
+                          padding-left: 2px;
                           color: transparent;
                           font-size: 10px;
                           font-weight: bold;
@@ -178,6 +178,14 @@ ui-deni-grid {
                             background-size: 2px 100%;
                             cursor: pointer;
                             color: #005580; }
+                            ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown.active .dropdown-arrow-down-icon {
+                              display: block; }
+                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-dropdown .dropdown-arrow-down-icon {
+                            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVBhXY3j58hMeBJI+cOAAg/FMTASVfvv2C6YKoMibN1+ghqOpALLfv/8G1Y2mAi6H0I2sAiIHRp9RpNHRy08A9FGeYlV9Om4AAAAASUVORK5CYII=");
+                            background-repeat: no-repeat;
+                            width: 10px;
+                            height: 7px;
+                            display: none; }
                     ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column.last-subcolumn {
                       border-right-width: 0px !important; }
             ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper {

@@ -4245,14 +4245,23 @@
 				//dropdown menu
 				var spanHeaderCellDropdown = $(document.createElement('span'));
 				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
-				spanHeaderCellDropdown.text('▼');
-				spanHeaderCellDropdown.mouseenter(function () {
+
+				var spanHeaderCellDropdownIcon = $(document.createElement('span'));
+				spanHeaderCellDropdownIcon.addClass('dropdown-arrow-down-icon');
+				spanHeaderCellDropdown.append(spanHeaderCellDropdownIcon);
+				//spanHeaderCellDropdown.text('▼');
+
+				var headerCellDropdownMouseEnter = function headerCellDropdownMouseEnter() {
 					var hasSubcolumns = $(event.target).closest('.ui-header-cell').is('.has-subcolumns');
 					if (!hasSubcolumns) {
-						var target = $(event.target);
+						var target = $(event.target).closest('.ui-header-cell-dropdown');
 						target.addClass('active');
 					}
-				});
+				};
+
+				spanHeaderCellDropdown.mouseenter(headerCellDropdownMouseEnter);
+				spanHeaderCellDropdownIcon.mouseenter(headerCellDropdownMouseEnter);
+
 				spanHeaderCellDropdown.mouseout(function () {
 					var target = $(event.target);
 					if (!target.is('.clicked')) {
@@ -4621,7 +4630,7 @@
 						var headerCell = target.closest('.ui-header-cell');
 						var fieldName = headerCell.attr('name');
 						var column = me.getColumn(controller, fieldName);
-						var isDropDownMenu = target.is('.ui-header-cell-dropdown');
+						var isDropDownMenu = target.is('.ui-header-cell-dropdown') || target.is('.dropdown-arrow-down-icon');
 
 						if (isDropDownMenu) {
 							if (!headerCell.is('.has-subcolumns')) {
