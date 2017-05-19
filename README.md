@@ -3,7 +3,7 @@ A feature-rich React treeview that allows you to quickly add a nice-looking, Aja
 
 [site](https://denimar.github.io/deni-react-treeview/), [examples](https://denimar.github.io/deni-react-treeview/examples)
 
-![alt text](https://denimar.github.io/deni-react-treeview/images/deni-react-treeview.png)
+![alt text](https://denimar.github.io/ui-deni-grid/examples/images/ui-deni-grid.png)
 
 
 [![Build Status](https://travis-ci.org/denimar/ui-deni-grid.svg?branch=master)](https://travis-ci.org/denimar/ui-deni-grid)
