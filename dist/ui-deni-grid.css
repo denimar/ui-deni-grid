@@ -146,6 +146,7 @@ ui-deni-grid {
                           background-size: 2px 100%; }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-header-viewport-wrapper .ui-header-viewport .ui-header-container .ui-header-container-column .ui-header-container-column-row .ui-header-cell .ui-header-cell-inner {
                           padding: 0px 4px 0px 4px;
+                          flex: 1;
                           white-space: nowrap;
                           overflow: hidden;
                           box-sizing: border-box; }

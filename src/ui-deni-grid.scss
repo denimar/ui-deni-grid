@@ -202,7 +202,7 @@ ui-deni-grid {
 
 												.ui-header-cell-inner	{
 													padding: $cells-padding;
-													//width: calc(100% - #{$header-cell-dropdown-width});
+													flex: 1;
 													white-space: nowrap;
 													overflow: hidden;
 													box-sizing: border-box;
