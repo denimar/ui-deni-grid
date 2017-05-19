@@ -31,3 +31,24 @@ It offers rich support for interacting with data including:
 ## Get Starting
   * [site](https://denimar.github.io/ui-deni-grid/)
   * [examples](https://denimar.github.io/ui-deni-grid/examples)
+  
+
+## Installing with NPM
+
+```
+npm install ui-deni-grid --save
+```
+
+## Installing with Bower
+
+```
+bower install ui-deni-grid --save
+```
+
+## License
+
+[MIT.](https://raw.githubusercontent.com/denimar/deni-react-treeview/master/LICENSE-MIT)
+
+## Author
+
+[Denimar de Moraes](http://github.com/denimar) (denimar@gmail.com) is a full-stack developper at the HBSis IT Solutions, Blumenau, Santa Catarina, Brazil.
