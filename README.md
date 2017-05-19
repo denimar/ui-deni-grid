@@ -5,10 +5,29 @@
 
 A feature-rich React treeview that allows you to quickly add a nice-looking, Ajax-based hierarchical tree on a web page, It is absolutely free, open source and distributed under the MIT license. deni-react-treeview is easily themable and configurable.
 
-[site](https://denimar.github.io/ui-deni-grid/), [examples](https://denimar.github.io/ui-deni-grid/examples)
-
 ![alt text](https://denimar.github.io/ui-deni-grid/examples/images/ui-deni-grid.png)
 
 
+## Features
+It offers rich support for interacting with data including:
 
-
+  * Responsive and Cross-Browser.
+  * XML/JSON Support.
+  * Grouping (Allowing the use of templates and aggregate functions (avg,sum,count and custom))
+  * Sorting
+  * Editing
+  * Card View
+  * Searches and Filters
+  * Large Dataset (paging and Infinite Scroll) with smart rendering.
+  * Fixed Columns (can come with: checkbox, indicator, row number, ...)
+  * Footer (with support for aggregate functions (avg,sum,count and custom) and templates)
+  * Templates (by body row, footer or footer row)
+  * Grouped column headers
+  * Row Expand
+  * Action Column
+  * Additional Buttons
+  * And so on...
+  
+## Get Starting
+  * [site](https://denimar.github.io/ui-deni-grid/)
+  * [examples](https://denimar.github.io/ui-deni-grid/examples)
