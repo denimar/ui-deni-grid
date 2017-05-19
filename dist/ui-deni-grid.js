@@ -5929,7 +5929,11 @@
 			uiDeniGridHelperService.remakeHeightBodyViewportWrapper(controller);
 
 			if (controller.options.data.length > 0) {
-				controller.element.api.selectRow(0, false, false);
+				if (controller.options.selType === 'row') {
+					controller.element.api.selectRow(0, false, false);
+				} else {
+					controller.element.api.selectCell(0, 0, false, false);
+				}
 			}
 
 			///////////////////////////////////////////////////////////////////////////
