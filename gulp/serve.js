@@ -13,7 +13,7 @@ gulp.task('serve', function() {
 			open: true,
 			port: 3001,
 			//open: 'http://localhost:3001/examples/api-usage/index.html'
-			open: 'http://localhost:3001/examples/basic/action-columns/index.html'
+			open: 'http://localhost:3001/examples/basic/fixed-columns-checkbox/index.html'
 		}));
 
 });

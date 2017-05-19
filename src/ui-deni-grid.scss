@@ -145,7 +145,7 @@ ui-deni-grid {
 						*********************************************************************/
 						.ui-header-viewport-wrapper {
 							overflow-x: hidden;
-			    			overflow-y: hidden;
+							overflow-y: hidden;
 							box-sizing: border-box;
 							/*height: $column-header-height;*/
 							/*background: $background-header-columns;*/
@@ -202,7 +202,7 @@ ui-deni-grid {
 
 												.ui-header-cell-inner	{
 													padding: $cells-padding;
-													width: calc(100% - #{$header-cell-dropdown-width});
+													//width: calc(100% - #{$header-cell-dropdown-width});
 													white-space: nowrap;
 													overflow: hidden;
 													box-sizing: border-box;

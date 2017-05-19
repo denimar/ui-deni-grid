@@ -4242,15 +4242,6 @@
 				spanHeaderCellInner.addClass('ui-header-cell-inner');
 				divHeaderCell.append(spanHeaderCellInner);
 
-				//dropdown menu
-				var spanHeaderCellDropdown = $(document.createElement('span'));
-				spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
-
-				var spanHeaderCellDropdownIcon = $(document.createElement('span'));
-				spanHeaderCellDropdownIcon.addClass('dropdown-arrow-down-icon');
-				spanHeaderCellDropdown.append(spanHeaderCellDropdownIcon);
-				//spanHeaderCellDropdown.text('▼');
-
 				var headerCellDropdownMouseEnter = function headerCellDropdownMouseEnter() {
 					var hasSubcolumns = $(event.target).closest('.ui-header-cell').is('.has-subcolumns');
 					if (!hasSubcolumns) {
@@ -4258,17 +4249,6 @@
 						target.addClass('active');
 					}
 				};
-
-				spanHeaderCellDropdown.mouseenter(headerCellDropdownMouseEnter);
-				spanHeaderCellDropdownIcon.mouseenter(headerCellDropdownMouseEnter);
-
-				spanHeaderCellDropdown.mouseout(function () {
-					var target = $(event.target);
-					if (!target.is('.clicked')) {
-						target.removeClass('active');
-					}
-				});
-				divHeaderCell.append(spanHeaderCellDropdown);
 
 				if (column.isCheckbox) {
 					var inputCheck = $(document.createElement('input'));
@@ -4287,6 +4267,25 @@
 						}
 					});
 				} else {
+					//dropdown menu
+					var spanHeaderCellDropdown = $(document.createElement('span'));
+					spanHeaderCellDropdown.addClass('ui-header-cell-dropdown');
+					var spanHeaderCellDropdownIcon = $(document.createElement('span'));
+					spanHeaderCellDropdownIcon.addClass('dropdown-arrow-down-icon');
+					spanHeaderCellDropdown.append(spanHeaderCellDropdownIcon);
+					//spanHeaderCellDropdown.text('▼');
+
+					spanHeaderCellDropdown.mouseenter(headerCellDropdownMouseEnter);
+					spanHeaderCellDropdownIcon.mouseenter(headerCellDropdownMouseEnter);
+
+					spanHeaderCellDropdown.mouseout(function () {
+						var target = $(event.target);
+						if (!target.is('.clicked')) {
+							target.removeClass('active');
+						}
+					});
+					divHeaderCell.append(spanHeaderCellDropdown);
+
 					var content = column.header || column.name;
 					spanHeaderCellInner.html(content);
 
