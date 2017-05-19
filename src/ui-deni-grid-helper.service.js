@@ -270,7 +270,7 @@
 
 			//Refresh deniview widths
 			//bodyContainer.find('.ui-row').css('width', headerContainer.css('width'));
-			bodyContainer.find('.ui-row:not(.row-detail)').css('width', headerContainer.css('width'));
+			//bodyContainer.find('.ui-row:not(.row-detail)').css('width', headerContainer.css('width'));
 			//
 			var newWidth = headerContainerColumn.css('width');
 			if (headerContainerColumn.is('.ui-header-container-column.last-subcolumn')) {
@@ -304,7 +304,7 @@
 					}
 				}
 				if (anyColumnInPercentage) {
-					controller.bodyContainer.find('.ui-row').css('width', '100%');
+					//controller.bodyContainer.find('.ui-row').css('width', '100%');
 				}
 			}
 
