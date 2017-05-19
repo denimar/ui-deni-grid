@@ -322,7 +322,7 @@
          *
          */
         selectCell: function(row, col, preventSelecionChange, scrollIntoView) {
-          uiDeniGridService.selectRow(controller, row, col, preventSelecionChange, scrollIntoView);
+          uiDeniGridService.selectCell(controller, row, col, preventSelecionChange, scrollIntoView);
         },
 
         /**
