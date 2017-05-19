@@ -267,6 +267,10 @@ ui-deni-grid {
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .ui-cell-inner.row-number {
                           padding-left: 0 !important;
                           padding-right: 0 !important; }
+                        ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .ui-cell-inner.ui-cell-inner-action {
+                          opacity: .4; }
+                          ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .ui-cell-inner.ui-cell-inner-action:hover {
+                            opacity: 1; }
                         ui-deni-grid .ui-deni-grid-wrapper .ui-deni-grid-viewport .ui-deni-grid-container .ui-viewport .ui-container .ui-body-viewport-wrapper .ui-body-viewport .ui-body-container .ui-row .ui-cell .ui-cell-inner.row-detail {
                           -webkit-touch-callout: none;
                           /* iOS Safari */

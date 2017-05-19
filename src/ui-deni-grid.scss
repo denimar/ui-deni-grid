@@ -369,6 +369,14 @@ ui-deni-grid {
 													padding-right: 0 !important;
 												}
 
+												&.ui-cell-inner-action {
+													opacity: .4;
+
+													&:hover {
+														opacity: 1;
+													}
+												}
+
 												&.row-detail {
 													@include unselectable;
 
