@@ -858,7 +858,7 @@
 
 			// remove all not visible rows elements
 			// preventing a overloading in the RAM memory
-			controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
+			//controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
 		};
 
 		/**

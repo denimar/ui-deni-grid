@@ -1253,7 +1253,7 @@
     * @opt {Boolean} [sortableColumns=true]
     *
     */
-			opt.sortableColumns = true;
+			opt.sortableColumns = controller.options.rowDetails ? false : true;
 
 			/**
     * @opt {Array|Object|String} [sorters=null]
@@ -2270,7 +2270,7 @@
 
 			rowElement.addClass('row-detail-expanded');
 			controller.managerRendererItems.insertRowDefailtBox(rowIndex);
-			controller.element.api.repaint();
+			controller.element.api.repaint(true);
 		};
 
 		/**
@@ -4935,7 +4935,7 @@
 
 			// remove all not visible rows elements
 			// preventing a overloading in the RAM memory
-			controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
+			//controller.managerRendererItems.removeAllNotVisibleElementsRows(controller, visibleRows);
 		};
 
 		/**

@@ -440,7 +440,7 @@
 			 * @opt {Boolean} [sortableColumns=true]
 			 *
 			 */
-			opt.sortableColumns = true;
+			opt.sortableColumns = controller.options.rowDetails ? false : true;
 
 
 		    /**
@@ -1481,7 +1481,7 @@
 
 			rowElement.addClass('row-detail-expanded');
 			controller.managerRendererItems.insertRowDefailtBox(rowIndex);
-			controller.element.api.repaint();
+			controller.element.api.repaint(true);
 		};
 
 		/**
