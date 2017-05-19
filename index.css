@@ -68,13 +68,13 @@
       color: #666666;
       font-size: 15px;
       padding-left: 30px; }
+      .index .content-wrapper .content-inner section .content-text .img-ui-deni-grid {
+        width: 700px; }
       .index .content-wrapper .content-inner section .content-text .title {
         font-weight: bold;
         color: black;
         margin-top: 30px; }
-        .index .content-wrapper .content-inner section .content-text .img-ui-deni-react {
-          width: 700px;}  
-        .index .content-wrapper .content-inner section .content-text .title:before {          
+        .index .content-wrapper .content-inner section .content-text .title:before {
           padding-right: 0.3em;
           margin-left: -2em;
           content: "///";
