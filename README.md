@@ -8,6 +8,7 @@ A feature-rich React treeview that allows you to quickly add a nice-looking, Aja
 ![alt text](https://denimar.github.io/ui-deni-grid/examples/images/ui-deni-grid.png)
 
 TODO: In the future I will implement the tests, Cloud CI(I had implemented souce labs as a cloud CI, but my free user expired).
+The structure of this project must is under the patterns teached by John Papa: https://github.com/johnpapa/angular-styleguide.
 
 
 ## Features
