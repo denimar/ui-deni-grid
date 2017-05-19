@@ -20,21 +20,23 @@
 
     	<div class="examples-container">
 
-			<div ng-repeat="example in examples" class="example">
+          <div class="examples-menu">
+      			<div ng-repeat="example in examples" class="example">
 
-				<h3 ng-bind="example.text"></h3>
-				<div class="items-container">
-					<hr>
-					<div class="item" ng-repeat="item in example.children" ng-show="showItem(this)" ng-click="itemClick(item)">
-						<img class="item-image" ng-src="images/{{item.img}}" />
-						<div class="item-text" ng-bind="item.text"></div>
-					</div>
-				</div>
-			</div>
+      				<div class="example-title" ng-bind="example.text"></div>
+      				<div class="items-container">
+      					<div class="item" ng-repeat="item in example.children" ng-click="itemClick(item)" ng-bind="item.text" ng-class="{ 'active' : item.path === activeItem.path }"></div>
+      				</div>
+      			</div>
+          </div>
 
-		</div>
+          <div class="examples-content">
+            <iframe id="example-preview-iframe" src="" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+          </div>
 
-		<br />
+		  </div>
+
+		<!-- <br />
 		<br />
 		<hr />
 
@@ -43,7 +45,7 @@
 			<li>Finish remaining examples</li>
 			<li>Enable to choose a theme</li>
 			<li>Create routines to export data</li>
-		</ul>
+		</ul> -->
 
 	</section>
 

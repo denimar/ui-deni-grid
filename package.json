@@ -4,7 +4,7 @@
   "description": "A data grid for AngularJS 1x",
   "main": "gulpFile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "keywords": [
     "ui-deni-grid"

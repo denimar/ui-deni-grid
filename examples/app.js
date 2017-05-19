@@ -8,56 +8,40 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Basic Array Grid',
-					img: 'basic-array-grid.gif',
-					path: '3nfdckrg',
-					description: 'The simplest way to show data using the ui-deni-grid'
+					path: '3nfdckrg'
 				},
 				{
 					text: 'Binding to Local JSON',
-					img: 'basic-array-grid.gif',					
-					path: '88jxkb1w',
-					description: '????'
+					path: '88jxkb1w'
 				},
 				{
 					text: 'Binding to remote JSON',
-					img: 'basic-array-grid.gif',					
-					path: 'mc6a24xb',
-					description: '????'
+					path: 'mc6a24xb'
 				},
 				{
 					text: 'Binding to Local XML',
-					img: 'basic-array-grid.gif',					
-					path: 'otey42jd',
-					description: '????'
+					path: 'otey42jd'
 				},
 				{
 					text: 'Binding to remote XML',
-					img: 'basic-array-grid.gif',					
-					path: '0u7h2dxd',
-					description: '????'
+					path: '0u7h2dxd'
 				},
 			],
-		},		
+		},
 		{
 			text: 'Card View',
 			children: [
 				{
 					text: 'Simple Card View',
-					img: 'basic-array-grid.gif',
-					path: 't9Lzuyvf',
-					description: '?????'
+					path: 't9Lzuyvf'
 				},
 				{
 					text: 'Card View with Checkbox',
-					img: 'basic-array-grid.gif',
-					path: 'uhh0v779',
-					description: '?????'
+					path: 'uhh0v779'
 				},
 				{
 					text: 'Card View with Endless Paging',
-					img: 'basic-array-grid.gif',
-					path: 'tnn61pkm',
-					description: '?????'
+					path: 'tnn61pkm'
 				},
 			],
 		},
@@ -66,42 +50,21 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Filtering',
-					img: 'basic-array-grid.gif',
-					path: '7vyhnv36',
-					description: '?????'
+					path: '7vyhnv36'
 				}
-			]	
+			]
 		},
 		{
 			text: 'Large Dataset',
 			children: [
 				{
-					text: 'Traditional Way',
-					path: null,
-					description: '?????'
-				},
-				{
 					text: 'Paging 1',
-					img: 'basic-array-grid.gif',
-					path: 'pjvorqas',
-					description: '?????'
+					path: 'pjvorqas'
 				},
 				{
 					text: 'Paging 2',
-					img: 'basic-array-grid.gif',
-					path: 'f1pLcwLw',
-					description: '?????'
-				},
-				{
-					text: 'Infinite Scroll',
-					path: null,
-					description: '?????'
-				},
-				{
-					text: 'Endless Paging',
-					path: null,
-					description: '?????'
-				},
+					path: 'f1pLcwLw'
+				}
 			],
 		},
 		{
@@ -109,73 +72,53 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Checkbox',
-					img: 'basic-array-grid.gif',
-					path: 'gv3sgjpy',
-					description: 'This example show how put a checkbox as a fixed column'
+					path: 'gv3sgjpy'
 				},
 				{
 					text: 'Fixed Columns',
-					img: 'basic-array-grid.gif',
-					path: 'mousxpr5',
-					description: 'A way to scroll the data fixing one or more columns'
+					path: 'mousxpr5'
 				},
 				{
 					text: 'Indicator',
-					img: 'basic-array-grid.gif',
-					path: 'v5p3s45x',
-					description: 'Showing a indicator at the left side of the grid'
+					path: 'v5p3s45x'
 				},
 				{
 					text: 'Row Number',
-					img: 'basic-array-grid.gif',
-					path: '4s22s15b',
-					description: 'Sometime there is a need to know what line we are'
+					path: '4s22s15b'
 				},
 			]
-		},	
+		},
 		{
 			text: 'Templates',
 			children: [
 				{
 					text: 'Row Template 1',
-					img: 'basic-array-grid.gif',
-					path: 'z075e6d0',
-					description: '????????'
+					path: 'z075e6d0'
 				},
 				{
 					text: 'Row Template 2',
-					img: 'basic-array-grid.gif',
-					path: '0hhue7rk',
-					description: '????????'
+					path: '0hhue7rk'
 				},
 				{
 					text: 'Footer Template',
-					img: 'basic-array-grid.gif',
-					path: 'ysp0vdmh',
-					description: '????????'
+					path: 'ysp0vdmh'
 				},
 				{
 					text: 'Footer Row Template',
-					img: 'basic-array-grid.gif',
-					path: 'dervvL56',
-					description: '????????'
+					path: 'dervvL56'
 				},
 			]
-		},		
+		},
 		{
 			text: 'Grouping',
 			children: [
 				{
 					text: 'Grouping',
-					img: 'grouping-grouping.gif',
-					path: 's9n0x5b7',
-					description: 'The simplest way to grouping data using the ui-deni-grid'
+					path: 's9n0x5b7'
 				},
 				{
 					text: 'Grouping with Footer',
-					img: 'grouping-grouping.gif',
-					path: 'sywnb63x',
-					description: 'Showing a footer like a sumary at the end of the grouping, plus, as you can see, the footer is showing at the end of the grid too, exactly like was configured. For more details see the "footer" section.'
+					path: 'sywnb63x'
 				}
 			]
 		},
@@ -183,87 +126,8 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			text: 'Selection',
 			children: [
 				{
-					text: 'Row Selection',
-				},
-				{
 					text: 'Simple Cell Selection',
-					img: 'grouping-grouping.gif',
-					path: 'xw5726xv',
-					description: '????'
-				},
-				{
-					text: 'Cell Selection with Cell Template',
-					img: 'grouping-grouping.gif',
-					path: '???',
-					description: '????'
-				},
-				{
-					text: 'CheckBox Selection',
-				},
-			]
-		},
-		{
-			text: 'Sorting',
-			children: [
-				{
-					text: 'Sorting',
-				},
-				{
-					text: 'Multiple Sorting',
-				},
-				{
-					text: 'Fixed Sorting',
-				},
-			]
-		},
-		{
-			text: 'Editing',
-			children: [
-				{
-					text: 'Cell Editing',
-				},
-			]
-		},
-		{
-			text: 'Filtering',
-			children: [
-				{
-					text: 'Local Row Filter'
-				},
-				{
-					text: 'Remote Row Filter'
-				}
-			]		
-		},
-		{
-			text: 'Drag and Drop',
-		},
-		{	
-			text: 'Footer',
-			children: [
-				{
-					text: 'Custom Functions',
-					path: 'footer/custom-functions'
-				},
-				{
-					text: 'Custom Renderer',
-					path: 'footer/custom-renderer'
-				},
-				{
-					text: 'Default Functions',
-					path: 'footer/default-functions'
-				},
-				{
-					text: 'Row Template',
-					path: 'footer/footer-row-template'
-				},
-				{
-					text: 'Footer Template',
-					path: 'footer/footer-template'
-				},
-				{
-					text: 'Grouping with Footer',
-					path: 'footer/grouping-footer'
+					path: 'xw5726xv'
 				}
 			]
 		},
@@ -272,45 +136,27 @@ angular.module('myApp').controller('MainCtrl', function($scope) {
 			children: [
 				{
 					text: 'Grouped Column Header',
-					path: '28ad3uuf',
-					img: 'basic-array-grid.gif',
-					description: '????????'
+					path: '28ad3uuf'
 				},
 				{
 					text: 'Row Expand',
-					path: '352aacqc',
-					img: 'basic-array-grid.gif',
-					description: '????????'
-				},
-				{
-					text: 'Property Grid'
+					path: '352aacqc'
 				},
 				{
 					text: 'Action Column',
-					path: 'gxpa6yzt',
-					img: 'basic-array-grid.gif',
-					description: '????????'
+					path: 'gxpa6yzt'
 				}
 			]
 		}
 	];
 
-	$scope.showItem = function(itemRepeat) {
-		if (itemRepeat.$last && itemRepeat.$parent.$last) {
-			$('.examples-ui-deni-grid').css('display', 'block');
-		}
-
-		return true;
-	}
-
 	$scope.itemClick = function(item) {
-		if (item.path == null) {
-			alert('Feature Under Construction');
-			return;
-		}
-
-		window.open('preview.html?path=' + item.path + '&title=' + item.text + '&description=' + item.description, '_blank');
+		$scope.activeItem = item;
+		var elemFrame = document.getElementById('example-preview-iframe');
+		elemFrame.src = 'https://jsfiddle.net/denimar/' + item.path + '/embedded/result,html,js,css,resources/';
 	}
+
+	$scope.itemClick($scope.examples[0].children[0]);
 
 
 });
