@@ -56,8 +56,4 @@ bower install ui-deni-grid --save
 
 [Denimar de Moraes](http://github.com/denimar) (denimar@gmail.com) is a full-stack developper at the HBSis IT Solutions, Blumenau, Santa Catarina, Brazil.
 
-<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="denimar-moraes-11207575"><a class="LI-simple-link" href='https://br.linkedin.com/in/denimar-moraes-11207575/en?trk=profile-badge'>Denimar de Moraes</a></div>
-
-<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="denimar-moraes-11207575"><a class="LI-simple-link" href='https://br.linkedin.com/in/denimar-moraes-11207575/en?trk=profile-badge'>Denimar de Moraes</a></div>
-
 <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="denimar-moraes-11207575"><a class="LI-simple-link" href='https://br.linkedin.com/in/denimar-moraes-11207575/en?trk=profile-badge'>Denimar de Moraes</a></div>
