@@ -1,4 +1,3 @@
-# AngularJS ui-deni-grid
 # ui-deni-grid
 [![Build Status](https://travis-ci.org/denimar/ui-deni-grid.svg?branch=master)](https://travis-ci.org/denimar/ui-deni-grid)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/denimar/ui-deni-grid/badges/quality-score.png?b=gh-pages)](https://scrutinizer-ci.com/g/denimar/ui-deni-grid/?branch=gh-pages)
@@ -56,3 +55,5 @@ bower install ui-deni-grid --save
 ## Author
 
 [Denimar de Moraes](http://github.com/denimar) (denimar@gmail.com) is a full-stack developper at the HBSis IT Solutions, Blumenau, Santa Catarina, Brazil.
+
+[<img src="https://raw.githubusercontent.com/denimar/denibudget/master/linkedin-profile.png">](https://www.linkedin.com/in/denimar-moraes/?locale=en_US)
